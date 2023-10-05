@@ -1,110 +1,84 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   IconClock,
   IconLink,
   IconMilk,
   IconTruckDelivery,
 } from "@tabler/icons-react";
+import { ScrollArea, UnstyledButton } from "@mantine/core";
 
-const navigation = [
-  {
-    id: "1",
-    title: "First category",
-  },
-  {
-    id: "2",
-    title: "Second category",
-  },
-  {
-    id: "3",
-    title: "Third category",
-  },
-  {
-    id: "4",
-    title: "4-th category",
-  },
-  {
-    id: "5",
-    title: "5-th category",
-  },
-  {
-    id: "6",
-    title: "6-th category",
-  },
-  {
-    id: "7",
-    title: "7-th category",
-  },
-  {
-    id: "8",
-    title: "8-th category",
-  },
-  {
-    id: "9",
-    title: "9-th category",
-  },
-  {
-    id: "10",
-    title: "10-th category",
-  },
-  {
-    id: "11",
-    title: "11-th category",
-  },
-  {
-    id: "12",
-    title: "12-th category",
-  },
-  {
-    id: "13",
-    title: "13-th category",
-  },
-  {
-    id: "14",
-    title: "14-th category",
-  },
-  {
-    id: "15",
-    title: "15-th category",
-  },
-  {
-    id: "16",
-    title: "16-th category",
-  },
-];
-
-export const Navigation = () => {
-  const items = navigation.map((item) => (
-    <li
+export const Navigation = ({
+  categories,
+  toggle,
+}: {
+  categories: any;
+  toggle: () => void;
+}) => {
+  const menu = categories.map((item: any) => (
+    <LinkButton
       key={item.id}
-      className="flex flex-row gap-2 items-center rounded-xl px-4 py-4 cursor-pointer hover:bg-zinc-200"
-    >
-      <IconMilk stroke={1.5} className="w-8 h-8" />
-      {item.title}
-    </li>
+      link={item.link}
+      label={item.label}
+      icon={<IconMilk stroke={1.5} className="w-6" />}
+      toggle={toggle}
+    />
   ));
 
   return (
-    <aside className="col-span-0 lg:col-span-2 hidden lg:block h-screen px-4">
-      <div className="mb-8">
-        <p className="font-semibold text-lg mb-2">Delivery</p>
+    <div className="w-full bg-zinc-50 px-4 pt-4 border-r border-zinc-100">
+      <ScrollArea className="h-screen">
+        <div className="mb-8">
+          <p className="font-semibold text-lg mb-2">Доставка</p>
 
-        <div className="flex flex-row gap-2 items-center mb-2">
-          <IconClock stroke={1.5} /> from 08:00
+          <div className="flex flex-row gap-2 items-center mb-2">
+            <IconClock stroke={1.5} /> сегодня до 22:00
+          </div>
+
+          <div className="flex flex-row gap-2 items-center mb-2">
+            <IconTruckDelivery stroke={1.5} /> бесплатно от 2500 ₽
+          </div>
+
+          <div className="flex flex-row gap-2 items-center">
+            <IconLink stroke={1.5} /> подробности
+          </div>
         </div>
 
-        <div className="flex flex-row gap-2 items-center mb-2">
-          <IconTruckDelivery stroke={1.5} /> free from 15$
+        <div className="mb-32">
+          <p className="font-semibold text-lg">Каталог</p>
+          {menu}
         </div>
+      </ScrollArea>
+    </div>
+  );
+};
 
-        <div className="flex flex-row gap-2 items-center">
-          <IconLink stroke={1.5} /> find out details
-        </div>
+const LinkButton = ({
+  link,
+  label,
+  icon,
+  toggle,
+}: {
+  link: string;
+  label: string;
+  icon: React.ReactNode;
+  toggle: () => void;
+}) => {
+  const activePath = usePathname();
+  const linkActive = activePath === link;
+
+  return (
+    <UnstyledButton component={Link} href={link} onClick={toggle}>
+      <div
+        className="text-base font-medium flex flex-row items-center gap-3 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-zinc-200 data-[active=true]:font-semibold hover:bg-zinc-100"
+        data-active={linkActive}
+      >
+        {icon}
+        {label}
       </div>
-
-      <div>
-        <p className="font-semibold text-lg">Catalog</p>
-        <ul>{items}</ul>
-      </div>
-    </aside>
+    </UnstyledButton>
   );
 };

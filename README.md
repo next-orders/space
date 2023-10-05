@@ -6,14 +6,14 @@ First version of frontend. Products, cart, full ordering process.
 Stack:
 - React
 - Next.js
-- Tailwind
-- Custom components
+- TailwindCSS
+- Mantine components
 
 ## Features (WIP)
 
 - 📱 100% adaptive layout
 - 🤹 Multi-page site structure with priority on competent SEO
-- 🛒 The cart is always in sight
+- 🛒 The cart is always in sight on desktop
 - 🚚 Possibility to choose delivery or pickup
 - 🔍 Quick search in the product catalog
 - 🏷️ The client can use a promotional code
