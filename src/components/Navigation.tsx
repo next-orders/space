@@ -23,7 +23,7 @@ export const Navigation = ({
     return categories.map((item: any) => (
       <LinkButton
         key={item.id}
-        link={"/" + item.slug}
+        link={"/catalog/" + item.slug}
         label={item.name}
         icon={<IconMilk stroke={1.5} className="w-6" />}
         toggle={toggle}

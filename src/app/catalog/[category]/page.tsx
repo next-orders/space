@@ -4,7 +4,7 @@ import { ProductVariant } from "@/types";
 import Image from "next/image";
 
 type Props = {
-  params: { page: string };
+  params: { category: string };
 };
 
 export default async function Page({ params }: Props) {
@@ -12,11 +12,11 @@ export default async function Page({ params }: Props) {
 
   // This page exist?
   const possibleLinks = categories.map((category) => category.slug);
-  if (!possibleLinks.includes(params.page)) {
+  if (!possibleLinks.includes(params.category)) {
     notFound();
   }
 
-  const category = categories.find((cat) => cat.slug === params.page);
+  const category = categories.find((cat) => cat.slug === params.category);
   if (!category) {
     notFound();
   }

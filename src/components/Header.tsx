@@ -22,7 +22,7 @@ export const Header = ({
       </div>
       <Link href="/" className="mr-auto">
         <div className="flex flex-row items-center py-4">
-          <div className="text-emerald-500 font-semibold text-xl">
+          <div className="text-emerald-600 font-semibold text-xl">
             Сытно и вкусно
           </div>
         </div>
@@ -34,7 +34,7 @@ export const Header = ({
         radius="md"
         className="px-4 py-2 text-white font-semibold bg-emerald-500 hover:bg-emerald-600"
       >
-        2067 ₽
+        1518 ₽
       </Button>
     </div>
   );

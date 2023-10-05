@@ -19,7 +19,7 @@ export const Cart = ({ checkout }: { checkout: Checkout }) => {
 
         <div className="px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 rounded-xl cursor-pointer">
           <div className="font-medium">Хорошо, далее</div>
-          <div className="font-semibold text-lg">2067 ₽</div>
+          <div className="font-semibold text-lg">1518 ₽</div>
         </div>
       </div>
     </div>
