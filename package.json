@@ -1,0 +1,47 @@
+{
+  "name": "v1",
+  "version": "0.0.1",
+  "description": "Modern e-commerce website",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/next-orders/v1.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "website",
+    "nextjs",
+    "tailwind"
+  ],
+  "author": "Nick Kosarev <hmbanan666@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/next-orders/v1/issues"
+  },
+  "homepage": "https://github.com/next-orders/v1#readme",
+  "dependencies": {
+    "@tabler/icons-react": "2.38.0",
+    "next": "13.5.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.2",
+    "@types/react": "^18.2.24",
+    "@types/react-dom": "^18.2.9",
+    "autoprefixer": "10.4.16",
+    "eslint": "8.50.0",
+    "eslint-config-next": "13.5.4",
+    "eslint-config-prettier": "9.0.0",
+    "postcss": "8.4.31",
+    "prettier": "^3.0.3",
+    "sass": "1.68.0",
+    "tailwindcss": "3.3.3",
+    "typescript": "^5.2.2"
+  }
+}
