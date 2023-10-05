@@ -34,7 +34,7 @@ export const Header = ({
         radius="md"
         className="px-4 py-2 text-white font-semibold bg-emerald-500 hover:bg-emerald-600"
       >
-        1290 ₽
+        2067 ₽
       </Button>
     </div>
   );

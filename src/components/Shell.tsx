@@ -6,12 +6,15 @@ import { useDisclosure } from "@mantine/hooks";
 import { Header } from "@/components/Header";
 import { Navigation } from "@/components/Navigation";
 import { Cart } from "@/components/Cart";
+import { Category, Checkout } from "@/types";
 
 export const Shell = ({
   categories,
+  checkout,
   children,
 }: {
-  categories: any;
+  categories: Category[];
+  checkout: Checkout;
   children: React.ReactNode;
 }) => {
   const [isNavbarOpened, { toggle, close }] = useDisclosure();
@@ -40,7 +43,7 @@ export const Shell = ({
       </AppShell.Navbar>
 
       <AppShell.Aside withBorder={false}>
-        <Cart />
+        <Cart checkout={checkout} />
       </AppShell.Aside>
 
       <AppShell.Main onClick={close}>{children}</AppShell.Main>

@@ -10,23 +10,26 @@ import {
   IconTruckDelivery,
 } from "@tabler/icons-react";
 import { ScrollArea, UnstyledButton } from "@mantine/core";
+import { Category } from "@/types";
 
 export const Navigation = ({
   categories,
   toggle,
 }: {
-  categories: any;
+  categories: Category[];
   toggle: () => void;
 }) => {
-  const menu = categories.map((item: any) => (
-    <LinkButton
-      key={item.id}
-      link={item.link}
-      label={item.label}
-      icon={<IconMilk stroke={1.5} className="w-6" />}
-      toggle={toggle}
-    />
-  ));
+  const Categories = () => {
+    return categories.map((item: any) => (
+      <LinkButton
+        key={item.id}
+        link={"/" + item.slug}
+        label={item.name}
+        icon={<IconMilk stroke={1.5} className="w-6" />}
+        toggle={toggle}
+      />
+    ));
+  };
 
   return (
     <div className="w-full bg-zinc-50 px-4 pt-4 border-r border-zinc-100">
@@ -49,7 +52,7 @@ export const Navigation = ({
 
         <div className="mb-32">
           <p className="font-semibold text-lg">Каталог</p>
-          {menu}
+          <Categories />
         </div>
       </ScrollArea>
     </div>

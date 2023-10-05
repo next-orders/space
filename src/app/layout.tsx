@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Shell } from "@/components/Shell";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-import { GetCategories } from "@/server/actions";
+import { GetCategories, GetCheckout } from "@/server/actions";
 
 import "@mantine/core/styles.layer.css";
 import "./globals.scss";
@@ -20,7 +20,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const categories = await GetCategories();
+  const [categories, checkout] = await Promise.all([
+    GetCategories(),
+    GetCheckout(),
+  ]);
 
   return (
     <html lang="ru" className={inter.className}>
@@ -51,7 +54,9 @@ export default async function RootLayout({
           defaultColorScheme="light"
           forceColorScheme="light"
         >
-          <Shell categories={categories}>{children}</Shell>
+          <Shell categories={categories} checkout={checkout}>
+            {children}
+          </Shell>
         </MantineProvider>
       </body>
     </html>

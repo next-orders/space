@@ -1,36 +1,12 @@
 import { IconMinus, IconPlus } from "@tabler/icons-react";
+import { Checkout, CheckoutLine } from "@/types";
+import Image from "next/image";
 
-export const Cart = () => {
-  const ExampleItem = () => {
-    return (
-      <div className="mb-4 flex flex-row gap-2 items-center justify-between">
-        <div className="flex flex-row gap-2 items-center">
-          <div className="w-16 min-w-[3rem] aspect-square bg-zinc-100 rounded-xl text-center text-sm text-slate-300">
-            Фото
-          </div>
+export const Cart = ({ checkout }: { checkout: Checkout }) => {
+  const lines = checkout.lines;
 
-          <div>
-            <div className="font-light text-sm leading-tight">
-              Название товара
-            </div>
-            <div className="mt-1 flex flex-row gap-2">
-              <div className="text-sm font-medium">450 ₽</div>
-              <div className="text-sm text-zinc-400 font-light">200 гр</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-row justify-between items-center bg-zinc-100 w-24 min-w-[6rem] rounded-2xl px-2 py-2">
-          <div className="text-2xl font-light leading-none">
-            <IconMinus stroke={1.5} className="w-5 h-5" />
-          </div>
-          <div className="text-sm">1</div>
-          <div className="text-2xl font-light leading-none">
-            <IconPlus stroke={1.5} className="w-5 h-5" />
-          </div>
-        </div>
-      </div>
-    );
+  const ItemLines = () => {
+    return lines.map((line) => <ItemLine key={line.id} {...line} />);
   };
 
   return (
@@ -38,15 +14,52 @@ export const Cart = () => {
       <div className="px-4 py-4 h-full flex flex-col justify-between">
         <div>
           <p className="mb-4 text-2xl font-semibold">Корзина</p>
-
-          <ExampleItem />
-          <ExampleItem />
-          <ExampleItem />
+          <ItemLines />
         </div>
 
         <div className="px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 rounded-xl cursor-pointer">
           <div className="font-medium">Хорошо, далее</div>
-          <div className="font-semibold text-lg">1290 ₽</div>
+          <div className="font-semibold text-lg">2067 ₽</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ItemLine = ({ quantity, variant }: CheckoutLine) => {
+  const price = variant.pricing?.price.gross.amount;
+  const photo = variant.media?.length ? variant.media[0] : undefined;
+
+  return (
+    <div className="mb-4 flex flex-row gap-2 items-center justify-between">
+      <div className="flex flex-row gap-2 items-center">
+        <Image
+          src={photo?.url ?? ""}
+          alt={photo?.alt ?? ""}
+          unoptimized
+          width={100}
+          height={100}
+          className="w-14 min-w-[3rem] aspect-square rounded-xl"
+        />
+
+        <div>
+          <div className="font-light text-sm leading-tight">{variant.name}</div>
+          <div className="mt-1 flex flex-row gap-2">
+            <div className="text-sm font-medium">{price} ₽</div>
+            <div className="text-sm text-zinc-400 font-light">
+              {variant.weight?.value} {variant.weight?.unit}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-row justify-between items-center bg-zinc-100 w-20 min-w-[5.5rem] rounded-2xl px-2 py-2">
+        <div className="text-2xl font-light leading-none">
+          <IconMinus stroke={1.5} className="w-5 h-5" />
+        </div>
+        <div className="text-sm">{quantity}</div>
+        <div className="text-2xl font-light leading-none">
+          <IconPlus stroke={1.5} className="w-5 h-5" />
         </div>
       </div>
     </div>
