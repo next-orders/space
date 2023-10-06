@@ -3,7 +3,8 @@ First version of frontend. Products, cart, full ordering process.
 
 ![main-screen-desktop](https://v1.next-orders.org/static/main-screen-desktop.jpg)
 
-Stack:
+## Stack
+
 - React
 - Next.js
 - TailwindCSS

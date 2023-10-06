@@ -2,11 +2,11 @@ import { IconMinus, IconPlus } from "@tabler/icons-react";
 import { Checkout, CheckoutLine } from "@/types";
 import Image from "next/image";
 
-export const Cart = ({ checkout }: { checkout: Checkout }) => {
-  const lines = checkout.lines;
+export const Cart = ({ checkout }: { checkout: Checkout | null }) => {
+  const lines = checkout?.lines;
 
   const ItemLines = () => {
-    return lines.map((line) => <ItemLine key={line.id} {...line} />);
+    return lines?.map((line) => <ItemLine key={line.id} {...line} />);
   };
 
   return (

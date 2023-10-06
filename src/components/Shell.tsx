@@ -13,8 +13,8 @@ export const Shell = ({
   checkout,
   children,
 }: {
-  categories: Category[];
-  checkout: Checkout;
+  categories: Category[] | null;
+  checkout: Checkout | null;
   children: React.ReactNode;
 }) => {
   const [isNavbarOpened, { toggle, close }] = useDisclosure();

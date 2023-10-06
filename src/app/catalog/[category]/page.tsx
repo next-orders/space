@@ -9,6 +9,9 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const categories = await GetCategories();
+  if (!categories) {
+    notFound();
+  }
 
   // This page exist?
   const possibleLinks = categories.map((category) => category.slug);

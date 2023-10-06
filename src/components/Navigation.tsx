@@ -16,11 +16,11 @@ export const Navigation = ({
   categories,
   toggle,
 }: {
-  categories: Category[];
+  categories: Category[] | null;
   toggle: () => void;
 }) => {
   const Categories = () => {
-    return categories.map((item: any) => (
+    return categories?.map((item: any) => (
       <LinkButton
         key={item.id}
         link={"/catalog/" + item.slug}
