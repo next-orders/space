@@ -1,7 +1,7 @@
 {
   "name": "v1",
   "version": "0.0.1",
-  "description": "Modern e-commerce website",
+  "description": "Modern e-commerce website: clients will be happy to order delicious food!",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -44,8 +44,8 @@
     "postcss-preset-mantine": "1.8.0",
     "postcss-simple-vars": "7.0.1",
     "prettier": "^3.0.3",
-    "sass": "1.68.0",
+    "sass": "^1.69.0",
     "tailwindcss": "3.3.3",
-    "typescript": "^5.2.2"
+    "typescript": "5.2.2"
   }
 }
