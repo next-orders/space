@@ -1,13 +1,14 @@
-import { GetCategories, GetProductsInCategory } from "@/server/actions";
-import { notFound } from "next/navigation";
-import { ProductVariant } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { GetCategories, GetProductsInCategory } from "@/server/actions";
+import { ProductVariant } from "@/types";
 
-type Props = {
+type PageProps = {
   params: { category: string };
 };
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: PageProps) {
   const categories = await GetCategories();
   if (!categories) {
     notFound();
@@ -37,7 +38,15 @@ export default async function Page({ params }: Props) {
         : undefined;
       if (!mainVariant) return null;
 
-      return <ProductCard key={mainVariant.id} {...mainVariant} />;
+      const productUrl = category.slug + "/" + product.slug;
+
+      return (
+        <ProductCard
+          key={mainVariant.id}
+          productUrl={productUrl}
+          {...mainVariant}
+        />
+      );
     });
   };
 
@@ -53,38 +62,45 @@ export default async function Page({ params }: Props) {
   );
 }
 
+type ProductCardProps = {
+  productUrl: string;
+} & ProductVariant;
+
 const ProductCard = ({
   name,
   weightUnit,
   weightValue,
   gross,
   media,
-}: ProductVariant) => {
+  productUrl,
+}: ProductCardProps) => {
   const photo = media?.length ? media[0] : undefined;
 
   return (
-    <div className="bg-white rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer">
-      <div className="flex flex-col justify-between h-full">
-        <div>
-          <Image
-            src={photo?.url ?? ""}
-            alt={photo?.alt ?? ""}
-            unoptimized
-            width={300}
-            height={300}
-            className="w-full aspect-square rounded-xl"
-          />
-          <div className="mt-2 text-xl font-medium">{gross} ₽</div>
-          <div className="font-light leading-tight line-clamp-2">{name}</div>
-          <div className="mt-2 font-light text-zinc-400">
-            {weightValue} {weightUnit}
+    <Link href={productUrl}>
+      <div className="bg-white rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer">
+        <div className="flex flex-col justify-between h-full">
+          <div>
+            <Image
+              src={photo?.url ?? ""}
+              alt={photo?.alt ?? ""}
+              unoptimized
+              width={300}
+              height={300}
+              className="w-full aspect-square rounded-xl"
+            />
+            <div className="mt-2 text-xl font-medium">{gross} ₽</div>
+            <div className="font-light leading-tight line-clamp-2">{name}</div>
+            <div className="mt-2 font-light text-zinc-400">
+              {weightValue} {weightUnit}
+            </div>
+          </div>
+
+          <div className="flex flex-row gap-2 items-center justify-between mt-2 w-full h-12 bg-zinc-100 rounded-xl">
+            <div className="w-full text-center text-2xl font-light">+</div>
           </div>
         </div>
-
-        <div className="flex flex-row gap-2 items-center justify-between mt-2 w-full h-12 bg-zinc-100 rounded-xl">
-          <div className="w-full text-center text-2xl font-light">+</div>
-        </div>
       </div>
-    </div>
+    </Link>
   );
 };

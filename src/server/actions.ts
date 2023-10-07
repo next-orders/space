@@ -33,6 +33,23 @@ export const GetProductsInCategory = async (id: string) => {
   return (await res.json()) as Product[] | null;
 };
 
+export const GetProductBySlug = async (slug: string) => {
+  const res = await fetch(
+    `https://v1.next-orders.org/api/product/slug/${slug}`,
+    {
+      method: "GET",
+      next: {
+        revalidate: 10,
+      },
+    },
+  );
+  if (!res.ok) {
+    return null;
+  }
+
+  return (await res.json()) as Product | null;
+};
+
 export const GetCheckout = async () => {
   const id = 123;
 
