@@ -53,9 +53,14 @@ export default async function Page({ params }: Props) {
   );
 }
 
-const ProductCard = ({ name, weight, media, pricing }: ProductVariant) => {
+const ProductCard = ({
+  name,
+  weightUnit,
+  weightValue,
+  gross,
+  media,
+}: ProductVariant) => {
   const photo = media?.length ? media[0] : undefined;
-  const price = pricing?.price.gross.amount;
 
   return (
     <div className="bg-white rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer">
@@ -69,10 +74,10 @@ const ProductCard = ({ name, weight, media, pricing }: ProductVariant) => {
             height={300}
             className="w-full aspect-square rounded-xl"
           />
-          <div className="mt-2 text-xl font-medium">{price} ₽</div>
+          <div className="mt-2 text-xl font-medium">{gross} ₽</div>
           <div className="font-light leading-tight line-clamp-2">{name}</div>
           <div className="mt-2 font-light text-zinc-400">
-            {weight?.value} {weight?.unit}
+            {weightValue} {weightUnit}
           </div>
         </div>
 

@@ -9,39 +9,25 @@ export type Product = {
   id: string;
   name: string;
   slug: string;
+  createdAt: Date;
+  updatedAt: Date;
   variants?: ProductVariant[];
 };
 
 export type ProductVariant = {
   id: string;
   name: string;
-  sku?: string;
-  // product: Product;
-  weight?: Weight;
-  media?: ProductMedia[];
-  pricing?: VariantPricingInfo;
-};
-
-export type VariantPricingInfo = {
+  createdAt: Date;
+  updatedAt: Date;
+  sku?: string | null;
+  weightUnit?: string | null;
+  weightValue?: number | null;
   onSale: boolean;
-  price: TaxedMoney;
-};
-
-export type TaxedMoney = {
-  currency: string;
-  gross: Money;
-  net: Money;
-  tax: Money;
-};
-
-export type Money = {
-  currency: string;
-  amount: number;
-};
-
-export type Weight = {
-  unit: "г";
-  value: number;
+  currency?: string | null;
+  gross?: number | null;
+  net?: number | null;
+  tax?: number | null;
+  media?: ProductMedia[];
 };
 
 export type ProductMedia = {
