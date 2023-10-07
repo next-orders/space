@@ -27,7 +27,7 @@ export const Cart = ({ checkout }: { checkout: Checkout | null }) => {
 };
 
 const ItemLine = ({ quantity, variant }: CheckoutLine) => {
-  const price = variant.pricing?.price.gross.amount;
+  const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
 
   return (
@@ -47,7 +47,7 @@ const ItemLine = ({ quantity, variant }: CheckoutLine) => {
           <div className="mt-1 flex flex-row gap-2">
             <div className="text-sm font-medium">{price} ₽</div>
             <div className="text-sm text-zinc-400 font-light">
-              {variant.weight?.value} {variant.weight?.unit}
+              {variant?.weightValue} {variant?.weightUnit}
             </div>
           </div>
         </div>
