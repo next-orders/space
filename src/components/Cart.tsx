@@ -2,11 +2,15 @@ import { IconMinus, IconPlus } from "@tabler/icons-react";
 import { Checkout, CheckoutLine } from "@/types";
 import Image from "next/image";
 
-export const Cart = ({ checkout }: { checkout: Checkout | null }) => {
+type Props = {
+  checkout: Checkout | null;
+};
+
+export const Cart = ({ checkout }: Props) => {
   const lines = checkout?.lines;
 
   const ItemLines = () => {
-    return lines?.map((line) => <ItemLine key={line.id} {...line} />);
+    return lines?.map((line) => <CartItemLine key={line.id} {...line} />);
   };
 
   return (
@@ -26,7 +30,7 @@ export const Cart = ({ checkout }: { checkout: Checkout | null }) => {
   );
 };
 
-const ItemLine = ({ quantity, variant }: CheckoutLine) => {
+const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
   const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
 

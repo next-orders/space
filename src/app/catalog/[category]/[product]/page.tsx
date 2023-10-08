@@ -2,7 +2,8 @@ import { GetProductBySlug } from "@/server/actions";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@mantine/core";
-import { BackBlock } from "@/app/catalog/[category]/[product]/Back";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { BackBlock } from "@/components/BackBlock";
 
 type PageProps = {
   params: { product: string };
@@ -21,9 +22,21 @@ export default async function Page({ params }: PageProps) {
 
   const photo = mainVariant.media?.length ? mainVariant.media[0] : undefined;
 
+  const breadcrumbs = [
+    { title: "Главная", href: "/" },
+    {
+      title: product.category?.name,
+      href: `/catalog/${product.category?.slug}`,
+    },
+    { title: mainVariant.name, href: "#" },
+  ];
+
   return (
-    <div className="px-4 pb-10 mt-4 md:px-6 md:mt-6">
-      <BackBlock />
+    <div className="px-4 pb-10 mt-4 md:px-6 md:mt-4">
+      <div className="mb-4 flex flex-row justify-between items-center">
+        <Breadcrumbs links={breadcrumbs} />
+        <BackBlock />
+      </div>
 
       <div className="bg-white px-5 py-5 rounded-2xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-y-4 md:gap-4">
@@ -57,6 +70,10 @@ export default async function Page({ params }: PageProps) {
           </div>
         </div>
       </div>
+
+      <pre className="mt-10 text-sm opacity-50 overflow-auto">
+        {JSON.stringify(product, undefined, 2)}
+      </pre>
     </div>
   );
 }

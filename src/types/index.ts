@@ -11,6 +11,7 @@ export type Product = {
   slug: string;
   createdAt: Date;
   updatedAt: Date;
+  category: Category;
   variants?: ProductVariant[];
 };
 

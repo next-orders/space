@@ -7,16 +7,15 @@ import { Header } from "@/components/Header";
 import { Navigation } from "@/components/Navigation";
 import { Cart } from "@/components/Cart";
 import { Category, Checkout } from "@/types";
+import { Footer } from "@/components/Footer";
 
-export const Shell = ({
-  categories,
-  checkout,
-  children,
-}: {
+type Props = {
   categories: Category[] | null;
   checkout: Checkout | null;
   children: React.ReactNode;
-}) => {
+};
+
+export const Shell = ({ categories, checkout, children }: Props) => {
   const [isNavbarOpened, { toggle, close }] = useDisclosure();
 
   return (
@@ -46,7 +45,10 @@ export const Shell = ({
         <Cart checkout={checkout} />
       </AppShell.Aside>
 
-      <AppShell.Main onClick={close}>{children}</AppShell.Main>
+      <AppShell.Main onClick={close}>
+        {children}
+        <Footer />
+      </AppShell.Main>
     </AppShell>
   );
 };

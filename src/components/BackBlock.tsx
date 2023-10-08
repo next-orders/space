@@ -8,7 +8,7 @@ export const BackBlock = () => {
   const router = useRouter();
 
   return (
-    <div className="w-full text-center mb-4">
+    <div className="mx-auto lg:mx-0">
       <Button
         size="lg"
         leftSection={<IconArrowBackUp stroke={1.5} />}

@@ -12,15 +12,14 @@ import {
 import { ScrollArea, UnstyledButton } from "@mantine/core";
 import { Category } from "@/types";
 
-export const Navigation = ({
-  categories,
-  toggle,
-}: {
+type Props = {
   categories: Category[] | null;
   toggle: () => void;
-}) => {
+};
+
+export const Navigation = ({ categories, toggle }: Props) => {
   const Categories = () => {
-    return categories?.map((item: any) => (
+    return categories?.map((item) => (
       <LinkButton
         key={item.id}
         link={"/catalog/" + item.slug}
