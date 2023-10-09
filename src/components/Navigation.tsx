@@ -10,7 +10,7 @@ import {
   IconTruckDelivery,
 } from "@tabler/icons-react";
 import { ScrollArea, UnstyledButton } from "@mantine/core";
-import { Category } from "@/types";
+import { Category } from "@next-orders/api-sdk";
 
 type Props = {
   categories: Category[] | null;

@@ -1,6 +1,5 @@
-import React from "react";
-import { Burger, Button } from "@mantine/core";
 import Link from "next/link";
+import { Burger, Button } from "@mantine/core";
 
 type Props = {
   isNavbarOpened: boolean;

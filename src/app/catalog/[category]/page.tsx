@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GetCategories, GetProductsInCategory } from "@/server/actions";
-import { ProductVariant } from "@/types";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BackBlock } from "@/components/BackBlock";
+import { ProductVariant } from "@next-orders/api-sdk";
 
 type PageProps = {
   params: { category: string };

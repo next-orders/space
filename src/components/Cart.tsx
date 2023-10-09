@@ -1,6 +1,6 @@
 import { IconMinus, IconPlus } from "@tabler/icons-react";
-import { Checkout, CheckoutLine } from "@/types";
 import Image from "next/image";
+import { Checkout, CheckoutLine } from "@next-orders/api-sdk";
 
 type Props = {
   checkout: Checkout | null;

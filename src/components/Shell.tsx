@@ -6,8 +6,8 @@ import { useDisclosure } from "@mantine/hooks";
 import { Header } from "@/components/Header";
 import { Navigation } from "@/components/Navigation";
 import { Cart } from "@/components/Cart";
-import { Category, Checkout } from "@/types";
 import { Footer } from "@/components/Footer";
+import { Category, Checkout } from "@next-orders/api-sdk";
 
 type Props = {
   categories: Category[] | null;
