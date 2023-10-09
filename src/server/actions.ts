@@ -2,11 +2,7 @@
 
 import { MainAPI } from "@next-orders/api-sdk";
 
-if (process.env.NODE_ENV === "production" && !process.env.API_URL) {
-  throw new Error("No API_URL at env");
-}
-
-const api = new MainAPI(process.env.API_URL || "", "supersecret");
+const api = new MainAPI(process.env.API_URL || "no-api-url-env", "supersecret");
 
 export const GetCategories = async () => {
   const categories = await api.getCategories();
