@@ -1,67 +1,45 @@
 "use server";
 
-import { Category, Checkout, Product } from "@/types";
+import { MainAPI } from "@next-orders/api-sdk";
+
+if (!process.env.API_URL) {
+  throw new Error("No API_URL at env");
+}
+
+const api = new MainAPI(process.env.API_URL, "supersecret");
 
 export const GetCategories = async () => {
-  const res = await fetch("https://v1.next-orders.org/api/category/list", {
-    method: "GET",
-    next: {
-      revalidate: 10,
-    },
-  });
-  if (!res.ok) {
+  const categories = await api.getCategories();
+  if (!categories || categories instanceof Error) {
     return null;
   }
 
-  return (await res.json()) as Category[];
+  return categories;
 };
 
 export const GetProductsInCategory = async (id: string) => {
-  const res = await fetch(
-    `https://v1.next-orders.org/api/product/category/${id}`,
-    {
-      method: "GET",
-      next: {
-        revalidate: 10,
-      },
-    },
-  );
-  if (!res.ok) {
+  const products = await api.getProductsInCategory(id);
+  if (!products || products instanceof Error) {
     return null;
   }
 
-  return (await res.json()) as Product[] | null;
+  return products;
 };
 
 export const GetProductBySlug = async (slug: string) => {
-  const res = await fetch(
-    `https://v1.next-orders.org/api/product/slug/${slug}`,
-    {
-      method: "GET",
-      next: {
-        revalidate: 10,
-      },
-    },
-  );
-  if (!res.ok) {
+  const product = await api.getProductBySlug(slug);
+  if (!product || product instanceof Error) {
     return null;
   }
 
-  return (await res.json()) as Product | null;
+  return product;
 };
 
-export const GetCheckout = async () => {
-  const id = 123;
-
-  const res = await fetch(`https://v1.next-orders.org/api/checkout/${id}`, {
-    method: "GET",
-    next: {
-      revalidate: 1,
-    },
-  });
-  if (!res.ok) {
+export const GetCheckout = async (id: string) => {
+  const checkout = await api.getCheckout(id);
+  if (!checkout || checkout instanceof Error) {
     return null;
   }
 
-  return (await res.json()) as Checkout;
+  return checkout;
 };

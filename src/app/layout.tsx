@@ -22,7 +22,7 @@ export default async function RootLayout({
 }) {
   const [categories, checkout] = await Promise.all([
     GetCategories(),
-    GetCheckout(),
+    GetCheckout("123"),
   ]);
 
   return (

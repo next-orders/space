@@ -15,7 +15,7 @@ export const BackBlock = () => {
         onClick={() => router.back()}
         className="px-5 bg-zinc-200 rounded-2xl mx-auto"
       >
-        Вернуться назад
+        Вернуться
       </Button>
     </div>
   );
