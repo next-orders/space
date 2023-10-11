@@ -50,23 +50,53 @@ export default async function Page({ params }: PageProps) {
           />
 
           <div className="col-span-2">
-            <h1 className="text-xl md:text-3xl font-semibold">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold">
               {mainVariant.name}
             </h1>
-            <div className="mt-1 font-light text-zinc-400">
+            <div className="mt-1 font-normal text-zinc-400">
               {mainVariant.weightValue} {mainVariant.weightUnit}
             </div>
 
-            <div className="mt-4 mb-2 text-2xl font-medium">
-              {mainVariant.gross} ₽
+            <div className="mt-4 flex flex-row gap-6 items-center">
+              <div className="text-2xl font-semibold tracking-tight">
+                {mainVariant.gross}
+                <span className="pl-1 text-xl">₽</span>
+              </div>
+              <Button size="lg" className="px-5 bg-emerald-300 rounded-2xl">
+                Добавить
+              </Button>
             </div>
+          </div>
+        </div>
 
-            <Button
-              size="lg"
-              className="px-5 bg-emerald-300 rounded-2xl mx-auto"
-            >
-              Добавить
-            </Button>
+        <div className="mt-6 flex flex-col lg:flex-row justify-between gap-4">
+          {product.description && (
+            <div>
+              <div className="mb-1 font-medium text-zinc-400">Описание</div>
+              <div className="leading-snug">{product.description}</div>
+            </div>
+          )}
+
+          <div>
+            <div className="mb-1 font-medium text-zinc-400">На 100 грамм</div>
+            <div className="mt-2 px-4 py-4 w-fit flex flex-row gap-4 bg-zinc-100 rounded-2xl">
+              <div>
+                <div className="font-semibold">5г</div>
+                <div>белки</div>
+              </div>
+              <div>
+                <div className="font-semibold">18г</div>
+                <div>жиры</div>
+              </div>
+              <div>
+                <div className="font-semibold">14г</div>
+                <div>углеводы</div>
+              </div>
+              <div>
+                <div className="font-semibold">684</div>
+                <div>ккал</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
