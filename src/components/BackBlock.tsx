@@ -13,7 +13,7 @@ export const BackBlock = () => {
         size="lg"
         leftSection={<IconArrowBackUp stroke={1.5} />}
         onClick={() => router.back()}
-        className="px-5 bg-zinc-200 rounded-2xl mx-auto"
+        className="px-5 text-base font-medium bg-zinc-200 hover:bg-zinc-300 rounded-2xl mx-auto"
       >
         Вернуться
       </Button>
