@@ -34,6 +34,15 @@ export const Navigation = ({ categories, toggle }: Props) => {
     <div className="w-full bg-zinc-50 px-4 pt-4 border-r border-zinc-100">
       <ScrollArea className="h-screen">
         <div className="mb-8">
+          <Link href="/" className="text-emerald-600 font-semibold text-xl">
+            Сытно и вкусно
+          </Link>
+          <div className="mt-1 text-sm leading-tight">
+            Закажите горячую пиццу и особенные суши
+          </div>
+        </div>
+
+        <div className="mb-8">
           <p className="font-semibold text-lg mb-2">Доставка</p>
 
           <div className="flex flex-row gap-2 items-center mb-2">

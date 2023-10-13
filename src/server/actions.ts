@@ -16,6 +16,15 @@ export const GetCategories = async () => {
   return categories;
 };
 
+export const GetCategoryBySlug = async (slug: string) => {
+  const category = await api.getCategoryBySlug(slug);
+  if (!category || category instanceof Error) {
+    return null;
+  }
+
+  return category;
+};
+
 export const GetProductsInCategory = async (id: string) => {
   const products = await api.getProductsInCategory(id);
   if (!products || products instanceof Error) {

@@ -1,6 +1,6 @@
-import { IconMinus, IconPlus } from "@tabler/icons-react";
 import Image from "next/image";
 import { Checkout, CheckoutLine } from "@next-orders/api-sdk";
+import { Counter } from "@/components/Counter";
 
 type Props = {
   checkout: Checkout | null;
@@ -57,15 +57,7 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
         </div>
       </div>
 
-      <div className="flex flex-row justify-between items-center bg-zinc-100 w-20 min-w-[5.5rem] rounded-2xl px-2 py-2">
-        <div className="text-2xl font-light leading-none">
-          <IconMinus stroke={1.5} className="w-5 h-5" />
-        </div>
-        <div className="text-sm">{quantity}</div>
-        <div className="text-2xl font-light leading-none">
-          <IconPlus stroke={1.5} className="w-5 h-5" />
-        </div>
-      </div>
+      <Counter count={quantity} />
     </div>
   );
 };

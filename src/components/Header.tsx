@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Burger, Button } from "@mantine/core";
+import { Burger, Button, Input } from "@mantine/core";
+import { IconSearch } from "@tabler/icons-react";
 
 type Props = {
   isNavbarOpened: boolean;
@@ -18,13 +18,14 @@ export const Header = ({ isNavbarOpened, toggle }: Props) => {
           hiddenFrom="sm"
         />
       </div>
-      <Link href="/" className="mr-auto">
-        <div className="flex flex-row items-center py-4">
-          <div className="text-emerald-600 font-semibold text-xl">
-            Сытно и вкусно
-          </div>
+
+      <div className="mr-auto">
+        <div className="flex flex-row gap-2 items-center">
+          <IconSearch stroke={1.5} />
+          <Input placeholder="Найдите товар" />
         </div>
-      </Link>
+      </div>
+
       <Button
         variant="filled"
         size="md"

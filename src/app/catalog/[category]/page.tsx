@@ -1,18 +1,26 @@
 import { notFound } from "next/navigation";
-import { GetCategories, GetProductsInCategory } from "@/server/actions";
+import {
+  GetCategories,
+  GetCategoryBySlug,
+  GetProductsInCategory,
+} from "@/server/actions";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BackBlock } from "@/components/BackBlock";
 import { ProductCard } from "@/components/ProductCard";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Категория",
-  description: "Закажите горячую пиццу и особенные суши",
-};
-
 type PageProps = {
   params: { category: string };
 };
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const category = await GetCategoryBySlug(params.category);
+  if (!category) return {};
+
+  return { title: category.name, description: category.slug };
+}
 
 export default async function Page({ params }: PageProps) {
   const categories = await GetCategories();
