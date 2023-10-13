@@ -2,7 +2,10 @@
 
 import { MainAPI } from "@next-orders/api-sdk";
 
-const api = new MainAPI(process.env.API_URL || "no-api-url-env", "supersecret");
+const api = new MainAPI(
+  process.env.API_URL || "no-api-url-env",
+  process.env.API_PRIVATE_TOKEN || "no-api-private-token-env",
+);
 
 export const GetCategories = async () => {
   const categories = await api.getCategories();
