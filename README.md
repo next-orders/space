@@ -3,7 +3,19 @@ First version of frontend. Products, cart, full ordering process.
 
 ![main-screen-desktop](https://v1.next-orders.org/static/main-screen-desktop.jpg)
 
-## Stack
+## Main idea and architecture of Next-Orders
+
+![next-orders-arch](https://v1.next-orders.org/static/next-orders-arch.png)
+
+There is a great desire to create software that is ideal for ordering and delivering food.
+It will be a set of solutions that can work together. It is important that each element can be easily replaced later.
+So the project does not become one big monolith.
+
+I'm currently working on version 1 of the website. Next year there will be a new version that will easily replace the old one as the main API will remain the same.
+
+Let's see what happens. Give the project a star ⭐. Offer your ideas and make commits.
+
+## Frontend Stack
 
 - React
 - Next.js
@@ -24,7 +36,7 @@ First version of frontend. Products, cart, full ordering process.
 
 ## Tech Features (WIP)
 
-- Website has its own backend, where business logic does not break out
+- Website has its own backend, where API data does not break out
 - Most of the code is rendered on the server: less load on the client
 
 ## How to deploy
