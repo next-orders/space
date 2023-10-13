@@ -11,6 +11,11 @@ There is a great desire to create software that is ideal for ordering and delive
 It will be a set of solutions that can work together. It is important that each element can be easily replaced later.
 So the project does not become one big monolith.
 
+- Website: this repo
+- Main API and SDK: https://github.com/next-orders/api
+- Command Center: https://github.com/next-orders/command-center
+- Image Proxy: it will be
+
 I'm currently working on version 1 of the website. Next year there will be a new version that will easily replace the old one as the main API will remain the same.
 
 Let's see what happens. Give the project a star ⭐. Offer your ideas and make commits.
