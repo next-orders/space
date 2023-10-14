@@ -7,8 +7,14 @@ const api = new MainAPI(
   process.env.API_PRIVATE_TOKEN || "no-api-private-token-env",
 );
 
+const nextConfig = {
+  next: {
+    revalidate: 120,
+  },
+};
+
 export const GetCategories = async () => {
-  const categories = await api.getCategories();
+  const categories = await api.getCategories(nextConfig);
   if (!categories || categories instanceof Error) {
     return null;
   }
@@ -17,7 +23,7 @@ export const GetCategories = async () => {
 };
 
 export const GetCategoryBySlug = async (slug: string) => {
-  const category = await api.getCategoryBySlug(slug);
+  const category = await api.getCategoryBySlug(slug, nextConfig);
   if (!category || category instanceof Error) {
     return null;
   }
@@ -26,7 +32,7 @@ export const GetCategoryBySlug = async (slug: string) => {
 };
 
 export const GetProductsInCategory = async (id: string) => {
-  const products = await api.getProductsInCategory(id);
+  const products = await api.getProductsInCategory(id, nextConfig);
   if (!products || products instanceof Error) {
     return null;
   }
@@ -35,7 +41,7 @@ export const GetProductsInCategory = async (id: string) => {
 };
 
 export const GetProductBySlug = async (slug: string) => {
-  const product = await api.getProductBySlug(slug);
+  const product = await api.getProductBySlug(slug, nextConfig);
   if (!product || product instanceof Error) {
     return null;
   }
@@ -44,7 +50,7 @@ export const GetProductBySlug = async (slug: string) => {
 };
 
 export const GetCheckout = async (id: string) => {
-  const checkout = await api.getCheckout(id);
+  const checkout = await api.getCheckout(id, nextConfig);
   if (!checkout || checkout instanceof Error) {
     return null;
   }

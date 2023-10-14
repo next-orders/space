@@ -21,7 +21,7 @@ export const ProductCard = ({
 
   return (
     <Link href={productUrl}>
-      <div className="bg-white rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer">
+      <div className="bg-white rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer hover:scale-[.98] duration-200">
         <div className="flex flex-col justify-between h-full">
           <div>
             <Image
