@@ -46,7 +46,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   const breadcrumbs = [
-    { title: "Главная", href: "/" },
+    { title: "Home page", href: "/" },
     { title: category.name, href: "#" },
   ];
 
@@ -77,7 +77,7 @@ export default async function Page({ params }: PageProps) {
       </div>
 
       <h1 className="text-3xl font-semibold">{category.name}</h1>
-      <div>Здесь все товары из этой категории</div>
+      <div>Here are all the products from this category</div>
 
       <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-2">
         <Products />

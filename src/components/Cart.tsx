@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Checkout, CheckoutLine } from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
+import { CurrencySign } from "@/components/CurrencySign";
+import { Price } from "@/components/Price";
 
 type Props = {
   checkout: Checkout | null;
@@ -17,13 +19,13 @@ export const Cart = ({ checkout }: Props) => {
     <div className="bg-white h-full">
       <div className="px-4 py-4 h-full flex flex-col justify-between">
         <div>
-          <p className="mb-4 text-2xl font-semibold">Корзина</p>
+          <p className="mb-4 text-2xl font-semibold">Cart</p>
           <ItemLines />
         </div>
 
         <div className="px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 rounded-xl cursor-pointer">
-          <div className="font-medium">Хорошо, далее</div>
-          <div className="font-semibold text-lg">1518 ₽</div>
+          <div className="font-medium">Okay, next</div>
+          <div className="font-semibold text-lg">15.18 $</div>
         </div>
       </div>
     </div>
@@ -49,7 +51,9 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
         <div>
           <div className="font-light text-sm leading-tight">{variant.name}</div>
           <div className="mt-1 flex flex-row gap-2">
-            <div className="text-sm font-medium">{price} ₽</div>
+            <div className="text-sm font-medium">
+              <Price value={price} /> <CurrencySign code={variant.currency} />
+            </div>
             <div className="text-sm text-zinc-400 font-light">
               {variant?.weightValue} {variant?.weightUnit}
             </div>

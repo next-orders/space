@@ -14,8 +14,8 @@ export default async function Page() {
 
   return (
     <div className="px-4 pb-10 mt-4 md:px-6 md:mt-6">
-      <h1 className="mb-2 text-3xl font-semibold">Сытно и вкусно</h1>
-      <div className="mb-6">Добро пожаловать на сайт!</div>
+      <h1 className="mb-2 text-3xl font-semibold">Nourishing and tasty</h1>
+      <div className="mb-6">Welcome to the site!</div>
 
       <CategoriesBlock categories={categories} />
     </div>
@@ -70,7 +70,7 @@ const CategoriesBlock = ({ categories }: CategoriesBlockProps) => {
             rightSection={<IconArrowRight stroke={1.5} />}
             className="px-5 text-base font-medium bg-zinc-200 hover:bg-zinc-300 rounded-2xl"
           >
-            Открыть категорию
+            Open category
           </Button>
         </div>
         <div

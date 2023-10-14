@@ -35,31 +35,31 @@ export const Navigation = ({ categories, toggle }: Props) => {
       <ScrollArea className="h-screen">
         <div className="mb-8">
           <Link href="/" className="text-emerald-600 font-semibold text-xl">
-            Сытно и вкусно
+            Nourishing and tasty
           </Link>
           <div className="mt-1 text-sm leading-tight">
-            Закажите горячую пиццу и особенные суши
+            Order hot pizza and special sushi
           </div>
         </div>
 
         <div className="mb-8">
-          <p className="font-semibold text-lg mb-2">Доставка</p>
+          <p className="font-semibold text-lg mb-2">Delivery</p>
 
           <div className="flex flex-row gap-2 items-center mb-2">
-            <IconClock stroke={1.5} /> сегодня до 22:00
+            <IconClock stroke={1.5} /> today until 22:00
           </div>
 
           <div className="flex flex-row gap-2 items-center mb-2">
-            <IconTruckDelivery stroke={1.5} /> бесплатно от 2500 ₽
+            <IconTruckDelivery stroke={1.5} /> free from 25 $
           </div>
 
           <div className="flex flex-row gap-2 items-center">
-            <IconLink stroke={1.5} /> подробности
+            <IconLink stroke={1.5} /> details
           </div>
         </div>
 
         <div className="mb-32">
-          <p className="font-semibold text-lg">Каталог</p>
+          <p className="font-semibold text-lg">Catalog</p>
           <Categories />
         </div>
       </ScrollArea>

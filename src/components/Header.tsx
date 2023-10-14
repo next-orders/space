@@ -22,18 +22,18 @@ export const Header = ({ isNavbarOpened, toggle }: Props) => {
       <div className="mr-auto">
         <div className="flex flex-row gap-2 items-center">
           <IconSearch stroke={1.5} />
-          <Input placeholder="Найдите товар" />
+          <Input placeholder="Find a product" />
         </div>
       </div>
 
       <Button
         variant="filled"
         size="md"
-        leftSection={<span className="font-medium">Корзина</span>}
+        leftSection={<span className="font-medium">Cart</span>}
         radius="md"
         className="px-4 py-2 text-white font-semibold bg-emerald-500 hover:bg-emerald-600"
       >
-        1518 ₽
+        15.18 $
       </Button>
     </div>
   );

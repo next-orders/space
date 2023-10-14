@@ -10,7 +10,7 @@ export const Footer = () => {
           target="_blank"
           className="font-medium text-emerald-600"
         >
-          Командный центр
+          Command Center
         </Link>
       </div>
 
