@@ -40,7 +40,8 @@ export const ProductCard = ({
             </div>
             <div className="font-light leading-tight line-clamp-2">{name}</div>
             <div className="mt-2 font-light text-zinc-400">
-              {weightValue} {weightUnit}
+              {weightValue}
+              {weightUnit}
             </div>
           </div>
 

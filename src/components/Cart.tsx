@@ -23,9 +23,11 @@ export const Cart = ({ checkout }: Props) => {
           <ItemLines />
         </div>
 
-        <div className="px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 rounded-xl cursor-pointer">
+        <div className="px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 hover:bg-emerald-400 rounded-xl cursor-pointer">
           <div className="font-medium">Okay, next</div>
-          <div className="font-semibold text-lg">15.18 $</div>
+          <div className="font-semibold text-lg">
+            15.18 <span className="text-base">$</span>
+          </div>
         </div>
       </div>
     </div>
@@ -52,10 +54,14 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
           <div className="font-light text-sm leading-tight">{variant.name}</div>
           <div className="mt-1 flex flex-row gap-2">
             <div className="text-sm font-medium">
-              <Price value={price} /> <CurrencySign code={variant.currency} />
+              <Price value={price} />
+              <span className="text-xs">
+                <CurrencySign code={variant.currency} />
+              </span>
             </div>
             <div className="text-sm text-zinc-400 font-light">
-              {variant?.weightValue} {variant?.weightUnit}
+              {variant?.weightValue}
+              {variant?.weightUnit}
             </div>
           </div>
         </div>

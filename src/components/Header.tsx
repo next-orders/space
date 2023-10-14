@@ -33,7 +33,7 @@ export const Header = ({ isNavbarOpened, toggle }: Props) => {
         radius="md"
         className="px-4 py-2 text-white font-semibold bg-emerald-500 hover:bg-emerald-600"
       >
-        15.18 $
+        15.18 <span className="ml-1 text-sm">$</span>
       </Button>
     </div>
   );

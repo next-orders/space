@@ -56,7 +56,8 @@ export default async function Page({ params }: PageProps) {
               {mainVariant.name}
             </h1>
             <div className="mt-1 font-normal text-zinc-400">
-              {mainVariant.weightValue} {mainVariant.weightUnit}
+              {mainVariant.weightValue}
+              {mainVariant.weightUnit}
             </div>
 
             <div className="mt-4 flex flex-row gap-6 items-center">
@@ -66,14 +67,17 @@ export default async function Page({ params }: PageProps) {
                   <CurrencySign code={mainVariant.currency} />
                 </span>
               </div>
-              <Button size="lg" className="px-5 bg-emerald-300 rounded-2xl">
+              <Button
+                size="lg"
+                className="px-5 bg-emerald-300 hover:bg-emerald-400 rounded-2xl"
+              >
                 Add to Cart
               </Button>
             </div>
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col lg:flex-row justify-between gap-4">
+        <div className="mt-6 flex flex-col xl:flex-row justify-between gap-4">
           {product.description && (
             <div>
               <div className="mb-1 font-medium text-zinc-400">Description</div>

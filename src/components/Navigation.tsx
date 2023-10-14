@@ -50,7 +50,11 @@ export const Navigation = ({ categories, toggle }: Props) => {
           </div>
 
           <div className="flex flex-row gap-2 items-center mb-2">
-            <IconTruckDelivery stroke={1.5} /> free from 25 $
+            <IconTruckDelivery stroke={1.5} />
+            <div>
+              free from 25
+              <span className="text-sm">$</span>
+            </div>
           </div>
 
           <div className="flex flex-row gap-2 items-center">

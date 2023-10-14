@@ -11,8 +11,8 @@ import "./globals.scss";
 const inter = Inter({ subsets: ["latin", "cyrillic", "cyrillic-ext"] });
 
 export const metadata: Metadata = {
-  title: "Сытно и вкусно",
-  description: "Закажите горячую пиццу и особенные суши",
+  title: "Nourishing and tasty",
+  description: "Order hot pizza and special sushi",
 };
 
 export default async function RootLayout({
