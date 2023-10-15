@@ -31,7 +31,7 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 ## Customer and Seller Features (WIP)
 
 - 📱 100% adaptive layout
-- 🤹 Multi-page site structure with priority on SEO
+- 🤹 Multi-page structure with priority on speed load and SEO
 - 🛒 The cart is always in sight on desktop
 - 🚚 Possibility to choose delivery or pickup
 - 🔍 Quick search in the product catalog
@@ -43,6 +43,7 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 
 - Website has its own backend, where API data does not break out
 - Most of the code is rendered on the server: less load on the client
+- Amazing cache system provided by Next.js: all data can be revalidated and reloaded from API on demand
 
 ## How to deploy
 
@@ -60,6 +61,17 @@ API_PRIVATE_TOKEN: bearer token, which give access to API endpoints
 ```
 
 Work in progress. Check **.env.example** in root dir for more info about env.
+
+On Kubernetes you can use health check of container:
+
+```yaml
+livenessProbe:
+  httpGet:
+    port: 3000
+    path: /website-api/health
+  initialDelaySeconds: 20
+  periodSeconds: 30
+```
 
 ## How to develop
 
