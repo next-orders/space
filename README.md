@@ -14,7 +14,7 @@ So the project does not become one big monolith.
 - Website: this repo
 - Main API and SDK: https://github.com/next-orders/api
 - Command Center: https://github.com/next-orders/command-center
-- Image Proxy: it will be
+- Image Proxy: in future
 
 I'm currently working on first version of the website. Next year there will be a new version that will easily replace the old one as the Main API with business logic will remain the same.
 
@@ -31,7 +31,7 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 ## Customer and Seller Features (WIP)
 
 - 📱 100% adaptive layout
-- 🤹 Multi-page structure with priority on speed load and SEO
+- 🤹 Multi-page structure with priority on fast page loading and SEO
 - 🛒 The cart is always in sight on desktop
 - 🚚 Possibility to choose delivery or pickup
 - 🔍 Quick search in the product catalog
@@ -60,7 +60,7 @@ API_URL: url of the main API
 API_PRIVATE_TOKEN: bearer token, which give access to API endpoints
 ```
 
-Work in progress. Check **.env.example** in root dir for more info about env.
+Check **.env.example** in root dir for more info about env.
 
 On Kubernetes you can use health check of container:
 
