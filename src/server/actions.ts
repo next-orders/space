@@ -12,7 +12,7 @@ const MAX_CACHE_SECONDS = 10800; // 3 hours
 const nextConfig = {
   // Problem: on build time Next try to fetch API, which is not declared. Empty data on deploy, until revalidation.
   // Solution: set revalidate to 0
-  revalidate: process.env.NODE_ENV === "production" ? MAX_CACHE_SECONDS : 0,
+  revalidate: process.env.DATA_CACHE_DISABLED ? 0 : MAX_CACHE_SECONDS,
 };
 
 export const GetCategories = async () => {
