@@ -1,7 +1,9 @@
-import { RevalidateAll } from "@/server/actions";
+import { revalidateTag } from "next/cache";
+
+export const revalidate = 0;
 
 export async function GET() {
-  await RevalidateAll();
+  revalidateTag("all");
 
   return Response.json({ revalidated: true, now: Date.now() });
 }
