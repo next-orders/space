@@ -26,7 +26,7 @@ export default async function RootLayout({
   ]);
 
   return (
-    <html lang="ru" className={inter.className}>
+    <html lang="en" className={inter.className}>
       <head>
         <ColorSchemeScript />
       </head>
