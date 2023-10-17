@@ -1,34 +1,36 @@
-# v1: Food Orders 🍕🍣🥗🍰
+# 🍔 v1: Food Orders
 First version of frontend. Products, cart, full ordering process.
 
-![main-screen-desktop](https://v1.next-orders.org/static/main-screen-desktop.jpg)
+![main-screen-desktop](https://github.com/next-orders/v1/blob/main/public/static/main-screen-desktop.jpg?raw=true)
 
-## Main idea and architecture of Next-Orders
+## 🍕 Main idea and architecture of Next-Orders
 
 There is a great desire to create software that is ideal for ordering and delivering food.
 It will be a set of solutions that can work together. It is important that each element can be easily replaced later.
 So the project does not become one big monolith.
 
-![next-orders-arch](https://v1.next-orders.org/static/next-orders-arch.png)
+![next-orders-arch](https://github.com/next-orders/v1/blob/main/public/static/next-orders-arch.png?raw=true)
 
-- Website: this repo
-- Main API and SDK: https://github.com/next-orders/api
-- Command Center: https://github.com/next-orders/command-center
+- [Website](https://github.com/next-orders/v1): First version of storefront, where client can order delicious food.
+- [Main API and SDK](https://github.com/next-orders/api): All business entities in one spot. Other parts can access data here.
+- [Command Center](https://github.com/next-orders/command-center): Headless CMS designed to build and manage storefronts.
 - Image Proxy: in future
 
 I'm currently working on first version of the website. Next year there will be a new version that will easily replace the old one as the Main API with business logic will remain the same.
 
 Let's see what happens. Give the project a star ⭐. Offer your ideas and make commits.
 
-## Frontend Stack
+## 🥗 Stack
 
-- React
-- Next.js
-- TailwindCSS
-- Mantine components
-- TypeScript
+- [Next](https://nextjs.org/): Framework for server-rendered React applications.
+- [React](https://reactjs.org/): JavaScript library for building user interfaces.
+- [TailwindCSS](https://tailwindcss.com/): Utility-first CSS framework for rapid UI development.
+- [Mantine](https://mantine.dev/core/): UI components library for styling and user interface.
+- [TypeScript](https://www.typescriptlang.org/): Typed superset of JavaScript that compiles to plain JavaScript.
+- [ESlint](https://eslint.org/): JavaScript linter for identifying and reporting code quality issues.
+- [Prettier](https://prettier.io/): Opinionated code formatter for maintaining consistent code style.
 
-## Customer and Seller Features (WIP)
+## 🍣 Customer and Seller Features (WIP)
 
 - 📱 100% adaptive layout
 - 🤹 Multi-page structure with priority on fast page loading and SEO
@@ -39,13 +41,21 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - 📈 The best offers and promotions are shown in the desired section
 - 🏁 Quick order, without forced registration on the site
 
-## Tech Features (WIP)
+## 🥪 Tech Features (WIP)
 
 - Website has its own backend, where API data does not break out
 - Most of the code is rendered on the server: less load on the client
 - Amazing cache system provided by Next.js: all data can be revalidated and reloaded from API on demand
 
-## How to deploy
+## 🥒 Structure
+
+- [src/app](src/app): Contains the application-specific logic and pages.
+- [src/app/catalog](src/app/catalog): Functionality related to the catalog of products.
+- [src/app/website-api](src/app/website-api): API endpoints for internal calls from the main API.
+- [src/components](src/components): Reusable UI components.
+- [src/server](src/server): Server-side logic for the website.
+
+## ☕ How to deploy
 
 You can use latest Docker Image:
 
@@ -73,11 +83,16 @@ livenessProbe:
   periodSeconds: 30
 ```
 
-## How to develop
+## 🍿 How to develop
 
 Clone this repo and use standard commands:
 
 ```shell
+git clone https://github.com/next-orders/v1
 npm i
 npm run dev
 ```
+
+## 🍰 License
+
+This project is licensed under the **MIT License** - see the [**MIT License**](https://github.com/next-orders/v1/blob/main/LICENSE) file for details.
