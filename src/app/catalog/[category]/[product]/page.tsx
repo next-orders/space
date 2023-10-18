@@ -17,7 +17,7 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  const photo = product.media?.length ? product.media[0].media : undefined;
+  const photo = product.media?.length ? product.media[0] : undefined;
 
   const breadcrumbs = [
     { title: "Home page", href: "/" },
