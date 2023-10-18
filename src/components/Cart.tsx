@@ -36,7 +36,7 @@ export const Cart = ({ checkout }: Props) => {
 
 const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
   const price = variant?.gross;
-  const photo = variant.media?.length ? variant.media[0] : undefined;
+  const photo = variant.media?.length ? variant.media[0].media : undefined;
 
   return (
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">

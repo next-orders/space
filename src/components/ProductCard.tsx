@@ -17,7 +17,7 @@ export const ProductCard = ({
   media,
   productUrl,
 }: ProductCardProps) => {
-  const photo = media?.length ? media[0] : undefined;
+  const photo = media?.length ? media[0].media : undefined;
 
   return (
     <Link href={productUrl}>

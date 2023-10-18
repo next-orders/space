@@ -10,16 +10,19 @@ import {
   IconTruckDelivery,
 } from "@tabler/icons-react";
 import { ScrollArea, UnstyledButton } from "@mantine/core";
-import { Category } from "@next-orders/api-sdk";
+import { Channel, Shop } from "@next-orders/api-sdk";
 
 type Props = {
-  categories: Category[] | null;
+  shop: Shop | null;
+  channel: Channel | null;
   toggle: () => void;
 };
 
-export const Navigation = ({ categories, toggle }: Props) => {
+export const Navigation = ({ shop, channel, toggle }: Props) => {
+  const menu = channel?.menus[0];
+
   const Categories = () => {
-    return categories?.map((item) => (
+    return menu?.categories?.map((item) => (
       <LinkButton
         key={item.id}
         link={"/catalog/" + item.slug}
@@ -35,11 +38,9 @@ export const Navigation = ({ categories, toggle }: Props) => {
       <ScrollArea className="h-screen">
         <div className="mb-8">
           <Link href="/" className="text-emerald-600 font-semibold text-xl">
-            Nourishing and tasty
+            {shop?.name}
           </Link>
-          <div className="mt-1 text-sm leading-tight">
-            Order hot pizza and special sushi
-          </div>
+          <div className="mt-1 text-sm leading-tight">{shop?.description}</div>
         </div>
 
         <div className="mb-8">

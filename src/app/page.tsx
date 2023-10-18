@@ -1,34 +1,43 @@
 import Link from "next/link";
 import { IconArrowRight } from "@tabler/icons-react";
 import { Button } from "@mantine/core";
-import { Category } from "@next-orders/api-sdk";
-import { GetCategories, GetProductsInCategory } from "@/server/actions";
+import { MenuCategory } from "@next-orders/api-sdk";
+import { GetChannel, GetProductsInCategory, GetShop } from "@/server/actions";
 import { ProductCard } from "@/components/ProductCard";
+import { notFound } from "next/navigation";
 
 export default async function Page() {
+  const [shop, channel] = await Promise.all([GetShop(), GetChannel()]);
+  if (!shop) {
+    notFound();
+  }
+
+  const menu = channel?.menus[0];
+
+  const categories = menu?.categories?.map(async (category) => (
+    <CategoryBlock key={category.id} category={category} />
+  ));
+
   return (
     <div className="px-4 pb-10 mt-4 md:px-6 md:mt-6">
-      <h1 className="mb-2 text-3xl font-semibold">Nourishing and tasty</h1>
+      <h1 className="mb-2 text-3xl font-semibold">{shop.name}</h1>
       <div className="mb-6">Welcome to the site!</div>
 
-      <Categories />
+      {categories}
+
+      <pre className="mt-10 text-sm opacity-50 overflow-auto">
+        {JSON.stringify(shop, undefined, 2)}
+      </pre>
+
+      <pre className="mt-10 text-sm opacity-50 overflow-auto">
+        {JSON.stringify(channel, undefined, 2)}
+      </pre>
     </div>
   );
 }
 
-const Categories = async () => {
-  const categories = await GetCategories();
-  if (!categories) {
-    return <div>No Categories found :(</div>;
-  }
-
-  return categories.map(async (category) => (
-    <CategoryBlock key={category.id} category={category} />
-  ));
-};
-
 type CategoryBlockProps = {
-  category: Category;
+  category: MenuCategory;
 };
 
 const CategoryBlock = async ({ category }: CategoryBlockProps) => {
@@ -43,19 +52,10 @@ const CategoryBlock = async ({ category }: CategoryBlockProps) => {
 
   const Products = () => {
     return showProducts.map((product) => {
-      const mainVariant = product.variants?.length
-        ? product.variants[0]
-        : undefined;
-      if (!mainVariant) return null;
-
       const productUrl = "/catalog/" + category.slug + "/" + product.slug;
 
       return (
-        <ProductCard
-          key={mainVariant.id}
-          productUrl={productUrl}
-          {...mainVariant}
-        />
+        <ProductCard key={product.id} productUrl={productUrl} {...product} />
       );
     });
   };

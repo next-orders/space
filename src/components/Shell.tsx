@@ -7,15 +7,16 @@ import { Header } from "@/components/Header";
 import { Navigation } from "@/components/Navigation";
 import { Cart } from "@/components/Cart";
 import { Footer } from "@/components/Footer";
-import { Category, Checkout } from "@next-orders/api-sdk";
+import { Channel, Checkout, Shop } from "@next-orders/api-sdk";
 
 type Props = {
-  categories: Category[] | null;
+  shop: Shop | null;
+  channel: Channel | null;
   checkout: Checkout | null;
   children: React.ReactNode;
 };
 
-export const Shell = ({ categories, checkout, children }: Props) => {
+export const Shell = ({ shop, channel, checkout, children }: Props) => {
   const [isNavbarOpened, { toggle, close }] = useDisclosure();
 
   return (
@@ -38,7 +39,7 @@ export const Shell = ({ categories, checkout, children }: Props) => {
       </AppShell.Header>
 
       <AppShell.Navbar withBorder={false}>
-        <Navigation categories={categories} toggle={toggle} />
+        <Navigation shop={shop} channel={channel} toggle={toggle} />
       </AppShell.Navbar>
 
       <AppShell.Aside withBorder={false}>

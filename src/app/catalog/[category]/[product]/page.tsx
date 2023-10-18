@@ -17,12 +17,7 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  const mainVariant = product.variants?.length
-    ? product.variants[0]
-    : undefined;
-  if (!mainVariant) return null;
-
-  const photo = mainVariant.media?.length ? mainVariant.media[0] : undefined;
+  const photo = product.media?.length ? product.media[0].media : undefined;
 
   const breadcrumbs = [
     { title: "Home page", href: "/" },
@@ -30,7 +25,7 @@ export default async function Page({ params }: PageProps) {
       title: product.category?.name,
       href: `/catalog/${product.category?.slug}`,
     },
-    { title: mainVariant.name, href: "#" },
+    { title: product.name, href: "#" },
   ];
 
   return (
@@ -53,18 +48,18 @@ export default async function Page({ params }: PageProps) {
 
           <div className="col-span-2">
             <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold">
-              {mainVariant.name}
+              {product.name}
             </h1>
             <div className="mt-1 font-normal text-zinc-400">
-              {mainVariant.weightValue}
-              {mainVariant.weightUnit}
+              {product?.weightValue}
+              {product?.weightUnit}
             </div>
 
             <div className="mt-4 flex flex-row gap-6 items-center">
               <div className="text-2xl font-semibold tracking-tight">
-                <Price value={mainVariant.gross} />
+                <Price value={product.gross} />
                 <span className="pl-1 text-xl">
-                  <CurrencySign code={mainVariant.currency} />
+                  <CurrencySign code={product.currency} />
                 </span>
               </div>
               <Button

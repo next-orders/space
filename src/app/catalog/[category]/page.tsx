@@ -40,9 +40,9 @@ export default async function Page({ params }: PageProps) {
   }
 
   // Load Products in this category
-  const products = await GetProductsInCategory(category.id);
-  if (!products) {
-    return <div>Товаров нет :(</div>;
+  const productsInCategory = await GetProductsInCategory(category.id);
+  if (!productsInCategory) {
+    return <div>No Products here :(</div>;
   }
 
   const breadcrumbs = [
@@ -50,24 +50,13 @@ export default async function Page({ params }: PageProps) {
     { title: category.name, href: "#" },
   ];
 
-  const Products = () => {
-    return products.map((product) => {
-      const mainVariant = product.variants?.length
-        ? product.variants[0]
-        : undefined;
-      if (!mainVariant) return null;
+  const products = productsInCategory.map((product) => {
+    const productUrl = category.slug + "/" + product.slug;
 
-      const productUrl = category.slug + "/" + product.slug;
-
-      return (
-        <ProductCard
-          key={mainVariant.id}
-          productUrl={productUrl}
-          {...mainVariant}
-        />
-      );
-    });
-  };
+    return (
+      <ProductCard key={product.id} productUrl={productUrl} {...product} />
+    );
+  });
 
   return (
     <div className="px-4 pb-10 mt-4 md:px-6 md:mt-4">
@@ -80,7 +69,7 @@ export default async function Page({ params }: PageProps) {
       <div>Here are all the products from this category</div>
 
       <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-2">
-        <Products />
+        {products}
       </div>
 
       <pre className="mt-10 text-sm opacity-50 overflow-auto">

@@ -3,25 +3,28 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Shell } from "@/components/Shell";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-import { GetCategories, GetCheckout } from "@/server/actions";
+import { GetChannel, GetCheckout, GetShop } from "@/server/actions";
 
 import "@mantine/core/styles.layer.css";
 import "./globals.scss";
 
 const inter = Inter({ subsets: ["latin", "cyrillic", "cyrillic-ext"] });
 
-export const metadata: Metadata = {
-  title: "Nourishing and tasty",
-  description: "Order hot pizza and special sushi",
+export async function generateMetadata(): Promise<Metadata> {
+  const shop = await GetShop();
+  if (!shop) return {};
+
+  return { title: shop.name, description: shop.description };
+}
+
+type RootLayoutProps = {
+  children: React.ReactNode;
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [categories, checkout] = await Promise.all([
-    GetCategories(),
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const [shop, channel, checkout] = await Promise.all([
+    GetShop(),
+    GetChannel(),
     GetCheckout("123"),
   ]);
 
@@ -54,7 +57,7 @@ export default async function RootLayout({
           defaultColorScheme="light"
           forceColorScheme="light"
         >
-          <Shell categories={categories} checkout={checkout}>
+          <Shell shop={shop} channel={channel} checkout={checkout}>
             {children}
           </Shell>
         </MantineProvider>
