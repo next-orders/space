@@ -2,7 +2,12 @@ import Link from "next/link";
 import { IconArrowRight } from "@tabler/icons-react";
 import { Button } from "@mantine/core";
 import { MenuCategory } from "@next-orders/api-sdk";
-import { GetChannel, GetProductsInCategory, GetShop } from "@/server/actions";
+import {
+  GetChannel,
+  GetMenu,
+  GetProductsInCategory,
+  GetShop,
+} from "@/server/actions";
 import { ProductCard } from "@/components/ProductCard";
 import { notFound } from "next/navigation";
 
@@ -12,7 +17,7 @@ export default async function Page() {
     notFound();
   }
 
-  const menu = channel?.menus[0];
+  const menu = await GetMenu(channel?.menus[0].id || "");
 
   const categories = menu?.categories?.map(async (category) => (
     <CategoryBlock key={category.id} category={category} />
@@ -31,6 +36,10 @@ export default async function Page() {
 
       <pre className="mt-10 text-sm opacity-50 overflow-auto">
         {JSON.stringify(channel, undefined, 2)}
+      </pre>
+
+      <pre className="mt-10 text-sm opacity-50 overflow-auto">
+        {JSON.stringify(menu, undefined, 2)}
       </pre>
     </div>
   );

@@ -2,13 +2,14 @@
 
 import { MainAPI } from "@next-orders/api-sdk";
 
+const API_URL = process.env.API_URL || "no-api-url-env";
+const API_PRIVATE_TOKEN =
+  process.env.API_PRIVATE_TOKEN || "no-api-private-token-env";
+
 const SHOP_ID = process.env.SHOP_ID || "no-shop-id-env";
 const CHANNEL_ID = process.env.CHANNEL_ID || "no-channel-id-env";
 
-const api = new MainAPI(
-  process.env.API_URL || "no-api-url-env",
-  process.env.API_PRIVATE_TOKEN || "no-api-private-token-env",
-);
+const api = new MainAPI(API_URL, API_PRIVATE_TOKEN);
 
 const MAX_CACHE_SECONDS = 10800; // 3 hours
 
@@ -47,17 +48,17 @@ export const GetChannel = async () => {
 };
 
 export const GetMenu = async (id: string) => {
-  const channel = await api.getMenuById(id, {
+  const menu = await api.getMenuById(id, {
     next: {
       ...nextConfig,
       tags: ["all", `menu-${id}`],
     },
   });
-  if (!channel || channel instanceof Error) {
+  if (!menu || menu instanceof Error) {
     return null;
   }
 
-  return channel;
+  return menu;
 };
 
 export const GetCategories = async () => {
