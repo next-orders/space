@@ -3,30 +3,33 @@ import { Checkout, CheckoutLine } from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
+import { ScrollArea } from "@mantine/core";
 
 type Props = {
   checkout: Checkout | null;
 };
 
 export const Cart = ({ checkout }: Props) => {
-  const lines = checkout?.lines;
-
-  const ItemLines = () => {
-    return lines?.map((line) => <CartItemLine key={line.id} {...line} />);
-  };
+  const items = checkout?.lines?.map((line) => (
+    <CartItemLine key={line.id} {...line} />
+  ));
 
   return (
     <div className="bg-white h-full">
       <div className="px-4 py-4 h-full flex flex-col justify-between">
-        <div>
-          <p className="mb-4 text-2xl font-semibold">Cart</p>
-          <ItemLines />
-        </div>
+        <ScrollArea className="mb-16 h-screen">
+          <div className="pb-8">
+            <p className="mb-4 text-2xl font-semibold">Cart</p>
+            {items}
+          </div>
+        </ScrollArea>
 
-        <div className="px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 hover:bg-emerald-400 rounded-xl cursor-pointer">
-          <div className="font-medium">Okay, next</div>
-          <div className="font-semibold text-lg">
-            15.18 <span className="text-base">$</span>
+        <div className="absolute bottom-0 left-0 right-0">
+          <div className="ml-4 mr-4 mb-2 px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 hover:bg-emerald-400 rounded-xl cursor-pointer">
+            <div className="font-medium">Okay, next</div>
+            <div className="font-semibold text-lg">
+              15.18 <span className="text-base">$</span>
+            </div>
           </div>
         </div>
       </div>

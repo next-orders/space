@@ -21,17 +21,15 @@ type Props = {
 export const Navigation = ({ shop, channel, toggle }: Props) => {
   const menu = channel?.menus[0];
 
-  const Categories = () => {
-    return menu?.categories?.map((item) => (
-      <LinkButton
-        key={item.id}
-        link={"/catalog/" + item.slug}
-        label={item.name}
-        icon={<IconMilk stroke={1.5} className="w-6" />}
-        toggle={toggle}
-      />
-    ));
-  };
+  const buttons = menu?.categories?.map((item) => (
+    <LinkButton
+      key={item.id}
+      link={"/catalog/" + item.slug}
+      label={item.name}
+      icon={<IconMilk stroke={1.5} className="w-6" />}
+      toggle={toggle}
+    />
+  ));
 
   return (
     <div className="w-full bg-zinc-50 px-4 pt-4 border-r border-zinc-100">
@@ -65,7 +63,7 @@ export const Navigation = ({ shop, channel, toggle }: Props) => {
 
         <div className="mb-32">
           <p className="font-semibold text-lg">Catalog</p>
-          <Categories />
+          {buttons}
         </div>
       </ScrollArea>
     </div>

@@ -1,11 +1,11 @@
-import { GetProductBySlug } from "@/server/actions";
+import { GetCheckout, GetProductBySlug } from "@/server/actions";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { Button } from "@mantine/core";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BackBlock } from "@/components/BackBlock";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
+import { AddToCart } from "@/components/AddToCart";
 
 type PageProps = {
   params: { product: string };
@@ -16,6 +16,12 @@ export default async function Page({ params }: PageProps) {
   if (!product) {
     notFound();
   }
+
+  // Check, if in Cart already
+  const checkout = await GetCheckout("123");
+  const isInCart = checkout?.lines.find(
+    (line) => line.variant.id === product.id,
+  );
 
   const photo = product.media?.length ? product.media[0] : undefined;
 
@@ -62,12 +68,10 @@ export default async function Page({ params }: PageProps) {
                   <CurrencySign code={product.currency} />
                 </span>
               </div>
-              <Button
-                size="lg"
-                className="px-5 bg-emerald-300 hover:bg-emerald-400 rounded-2xl"
-              >
-                Add to Cart
-              </Button>
+
+              <AddToCart product={product} />
+
+              {isInCart && <p>In Cart!</p>}
             </div>
           </div>
         </div>

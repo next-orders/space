@@ -1,6 +1,7 @@
 "use server";
 
 import { MainAPI } from "@next-orders/api-sdk";
+import { revalidateTag } from "next/cache";
 
 const API_URL = process.env.API_URL || "no-api-url-env";
 const API_PRIVATE_TOKEN =
@@ -76,7 +77,7 @@ export const GetCategories = async () => {
 };
 
 export const GetCategoryBySlug = async (slug: string) => {
-  const category = await api.getCategoryBySlug(slug, {
+  const category = await api.getMenuCategoryBySlug(slug, {
     next: { ...nextConfig, tags: ["all", `category-${slug}`] },
   });
   if (!category || category instanceof Error) {
@@ -110,11 +111,33 @@ export const GetProductBySlug = async (slug: string) => {
 
 export const GetCheckout = async (id: string) => {
   const checkout = await api.getCheckout(id, {
-    next: { ...nextConfig, tags: ["all", `checkout-${id}`] },
+    next: { revalidate: 0, tags: ["all", "checkout", `checkout-${id}`] },
   });
   if (!checkout || checkout instanceof Error) {
     return null;
   }
 
   return checkout;
+};
+
+export const AddProductToCheckout = async (
+  checkoutId: string,
+  productVariantId: string,
+) => {
+  const add = await api.addProductToCheckout(
+    checkoutId,
+    { productVariantId },
+    {
+      next: { ...nextConfig, tags: ["all", `add-product-to-checkout`] },
+    },
+  );
+  if (!add || add instanceof Error) {
+    return null;
+  }
+
+  // On success: Revalidate Checkout
+  revalidateTag("add-product-to-checkout");
+  revalidateTag("checkout");
+
+  return add;
 };
