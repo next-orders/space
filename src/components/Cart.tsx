@@ -25,7 +25,7 @@ export const Cart = ({ checkout }: Props) => {
         </ScrollArea>
 
         <div className="absolute bottom-0 left-0 right-0">
-          <div className="ml-4 mr-4 mb-2 px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 hover:bg-emerald-400 rounded-xl cursor-pointer">
+          <div className="ml-4 mr-4 mb-4 px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 hover:bg-emerald-400 rounded-xl cursor-pointer">
             <div className="font-medium">Okay, next</div>
             <div className="font-semibold text-lg">
               15.18 <span className="text-base">$</span>
