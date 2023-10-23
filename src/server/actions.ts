@@ -128,7 +128,7 @@ export const AddProductToCheckout = async (
     checkoutId,
     { productVariantId },
     {
-      next: { ...nextConfig, tags: ["all", `add-product-to-checkout`] },
+      next: { revalidate: 0 },
     },
   );
   if (!add || add instanceof Error) {
@@ -136,7 +136,6 @@ export const AddProductToCheckout = async (
   }
 
   // On success: Revalidate Checkout
-  revalidateTag("add-product-to-checkout");
   revalidateTag("checkout");
 
   return add;

@@ -1,12 +1,14 @@
+"use client";
+
+import React from "react";
 import { IconMinus, IconPlus } from "@tabler/icons-react";
 import { ActionIcon } from "@mantine/core";
-import React from "react";
 
-type Props = {
+type CounterProps = {
   count: number;
 };
 
-export const Counter = ({ count }: Props) => {
+export const Counter = ({ count }: CounterProps) => {
   const [countNow, setCountNow] = React.useState<number>(count);
 
   const handleMinus = () => {

@@ -17,8 +17,8 @@ export const Cart = ({ checkout }: Props) => {
   return (
     <div className="bg-white h-full">
       <div className="px-4 py-4 h-full flex flex-col justify-between">
-        <ScrollArea className="mb-16 h-screen">
-          <div className="pb-8">
+        <ScrollArea className="h-screen">
+          <div className="pb-24">
             <p className="mb-4 text-2xl font-semibold">Cart</p>
             {items}
           </div>
