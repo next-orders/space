@@ -28,7 +28,7 @@
   "dependencies": {
     "@mantine/core": "7.1.5",
     "@mantine/hooks": "7.1.5",
-    "@next-orders/api-sdk": "^0.1.24",
+    "@next-orders/api-sdk": "^0.1.25",
     "@tabler/icons-react": "2.39.0",
     "next": "13.5.6",
     "react": "18.2.0",
