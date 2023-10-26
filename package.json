@@ -26,8 +26,8 @@
   },
   "homepage": "https://github.com/next-orders/v1#readme",
   "dependencies": {
-    "@mantine/core": "7.1.5",
-    "@mantine/hooks": "7.1.5",
+    "@mantine/core": "7.1.7",
+    "@mantine/hooks": "7.1.7",
     "@next-orders/api-sdk": "^0.1.25",
     "@tabler/icons-react": "2.39.0",
     "next": "13.5.6",
@@ -35,8 +35,8 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^20.8.8",
-    "@types/react": "^18.2.31",
+    "@types/node": "^20.8.9",
+    "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",
     "autoprefixer": "10.4.16",
     "eslint": "8.52.0",
@@ -46,8 +46,8 @@
     "postcss-preset-mantine": "1.9.0",
     "postcss-simple-vars": "7.0.1",
     "prettier": "^3.0.3",
-    "sass": "^1.69.4",
-    "tailwindcss": "3.3.4",
+    "sass": "^1.69.5",
+    "tailwindcss": "3.3.5",
     "typescript": "5.2.2"
   }
 }
