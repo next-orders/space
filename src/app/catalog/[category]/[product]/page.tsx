@@ -2,7 +2,6 @@ import { GetCheckout, GetProductBySlug } from "@/server/actions";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { BackBlock } from "@/components/BackBlock";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
 import { AddToCart } from "@/components/AddToCart";
@@ -35,11 +34,8 @@ export default async function Page({ params }: PageProps) {
   ];
 
   return (
-    <div className="px-4 pb-10 mt-4 md:px-6 md:mt-4">
-      <div className="mb-4 flex flex-row justify-between items-center">
-        <Breadcrumbs links={breadcrumbs} />
-        <BackBlock />
-      </div>
+    <>
+      <Breadcrumbs links={breadcrumbs} />
 
       <div className="bg-white px-5 py-5 rounded-2xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-y-4 md:gap-4">
@@ -111,6 +107,6 @@ export default async function Page({ params }: PageProps) {
       <pre className="mt-10 text-sm opacity-50 overflow-auto">
         {JSON.stringify(product, undefined, 2)}
       </pre>
-    </div>
+    </>
   );
 }

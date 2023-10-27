@@ -47,7 +47,7 @@ export const Shell = ({ shop, channel, checkout, children }: Props) => {
       </AppShell.Aside>
 
       <AppShell.Main onClick={close}>
-        {children}
+        <div className="px-4 pb-10 mt-4 md:px-6">{children}</div>
         <Footer />
       </AppShell.Main>
     </AppShell>

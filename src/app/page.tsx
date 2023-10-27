@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { IconArrowRight } from "@tabler/icons-react";
-import { Button } from "@mantine/core";
 import { MenuCategory } from "@next-orders/api-sdk";
 import {
   GetChannel,
@@ -24,24 +23,12 @@ export default async function Page() {
   ));
 
   return (
-    <div className="px-4 pb-10 mt-4 md:px-6 md:mt-6">
+    <>
       <h1 className="mb-2 text-3xl font-semibold">{shop.name}</h1>
       <div className="mb-6">Welcome to the site!</div>
 
       {categories}
-
-      <pre className="mt-10 text-sm opacity-50 overflow-auto">
-        {JSON.stringify(shop, undefined, 2)}
-      </pre>
-
-      <pre className="mt-10 text-sm opacity-50 overflow-auto">
-        {JSON.stringify(channel, undefined, 2)}
-      </pre>
-
-      <pre className="mt-10 text-sm opacity-50 overflow-auto">
-        {JSON.stringify(menu, undefined, 2)}
-      </pre>
-    </div>
+    </>
   );
 }
 
@@ -74,15 +61,12 @@ const CategoryBlock = async ({ category }: CategoryBlockProps) => {
       <div className="flex flex-row justify-between items-center gap-2">
         <h2 className="text-2xl md:text-3xl font-semibold">{category.name}</h2>
 
-        <Button
-          component={Link}
+        <Link
           href={`/catalog/${category.slug}`}
-          size="lg"
-          rightSection={<IconArrowRight stroke={1.5} />}
-          className="px-5 text-base font-medium bg-zinc-200 hover:bg-zinc-300 rounded-2xl"
+          className="px-5 py-3 flex flex-row gap-2 text-base font-medium bg-zinc-200 cursor-pointer hover:scale-95 duration-200 rounded-2xl"
         >
-          Open category
-        </Button>
+          Open category <IconArrowRight stroke={1.5} />
+        </Link>
       </div>
       <div
         key={category.id}
