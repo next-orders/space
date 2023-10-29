@@ -1,9 +1,9 @@
 import Image from "next/image";
+import { ScrollArea } from "@mantine/core";
 import { Checkout, CheckoutLine } from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
-import { ScrollArea } from "@mantine/core";
 
 type Props = {
   checkout: Checkout | null;
@@ -14,12 +14,15 @@ export const Cart = ({ checkout }: Props) => {
     <CartItemLine key={line.id} {...line} />
   ));
 
+  const isEmpty = items?.length === 0;
+
   return (
     <div className="bg-white h-full">
       <div className="px-4 py-4 h-full flex flex-col justify-between">
         <ScrollArea className="h-screen">
           <div className="pb-24">
             <p className="mb-4 text-2xl font-semibold">Cart</p>
+            {isEmpty && <CartEmpty />}
             {items}
           </div>
         </ScrollArea>
@@ -45,9 +48,8 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
       <div className="flex flex-row gap-2 items-center">
         <Image
-          src={photo?.url ?? ""}
+          src={photo?.url ?? "/static/no-image-zinc.png"}
           alt={photo?.alt ?? ""}
-          unoptimized
           width={100}
           height={100}
           className="w-14 min-w-[3rem] aspect-square rounded-xl"
@@ -71,6 +73,21 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
       </div>
 
       <Counter count={quantity} />
+    </div>
+  );
+};
+
+const CartEmpty = () => {
+  return (
+    <div>
+      <Image
+        src="/static/eggs.png"
+        alt=""
+        width={96}
+        height={96}
+        className="mx-auto mb-2 grayscale"
+      />
+      <div className="text-lg text-center font-medium">Your cart is empty</div>
     </div>
   );
 };

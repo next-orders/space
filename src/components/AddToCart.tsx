@@ -1,8 +1,8 @@
 "use client";
 
 import { AddProductToCheckout } from "@/server/actions";
-import { Button } from "@mantine/core";
 import { ProductVariant } from "@next-orders/api-sdk";
+import { IconShoppingCartPlus } from "@tabler/icons-react";
 
 type AddToCartProps = {
   product: ProductVariant | null;
@@ -12,12 +12,11 @@ export const AddToCart = ({ product }: AddToCartProps) => {
   if (!product) return null;
 
   return (
-    <Button
-      size="lg"
-      className="px-5 bg-emerald-300 hover:bg-emerald-400 rounded-2xl"
+    <button
       onClick={() => AddProductToCheckout("123", product.id)}
+      className="px-5 py-3 flex flex-row gap-2 text-base font-medium cursor-pointer rounded-2xl bg-emerald-200 hover:bg-emerald-300 hover:scale-95 duration-200"
     >
-      Add to Cart
-    </Button>
+      <IconShoppingCartPlus stroke={1.5} /> Add to Cart
+    </button>
   );
 };

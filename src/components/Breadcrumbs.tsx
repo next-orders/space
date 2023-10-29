@@ -28,7 +28,7 @@ export const Breadcrumbs = ({ links }: Props) => {
 
   return (
     <div className="mb-6 flex flex-row justify-between items-center">
-      <nav className="hidden md:block">
+      <nav className="hidden lg:block">
         <ol role="list" className="flex flex-row">
           {crumbs}
         </ol>

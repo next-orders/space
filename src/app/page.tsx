@@ -63,7 +63,7 @@ const CategoryBlock = async ({ category }: CategoryBlockProps) => {
 
         <Link
           href={`/catalog/${category.slug}`}
-          className="px-5 py-3 flex flex-row gap-2 text-base font-medium bg-zinc-200 cursor-pointer hover:scale-95 duration-200 rounded-2xl"
+          className="px-5 py-3 flex flex-row gap-2 text-base font-medium cursor-pointer rounded-2xl bg-zinc-200 hover:bg-zinc-300 hover:scale-95 duration-200"
         >
           Open category <IconArrowRight stroke={1.5} />
         </Link>

@@ -1,14 +1,12 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { GeistSans } from "geist/font";
 import { Shell } from "@/components/Shell";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { GetChannel, GetCheckout, GetShop } from "@/server/actions";
 
 import "@mantine/core/styles.layer.css";
 import "./globals.scss";
-
-const inter = Inter({ subsets: ["latin", "cyrillic", "cyrillic-ext"] });
 
 export async function generateMetadata(): Promise<Metadata> {
   const shop = await GetShop();
@@ -29,7 +27,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   ]);
 
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={GeistSans.className}>
       <head>
         <ColorSchemeScript />
       </head>

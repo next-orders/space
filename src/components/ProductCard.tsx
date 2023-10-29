@@ -25,9 +25,8 @@ export const ProductCard = ({
         <div className="flex flex-col justify-between h-full">
           <div>
             <Image
-              src={photo?.url ?? ""}
+              src={photo?.url ?? "/static/no-image-zinc.png"}
               alt={photo?.alt ?? ""}
-              unoptimized
               width={300}
               height={300}
               className="w-full aspect-square rounded-xl"
@@ -39,7 +38,7 @@ export const ProductCard = ({
               </span>
             </div>
             <div className="font-light leading-tight line-clamp-2">{name}</div>
-            <div className="mt-2 font-light text-zinc-400">
+            <div className="mt-2 font-base text-zinc-400">
               {weightValue}
               {weightUnit}
             </div>

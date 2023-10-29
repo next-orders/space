@@ -40,9 +40,8 @@ export default async function Page({ params }: PageProps) {
       <div className="bg-white px-5 py-5 rounded-2xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-y-4 md:gap-4">
           <Image
-            src={photo?.url ?? ""}
+            src={photo?.url ?? "/static/no-image-zinc.png"}
             alt={photo?.alt ?? ""}
-            unoptimized
             width={600}
             height={600}
             className="col-span-1 aspect-square rounded-xl"
@@ -103,10 +102,6 @@ export default async function Page({ params }: PageProps) {
           </div>
         </div>
       </div>
-
-      <pre className="mt-10 text-sm opacity-50 overflow-auto">
-        {JSON.stringify(product, undefined, 2)}
-      </pre>
     </>
   );
 }
