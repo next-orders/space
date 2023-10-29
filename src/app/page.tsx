@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { IconArrowRight } from "@tabler/icons-react";
 import { MenuCategory } from "@next-orders/api-sdk";
 import {
@@ -8,7 +9,6 @@ import {
   GetShop,
 } from "@/server/actions";
 import { ProductCard } from "@/components/ProductCard";
-import { notFound } from "next/navigation";
 
 export default async function Page() {
   const [shop, channel] = await Promise.all([GetShop(), GetChannel()]);
