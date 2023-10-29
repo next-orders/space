@@ -6,7 +6,12 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ["v1.next-orders.org"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.next-orders.org",
+      },
+    ],
   },
   output: "standalone",
 };
