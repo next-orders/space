@@ -14,7 +14,7 @@ export const AddToCart = ({ product }: AddToCartProps) => {
   return (
     <button
       onClick={() => AddProductToCheckout("123", product.id)}
-      className="px-5 py-3 flex flex-row gap-2 text-base font-medium cursor-pointer rounded-2xl bg-emerald-200 hover:bg-emerald-300 hover:scale-95 duration-200"
+      className="px-5 py-3 flex flex-row gap-2 text-base font-medium cursor-pointer rounded-2xl bg-gradient-to-br from-yellow-200 via-green-200 to-green-300 hover:scale-95 duration-200"
     >
       <IconShoppingCartPlus stroke={1.5} /> Add to Cart
     </button>

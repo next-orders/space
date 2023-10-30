@@ -5,6 +5,8 @@ import { Checkout, CheckoutLine } from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
+import { CartTypeToggle } from "@/components/CartTypeToggle";
+import { IconInfoHexagon } from "@tabler/icons-react";
 
 type Props = {
   checkout: Checkout | null;
@@ -20,14 +22,28 @@ export const Cart = ({ checkout }: Props) => {
   return (
     <div className="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
       <ScrollArea className="h-screen">
-        <div className="mb-32">
-          <p className="mb-4 text-2xl font-semibold">Cart</p>
+        <div className="mb-48">
+          <p className="mb-2 text-2xl font-semibold">Cart</p>
+
+          <div className="mt-2 mb-4">
+            <CartTypeToggle />
+          </div>
+
           {isEmpty && <CartEmpty />}
           {items}
         </div>
       </ScrollArea>
 
-      <div className="absolute bottom-0 left-0 right-0 bg-white rounded-2xl">
+      <div className="absolute bottom-0 left-0 right-0 rounded-2xl bg-zinc-50">
+        <div className="my-4 mx-4 flex flex-row gap-2 flex-nowrap items-center">
+          <IconInfoHexagon
+            stroke={1.5}
+            className="w-6 h-6 min-w-fit text-zinc-400"
+          />
+          <div className="leading-tight text-sm text-zinc-500">
+            Here will be the Info about delivery
+          </div>
+        </div>
         <div className="my-4 mx-4">
           <button className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer bg-gradient-to-br from-yellow-200 via-green-200 to-green-300 hover:bg-gradient-to-r hover:scale-95 duration-200">
             <div className="font-medium">Okay, next</div>
@@ -62,7 +78,7 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
           />
 
           <div>
-            <div className="font-light text-sm leading-tight line-clamp-1">
+            <div className="font-base text-sm leading-tight line-clamp-1">
               {variant.name}
             </div>
             <div className="mt-1 flex flex-row gap-2 flex-nowrap">
