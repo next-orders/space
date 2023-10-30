@@ -3,11 +3,11 @@
 import React from "react";
 import { AppShell } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { Channel, Checkout, Shop } from "@next-orders/api-sdk";
 import { Header } from "@/components/Header";
 import { Navigation } from "@/components/Navigation";
 import { Cart } from "@/components/Cart";
 import { Footer } from "@/components/Footer";
-import { Channel, Checkout, Shop } from "@next-orders/api-sdk";
 import { CartDrawer } from "@/components/CartDrawer";
 
 type Props = {
@@ -26,6 +26,7 @@ export const Shell = ({ shop, channel, checkout, children }: Props) => {
 
   return (
     <AppShell
+      zIndex={0}
       header={{ height: { base: 64, sm: 72, md: 72 } }}
       navbar={{
         width: 300,
@@ -39,7 +40,7 @@ export const Shell = ({ shop, channel, checkout, children }: Props) => {
       }}
       layout="default"
     >
-      <AppShell.Header withBorder={false}>
+      <AppShell.Header withBorder={false} zIndex={10}>
         <Header
           isNavbarOpened={isNavbarOpened}
           toggle={toggle}
@@ -48,7 +49,7 @@ export const Shell = ({ shop, channel, checkout, children }: Props) => {
         />
       </AppShell.Header>
 
-      <AppShell.Navbar withBorder={false}>
+      <AppShell.Navbar withBorder={false} zIndex={5}>
         <Navigation shop={shop} channel={channel} toggle={toggle} />
       </AppShell.Navbar>
 

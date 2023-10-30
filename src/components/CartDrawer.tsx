@@ -1,4 +1,3 @@
-import { Drawer } from "@mantine/core";
 import { Cart } from "@/components/Cart";
 import { Channel, Checkout } from "@next-orders/api-sdk";
 
@@ -16,23 +15,18 @@ export const CartDrawer = ({
   close,
 }: CartDrawerProps) => {
   return (
-    <Drawer.Root
-      opened={opened}
-      onClose={close}
-      position={"right"}
-      size={340}
-      transitionProps={{
-        transition: "slide-left",
-        duration: 200,
-        timingFunction: "ease-out",
-      }}
-    >
-      <Drawer.Overlay backgroundOpacity={0.3} />
-      <Drawer.Content className="h-[100dvh] p-2 m-0 shadow-none rounded-2xl">
-        <Drawer.Body className="h-full p-0 m-0">
-          <Cart checkout={checkout} channel={channel} />
-        </Drawer.Body>
-      </Drawer.Content>
-    </Drawer.Root>
+    <>
+      <div
+        className="z-30 fixed left-0 right-0 top-0 bottom-0 bg-zinc-700/50 opacity-0 data-[active=true]:opacity-100 translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
+        onClick={close}
+        data-active={opened}
+      />
+      <div
+        className="z-30 fixed right-0 top-0 w-full max-w-sm ml-auto h-[100dvh] p-2 m-0 shadow-none rounded-2xl translate-x-full data-[active=true]:-translate-x-0 transition-transform"
+        data-active={opened}
+      >
+        <Cart checkout={checkout} channel={channel} />
+      </div>
+    </>
   );
 };
