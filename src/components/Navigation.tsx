@@ -1,16 +1,13 @@
-"use client";
-
-import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   IconClock,
   IconLink,
   IconMilk,
   IconTruckDelivery,
 } from "@tabler/icons-react";
-import { ScrollArea, UnstyledButton } from "@mantine/core";
+import { ScrollArea } from "@mantine/core";
 import { Channel, Shop } from "@next-orders/api-sdk";
+import { LinkButton } from "@/components/LinkButton";
 
 type Props = {
   shop: Shop | null;
@@ -67,32 +64,5 @@ export const Navigation = ({ shop, channel, toggle }: Props) => {
         </div>
       </ScrollArea>
     </div>
-  );
-};
-
-const LinkButton = ({
-  link,
-  label,
-  icon,
-  toggle,
-}: {
-  link: string;
-  label: string;
-  icon: React.ReactNode;
-  toggle: () => void;
-}) => {
-  const activePath = usePathname();
-  const linkActive = activePath === link;
-
-  return (
-    <UnstyledButton component={Link} href={link} onClick={toggle}>
-      <div
-        className="text-base font-medium flex flex-row items-center gap-3 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-zinc-200 data-[active=true]:font-semibold hover:bg-zinc-100"
-        data-active={linkActive}
-      >
-        {icon}
-        {label}
-      </div>
-    </UnstyledButton>
   );
 };

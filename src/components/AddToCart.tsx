@@ -1,8 +1,8 @@
 "use client";
 
-import { AddProductToCheckout } from "@/server/actions";
-import { ProductVariant } from "@next-orders/api-sdk";
 import { IconShoppingCartPlus } from "@tabler/icons-react";
+import { ProductVariant } from "@next-orders/api-sdk";
+import { AddProductToCheckout } from "@/server/actions";
 
 type AddToCartProps = {
   product: ProductVariant | null;

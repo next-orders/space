@@ -14,7 +14,7 @@ export const CartDrawer = ({ checkout, opened, close }: CartDrawerProps) => {
       opened={opened}
       onClose={close}
       position={"right"}
-      size={320}
+      size={340}
       transitionProps={{
         transition: "slide-left",
         duration: 200,
@@ -22,7 +22,7 @@ export const CartDrawer = ({ checkout, opened, close }: CartDrawerProps) => {
       }}
     >
       <Drawer.Overlay backgroundOpacity={0.3} />
-      <Drawer.Content className="h-screen p-2 m-0 shadow-none rounded-2xl">
+      <Drawer.Content className="h-[100dvh] p-2 m-0 shadow-none rounded-2xl">
         <Drawer.Body className="h-full p-0 m-0">
           <Cart checkout={checkout} />
         </Drawer.Body>
