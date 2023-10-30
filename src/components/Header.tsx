@@ -1,4 +1,4 @@
-import { Burger, Button, Input } from "@mantine/core";
+import { Burger, Input } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 
 type Props = {
@@ -26,15 +26,14 @@ export const Header = ({ isNavbarOpened, toggle }: Props) => {
         </div>
       </div>
 
-      <Button
-        variant="filled"
-        size="md"
-        leftSection={<span className="font-medium">Cart</span>}
-        radius="md"
-        className="px-4 py-2 text-white font-semibold bg-emerald-500 hover:bg-emerald-600"
-      >
-        15.18 <span className="ml-1 text-sm">$</span>
-      </Button>
+      <div className="block xl:hidden font-medium">
+        <button className="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center rounded-xl cursor-pointer bg-gradient-to-br from-yellow-200 via-green-200 to-green-300 hover:bg-gradient-to-r hover:scale-95 duration-200">
+          <span className="font-medium">Cart</span>
+          <div>
+            15.18 <span className="ml-0 text-sm">$</span>
+          </div>
+        </button>
+      </div>
     </div>
   );
 };

@@ -24,12 +24,12 @@ export const Shell = ({ shop, channel, checkout, children }: Props) => {
       header={{ height: { base: 64, sm: 72, md: 72 } }}
       navbar={{
         width: 300,
-        breakpoint: "sm",
+        breakpoint: 768,
         collapsed: { mobile: !isNavbarOpened, desktop: false },
       }}
       aside={{
         width: 300,
-        breakpoint: "lg",
+        breakpoint: 1280,
         collapsed: { mobile: true, desktop: false },
       }}
       layout="default"

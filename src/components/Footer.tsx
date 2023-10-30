@@ -51,7 +51,7 @@ const CommandCenterBlock = () => {
       <Link
         href={"/command-center"}
         target="_blank"
-        className="mx-auto px-8 py-4 flex flex-row flex-wrap gap-2 justify-center text-base font-medium cursor-pointer rounded-2xl bg-gradient-to-br from-yellow-200 via-green-200 to-green-300 hover:bg-gradient-to-r hover:scale-95 duration-200"
+        className="mx-auto px-8 py-4 flex flex-row flex-wrap gap-2 justify-center text-base font-medium cursor-pointer rounded-2xl bg-gradient-to-br from-violet-200 to-sky-200 hover:bg-gradient-to-r hover:scale-95 duration-200"
       >
         <IconTableOptions stroke={1.5} /> Open Command Center
       </Link>

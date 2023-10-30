@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ScrollArea } from "@mantine/core";
 import { Checkout, CheckoutLine } from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
@@ -29,12 +30,12 @@ export const Cart = ({ checkout }: Props) => {
 
         <div className="absolute bottom-0 left-0 right-0 bg-white rounded-2xl">
           <div className="my-4 mx-4">
-            <div className="px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 hover:bg-emerald-400 rounded-xl cursor-pointer">
+            <button className="w-full px-4 py-4 flex flex-row justify-between items-center rounded-xl cursor-pointer bg-gradient-to-br from-yellow-200 via-green-200 to-green-300 hover:bg-gradient-to-r hover:scale-95 duration-200">
               <div className="font-medium">Okay, next</div>
               <div className="font-semibold text-lg">
                 15.18 <span className="text-base">$</span>
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -46,33 +47,41 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
   const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
 
+  // Prepare Item URL
+  const categorySlug = variant.category.slug;
+  const pageUrl = `/catalog/${categorySlug}/${variant.slug}`;
+
   return (
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
-      <div className="flex flex-row gap-2 items-center">
-        <Image
-          src={photo?.url ?? "/static/no-image-zinc.png"}
-          alt={photo?.alt ?? ""}
-          width={100}
-          height={100}
-          className="w-14 min-w-[3rem] aspect-square rounded-xl"
-        />
+      <Link href={pageUrl}>
+        <div className="flex flex-row gap-2 items-center cursor-pointer hover:scale-95 duration-200">
+          <Image
+            src={photo?.url ?? "/static/no-image-zinc.png"}
+            alt={photo?.alt ?? ""}
+            width={100}
+            height={100}
+            className="w-14 min-w-[3rem] aspect-square rounded-xl"
+          />
 
-        <div>
-          <div className="font-light text-sm leading-tight">{variant.name}</div>
-          <div className="mt-1 flex flex-row gap-2">
-            <div className="text-sm font-medium">
-              <Price value={price} />
-              <span className="text-xs">
-                <CurrencySign code={variant.currency} />
-              </span>
+          <div>
+            <div className="font-light text-sm leading-tight">
+              {variant.name}
             </div>
-            <div className="text-sm text-zinc-400 font-light">
-              {variant?.weightValue}
-              {variant?.weightUnit}
+            <div className="mt-1 flex flex-row gap-2">
+              <div className="text-sm font-medium">
+                <Price value={price} />
+                <span className="text-xs">
+                  <CurrencySign code={variant.currency} />
+                </span>
+              </div>
+              <div className="text-sm text-zinc-400 font-light">
+                {variant?.weightValue}
+                {variant?.weightUnit}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Link>
 
       <Counter count={quantity} />
     </div>
