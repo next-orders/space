@@ -32,7 +32,7 @@ export const Navigation = ({ shop, channel, toggle }: Props) => {
     <div className="w-full bg-zinc-50 px-4 pt-4 border-r border-zinc-100">
       <ScrollArea className="h-screen">
         <div className="mb-8">
-          <Link href="/" className="text-emerald-600 font-semibold text-xl">
+          <Link href="/" className="text-green-600 font-semibold text-xl">
             {shop?.name}
           </Link>
           <div className="mt-1 text-sm leading-tight">{shop?.description}</div>
