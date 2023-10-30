@@ -17,21 +17,23 @@ export const Cart = ({ checkout }: Props) => {
   const isEmpty = items?.length === 0;
 
   return (
-    <div className="bg-white h-full">
-      <div className="px-4 py-4 h-full flex flex-col justify-between">
+    <div className="pr-4 py-4 h-full bg-zinc-100">
+      <div className="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
         <ScrollArea className="h-screen">
-          <div className="pb-24">
+          <div className="mb-24">
             <p className="mb-4 text-2xl font-semibold">Cart</p>
             {isEmpty && <CartEmpty />}
             {items}
           </div>
         </ScrollArea>
 
-        <div className="absolute bottom-0 left-0 right-0">
-          <div className="ml-4 mr-4 mb-4 px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 hover:bg-emerald-400 rounded-xl cursor-pointer">
-            <div className="font-medium">Okay, next</div>
-            <div className="font-semibold text-lg">
-              15.18 <span className="text-base">$</span>
+        <div className="absolute bottom-0 left-0 right-0 bg-white rounded-2xl">
+          <div className="my-4 mx-4">
+            <div className="px-4 py-4 flex flex-row justify-between items-center bg-emerald-300 hover:bg-emerald-400 rounded-xl cursor-pointer">
+              <div className="font-medium">Okay, next</div>
+              <div className="font-semibold text-lg">
+                15.18 <span className="text-base">$</span>
+              </div>
             </div>
           </div>
         </div>
