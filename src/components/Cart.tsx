@@ -73,12 +73,13 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
   const pageUrl = `/catalog/${categorySlug}/${variant.slug}`;
 
   // Filter on images?
-  const imageFilter = "grayscale contrast-75 brightness-150";
+  const imageFilter =
+    "xl:grayscale xl:contrast-75 xl:brightness-150 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100";
 
   return (
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
       <Link href={pageUrl}>
-        <div className="max-w-[9rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 duration-200">
+        <div className="max-w-[10rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 duration-200 group">
           <Image
             src={photo?.url ?? "/static/no-image-zinc.png"}
             alt={photo?.alt ?? ""}
