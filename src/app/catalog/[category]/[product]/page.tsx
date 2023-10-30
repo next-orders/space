@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { GetCheckout, GetProductBySlug } from "@/server/actions";
+import { GetChannel, GetCheckout, GetProductBySlug } from "@/server/actions";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
@@ -11,6 +11,8 @@ type PageProps = {
 };
 
 export default async function Page({ params }: PageProps) {
+  const channel = await GetChannel();
+
   const product = await GetProductBySlug(params.product);
   if (!product) {
     notFound();
@@ -64,7 +66,7 @@ export default async function Page({ params }: PageProps) {
                 </span>
               </div>
 
-              <AddToCart product={product} />
+              <AddToCart product={product} channel={channel} />
 
               {isInCart && <p>In Cart!</p>}
             </div>

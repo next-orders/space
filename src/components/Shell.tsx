@@ -44,6 +44,7 @@ export const Shell = ({ shop, channel, checkout, children }: Props) => {
           isNavbarOpened={isNavbarOpened}
           toggle={toggle}
           cartDrawerToggle={cartDrawerToggle}
+          channel={channel}
         />
       </AppShell.Header>
 
@@ -53,13 +54,14 @@ export const Shell = ({ shop, channel, checkout, children }: Props) => {
 
       <AppShell.Aside withBorder={false}>
         <div className="pr-4 py-4 h-full bg-zinc-100">
-          <Cart checkout={checkout} />
+          <Cart checkout={checkout} channel={channel} />
         </div>
       </AppShell.Aside>
 
       <AppShell.Main onClick={close}>
         <div className="px-4 pb-10 mt-4">{children}</div>
         <CartDrawer
+          channel={channel}
           checkout={checkout}
           opened={isCartDrawerOpened}
           close={cartDrawerClose}

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollArea } from "@mantine/core";
-import { Checkout, CheckoutLine } from "@next-orders/api-sdk";
+import { Channel, Checkout, CheckoutLine } from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
@@ -9,15 +9,19 @@ import { CartTypeToggle } from "@/components/CartTypeToggle";
 import { IconInfoHexagon } from "@tabler/icons-react";
 
 type Props = {
+  channel: Channel | null;
   checkout: Checkout | null;
 };
 
-export const Cart = ({ checkout }: Props) => {
+export const Cart = ({ channel, checkout }: Props) => {
   const items = checkout?.lines?.map((line) => (
     <CartItemLine key={line.id} {...line} />
   ));
 
   const isEmpty = items?.length === 0;
+
+  const backgroundColor = channel?.accentButtonColor;
+  const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
 
   return (
     <div className="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
@@ -26,7 +30,7 @@ export const Cart = ({ checkout }: Props) => {
           <p className="mb-2 text-2xl font-semibold">Cart</p>
 
           <div className="mt-2 mb-4">
-            <CartTypeToggle />
+            <CartTypeToggle channel={channel} />
           </div>
 
           {isEmpty && <CartEmpty />}
@@ -45,7 +49,10 @@ export const Cart = ({ checkout }: Props) => {
           </div>
         </div>
         <div className="my-4 mx-4">
-          <button className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer bg-gradient-to-br from-yellow-200 via-green-200 to-green-300 hover:bg-gradient-to-r hover:scale-95 duration-200">
+          <button
+            className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
+            style={{ backgroundColor, backgroundImage }}
+          >
             <div className="font-medium">Okay, next</div>
             <div className="font-semibold text-lg">
               15.18 <span className="text-base">$</span>
@@ -65,6 +72,9 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
   const categorySlug = variant.category.slug;
   const pageUrl = `/catalog/${categorySlug}/${variant.slug}`;
 
+  // Filter on images?
+  const imageFilter = "grayscale contrast-75 brightness-150";
+
   return (
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
       <Link href={pageUrl}>
@@ -74,7 +84,7 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
             alt={photo?.alt ?? ""}
             width={100}
             height={100}
-            className="w-12 aspect-square rounded-xl"
+            className={`w-12 aspect-square rounded-xl ${imageFilter}`}
           />
 
           <div>
@@ -104,15 +114,17 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
 
 const CartEmpty = () => {
   return (
-    <div>
+    <div className="mt-8">
       <Image
         src="/static/eggs.png"
         alt=""
         width={96}
         height={96}
-        className="mx-auto mb-2 grayscale"
+        className="mx-auto mb-2 grayscale opacity-60"
       />
-      <div className="text-lg text-center font-medium">Your cart is empty</div>
+      <div className="text-lg text-center font-medium text-zinc-500">
+        Your cart is empty
+      </div>
     </div>
   );
 };

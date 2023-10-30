@@ -19,7 +19,7 @@ export const LinkButton = ({ link, label, icon, toggle }: LinkButtonProps) => {
   return (
     <UnstyledButton component={Link} href={link} onClick={toggle}>
       <div
-        className="text-base font-medium flex flex-row items-center gap-3 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-zinc-200 data-[active=true]:font-semibold hover:bg-zinc-100"
+        className="text-base font-medium flex flex-row items-center gap-3 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-zinc-200 data-[active=true]:font-semibold hover:bg-zinc-100 hover:scale-95 duration-200"
         data-active={linkActive}
       >
         {icon}
