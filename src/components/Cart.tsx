@@ -18,25 +18,23 @@ export const Cart = ({ checkout }: Props) => {
   const isEmpty = items?.length === 0;
 
   return (
-    <div className="pr-4 py-4 h-full bg-zinc-100">
-      <div className="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
-        <ScrollArea className="h-screen">
-          <div className="mb-24">
-            <p className="mb-4 text-2xl font-semibold">Cart</p>
-            {isEmpty && <CartEmpty />}
-            {items}
-          </div>
-        </ScrollArea>
+    <div className="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
+      <ScrollArea className="h-screen">
+        <div className="mb-32">
+          <p className="mb-4 text-2xl font-semibold">Cart</p>
+          {isEmpty && <CartEmpty />}
+          {items}
+        </div>
+      </ScrollArea>
 
-        <div className="absolute bottom-0 left-0 right-0 bg-white rounded-2xl">
-          <div className="my-4 mx-4">
-            <button className="w-full px-4 py-4 flex flex-row justify-between items-center rounded-xl cursor-pointer bg-gradient-to-br from-yellow-200 via-green-200 to-green-300 hover:bg-gradient-to-r hover:scale-95 duration-200">
-              <div className="font-medium">Okay, next</div>
-              <div className="font-semibold text-lg">
-                15.18 <span className="text-base">$</span>
-              </div>
-            </button>
-          </div>
+      <div className="absolute bottom-0 left-0 right-0 bg-white rounded-2xl">
+        <div className="my-4 mx-4">
+          <button className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer bg-gradient-to-br from-yellow-200 via-green-200 to-green-300 hover:bg-gradient-to-r hover:scale-95 duration-200">
+            <div className="font-medium">Okay, next</div>
+            <div className="font-semibold text-lg">
+              15.18 <span className="text-base">$</span>
+            </div>
+          </button>
         </div>
       </div>
     </div>
@@ -54,20 +52,20 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
   return (
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
       <Link href={pageUrl}>
-        <div className="flex flex-row gap-2 items-center cursor-pointer hover:scale-95 duration-200">
+        <div className="max-w-[9rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 duration-200">
           <Image
             src={photo?.url ?? "/static/no-image-zinc.png"}
             alt={photo?.alt ?? ""}
             width={100}
             height={100}
-            className="w-14 min-w-[3rem] aspect-square rounded-xl"
+            className="w-12 aspect-square rounded-xl"
           />
 
           <div>
-            <div className="font-light text-sm leading-tight">
+            <div className="font-light text-sm leading-tight line-clamp-1">
               {variant.name}
             </div>
-            <div className="mt-1 flex flex-row gap-2">
+            <div className="mt-1 flex flex-row gap-2 flex-nowrap">
               <div className="text-sm font-medium">
                 <Price value={price} />
                 <span className="text-xs">

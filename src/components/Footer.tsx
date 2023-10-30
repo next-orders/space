@@ -7,7 +7,7 @@ import {
 
 export const Footer = () => {
   return (
-    <div className="px-4 pb-10 mt-4 md:px-6 md:mt-4 text-center">
+    <div className="px-4 pb-10 mt-4 text-center">
       <CommandCenterBlock />
 
       <div className="flex flex-row gap-1 justify-center">

@@ -8,6 +8,7 @@ import { Navigation } from "@/components/Navigation";
 import { Cart } from "@/components/Cart";
 import { Footer } from "@/components/Footer";
 import { Channel, Checkout, Shop } from "@next-orders/api-sdk";
+import { CartDrawer } from "@/components/CartDrawer";
 
 type Props = {
   shop: Shop | null;
@@ -18,6 +19,10 @@ type Props = {
 
 export const Shell = ({ shop, channel, checkout, children }: Props) => {
   const [isNavbarOpened, { toggle, close }] = useDisclosure();
+  const [
+    isCartDrawerOpened,
+    { toggle: cartDrawerToggle, close: cartDrawerClose },
+  ] = useDisclosure();
 
   return (
     <AppShell
@@ -28,14 +33,18 @@ export const Shell = ({ shop, channel, checkout, children }: Props) => {
         collapsed: { mobile: !isNavbarOpened, desktop: false },
       }}
       aside={{
-        width: 300,
+        width: 320,
         breakpoint: 1280,
         collapsed: { mobile: true, desktop: false },
       }}
       layout="default"
     >
       <AppShell.Header withBorder={false}>
-        <Header isNavbarOpened={isNavbarOpened} toggle={toggle} />
+        <Header
+          isNavbarOpened={isNavbarOpened}
+          toggle={toggle}
+          cartDrawerToggle={cartDrawerToggle}
+        />
       </AppShell.Header>
 
       <AppShell.Navbar withBorder={false}>
@@ -43,11 +52,18 @@ export const Shell = ({ shop, channel, checkout, children }: Props) => {
       </AppShell.Navbar>
 
       <AppShell.Aside withBorder={false}>
-        <Cart checkout={checkout} />
+        <div className="pr-4 py-4 h-full bg-zinc-100">
+          <Cart checkout={checkout} />
+        </div>
       </AppShell.Aside>
 
       <AppShell.Main onClick={close}>
-        <div className="px-4 pb-10 mt-4 md:px-6">{children}</div>
+        <div className="px-4 pb-10 mt-4">{children}</div>
+        <CartDrawer
+          checkout={checkout}
+          opened={isCartDrawerOpened}
+          close={cartDrawerClose}
+        />
         <Footer />
       </AppShell.Main>
     </AppShell>
