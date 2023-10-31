@@ -99,7 +99,7 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
                   <CurrencySign code={variant.currency} />
                 </span>
               </div>
-              <div className="text-sm text-zinc-400 font-light">
+              <div className="text-sm text-zinc-500 font-light">
                 {variant?.weightValue}
                 {variant?.weightUnit}
               </div>

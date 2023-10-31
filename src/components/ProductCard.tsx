@@ -29,6 +29,7 @@ export const ProductCard = ({
               alt={photo?.alt ?? ""}
               width={300}
               height={300}
+              priority
               className="w-full aspect-square rounded-xl"
             />
             <div className="mt-2 text-xl font-medium">
@@ -38,7 +39,7 @@ export const ProductCard = ({
               </span>
             </div>
             <div className="font-light leading-tight line-clamp-2">{name}</div>
-            <div className="mt-2 font-base text-zinc-400">
+            <div className="mt-2 font-base text-zinc-500">
               {weightValue}
               {weightUnit}
             </div>
