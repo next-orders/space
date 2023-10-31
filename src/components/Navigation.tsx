@@ -18,15 +18,38 @@ type Props = {
 export const Navigation = ({ shop, channel, toggle }: Props) => {
   const menu = channel?.menus[0];
 
-  const buttons = menu?.categories?.map((item) => (
-    <LinkButton
-      key={item.id}
-      link={"/catalog/" + item.slug}
-      label={item.name}
-      icon={<IconMilk stroke={1.5} className="w-6" />}
-      toggle={toggle}
-    />
-  ));
+  const buttons = menu?.categories?.map((item) => {
+    let imageUrl;
+    if (item.slug === "pizza") {
+      imageUrl = "https://v1.next-orders.org/api/image/static/pizza.png";
+    }
+    if (item.slug === "burger") {
+      imageUrl = "https://v1.next-orders.org/api/image/static/burger.png";
+    }
+    if (item.slug === "wok") {
+      imageUrl = "https://v1.next-orders.org/api/image/static/wok.png";
+    }
+    if (item.slug === "dessert") {
+      imageUrl = "https://v1.next-orders.org/api/image/static/cake.png";
+    }
+    if (item.slug === "sushi") {
+      imageUrl = "https://v1.next-orders.org/api/image/static/sushi.png";
+    }
+    if (item.slug === "roll") {
+      imageUrl = "https://v1.next-orders.org/api/image/static/roll.png";
+    }
+
+    return (
+      <LinkButton
+        key={item.id}
+        link={"/catalog/" + item.slug}
+        label={item.name}
+        iconUrl={imageUrl}
+        icon={<IconMilk stroke={1.5} className="w-6" />}
+        toggle={toggle}
+      />
+    );
+  });
 
   return (
     <div className="w-full bg-zinc-50 px-4 pt-4 border-r border-zinc-100">
