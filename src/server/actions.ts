@@ -3,14 +3,11 @@
 import { MainAPI } from "@next-orders/api-sdk";
 import { revalidateTag } from "next/cache";
 
-const API_URL = process.env.API_URL || "no-api-url-env";
-const API_PRIVATE_TOKEN =
-  process.env.API_PRIVATE_TOKEN || "no-api-private-token-env";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "no-api-url-env";
+const SHOP_ID = process.env.NEXT_PUBLIC_SHOP_ID || "no-shop-id-env";
+const CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID || "no-channel-id-env";
 
-const SHOP_ID = process.env.SHOP_ID || "no-shop-id-env";
-const CHANNEL_ID = process.env.CHANNEL_ID || "no-channel-id-env";
-
-const api = new MainAPI(API_URL, API_PRIVATE_TOKEN);
+const api = new MainAPI(API_URL, ""); // Public only
 
 const MAX_CACHE_SECONDS = 10800; // 3 hours
 

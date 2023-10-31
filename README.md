@@ -66,8 +66,9 @@ docker pull ghcr.io/next-orders/v1:main
 You need to use env variables:
 
 ```text
-API_URL: url of the main API
-API_PRIVATE_TOKEN: bearer token, which give access to API endpoints
+NEXT_PUBLIC_API_URL= # Url of the Main API
+NEXT_PUBLIC_SHOP_ID= # Shop ID from DB
+NEXT_PUBLIC_CHANNEL_ID= # Channel ID from DB
 ```
 
 Check **.env.example** in root dir for more info about env.

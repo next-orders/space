@@ -6,7 +6,7 @@ type CategoryIconProps = {
 };
 
 export const CategoryIcon = ({ icon }: CategoryIconProps) => {
-  const iconUrl = `https://v1.next-orders.org/api/image/static/${icon}.png`;
+  const iconUrl = `${process.env.NEXT_PUBLIC_API_URL}/image/static/${icon}.png`;
 
   return (
     <Image
