@@ -7,6 +7,7 @@ const nextConfig = {
   },
   images: {
     remotePatterns: [
+      // What if we don't know prod hostname?
       {
         protocol: "https",
         hostname: "**.org",

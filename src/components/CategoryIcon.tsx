@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { MenuCategoryIcon } from "@next-orders/api-sdk";
+import { apiPublicClient } from "@/client/api";
 
 type CategoryIconProps = {
   icon: MenuCategoryIcon;
 };
 
 export const CategoryIcon = ({ icon }: CategoryIconProps) => {
-  const iconUrl = `${process.env.NEXT_PUBLIC_API_URL}/image/static/${icon}.png`;
+  const iconUrl = apiPublicClient.getMenuCategoryIconURL(icon);
 
   return (
     <Image
