@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { GetChannel, GetCheckout, GetProductBySlug } from "@/server/actions";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
 import { AddToCart } from "@/components/AddToCart";
+import { GetChannel, GetCheckout, GetProductBySlug } from "@/client/api";
 
 type PageProps = {
   params: { product: string };

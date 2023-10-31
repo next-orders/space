@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ProductCard } from "@/components/ProductCard";
 import {
   GetCategories,
   GetCategoryBySlug,
   GetProductsInCategory,
-} from "@/server/actions";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ProductCard } from "@/components/ProductCard";
-import { Metadata } from "next";
+} from "@/client/api";
 
 type PageProps = {
   params: { category: string };

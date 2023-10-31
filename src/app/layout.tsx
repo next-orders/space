@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font";
 import { Shell } from "@/components/Shell";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-import { GetChannel, GetCheckout, GetShop } from "@/server/actions";
+import { GetChannel, GetCheckout, GetShop } from "@/client/api";
 
 import "@mantine/core/styles.layer.css";
 import "./globals.scss";
