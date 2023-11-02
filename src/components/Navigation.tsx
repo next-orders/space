@@ -19,7 +19,7 @@ export const Navigation = ({ shop, channel, toggle }: Props) => {
         key={item.id}
         link={"/catalog/" + item.slug}
         label={item.name}
-        icon={item.icon}
+        iconUrl={item.iconUrl}
         toggle={toggle}
       />
     );
