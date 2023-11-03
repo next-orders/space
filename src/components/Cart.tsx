@@ -1,19 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollArea } from "@mantine/core";
+import { IconInfoHexagon } from "@tabler/icons-react";
 import { Channel, Checkout, CheckoutLine } from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
-import { CartTypeToggle } from "@/components/CartTypeToggle";
-import { IconInfoHexagon } from "@tabler/icons-react";
+import { CartDeliveryMethodToggle } from "@/components/CartDeliveryMethodToggle";
 
-type Props = {
+type CartProps = {
   channel: Channel | null;
   checkout: Checkout | null;
 };
 
-export const Cart = ({ channel, checkout }: Props) => {
+export const Cart = ({ channel, checkout }: CartProps) => {
   const items = checkout?.lines?.map((line) => (
     <CartItemLine key={line.id} {...line} />
   ));
@@ -30,7 +30,7 @@ export const Cart = ({ channel, checkout }: Props) => {
           <p className="mb-2 text-2xl font-semibold">Cart</p>
 
           <div className="mt-2 mb-4">
-            <CartTypeToggle channel={channel} />
+            <CartDeliveryMethodToggle channel={channel} checkout={checkout} />
           </div>
 
           {isEmpty && <CartEmpty />}
@@ -55,7 +55,7 @@ export const Cart = ({ channel, checkout }: Props) => {
           >
             <div className="font-medium">Okay, next</div>
             <div className="font-semibold text-lg">
-              15.18 <span className="text-base">$</span>
+              {checkout?.totalPrice} <span className="text-base">$</span>
             </div>
           </button>
         </div>

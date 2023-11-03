@@ -46,6 +46,7 @@ export const Shell = ({ shop, channel, checkout, children }: Props) => {
           toggle={toggle}
           cartDrawerToggle={cartDrawerToggle}
           channel={channel}
+          checkout={checkout}
         />
       </AppShell.Header>
 

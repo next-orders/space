@@ -1,6 +1,6 @@
 "use server";
 
-import { MainAPI } from "@next-orders/api-sdk";
+import { Checkout, MainAPI } from "@next-orders/api-sdk";
 import { revalidateTag } from "next/cache";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "no-api-url-env";
@@ -26,4 +26,25 @@ export const AddProductToCheckout = async (
   revalidateTag("checkout");
 
   return add;
+};
+
+export const ChangeCheckoutDeliveryMethod = async (
+  checkoutId: string,
+  method: Checkout["deliveryMethod"],
+) => {
+  const change = await api.changeCheckoutDeliveryMethod(
+    checkoutId,
+    { method },
+    {
+      next: { revalidate: 0 },
+    },
+  );
+  if (!change || change instanceof Error) {
+    return null;
+  }
+
+  // On success: Revalidate Checkout
+  revalidateTag("checkout");
+
+  return change;
 };

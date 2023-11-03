@@ -1,9 +1,10 @@
 import { Burger, Input } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
-import { Channel } from "@next-orders/api-sdk";
+import { Channel, Checkout } from "@next-orders/api-sdk";
 
 type Props = {
   channel: Channel | null;
+  checkout: Checkout | null;
   isNavbarOpened: boolean;
   toggle: () => void;
   cartDrawerToggle: () => void;
@@ -11,6 +12,7 @@ type Props = {
 
 export const Header = ({
   channel,
+  checkout,
   isNavbarOpened,
   toggle,
   cartDrawerToggle,
@@ -45,7 +47,7 @@ export const Header = ({
         >
           <span className="font-medium">Cart</span>
           <div>
-            15.18 <span className="ml-0 text-sm">$</span>
+            {checkout?.totalPrice} <span className="ml-0 text-sm">$</span>
           </div>
         </button>
       </div>
