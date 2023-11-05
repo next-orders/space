@@ -1,8 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font";
-import { Shell } from "@/components/Shell";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import { AppShell } from "@/components/AppShell";
 import { GetChannel, GetCheckout, GetShop } from "@/client/api";
 
 import "@mantine/core/styles.layer.css";
@@ -55,9 +55,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           defaultColorScheme="light"
           forceColorScheme="light"
         >
-          <Shell shop={shop} channel={channel} checkout={checkout}>
+          <AppShell shop={shop} channel={channel} checkout={checkout}>
             {children}
-          </Shell>
+          </AppShell>
         </MantineProvider>
       </body>
     </html>
