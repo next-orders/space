@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollArea } from "@mantine/core";
-import { IconInfoHexagon } from "@tabler/icons-react";
+import { IconInfoHexagon, IconX } from "@tabler/icons-react";
 import { Channel, Checkout, CheckoutLine } from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
 import { CurrencySign } from "@/components/CurrencySign";
@@ -12,16 +12,20 @@ type CartProps = {
   channel: Channel | null;
   checkout: Checkout | null;
   deliveryInfoModalToggle: () => void;
+  close?: () => void;
 };
 
 export const Cart = ({
   channel,
   checkout,
+  close,
   deliveryInfoModalToggle,
 }: CartProps) => {
   const items = checkout?.lines?.map((line) => (
     <CartItemLine key={line.id} {...line} />
   ));
+
+  const canCloseCart = !!close;
 
   const isEmpty = items?.length === 0;
 
@@ -32,7 +36,19 @@ export const Cart = ({
     <div className="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
       <ScrollArea className="h-screen">
         <div className="mb-48">
-          <p className="mb-2 text-2xl font-semibold">Cart</p>
+          <div className="mb-4 flex flex-row justify-between items-center">
+            <p className="text-2xl font-semibold">Cart</p>
+
+            {canCloseCart && (
+              <button
+                onClick={close}
+                aria-label="Close Cart"
+                className="rounded-xl hover:scale-90 hover:bg-zinc-100 duration-200"
+              >
+                <IconX stroke={1.5} className="w-8 h-8" />
+              </button>
+            )}
+          </div>
 
           <div className="mt-2 mb-4">
             <CartDeliveryMethodToggle channel={channel} checkout={checkout} />

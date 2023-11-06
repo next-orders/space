@@ -30,6 +30,7 @@ export const CartDrawer = ({
         <Cart
           checkout={checkout}
           channel={channel}
+          close={close}
           deliveryInfoModalToggle={deliveryInfoModalToggle}
         />
       </div>
