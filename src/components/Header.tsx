@@ -1,21 +1,19 @@
+"use client";
+
 import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
 import type { Channel, Checkout } from "@next-orders/api-sdk";
+import { useUIStore } from "@/store/ui";
 
 type Props = {
   channel: Channel | null;
   checkout: Checkout | null;
-  isNavbarOpened: boolean;
-  toggle: () => void;
-  cartDrawerToggle: () => void;
 };
 
-export const Header = ({
-  channel,
-  checkout,
-  isNavbarOpened,
-  toggle,
-  cartDrawerToggle,
-}: Props) => {
+export const Header = ({ channel, checkout }: Props) => {
+  const isNavbarOpened = useUIStore((state) => state.isNavbarOpened);
+  const toggleNavbar = useUIStore((state) => state.toggleNavbar);
+  const toggleCartDrawer = useUIStore((state) => state.toggleCartDrawer);
+
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
 
@@ -25,7 +23,7 @@ export const Header = ({
         <button
           aria-label="Close Navigation"
           data-active={isNavbarOpened}
-          onClick={toggle}
+          onClick={toggleNavbar}
           className="hidden data-[active=true]:block"
         >
           <IconX stroke={1.5} className="w-8 h-8" />
@@ -33,7 +31,7 @@ export const Header = ({
         <button
           aria-label="Open Navigation"
           data-active={!isNavbarOpened}
-          onClick={toggle}
+          onClick={toggleNavbar}
           className="hidden data-[active=true]:block"
         >
           <IconMenu2 stroke={1.5} className="w-8 h-8" />
@@ -49,7 +47,7 @@ export const Header = ({
 
       <div className="block xl:hidden font-medium">
         <button
-          onClick={cartDrawerToggle}
+          onClick={toggleCartDrawer}
           className="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
           style={{ backgroundColor, backgroundImage }}
         >

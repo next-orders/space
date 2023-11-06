@@ -28,6 +28,7 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - [Tabler Icons](https://tabler-icons.io/): Free and open source icons.
 - [Geist Font](https://vercel.com/font): A typeface made for developers and designers.
 - [Sharp](https://sharp.pixelplumbing.com/): High performance Node.js image processing.
+- [Zustand](https://github.com/pmndrs/zustand): A small, fast and scalable bearbones state-management solution.
 - [TypeScript](https://www.typescriptlang.org/): Typed superset of JavaScript that compiles to plain JavaScript.
 - [ESlint](https://eslint.org/): JavaScript linter for identifying and reporting code quality issues.
 - [Prettier](https://prettier.io/): Opinionated code formatter for maintaining consistent code style.
@@ -55,8 +56,10 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 
 - [src/app](src/app): Contains the application-specific logic and pages.
 - [src/app/catalog](src/app/catalog): Functionality related to the catalog of products.
-- [src/app/website-api](src/app/website-api): API endpoints for internal calls from the main API.
+- [src/app/website-api](src/app/website-api): API endpoints for internal calls from the Main API.
 - [src/components](src/components): Reusable UI components.
+- [src/store](src/store): Client-side state of the app.
+- [src/client](src/client): Wrapper functions for Main API SDK.
 - [src/server](src/server): Server-side logic for the website.
 
 ## ☕ How to deploy

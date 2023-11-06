@@ -1,24 +1,26 @@
+"use client";
+
 import { IconBike, IconClock } from "@tabler/icons-react";
+import { useUIStore } from "@/store/ui";
 
-type DeliveryInfoModalProps = {
-  opened: boolean;
-  close: () => void;
-};
+export const DeliveryInfoModal = () => {
+  const isDeliveryInfoModalOpened = useUIStore(
+    (state) => state.isDeliveryInfoModalOpened,
+  );
+  const closeDeliveryInfoModal = useUIStore(
+    (state) => state.closeDeliveryInfoModal,
+  );
 
-export const DeliveryInfoModal = ({
-  opened,
-  close,
-}: DeliveryInfoModalProps) => {
   return (
     <>
       <div
         className="z-40 fixed left-0 right-0 -top-20 -bottom-20 bg-zinc-700/50 opacity-0 data-[active=true]:opacity-100 translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
-        onClick={close}
-        data-active={opened}
+        onClick={closeDeliveryInfoModal}
+        data-active={isDeliveryInfoModalOpened}
       />
       <div
         className="z-40 fixed left-0 top-0 w-full max-w-md h-auto p-2 m-0 shadow-none rounded-2xl -translate-x-full data-[active=true]:translate-x-0 data-[active=true]:right-0 data-[active=true]:mx-auto transition-transform"
-        data-active={opened}
+        data-active={isDeliveryInfoModalOpened}
       >
         <div className="mt-16 px-8 py-8 bg-white rounded-2xl">
           <div className="mb-2 text-2xl font-medium">Delivery Details</div>
@@ -54,7 +56,7 @@ export const DeliveryInfoModal = ({
           </div>
 
           <button
-            onClick={close}
+            onClick={closeDeliveryInfoModal}
             className="mt-4 px-5 py-3 w-full text-center text-base font-medium cursor-pointer rounded-2xl bg-zinc-200 hover:bg-zinc-300 hover:scale-95 duration-200"
           >
             OK

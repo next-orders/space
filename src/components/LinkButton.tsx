@@ -3,26 +3,23 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useUIStore } from "@/store/ui";
 
 type LinkButtonProps = {
   link: string;
   label: string;
   iconUrl: string | null;
-  toggle: () => void;
 };
 
-export const LinkButton = ({
-  link,
-  label,
-  iconUrl,
-  toggle,
-}: LinkButtonProps) => {
+export const LinkButton = ({ link, label, iconUrl }: LinkButtonProps) => {
   const activePath = usePathname();
+
+  const toggleNavbar = useUIStore((state) => state.toggleNavbar);
 
   return (
     <Link
       href={link}
-      onClick={toggle}
+      onClick={toggleNavbar}
       className="text-base font-normal flex flex-row items-center gap-4 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-zinc-200 data-[active=true]:font-medium hover:bg-zinc-100 hover:scale-95 duration-200 group"
       data-active={activePath === link}
     >

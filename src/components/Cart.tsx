@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { IconInfoHexagon, IconX } from "@tabler/icons-react";
@@ -6,25 +8,22 @@ import { Counter } from "@/components/Counter";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
 import { CartDeliveryMethodToggle } from "@/components/CartDeliveryMethodToggle";
+import { useUIStore } from "@/store/ui";
 
 type CartProps = {
   channel: Channel | null;
   checkout: Checkout | null;
-  deliveryInfoModalToggle: () => void;
-  close?: () => void;
 };
 
-export const Cart = ({
-  channel,
-  checkout,
-  close,
-  deliveryInfoModalToggle,
-}: CartProps) => {
+export const Cart = ({ channel, checkout }: CartProps) => {
+  const closeCartDrawer = useUIStore((state) => state.closeCartDrawer);
+  const toggleDeliveryInfoModal = useUIStore(
+    (state) => state.toggleDeliveryInfoModal,
+  );
+
   const items = checkout?.lines?.map((line) => (
     <CartItemLine key={line.id} {...line} />
   ));
-
-  const canCloseCart = !!close;
 
   const isEmpty = items?.length === 0;
 
@@ -38,15 +37,13 @@ export const Cart = ({
           <div className="mb-4 flex flex-row justify-between items-center">
             <p className="text-2xl font-medium">Cart</p>
 
-            {canCloseCart && (
-              <button
-                onClick={close}
-                aria-label="Close Cart"
-                className="rounded-xl hover:scale-90 hover:bg-zinc-100 duration-200"
-              >
-                <IconX stroke={1.5} className="w-8 h-8" />
-              </button>
-            )}
+            <button
+              onClick={closeCartDrawer}
+              aria-label="Close Cart"
+              className="block xl:hidden rounded-xl hover:scale-90 hover:bg-zinc-100 duration-200"
+            >
+              <IconX stroke={1.5} className="w-8 h-8" />
+            </button>
           </div>
 
           <div className="mt-2 mb-4">
@@ -60,7 +57,7 @@ export const Cart = ({
 
       <div className="absolute bottom-0 left-0 right-0 rounded-2xl bg-zinc-50">
         <button
-          onClick={deliveryInfoModalToggle}
+          onClick={toggleDeliveryInfoModal}
           className="relative my-4 mx-4 flex flex-row gap-3 flex-wrap items-center hover:scale-95 duration-200"
         >
           <IconInfoHexagon stroke={1.5} className="w-8 h-8 text-zinc-300" />
@@ -97,12 +94,7 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
   const photo = variant.media?.length ? variant.media[0] : undefined;
 
   // Prepare Item URL
-  const categorySlug = variant.category.slug;
-  const pageUrl = `/catalog/${categorySlug}/${variant.slug}`;
-
-  // Filter on images?
-  const imageFilter =
-    "xl:grayscale xl:contrast-75 xl:brightness-150 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100";
+  const pageUrl = `/catalog/${variant.category.slug}/${variant.slug}`;
 
   return (
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
@@ -113,7 +105,7 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
             alt={photo?.alt ?? ""}
             width={100}
             height={100}
-            className={`w-12 aspect-square rounded-xl ${imageFilter}`}
+            className="w-12 h-12 aspect-square rounded-xl xl:grayscale xl:contrast-75 xl:brightness-150 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
           />
 
           <div>
