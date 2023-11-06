@@ -8,9 +8,15 @@ type Props = {
   shop: Shop | null;
   channel: Channel | null;
   toggle: () => void;
+  deliveryInfoModalToggle: () => void;
 };
 
-export const Navigation = ({ shop, channel, toggle }: Props) => {
+export const Navigation = ({
+  shop,
+  channel,
+  toggle,
+  deliveryInfoModalToggle,
+}: Props) => {
   const menu = channel?.menus[0];
 
   const buttons = menu?.categories?.map((item) => {
@@ -54,9 +60,12 @@ export const Navigation = ({ shop, channel, toggle }: Props) => {
             </div>
           </div>
 
-          <div className="flex flex-row gap-2 items-center">
-            <IconLink stroke={1.5} /> details
-          </div>
+          <button
+            onClick={deliveryInfoModalToggle}
+            className="flex flex-row gap-2 items-center hover:scale-95 duration-200"
+          >
+            <IconLink stroke={1.5} /> show details
+          </button>
         </div>
 
         <div className="mb-32">

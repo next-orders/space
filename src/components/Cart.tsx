@@ -11,9 +11,14 @@ import { CartDeliveryMethodToggle } from "@/components/CartDeliveryMethodToggle"
 type CartProps = {
   channel: Channel | null;
   checkout: Checkout | null;
+  deliveryInfoModalToggle: () => void;
 };
 
-export const Cart = ({ channel, checkout }: CartProps) => {
+export const Cart = ({
+  channel,
+  checkout,
+  deliveryInfoModalToggle,
+}: CartProps) => {
   const items = checkout?.lines?.map((line) => (
     <CartItemLine key={line.id} {...line} />
   ));
@@ -39,15 +44,26 @@ export const Cart = ({ channel, checkout }: CartProps) => {
       </ScrollArea>
 
       <div className="absolute bottom-0 left-0 right-0 rounded-2xl bg-zinc-50">
-        <div className="my-4 mx-4 flex flex-row gap-2 flex-nowrap items-center">
+        <button
+          onClick={deliveryInfoModalToggle}
+          className="my-4 mx-4 flex flex-row gap-3 flex-nowrap items-center hover:scale-95 duration-200"
+        >
           <IconInfoHexagon
             stroke={1.5}
-            className="w-6 h-6 min-w-fit text-zinc-400"
+            className="w-8 h-8 min-w-fit text-zinc-300"
           />
-          <div className="leading-tight text-sm text-zinc-500">
-            Here will be the Info about delivery
+
+          <div className="text-left">
+            <div className="flex flex-row gap-1 leading-tight">
+              <div className="text-sm">45–60 min</div>
+              <span className="text-zinc-300">/</span>
+              <div className="text-sm">
+                Cost 5<span className="text-xs">$</span>
+              </div>
+            </div>
+            <div className="text-sm text-zinc-500">Detailed conditions</div>
           </div>
-        </div>
+        </button>
         <div className="my-4 mx-4">
           <button
             className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"

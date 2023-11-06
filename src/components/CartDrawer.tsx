@@ -6,6 +6,7 @@ type CartDrawerProps = {
   checkout: Checkout | null;
   opened: boolean;
   close: () => void;
+  deliveryInfoModalToggle: () => void;
 };
 
 export const CartDrawer = ({
@@ -13,6 +14,7 @@ export const CartDrawer = ({
   checkout,
   opened,
   close,
+  deliveryInfoModalToggle,
 }: CartDrawerProps) => {
   return (
     <>
@@ -25,7 +27,11 @@ export const CartDrawer = ({
         className="z-30 fixed right-0 top-0 w-full max-w-sm ml-auto h-[100dvh] p-2 m-0 shadow-none rounded-2xl translate-x-full data-[active=true]:-translate-x-0 transition-transform"
         data-active={opened}
       >
-        <Cart checkout={checkout} channel={channel} />
+        <Cart
+          checkout={checkout}
+          channel={channel}
+          deliveryInfoModalToggle={deliveryInfoModalToggle}
+        />
       </div>
     </>
   );

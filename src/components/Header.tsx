@@ -1,4 +1,4 @@
-import { Burger, Input } from "@mantine/core";
+import { Burger } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 import { Channel, Checkout } from "@next-orders/api-sdk";
 
@@ -35,7 +35,7 @@ export const Header = ({
       <div className="mr-auto">
         <div className="flex flex-row gap-2 items-center">
           <IconSearch stroke={1.5} />
-          <Input placeholder="Find a product" />
+          <input placeholder="Find a product" />
         </div>
       </div>
 
