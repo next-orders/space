@@ -46,12 +46,9 @@ export const Cart = ({
       <div className="absolute bottom-0 left-0 right-0 rounded-2xl bg-zinc-50">
         <button
           onClick={deliveryInfoModalToggle}
-          className="my-4 mx-4 flex flex-row gap-3 flex-nowrap items-center hover:scale-95 duration-200"
+          className="relative my-4 mx-4 flex flex-row gap-3 flex-wrap items-center hover:scale-95 duration-200"
         >
-          <IconInfoHexagon
-            stroke={1.5}
-            className="w-8 h-8 min-w-fit text-zinc-300"
-          />
+          <IconInfoHexagon stroke={1.5} className="w-8 h-8 text-zinc-300" />
 
           <div className="text-left">
             <div className="flex flex-row gap-1 leading-tight">
