@@ -1,6 +1,5 @@
-import { Burger } from "@mantine/core";
-import { IconSearch } from "@tabler/icons-react";
-import { Channel, Checkout } from "@next-orders/api-sdk";
+import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
+import type { Channel, Checkout } from "@next-orders/api-sdk";
 
 type Props = {
   channel: Channel | null;
@@ -22,14 +21,23 @@ export const Header = ({
 
   return (
     <div className="z-10 w-full h-full px-4 md:px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-zinc-100">
-      <div className="mr-2 md:mr-0 flex justify-center items-center justify-items-center h-full hover:scale-110 transition duration-200">
-        <Burger
-          opened={isNavbarOpened}
+      <div className="mr-2 md:mr-0 flex justify-center items-center justify-items-center md:hidden h-full hover:scale-110 transition duration-200">
+        <button
+          aria-label="Close Navigation"
+          data-active={isNavbarOpened}
           onClick={toggle}
-          size="md"
-          aria-label="Navigation"
-          hiddenFrom="sm"
-        />
+          className="hidden data-[active=true]:block"
+        >
+          <IconX stroke={1.5} className="w-8 h-8" />
+        </button>
+        <button
+          aria-label="Open Navigation"
+          data-active={!isNavbarOpened}
+          onClick={toggle}
+          className="hidden data-[active=true]:block"
+        >
+          <IconMenu2 stroke={1.5} className="w-8 h-8" />
+        </button>
       </div>
 
       <div className="mr-auto">
