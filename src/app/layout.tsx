@@ -36,11 +36,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <Header channel={channel} checkout={checkout} />
         </header>
 
-        <Navigation shop={shop} channel={channel} />
+        <Navigation shop={shop} channel={channel} checkout={checkout} />
 
         <main className="relative w-auto md:pl-72 xl:pr-80 top-16">
           <div className="px-4 pb-10 mt-4">{children}</div>
-          <DeliveryInfoModal />
+          <DeliveryInfoModal checkout={checkout} />
           <CartDrawer channel={channel} checkout={checkout} />
           <Footer />
         </main>

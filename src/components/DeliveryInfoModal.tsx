@@ -1,9 +1,14 @@
 "use client";
 
-import { IconBike, IconClock } from "@tabler/icons-react";
+import { IconBike, IconClock, IconDiscount2 } from "@tabler/icons-react";
 import { useUIStore } from "@/store/ui";
+import { Checkout } from "@next-orders/api-sdk";
 
-export const DeliveryInfoModal = () => {
+type DeliveryInfoModalProps = {
+  checkout: Checkout | null;
+};
+
+export const DeliveryInfoModal = ({ checkout }: DeliveryInfoModalProps) => {
   const isDeliveryInfoModalOpened = useUIStore(
     (state) => state.isDeliveryInfoModalOpened,
   );
@@ -23,37 +28,8 @@ export const DeliveryInfoModal = () => {
         data-active={isDeliveryInfoModalOpened}
       >
         <div className="mt-16 px-8 py-8 bg-white rounded-2xl">
-          <div className="mb-2 text-2xl font-medium">Delivery Details</div>
-
-          <div className="flex flex-row justify-between">
-            <div className="flex flex-row gap-2">
-              <IconBike stroke={1.5} />
-              Courier payment
-            </div>
-            <div>5 $</div>
-          </div>
-
-          <div className="mt-8 mb-2 text-xl font-medium">Deliver at</div>
-
-          <div className="flex flex-row justify-between">
-            <div className="flex flex-row gap-2">
-              <IconClock stroke={1.5} />
-              Now: 45-60 min
-            </div>
-            <div></div>
-          </div>
-
-          <div className="mt-8 mb-2 text-xl font-medium">More info</div>
-
-          <div className="mb-2 flex flex-row justify-between">
-            <div>Minimum order value</div>
-            <div>10 $</div>
-          </div>
-
-          <div className="mb-2 flex flex-row justify-between">
-            <div>Maximum order weight</div>
-            <div>20 kg</div>
-          </div>
+          {checkout?.deliveryMethod === "WAREHOUSE" && <SelfPickupInfoBlock />}
+          {checkout?.deliveryMethod === "DELIVERY" && <DeliveryInfoBlock />}
 
           <button
             onClick={closeDeliveryInfoModal}
@@ -62,6 +38,77 @@ export const DeliveryInfoModal = () => {
             OK
           </button>
         </div>
+      </div>
+    </>
+  );
+};
+
+const DeliveryInfoBlock = () => {
+  return (
+    <>
+      <div className="mb-2 text-2xl font-medium">Delivery Details</div>
+
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-row gap-2">
+          <IconBike stroke={1.5} />
+          Courier payment
+        </div>
+        <div>5 $</div>
+      </div>
+
+      <div className="mt-8 mb-2 text-xl font-medium">Deliver at</div>
+
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-row gap-2">
+          <IconClock stroke={1.5} />
+          Now: 45-60 min
+        </div>
+        <div></div>
+      </div>
+
+      <div className="mt-8 mb-2 text-xl font-medium">More info</div>
+
+      <div className="mb-2 flex flex-row justify-between">
+        <div>Minimum order value</div>
+        <div>10 $</div>
+      </div>
+
+      <div className="mb-2 flex flex-row justify-between">
+        <div>Maximum order weight</div>
+        <div>20 kg</div>
+      </div>
+    </>
+  );
+};
+
+const SelfPickupInfoBlock = () => {
+  return (
+    <>
+      <div className="mb-2 text-2xl font-medium">Self-pickup Details</div>
+
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-row gap-2">
+          <IconDiscount2 stroke={1.5} />
+          Discount
+        </div>
+        <div>10 %</div>
+      </div>
+
+      <div className="mt-8 mb-2 text-xl font-medium">Prepare at</div>
+
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-row gap-2">
+          <IconClock stroke={1.5} />
+          Now: 15-20 min
+        </div>
+        <div></div>
+      </div>
+
+      <div className="mt-8 mb-2 text-xl font-medium">More info</div>
+
+      <div className="mb-2 flex flex-row justify-between">
+        <div>Minimum order value</div>
+        <div>10 $</div>
       </div>
     </>
   );

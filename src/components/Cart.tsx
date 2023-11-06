@@ -63,27 +63,30 @@ export const Cart = ({ channel, checkout }: CartProps) => {
           <IconInfoHexagon stroke={1.5} className="w-8 h-8 text-zinc-300" />
 
           <div className="text-left">
-            <div className="flex flex-row gap-1 leading-tight">
-              <div className="text-sm">45–60 min</div>
-              <span className="text-zinc-300">/</span>
-              <div className="text-sm">
-                Cost 5<span className="text-xs">$</span>
-              </div>
-            </div>
+            {checkout?.deliveryMethod === "WAREHOUSE" && (
+              <SelfPickupInfoBlock />
+            )}
+            {checkout?.deliveryMethod === "DELIVERY" && (
+              <DeliveryInfoBlock shippingPrice={checkout.shippingPrice} />
+            )}
+
             <div className="text-sm text-zinc-500">Detailed conditions</div>
           </div>
         </button>
-        <div className="my-4 mx-4">
-          <button
-            className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
-            style={{ backgroundColor, backgroundImage }}
-          >
-            <div className="font-normal">Okay, next</div>
-            <div className="font-medium text-lg">
-              {checkout?.totalPrice} <span className="text-base">$</span>
-            </div>
-          </button>
-        </div>
+
+        {!isEmpty && (
+          <div className="my-4 mx-4">
+            <button
+              className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
+              style={{ backgroundColor, backgroundImage }}
+            >
+              <div className="font-normal">Okay, next</div>
+              <div className="font-medium text-lg">
+                {checkout?.totalPrice} <span className="text-base">$</span>
+              </div>
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -143,8 +146,37 @@ const CartEmpty = () => {
         height={96}
         className="mx-auto mb-2 grayscale opacity-60"
       />
-      <div className="text-lg text-center font-medium text-zinc-500">
+      <div className="text-lg text-center font-normal text-zinc-500">
         Your cart is empty
+      </div>
+    </div>
+  );
+};
+
+type DeliveryInfoBlockProps = {
+  shippingPrice: number;
+};
+
+const DeliveryInfoBlock = ({ shippingPrice }: DeliveryInfoBlockProps) => {
+  return (
+    <div className="flex flex-row gap-1 leading-tight">
+      <div className="text-sm">45–60 min</div>
+      <span className="text-zinc-300">/</span>
+      <div className="text-sm">
+        Cost {shippingPrice}
+        <span className="text-xs">$</span>
+      </div>
+    </div>
+  );
+};
+
+const SelfPickupInfoBlock = () => {
+  return (
+    <div className="flex flex-row gap-1 leading-tight">
+      <div className="text-sm">15–20 min</div>
+      <span className="text-zinc-300">/</span>
+      <div className="text-sm">
+        Discount 10<span className="text-xs">%</span>
       </div>
     </div>
   );

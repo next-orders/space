@@ -1,17 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { IconClock, IconLink, IconTruckDelivery } from "@tabler/icons-react";
-import type { Channel, Shop } from "@next-orders/api-sdk";
+import {
+  IconClock,
+  IconDiscount2,
+  IconLink,
+  IconTruckDelivery,
+} from "@tabler/icons-react";
+import type { Channel, Checkout, Shop } from "@next-orders/api-sdk";
 import { LinkButton } from "@/components/LinkButton";
 import { useUIStore } from "@/store/ui";
 
 type NavigationProps = {
   shop: Shop | null;
   channel: Channel | null;
+  checkout: Checkout | null;
 };
 
-export const Navigation = ({ shop, channel }: NavigationProps) => {
+export const Navigation = ({ shop, channel, checkout }: NavigationProps) => {
   const isNavbarOpened = useUIStore((state) => state.isNavbarOpened);
   const toggleDeliveryInfoModal = useUIStore(
     (state) => state.toggleDeliveryInfoModal,
@@ -51,19 +57,10 @@ export const Navigation = ({ shop, channel }: NavigationProps) => {
           </div>
 
           <div className="mb-8">
-            <p className="font-medium text-lg mb-2">Delivery</p>
-
-            <div className="flex flex-row gap-2 items-center mb-2">
-              <IconClock stroke={1.5} /> today until 22:00
-            </div>
-
-            <div className="flex flex-row gap-2 items-center mb-2">
-              <IconTruckDelivery stroke={1.5} />
-              <div>
-                free from 25
-                <span className="text-sm">$</span>
-              </div>
-            </div>
+            {checkout?.deliveryMethod === "WAREHOUSE" && (
+              <SelfPickupInfoBlock />
+            )}
+            {checkout?.deliveryMethod === "DELIVERY" && <DeliveryInfoBlock />}
 
             <button
               onClick={toggleDeliveryInfoModal}
@@ -80,5 +77,45 @@ export const Navigation = ({ shop, channel }: NavigationProps) => {
         </div>
       </div>
     </nav>
+  );
+};
+
+const DeliveryInfoBlock = () => {
+  return (
+    <>
+      <p className="font-medium text-lg mb-2">Delivery</p>
+
+      <div className="flex flex-row gap-2 items-center mb-2">
+        <IconClock stroke={1.5} /> today until 22:00
+      </div>
+
+      <div className="flex flex-row gap-2 items-center mb-2">
+        <IconTruckDelivery stroke={1.5} />
+        <div>
+          free from 25
+          <span className="text-sm">$</span>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const SelfPickupInfoBlock = () => {
+  return (
+    <>
+      <p className="font-medium text-lg mb-2">Self-pickup</p>
+
+      <div className="flex flex-row gap-2 items-center mb-2">
+        <IconClock stroke={1.5} /> today until 23:00
+      </div>
+
+      <div className="flex flex-row gap-2 items-center mb-2">
+        <IconDiscount2 stroke={1.5} />
+        <div>
+          discount 10
+          <span className="text-sm">%</span>
+        </div>
+      </div>
+    </>
   );
 };
