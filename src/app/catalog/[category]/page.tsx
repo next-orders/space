@@ -61,7 +61,7 @@ export default async function Page({ params }: PageProps) {
     <>
       <Breadcrumbs links={breadcrumbs} />
 
-      <h1 className="text-3xl font-semibold">{category.name}</h1>
+      <h1 className="text-3xl font-medium">{category.name}</h1>
       <div>Here are all the products from this category</div>
 
       <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-2">

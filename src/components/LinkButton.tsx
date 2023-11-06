@@ -23,7 +23,7 @@ export const LinkButton = ({
     <Link
       href={link}
       onClick={toggle}
-      className="text-base font-medium flex flex-row items-center gap-4 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-zinc-200 data-[active=true]:font-semibold hover:bg-zinc-100 hover:scale-95 duration-200 group"
+      className="text-base font-normal flex flex-row items-center gap-4 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-zinc-200 data-[active=true]:font-medium hover:bg-zinc-100 hover:scale-95 duration-200 group"
       data-active={activePath === link}
     >
       <Image

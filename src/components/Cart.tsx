@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ScrollArea } from "@mantine/core";
 import { IconInfoHexagon, IconX } from "@tabler/icons-react";
-import { Channel, Checkout, CheckoutLine } from "@next-orders/api-sdk";
+import type { Channel, Checkout, CheckoutLine } from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
@@ -34,10 +33,10 @@ export const Cart = ({
 
   return (
     <div className="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
-      <ScrollArea className="h-screen">
+      <div className="h-screen overflow-y-auto">
         <div className="mb-48">
           <div className="mb-4 flex flex-row justify-between items-center">
-            <p className="text-2xl font-semibold">Cart</p>
+            <p className="text-2xl font-medium">Cart</p>
 
             {canCloseCart && (
               <button
@@ -57,7 +56,7 @@ export const Cart = ({
           {isEmpty && <CartEmpty />}
           {items}
         </div>
-      </ScrollArea>
+      </div>
 
       <div className="absolute bottom-0 left-0 right-0 rounded-2xl bg-zinc-50">
         <button
@@ -82,8 +81,8 @@ export const Cart = ({
             className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
             style={{ backgroundColor, backgroundImage }}
           >
-            <div className="font-medium">Okay, next</div>
-            <div className="font-semibold text-lg">
+            <div className="font-normal">Okay, next</div>
+            <div className="font-medium text-lg">
               {checkout?.totalPrice} <span className="text-base">$</span>
             </div>
           </button>

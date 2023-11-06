@@ -49,7 +49,7 @@ const MethodButton = ({ channel, method, methodNow }: MethodButtonProps) => {
   return (
     <button
       onClick={() => ChangeCheckoutDeliveryMethod("123", method)}
-      className="w-full px-2 py-2 font-medium rounded-2xl hover:bg-zinc-100 hover:scale-95 duration-200"
+      className="w-full px-2 py-2 font-normal rounded-2xl hover:bg-zinc-100 hover:scale-95 duration-200"
       style={{ backgroundColor, backgroundImage }}
       data-active={isActive}
     >

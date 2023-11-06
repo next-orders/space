@@ -50,7 +50,7 @@ export default async function Page({ params }: PageProps) {
           />
 
           <div className="col-span-2">
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-medium">
               {product.name}
             </h1>
             <div className="mt-1 font-normal text-zinc-400">
@@ -59,7 +59,7 @@ export default async function Page({ params }: PageProps) {
             </div>
 
             <div className="mt-4 flex flex-row gap-6 items-center">
-              <div className="text-2xl font-semibold tracking-tight">
+              <div className="text-2xl font-medium tracking-tight">
                 <Price value={product.gross} />
                 <span className="pl-1 text-xl">
                   <CurrencySign code={product.currency} />
@@ -85,19 +85,19 @@ export default async function Page({ params }: PageProps) {
             <div className="mb-1 font-medium text-zinc-400">Per 100 grams</div>
             <div className="mt-2 px-4 py-4 w-fit flex flex-row gap-4 bg-zinc-100 rounded-2xl">
               <div>
-                <div className="font-semibold">5g</div>
+                <div className="font-medium">5g</div>
                 <div>proteins</div>
               </div>
               <div>
-                <div className="font-semibold">18g</div>
+                <div className="font-medium">18g</div>
                 <div>fats</div>
               </div>
               <div>
-                <div className="font-semibold">14g</div>
+                <div className="font-medium">14g</div>
                 <div>carbs</div>
               </div>
               <div>
-                <div className="font-semibold">684</div>
+                <div className="font-medium">684</div>
                 <div>kcal</div>
               </div>
             </div>

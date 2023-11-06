@@ -21,7 +21,7 @@ export const DeliveryInfoModal = ({
         data-active={opened}
       >
         <div className="mt-16 px-8 py-8 bg-white rounded-2xl">
-          <div className="mb-2 text-2xl font-semibold">Delivery Details</div>
+          <div className="mb-2 text-2xl font-medium">Delivery Details</div>
 
           <div className="flex flex-row justify-between">
             <div className="flex flex-row gap-2">
@@ -31,7 +31,7 @@ export const DeliveryInfoModal = ({
             <div>5 $</div>
           </div>
 
-          <div className="mt-8 mb-2 text-xl font-semibold">Deliver at</div>
+          <div className="mt-8 mb-2 text-xl font-medium">Deliver at</div>
 
           <div className="flex flex-row justify-between">
             <div className="flex flex-row gap-2">
@@ -41,7 +41,7 @@ export const DeliveryInfoModal = ({
             <div></div>
           </div>
 
-          <div className="mt-8 mb-2 text-xl font-semibold">More info</div>
+          <div className="mt-8 mb-2 text-xl font-medium">More info</div>
 
           <div className="mb-2 flex flex-row justify-between">
             <div>Minimum order value</div>

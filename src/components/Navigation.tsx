@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { IconClock, IconLink, IconTruckDelivery } from "@tabler/icons-react";
-import { ScrollArea } from "@mantine/core";
-import { Channel, Shop } from "@next-orders/api-sdk";
+import type { Channel, Shop } from "@next-orders/api-sdk";
 import { LinkButton } from "@/components/LinkButton";
 
 type Props = {
@@ -33,11 +32,11 @@ export const Navigation = ({
 
   return (
     <div className="w-full bg-zinc-50 px-4 pt-4 border-r border-zinc-100">
-      <ScrollArea className="h-screen">
+      <div className="h-screen overflow-y-auto">
         <div className="mb-8">
           <Link
             href="/"
-            className="font-semibold text-xl"
+            className="font-medium text-xl"
             style={{ color: channel?.accentTextColor }}
           >
             {shop?.name}
@@ -46,7 +45,7 @@ export const Navigation = ({
         </div>
 
         <div className="mb-8">
-          <p className="font-semibold text-lg mb-2">Delivery</p>
+          <p className="font-medium text-lg mb-2">Delivery</p>
 
           <div className="flex flex-row gap-2 items-center mb-2">
             <IconClock stroke={1.5} /> today until 22:00
@@ -69,10 +68,10 @@ export const Navigation = ({
         </div>
 
         <div className="mb-32">
-          <p className="font-semibold text-lg">Catalog</p>
+          <p className="font-medium text-lg">Catalog</p>
           {buttons}
         </div>
-      </ScrollArea>
+      </div>
     </div>
   );
 };

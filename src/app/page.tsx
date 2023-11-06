@@ -23,7 +23,7 @@ export default async function Page() {
 
   return (
     <>
-      <h1 className="mb-2 text-3xl font-semibold">{shop.name}</h1>
+      <h1 className="mb-2 text-3xl font-medium">{shop.name}</h1>
       <div className="mb-6">Welcome to the site!</div>
 
       {categories}
@@ -58,11 +58,11 @@ const CategoryBlock = async ({ category }: CategoryBlockProps) => {
   return (
     <>
       <div className="flex flex-row justify-between items-center gap-2">
-        <h2 className="text-2xl md:text-3xl font-semibold">{category.name}</h2>
+        <h2 className="text-2xl md:text-3xl font-medium">{category.name}</h2>
 
         <Link
           href={`/catalog/${category.slug}`}
-          className="px-5 py-3 flex flex-row gap-2 text-base font-medium cursor-pointer rounded-2xl bg-zinc-200 hover:bg-zinc-300 hover:scale-95 duration-200"
+          className="px-5 py-3 flex flex-row gap-2 text-base font-normal cursor-pointer rounded-2xl bg-zinc-200 hover:bg-zinc-300 hover:scale-95 duration-200"
         >
           Open category <IconArrowRight stroke={1.5} />
         </Link>
