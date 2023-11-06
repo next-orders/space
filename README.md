@@ -29,6 +29,8 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - [ESlint](https://eslint.org/): JavaScript linter for identifying and reporting code quality issues.
 - [Prettier](https://prettier.io/): Opinionated code formatter for maintaining consistent code style.
 
+![lighthouse-score](https://github.com/next-orders/v1/blob/main/public/static/lighthouse.jpg?raw=true)
+
 ## 🍣 Customer and Seller Features (WIP)
 
 - 📱 100% adaptive layout
