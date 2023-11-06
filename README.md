@@ -25,6 +25,9 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - [Next](https://nextjs.org/): Framework for server-rendered React applications.
 - [React](https://reactjs.org/): JavaScript library for building user interfaces.
 - [TailwindCSS](https://tailwindcss.com/): Utility-first CSS framework for rapid UI development.
+- [Tabler Icons](https://tabler-icons.io/): Free and open source icons.
+- [Geist Font](https://vercel.com/font): A typeface made for developers and designers.
+- [Sharp](https://sharp.pixelplumbing.com/): High performance Node.js image processing.
 - [TypeScript](https://www.typescriptlang.org/): Typed superset of JavaScript that compiles to plain JavaScript.
 - [ESlint](https://eslint.org/): JavaScript linter for identifying and reporting code quality issues.
 - [Prettier](https://prettier.io/): Opinionated code formatter for maintaining consistent code style.
