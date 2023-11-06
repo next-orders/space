@@ -19,7 +19,7 @@ export const CartDrawer = ({
   return (
     <>
       <div
-        className="z-30 fixed left-0 right-0 top-0 bottom-0 bg-zinc-700/50 opacity-0 data-[active=true]:opacity-100 translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
+        className="z-30 fixed left-0 right-0 -top-20 -bottom-20 bg-zinc-700/50 opacity-0 data-[active=true]:opacity-100 translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
         onClick={close}
         data-active={opened}
       />
