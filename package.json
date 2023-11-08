@@ -27,7 +27,7 @@
   "dependencies": {
     "@next-orders/api-sdk": "^0.1.51",
     "@tabler/icons-react": "2.40.0",
-    "geist": "1.0.0",
+    "geist": "1.0.1",
     "next": "14.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
