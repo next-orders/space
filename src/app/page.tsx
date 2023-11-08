@@ -1,16 +1,22 @@
 import Link from "next/link";
 import { IconArrowRight } from "@tabler/icons-react";
 import type { MenuCategory } from "@next-orders/api-sdk";
-import { ProductCard } from "@/components/ProductCard";
 import {
   GetChannel,
+  GetCheckout,
   GetMenu,
   GetProductsInCategory,
   GetShop,
 } from "@/client/api";
+import { ProductCard } from "@/components/ProductCard";
+import { MainShell } from "@/components/MainShell";
 
 export default async function Page() {
-  const [shop, channel] = await Promise.all([GetShop(), GetChannel()]);
+  const [shop, channel, checkout] = await Promise.all([
+    GetShop(),
+    GetChannel(),
+    GetCheckout("123"),
+  ]);
   if (!shop) {
     return <div>Shop data not found :(</div>;
   }
@@ -22,12 +28,12 @@ export default async function Page() {
   ));
 
   return (
-    <>
+    <MainShell shop={shop} channel={channel} checkout={checkout}>
       <h1 className="mb-2 text-3xl font-medium">{shop.name}</h1>
       <div className="mb-6">Welcome to the site!</div>
 
       {categories}
-    </>
+    </MainShell>
   );
 }
 

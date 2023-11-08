@@ -76,7 +76,8 @@ export const Cart = ({ channel, checkout }: CartProps) => {
 
         {!isEmpty && (
           <div className="my-4 mx-4">
-            <button
+            <Link
+              href={"/checkout"}
               className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
               style={{ backgroundColor, backgroundImage }}
             >
@@ -84,7 +85,7 @@ export const Cart = ({ channel, checkout }: CartProps) => {
               <div className="font-medium text-lg">
                 {checkout?.totalPrice} <span className="text-base">$</span>
               </div>
-            </button>
+            </Link>
           </div>
         )}
       </div>
