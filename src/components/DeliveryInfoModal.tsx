@@ -29,7 +29,9 @@ export const DeliveryInfoModal = ({ checkout }: DeliveryInfoModalProps) => {
       >
         <div className="mt-16 px-8 py-8 bg-white rounded-2xl">
           {checkout?.deliveryMethod === "WAREHOUSE" && <SelfPickupInfoBlock />}
-          {checkout?.deliveryMethod === "DELIVERY" && <DeliveryInfoBlock />}
+          {checkout?.deliveryMethod === "DELIVERY" && (
+            <DeliveryInfoBlock checkout={checkout} />
+          )}
 
           <button
             onClick={closeDeliveryInfoModal}
@@ -43,7 +45,11 @@ export const DeliveryInfoModal = ({ checkout }: DeliveryInfoModalProps) => {
   );
 };
 
-const DeliveryInfoBlock = () => {
+type DeliveryInfoBlockProps = {
+  checkout: Checkout;
+};
+
+const DeliveryInfoBlock = ({ checkout }: DeliveryInfoBlockProps) => {
   return (
     <>
       <div className="mb-2 text-2xl font-medium">Delivery Details</div>
@@ -53,7 +59,7 @@ const DeliveryInfoBlock = () => {
           <IconBike stroke={1.5} />
           Courier payment
         </div>
-        <div>5 $</div>
+        <div>{checkout.shippingPrice} $</div>
       </div>
 
       <div className="mt-8 mb-2 text-xl font-medium">Deliver at</div>
