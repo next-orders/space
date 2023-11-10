@@ -59,7 +59,7 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
             type="text"
             placeholder="Find a product"
             onInput={handleSearchInput}
-            className="px-2 py-2 w-28 md:w-56 group-focus:bg-zinc-400"
+            className="px-2 py-2 w-32 md:w-56 group-focus:bg-zinc-400 rounded-xl"
           />
         </div>
 
@@ -99,7 +99,7 @@ const SearchBlock = () => {
   };
 
   return (
-    <div className="hidden group-focus-within:block fixed top-16 left-0 w-72 bg-white px-4 py-4 rounded-b-2xl shadow-lg">
+    <div className="hidden group-focus-within:block group-focus-visible:block group-focus:block group-active:block fixed top-16 left-0 w-72 bg-white px-4 py-4 rounded-b-2xl shadow-lg">
       <div className="flex flex-col gap-2">
         {search && <Line label={search} />}
         <Line label="Salmon" />
