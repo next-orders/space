@@ -1,21 +1,30 @@
 "use client";
 
+import Link from "next/link";
 import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
 import type { Channel, Checkout } from "@next-orders/api-sdk";
 import { useUIStore } from "@/store/ui";
+import { useSearchStore } from "@/store/search";
 
-type Props = {
+type HeaderProps = {
   channel: Channel | null;
   checkout: Checkout | null;
 };
 
-export const Header = ({ channel, checkout }: Props) => {
+export const Header = ({ channel, checkout }: HeaderProps) => {
   const isNavbarOpened = useUIStore((state) => state.isNavbarOpened);
   const toggleNavbar = useUIStore((state) => state.toggleNavbar);
   const toggleCartDrawer = useUIStore((state) => state.toggleCartDrawer);
 
+  const search = useSearchStore((state) => state.search);
+  const setSearch = useSearchStore((state) => state.setSearch);
+
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
+
+  const handleSearchInput = () => {
+    console.log("Search!");
+  };
 
   return (
     <div className="z-10 w-full h-full px-4 md:px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-zinc-100">
@@ -38,11 +47,20 @@ export const Header = ({ channel, checkout }: Props) => {
         </button>
       </div>
 
-      <div className="mr-auto">
-        <div className="flex flex-row gap-2 items-center">
+      <div className="relative mr-auto group">
+        <div className="flex flex-row gap-1 items-center">
           <IconSearch stroke={1.5} />
-          <input placeholder="Find a product" />
+          <input
+            value={search}
+            onChange={(event) => setSearch(event.currentTarget.value)}
+            type="text"
+            placeholder="Find a product"
+            onInput={handleSearchInput}
+            className="px-2 py-2 w-56 group-focus:bg-zinc-400"
+          />
         </div>
+
+        <SearchBlock />
       </div>
 
       <div className="block xl:hidden font-medium">
@@ -56,6 +74,33 @@ export const Header = ({ channel, checkout }: Props) => {
             {checkout?.totalPrice} <span className="ml-0 text-sm">$</span>
           </div>
         </button>
+      </div>
+    </div>
+  );
+};
+
+const SearchBlock = () => {
+  const search = useSearchStore((state) => state.search);
+
+  const Line = ({ label }: { label: string }) => {
+    return (
+      <Link
+        href={"/catalog/roll/crab-with-salmon"}
+        className="px-4 py-4 rounded-xl bg-zinc-50 hover:bg-zinc-100 text-base cursor-pointer"
+      >
+        {label}
+      </Link>
+    );
+  };
+
+  return (
+    <div className="hidden group-focus-within:block fixed top-16 left-0 w-72 bg-white px-4 py-4 rounded-b-2xl shadow-lg">
+      <div className="flex flex-col gap-2">
+        {search && <Line label={search} />}
+        <Line label="Salmon" />
+        <Line label="Creamy Salmon" />
+        <Line label="Salmon Maki" />
+        <Line label="Crab with salmon" />
       </div>
     </div>
   );

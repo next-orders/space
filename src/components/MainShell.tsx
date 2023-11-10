@@ -22,7 +22,7 @@ export const MainShell = ({
 }: MainShellProps) => {
   return (
     <>
-      <header className="z-10 h-16 bg-white fixed top-0 left-0 right-0">
+      <header className="z-20 h-16 bg-white fixed top-0 left-0 right-0">
         <Header channel={channel} checkout={checkout} />
       </header>
 
