@@ -107,8 +107,8 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
           <Image
             src={photo?.url ?? "/static/no-image-zinc.png"}
             alt={photo?.alt ?? ""}
-            width={100}
-            height={100}
+            width={48}
+            height={48}
             className="w-12 h-12 aspect-square rounded-xl xl:grayscale xl:contrast-75 xl:brightness-150 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
           />
 

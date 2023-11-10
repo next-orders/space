@@ -17,9 +17,6 @@ export default async function Page() {
     GetChannel(),
     GetCheckout("123"),
   ]);
-  if (!shop) {
-    return <div>Shop data not found :(</div>;
-  }
 
   const menu = await GetMenu(channel?.menus[0].id || "");
 
@@ -29,7 +26,7 @@ export default async function Page() {
 
   return (
     <MainShell shop={shop} channel={channel} checkout={checkout}>
-      <h1 className="mb-2 text-3xl font-medium">{shop.name}</h1>
+      <h1 className="mb-2 text-3xl font-medium">{shop?.name}</h1>
       <div className="mb-6">Welcome to the site!</div>
 
       {categories}

@@ -44,6 +44,7 @@ export default async function Page({ params }: PageProps) {
           <Image
             src={photo?.url ?? "/static/no-image-zinc.png"}
             alt={photo?.alt ?? ""}
+            priority
             width={600}
             height={600}
             className="col-span-1 aspect-square rounded-xl"

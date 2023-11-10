@@ -26,8 +26,8 @@ export const LinkButton = ({ link, label, iconUrl }: LinkButtonProps) => {
       <Image
         src={iconUrl ?? "/static/default-icon.png"}
         alt=""
-        width={48}
-        height={48}
+        width={32}
+        height={32}
         className="w-8 h-8 group-hover:scale-125 duration-200"
       />
       {label}
