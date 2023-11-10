@@ -3,6 +3,8 @@ First version of frontend. Products, cart, full ordering process.
 
 ![main-screen-desktop](https://github.com/next-orders/v1/blob/main/public/static/main-screen-desktop.jpg?raw=true)
 
+![checkout-screen-desktop](https://github.com/next-orders/v1/blob/main/public/static/checkout-screen-desktop.jpg?raw=true)
+
 ## 🍕 Main idea and architecture of Next-Orders
 
 There is a great desire to create software that is ideal for ordering and delivering food.

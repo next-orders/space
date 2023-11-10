@@ -49,17 +49,13 @@ const CategoryBlock = async ({ category }: CategoryBlockProps) => {
   }
 
   // Limit 6 products
-  const showProducts = products.slice(0, 6);
+  const showProducts = products.slice(0, 6).map((product) => {
+    const productUrl = "/catalog/" + product.category.slug + "/" + product.slug;
 
-  const Products = () => {
-    return showProducts.map((product) => {
-      const productUrl = "/catalog/" + category.slug + "/" + product.slug;
-
-      return (
-        <ProductCard key={product.id} productUrl={productUrl} {...product} />
-      );
-    });
-  };
+    return (
+      <ProductCard key={product.id} productUrl={productUrl} {...product} />
+    );
+  });
 
   return (
     <>
@@ -77,7 +73,7 @@ const CategoryBlock = async ({ category }: CategoryBlockProps) => {
         key={category.id}
         className="mt-4 mb-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-2"
       >
-        <Products />
+        {showProducts}
       </div>
     </>
   );
