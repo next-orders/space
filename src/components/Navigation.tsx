@@ -19,6 +19,7 @@ type NavigationProps = {
 
 export const Navigation = ({ shop, channel, checkout }: NavigationProps) => {
   const isNavbarOpened = useUIStore((state) => state.isNavbarOpened);
+  const toggleNavbar = useUIStore((state) => state.toggleNavbar);
   const toggleDeliveryInfoModal = useUIStore(
     (state) => state.toggleDeliveryInfoModal,
   );
@@ -48,6 +49,7 @@ export const Navigation = ({ shop, channel, checkout }: NavigationProps) => {
               href="/"
               className="font-medium text-xl"
               style={{ color: channel?.accentTextColor }}
+              onClick={toggleNavbar}
             >
               {shop?.name}
             </Link>
