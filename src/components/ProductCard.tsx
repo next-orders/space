@@ -27,8 +27,8 @@ export const ProductCard = ({
             <Image
               src={photo?.url ?? "/static/no-image-zinc.png"}
               alt={photo?.alt ?? ""}
-              width={300}
-              height={300}
+              width={400}
+              height={400}
               priority
               className="w-full aspect-square rounded-xl"
             />

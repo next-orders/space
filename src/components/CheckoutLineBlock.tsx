@@ -19,8 +19,8 @@ export const CheckoutLineBlock = ({ quantity, variant }: CheckoutLine) => {
           <Image
             src={photo?.url ?? "/static/no-image-zinc.png"}
             alt={photo?.alt ?? ""}
-            width={100}
-            height={100}
+            width={48}
+            height={48}
             className="w-16 h-16 aspect-square rounded-xl"
           />
 
