@@ -32,7 +32,7 @@ export default async function Page() {
 
   return (
     <div className="mt-8 text-left">
-      <h1 className="mb-4 md:mb-8 text-2xl md:text-4xl font-medium">
+      <h1 className="mb-4 md:mb-8 text-3xl md:text-4xl font-medium">
         Checkout
       </h1>
 
@@ -135,7 +135,7 @@ export default async function Page() {
               </div>
             </div>
 
-            <div className="flex flex-row flex-nowrap gap-6 items-center">
+            <div className="flex flex-row flex-nowrap gap-4 items-center">
               <Link
                 href={"#"}
                 className="w-full px-4 py-4 text-lg font-medium text-center rounded-xl cursor-pointer hover:scale-95 duration-200"
@@ -144,7 +144,7 @@ export default async function Page() {
                 Create Order
               </Link>
 
-              <div className="font-medium text-center text-xl min-w-[6rem]">
+              <div className="font-medium text-right text-xl min-w-[6rem]">
                 {checkout?.totalPrice} <span className="text-base">$</span>
               </div>
             </div>
@@ -171,7 +171,7 @@ type BlockProps = {
 
 const Block = ({ children }: BlockProps) => {
   return (
-    <div className="mb-6 px-3 py-4 md:px-6 md:py-6 bg-white rounded-3xl">
+    <div className="mb-6 px-4 py-5 md:px-6 md:py-6 bg-white rounded-3xl">
       {children}
     </div>
   );
