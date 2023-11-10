@@ -99,7 +99,7 @@ const SearchBlock = () => {
   };
 
   return (
-    <div className="invisible group-focus:visible group-active:visible group-focus-within:visible group-focus-visible:visible fixed top-16 left-0 w-72 bg-white px-4 py-4 rounded-b-2xl shadow-lg">
+    <div className="invisible group-hover:visible group-focus:visible group-active:visible group-focus-within:visible group-focus-visible:visible fixed top-16 left-0 w-72 bg-white px-4 py-4 rounded-b-2xl shadow-lg">
       <div className="flex flex-col gap-2">
         <input type="text" name="test" />
         {search && <Line label={search} />}
