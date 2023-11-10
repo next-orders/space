@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font";
+import { GeistSans } from "geist/font/sans";
 import { GetShop } from "@/client/api";
 
 import "./globals.scss";
