@@ -26,6 +26,9 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
     console.log("Search!");
   };
 
+  const cartNumber = checkout?.lines.length;
+  const isCartEmpty = !checkout?.lines.length;
+
   return (
     <div className="z-10 w-full h-full px-4 md:px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-zinc-100">
       <div className="mr-2 md:mr-0 flex justify-center items-center justify-items-center md:hidden h-full hover:scale-110 transition duration-200">
@@ -56,25 +59,27 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
             type="text"
             placeholder="Find a product"
             onInput={handleSearchInput}
-            className="px-2 py-2 w-56 group-focus:bg-zinc-400"
+            className="px-2 py-2 w-28 md:w-56 group-focus:bg-zinc-400"
           />
         </div>
 
         <SearchBlock />
       </div>
 
-      <div className="block xl:hidden font-medium">
-        <button
-          onClick={toggleCartDrawer}
-          className="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
-          style={{ backgroundColor, backgroundImage }}
-        >
-          <span className="font-medium">Cart</span>
-          <div>
-            {checkout?.totalPrice} <span className="ml-0 text-sm">$</span>
-          </div>
-        </button>
-      </div>
+      {!isCartEmpty && (
+        <div className="block xl:hidden font-medium">
+          <button
+            onClick={toggleCartDrawer}
+            className="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
+            style={{ backgroundColor, backgroundImage }}
+          >
+            <span className="font-medium">Cart</span>
+            <div className="rounded-full bg-white w-6 h-6 text-center">
+              {cartNumber}
+            </div>
+          </button>
+        </div>
+      )}
     </div>
   );
 };
