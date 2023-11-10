@@ -86,30 +86,51 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
 
 const SearchBlock = () => {
   const search = useSearchStore((state) => state.search);
+  const isEmpty = !search;
 
-  const Line = ({ label }: { label: string }) => {
-    return (
-      <Link
-        href={"/catalog/roll/crab-with-salmon"}
-        className="px-4 py-4 rounded-xl bg-zinc-50 hover:bg-zinc-100 text-base cursor-pointer"
-      >
-        {label}
-      </Link>
-    );
-  };
+  const searchResult = [
+    {
+      id: "1",
+      label: "Salmon",
+      link: "/catalog/pizza/four-seasons",
+    },
+  ];
+
+  const searchResults = searchResult.map((line) => (
+    <SearchLine key={line.id} link={line.link} label={line.label} />
+  ));
 
   return (
-    <div className="invisible group-hover:visible group-focus:visible group-active:visible group-focus-within:visible group-focus-visible:visible fixed top-16 left-0 w-72 bg-white px-4 py-4 rounded-b-2xl shadow-lg">
+    <div className="invisible group-hover:visible group-focus:visible group-active:visible group-focus-within:visible group-focus-visible:visible fixed top-16 left-0 w-72 bg-white px-4 py-4 rounded-b-2xl shadow-lg duration-200">
       <div className="flex flex-col gap-2">
-        <input type="text" name="test" />
-        {search && <Line label={search} />}
-
-        <div className="mt-2 font-medium">More often searched:</div>
-        <Line label="Salmon" />
-        <Line label="Creamy Salmon" />
-        <Line label="Salmon Maki" />
-        <Line label="Crab with salmon" />
+        {isEmpty ? <SearchBlockPopular /> : searchResults}
       </div>
     </div>
+  );
+};
+
+const SearchLine = ({ label, link }: { label: string; link: string }) => {
+  return (
+    <Link
+      href={link}
+      className="px-4 py-4 rounded-xl bg-zinc-50 hover:bg-zinc-100 text-base cursor-pointer"
+    >
+      {label}
+    </Link>
+  );
+};
+
+const SearchBlockPopular = () => {
+  return (
+    <>
+      <div className="font-medium">Found most often:</div>
+      <SearchLine label="Four seasons" link={"/catalog/pizza/four-seasons"} />
+      <SearchLine label="Mediterranean" link={"/catalog/pizza/mediterranean"} />
+      <SearchLine label="Salmon" link={"/catalog/sushi/salmon"} />
+      <SearchLine
+        label="Philadelphia light"
+        link={"/catalog/roll/philadelphia-light"}
+      />
+    </>
   );
 };
