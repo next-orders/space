@@ -15,7 +15,7 @@ export default async function CheckoutLayout({
         <HeaderCheckout />
       </header>
 
-      <main className="relative top-16">
+      <main className="relative top-16 bg-zinc-100">
         <div className="px-2 md:px-4 pb-10 mx-auto max-w-5xl">{children}</div>
         <div className="mx-auto max-w-4xl">
           <Footer />

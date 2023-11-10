@@ -31,8 +31,8 @@ export default async function Page() {
   });
 
   return (
-    <div className="mt-8 text-left">
-      <h1 className="mb-4 md:mb-8 text-3xl md:text-4xl font-medium">
+    <>
+      <h1 className="pt-8 mb-4 md:mb-8 text-3xl md:text-4xl font-medium">
         Checkout
       </h1>
 
@@ -161,7 +161,7 @@ export default async function Page() {
           {showProducts}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

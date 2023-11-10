@@ -19,7 +19,7 @@ type RootLayoutProps = {
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="bg-zinc-100">{children}</body>
+      <body className="bg-white md:bg-zinc-100">{children}</body>
     </html>
   );
 }

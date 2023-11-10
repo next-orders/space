@@ -28,8 +28,8 @@ export const MainShell = ({
 
       <Navigation shop={shop} channel={channel} checkout={checkout} />
 
-      <main className="relative w-auto md:pl-72 xl:pr-80 top-16">
-        <div className="px-4 pb-10 mt-4">{children}</div>
+      <main className="relative w-auto bg-zinc-100 md:pl-72 xl:pr-80 top-16">
+        <div className="px-4 pb-10 pt-4">{children}</div>
         <DeliveryInfoModal checkout={checkout} />
         <CartDrawer channel={channel} checkout={checkout} />
         <Footer />
