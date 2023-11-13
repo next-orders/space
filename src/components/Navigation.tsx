@@ -10,6 +10,7 @@ import {
 import type { Channel, Checkout } from "@next-orders/api-sdk";
 import { LinkButton } from "@/components/LinkButton";
 import { useUIStore } from "@/store/ui";
+import { getDictionary, Locale } from "@/dictionaries";
 
 type NavigationProps = {
   channel: Channel | null;
@@ -36,6 +37,9 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
     );
   });
 
+  const locale = channel?.languageCode || "EN";
+  const { SHOW_DETAILS_LABEL, CATALOG_LABEL } = getDictionary(locale);
+
   return (
     <nav
       className="z-10 w-0 hidden md:block md:w-72 fixed top-16 data-[active=true]:w-full data-[active=true]:block md:data-[active=true]:w-72"
@@ -59,20 +63,22 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
 
           <div className="mb-8">
             {checkout?.deliveryMethod === "WAREHOUSE" && (
-              <SelfPickupInfoBlock />
+              <SelfPickupInfoBlock locale={locale} />
             )}
-            {checkout?.deliveryMethod === "DELIVERY" && <DeliveryInfoBlock />}
+            {checkout?.deliveryMethod === "DELIVERY" && (
+              <DeliveryInfoBlock locale={locale} />
+            )}
 
             <button
               onClick={toggleDeliveryInfoModal}
               className="flex flex-row gap-2 items-center hover:scale-95 duration-200"
             >
-              <IconLink stroke={1.5} /> show details
+              <IconLink stroke={1.5} /> {SHOW_DETAILS_LABEL}
             </button>
           </div>
 
           <div className="mb-32">
-            <p className="font-medium text-lg">Catalog</p>
+            <p className="font-medium text-lg">{CATALOG_LABEL}</p>
             {buttons}
           </div>
         </div>
@@ -81,15 +87,19 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
   );
 };
 
-const DeliveryInfoBlock = () => {
+type DeliveryInfoBlockProps = {
+  locale: Locale;
+};
+
+const DeliveryInfoBlock = ({ locale }: DeliveryInfoBlockProps) => {
+  const { DELIVERY_LABEL } = getDictionary(locale);
+
   return (
     <>
-      <p className="font-medium text-lg mb-2">Delivery</p>
-
+      <p className="font-medium text-lg mb-2">{DELIVERY_LABEL}</p>
       <div className="flex flex-row gap-2 items-center mb-2">
         <IconClock stroke={1.5} /> today until 22:00
       </div>
-
       <div className="flex flex-row gap-2 items-center mb-2">
         <IconTruckDelivery stroke={1.5} />
         <div>
@@ -101,15 +111,19 @@ const DeliveryInfoBlock = () => {
   );
 };
 
-const SelfPickupInfoBlock = () => {
+type SelfPickupInfoBlockProps = {
+  locale: Locale;
+};
+
+const SelfPickupInfoBlock = ({ locale }: SelfPickupInfoBlockProps) => {
+  const { SELF_PICKUP_LABEL } = getDictionary(locale);
+
   return (
     <>
-      <p className="font-medium text-lg mb-2">Self-pickup</p>
-
+      <p className="font-medium text-lg mb-2">{SELF_PICKUP_LABEL}</p>
       <div className="flex flex-row gap-2 items-center mb-2">
         <IconClock stroke={1.5} /> today until 23:00
       </div>
-
       <div className="flex flex-row gap-2 items-center mb-2">
         <IconDiscount2 stroke={1.5} />
         <div>

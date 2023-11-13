@@ -9,6 +9,7 @@ import {
 } from "@/client/api";
 import { ProductCard } from "@/components/ProductCard";
 import { MainShell } from "@/components/MainShell";
+import { getDictionary, Locale } from "@/dictionaries";
 
 export default async function Page() {
   const [channel, checkout] = await Promise.all([
@@ -19,7 +20,11 @@ export default async function Page() {
   const menu = await GetMenu(channel?.menus[0].id || "");
 
   const categories = menu?.categories?.map(async (category) => (
-    <CategoryBlock key={category.id} category={category} />
+    <CategoryBlock
+      key={category.id}
+      category={category}
+      locale={channel?.languageCode || "EN"}
+    />
   ));
 
   return (
@@ -34,9 +39,12 @@ export default async function Page() {
 
 type CategoryBlockProps = {
   category: MenuCategory;
+  locale: Locale;
 };
 
-const CategoryBlock = async ({ category }: CategoryBlockProps) => {
+const CategoryBlock = async ({ category, locale }: CategoryBlockProps) => {
+  const { OPEN_CATEGORY_BUTTON } = getDictionary(locale);
+
   // Load Products in this category
   const products = await GetProductsInCategory(category.id);
   if (!products || !products.length) {
@@ -61,7 +69,7 @@ const CategoryBlock = async ({ category }: CategoryBlockProps) => {
           href={`/catalog/${category.slug}`}
           className="px-5 py-3 flex flex-row gap-2 text-base font-normal cursor-pointer rounded-2xl bg-zinc-200 hover:bg-zinc-300 hover:scale-95 duration-200"
         >
-          Open category <IconArrowRight stroke={1.5} />
+          {OPEN_CATEGORY_BUTTON} <IconArrowRight stroke={1.5} />
         </Link>
       </div>
       <div

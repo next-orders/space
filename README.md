@@ -63,6 +63,7 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - [src/store](src/store): Client-side state of the app.
 - [src/client](src/client): Wrapper functions for Main API SDK.
 - [src/server](src/server): Server-side logic for the website.
+- [src/dictionaries](src/dictionaries): Localization for the UI with TypeScript protection.
 
 ## ☕ How to deploy
 
@@ -76,7 +77,6 @@ You need to use env variables:
 
 ```text
 NEXT_PUBLIC_API_URL= # Url of the Main API
-NEXT_PUBLIC_SHOP_ID= # Shop ID from DB
 NEXT_PUBLIC_CHANNEL_ID= # Channel ID from DB
 ```
 

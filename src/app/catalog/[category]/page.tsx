@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import {
   GetCategories,
   GetCategoryBySlug,
+  GetChannel,
   GetProductsInCategory,
 } from "@/client/api";
 
@@ -22,6 +23,8 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: PageProps) {
+  const channel = await GetChannel();
+
   const categories = await GetCategories();
   if (!categories) {
     notFound();
@@ -59,7 +62,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumbs links={breadcrumbs} />
+      <Breadcrumbs links={breadcrumbs} locale={channel?.languageCode || "EN"} />
 
       <h1 className="text-3xl font-medium">{category.name}</h1>
       <div>Here are all the products from this category</div>

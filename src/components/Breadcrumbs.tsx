@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BackBlock } from "@/components/BackBlock";
+import { Locale } from "@/dictionaries";
 
 type Links = {
   title: string;
@@ -8,9 +9,10 @@ type Links = {
 
 type Props = {
   links: Links[];
+  locale: Locale;
 };
 
-export const Breadcrumbs = ({ links }: Props) => {
+export const Breadcrumbs = ({ links, locale }: Props) => {
   const crumbs = links.map((link, index) => (
     <li
       key={index}
@@ -34,7 +36,7 @@ export const Breadcrumbs = ({ links }: Props) => {
         </ol>
       </nav>
 
-      <BackBlock />
+      <BackBlock locale={locale} />
     </div>
   );
 };

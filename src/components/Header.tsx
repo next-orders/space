@@ -5,6 +5,7 @@ import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
 import type { Channel, Checkout } from "@next-orders/api-sdk";
 import { useUIStore } from "@/store/ui";
 import { useSearchStore } from "@/store/search";
+import { getDictionary } from "@/dictionaries";
 
 type HeaderProps = {
   channel: Channel | null;
@@ -28,6 +29,10 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
 
   const cartNumber = checkout?.lines.length;
   const isCartEmpty = !checkout?.lines.length;
+
+  const { SEARCH_PLACEHOLDER, CART_LABEL } = getDictionary(
+    channel?.languageCode,
+  );
 
   return (
     <div className="z-10 w-full h-full px-4 md:px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-zinc-100">
@@ -54,10 +59,10 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
         <div className="flex flex-row gap-1 items-center">
           <IconSearch stroke={1.5} />
           <input
+            type="text"
             value={search}
             onChange={(event) => setSearch(event.currentTarget.value)}
-            type="text"
-            placeholder="Find a product"
+            placeholder={SEARCH_PLACEHOLDER}
             onInput={handleSearchInput}
             className="px-2 py-2 w-32 md:w-56 group-focus:bg-zinc-400 rounded-xl"
           />
@@ -73,7 +78,7 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
             className="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
             style={{ backgroundColor, backgroundImage }}
           >
-            <span className="font-medium">Cart</span>
+            <span className="font-medium">{CART_LABEL}</span>
             <div className="rounded-full bg-white w-6 h-6 text-center">
               {cartNumber}
             </div>

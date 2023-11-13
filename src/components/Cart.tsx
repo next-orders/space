@@ -9,6 +9,7 @@ import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
 import { CartDeliveryMethodToggle } from "@/components/CartDeliveryMethodToggle";
 import { useUIStore } from "@/store/ui";
+import { getDictionary, Locale } from "@/dictionaries";
 
 type CartProps = {
   channel: Channel | null;
@@ -30,12 +31,16 @@ export const Cart = ({ channel, checkout }: CartProps) => {
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
 
+  const locale = channel?.languageCode || "EN";
+  const { CART_LABEL, CART_NEXT_BUTTON, DETAILED_CONDITIONS_LABEL } =
+    getDictionary(channel?.languageCode);
+
   return (
     <div className="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
       <div className="h-screen overflow-y-auto">
         <div className="mb-48">
           <div className="mb-4 flex flex-row justify-between items-center">
-            <p className="text-2xl font-medium">Cart</p>
+            <p className="text-2xl font-medium">{CART_LABEL}</p>
 
             <button
               onClick={closeCartDrawer}
@@ -50,7 +55,7 @@ export const Cart = ({ channel, checkout }: CartProps) => {
             <CartDeliveryMethodToggle channel={channel} checkout={checkout} />
           </div>
 
-          {isEmpty && <CartEmpty />}
+          {isEmpty && <CartEmpty locale={locale} />}
           {items}
         </div>
       </div>
@@ -70,7 +75,9 @@ export const Cart = ({ channel, checkout }: CartProps) => {
               <DeliveryInfoBlock shippingPrice={checkout.shippingPrice} />
             )}
 
-            <div className="text-sm text-zinc-500">Detailed conditions</div>
+            <div className="text-sm text-zinc-500">
+              {DETAILED_CONDITIONS_LABEL}
+            </div>
           </div>
         </button>
 
@@ -81,7 +88,7 @@ export const Cart = ({ channel, checkout }: CartProps) => {
               className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
               style={{ backgroundColor, backgroundImage }}
             >
-              <div className="font-normal">Okay, next</div>
+              <div className="font-normal">{CART_NEXT_BUTTON}</div>
               <div className="font-medium text-lg">
                 {checkout?.totalPrice} <span className="text-base">$</span>
               </div>
@@ -137,7 +144,13 @@ const CartItemLine = ({ quantity, variant, id }: CheckoutLine) => {
   );
 };
 
-const CartEmpty = () => {
+type CartEmptyProps = {
+  locale: Locale;
+};
+
+const CartEmpty = ({ locale }: CartEmptyProps) => {
+  const { EMPTY_CART_DESCRIPTION } = getDictionary(locale);
+
   return (
     <div className="mt-8">
       <Image
@@ -148,7 +161,7 @@ const CartEmpty = () => {
         className="mx-auto mb-2 grayscale opacity-60"
       />
       <div className="text-lg text-center font-normal text-zinc-500">
-        Your cart is empty
+        {EMPTY_CART_DESCRIPTION}
       </div>
     </div>
   );

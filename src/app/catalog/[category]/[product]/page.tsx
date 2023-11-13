@@ -37,7 +37,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumbs links={breadcrumbs} />
+      <Breadcrumbs links={breadcrumbs} locale={channel?.languageCode || "EN"} />
 
       <div className="bg-white px-5 py-5 rounded-2xl">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-0 gap-y-4 sm:gap-4">
