@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+
 import { IconMinus, IconPlus } from "@tabler/icons-react";
 import {
   AddOneToCheckoutLine,
