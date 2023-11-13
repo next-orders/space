@@ -93,7 +93,7 @@ export const Cart = ({ channel, checkout }: CartProps) => {
   );
 };
 
-const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
+const CartItemLine = ({ quantity, variant, id }: CheckoutLine) => {
   const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
 
@@ -132,7 +132,7 @@ const CartItemLine = ({ quantity, variant }: CheckoutLine) => {
         </div>
       </Link>
 
-      <Counter count={quantity} />
+      <Counter count={quantity} lineId={id} />
     </div>
   );
 };

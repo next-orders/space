@@ -5,7 +5,7 @@ import { Price } from "@/components/Price";
 import { CurrencySign } from "@/components/CurrencySign";
 import { Counter } from "@/components/Counter";
 
-export const CheckoutLineBlock = ({ quantity, variant }: CheckoutLine) => {
+export const CheckoutLineBlock = ({ quantity, variant, id }: CheckoutLine) => {
   const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
 
@@ -39,7 +39,7 @@ export const CheckoutLineBlock = ({ quantity, variant }: CheckoutLine) => {
       </Link>
 
       <div className="ml-auto">
-        <Counter count={quantity} />
+        <Counter count={quantity} lineId={id} />
       </div>
 
       <div className="min-w-[3rem] ml-4 text-lg text-right">

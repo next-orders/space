@@ -28,6 +28,40 @@ export const AddProductToCheckout = async (
   return add;
 };
 
+export const AddOneToCheckoutLine = async (
+  checkoutId: string,
+  lineId: string,
+) => {
+  const change = await api.addOneToCheckoutLine(checkoutId, lineId, {
+    next: { revalidate: 0 },
+  });
+  if (!change || change instanceof Error) {
+    return null;
+  }
+
+  // On success: Revalidate Checkout
+  revalidateTag("checkout");
+
+  return change;
+};
+
+export const RemoveOneFromCheckoutLine = async (
+  checkoutId: string,
+  lineId: string,
+) => {
+  const change = await api.removeOneFromCheckoutLine(checkoutId, lineId, {
+    next: { revalidate: 0 },
+  });
+  if (!change || change instanceof Error) {
+    return null;
+  }
+
+  // On success: Revalidate Checkout
+  revalidateTag("checkout");
+
+  return change;
+};
+
 export const ChangeCheckoutDeliveryMethod = async (
   checkoutId: string,
   method: Checkout["deliveryMethod"],
