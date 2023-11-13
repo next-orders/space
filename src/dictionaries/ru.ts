@@ -12,4 +12,6 @@ export const RU: Dictionary = {
   DETAILED_CONDITIONS_LABEL: "Подробные условия",
   SEARCH_PLACEHOLDER: "Найти товар",
   EMPTY_CART_DESCRIPTION: "Ваша корзина пуста",
+  DEMO_WARNING_DESCRIPTION:
+    "Это демо-версия сайта! Вся информация не соответствует действительности.",
 };

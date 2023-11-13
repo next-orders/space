@@ -8,7 +8,9 @@ import {
 export const Footer = () => {
   return (
     <div className="px-4 lg:px-12 pb-10 mt-20 text-center">
-      {!process.env.NEXT_PUBLIC_DISABLE_DEMO && <CommandCenterBlock />}
+      {process.env.NEXT_PUBLIC_ENABLE_COMMAND_CENTER_DEMO && (
+        <CommandCenterBlock />
+      )}
       {!process.env.NEXT_PUBLIC_DISABLE_COPYRIGHT && <CopyrightBlock />}
     </div>
   );

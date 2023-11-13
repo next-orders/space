@@ -12,4 +12,6 @@ export const EN = {
   DETAILED_CONDITIONS_LABEL: "Detailed conditions",
   SEARCH_PLACEHOLDER: "Find a product",
   EMPTY_CART_DESCRIPTION: "Your cart is empty",
+  DEMO_WARNING_DESCRIPTION:
+    "This is a demo version of the website! All information is not real.",
 };

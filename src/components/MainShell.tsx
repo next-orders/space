@@ -6,6 +6,7 @@ import { CartDrawer } from "@/components/CartDrawer";
 import { Footer } from "@/components/Footer";
 import { Cart } from "@/components/Cart";
 import { Header } from "@/components/Header";
+import { DemoWarningBlock } from "@/components/DemoWarningBlock";
 
 type MainShellProps = {
   channel: Channel | null;
@@ -14,6 +15,8 @@ type MainShellProps = {
 };
 
 export const MainShell = ({ channel, checkout, children }: MainShellProps) => {
+  const locale = channel?.languageCode || "EN";
+
   return (
     <>
       <header className="z-20 h-16 bg-white fixed top-0 left-0 right-0">
@@ -23,6 +26,10 @@ export const MainShell = ({ channel, checkout, children }: MainShellProps) => {
       <Navigation channel={channel} checkout={checkout} />
 
       <main className="relative w-auto bg-zinc-100 md:pl-72 xl:pr-80 top-16">
+        {process.env.NEXT_PUBLIC_ENABLE_DEMO && (
+          <DemoWarningBlock locale={locale} />
+        )}
+
         <div className="px-4 pb-10 pt-4">{children}</div>
         <DeliveryInfoModal checkout={checkout} />
         <CartDrawer channel={channel} checkout={checkout} />
