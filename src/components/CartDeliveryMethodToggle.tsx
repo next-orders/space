@@ -3,6 +3,7 @@
 import React from "react";
 import { Channel, Checkout } from "@next-orders/api-sdk";
 import { ChangeCheckoutDeliveryMethod } from "@/server/actions";
+import { getDictionary, Locale } from "@/dictionaries";
 
 type CartTypeToggleProps = {
   channel: Channel | null;
@@ -38,7 +39,8 @@ type MethodButtonProps = {
 };
 
 const MethodButton = ({ channel, method, methodNow }: MethodButtonProps) => {
-  const label = getMethodButtonLabel(method);
+  const locale = channel?.languageCode || "EN";
+  const label = getMethodButtonLabel(method, locale);
   const isActive = method === methodNow;
 
   const backgroundColor = isActive ? channel?.accentButtonColor : "";
@@ -58,7 +60,12 @@ const MethodButton = ({ channel, method, methodNow }: MethodButtonProps) => {
   );
 };
 
-const getMethodButtonLabel = (method: Checkout["deliveryMethod"]) => {
-  if (method === "DELIVERY") return "Delivery";
-  if (method === "WAREHOUSE") return "Self-pickup";
+const getMethodButtonLabel = (
+  method: Checkout["deliveryMethod"],
+  locale: Locale,
+) => {
+  const { DELIVERY_LABEL, SELF_PICKUP_LABEL } = getDictionary(locale);
+
+  if (method === "DELIVERY") return DELIVERY_LABEL;
+  if (method === "WAREHOUSE") return SELF_PICKUP_LABEL;
 };

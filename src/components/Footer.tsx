@@ -8,8 +8,15 @@ import {
 export const Footer = () => {
   return (
     <div className="px-4 lg:px-12 pb-10 mt-20 text-center">
-      <CommandCenterBlock />
+      {!process.env.NEXT_PUBLIC_DISABLE_DEMO && <CommandCenterBlock />}
+      {!process.env.NEXT_PUBLIC_DISABLE_COPYRIGHT && <CopyrightBlock />}
+    </div>
+  );
+};
 
+const CopyrightBlock = () => {
+  return (
+    <>
       <div className="flex flex-row gap-1 justify-center">
         Created with <IconHearts stroke={1.5} className="text-red-500" /> by
         Nick Kosarev and team
@@ -25,7 +32,7 @@ export const Footer = () => {
           <IconBrandGithubFilled stroke={1.5} size={24} />
         </Link>
       </div>
-    </div>
+    </>
   );
 };
 
