@@ -1,15 +1,15 @@
 import React from "react";
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
-import { GetShop } from "@/client/api";
+import { GetChannel } from "@/client/api";
 
 import "./globals.scss";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const shop = await GetShop();
-  if (!shop) return {};
+  const channel = await GetChannel();
+  if (!channel) return {};
 
-  return { title: shop.name, description: shop.description };
+  return { title: channel.name, description: channel.description };
 }
 
 type RootLayoutProps = {

@@ -6,14 +6,12 @@ import {
   GetCheckout,
   GetMenu,
   GetProductsInCategory,
-  GetShop,
 } from "@/client/api";
 import { ProductCard } from "@/components/ProductCard";
 import { MainShell } from "@/components/MainShell";
 
 export default async function Page() {
-  const [shop, channel, checkout] = await Promise.all([
-    GetShop(),
+  const [channel, checkout] = await Promise.all([
     GetChannel(),
     GetCheckout("123"),
   ]);
@@ -25,9 +23,9 @@ export default async function Page() {
   ));
 
   return (
-    <MainShell shop={shop} channel={channel} checkout={checkout}>
-      <h1 className="mb-2 text-3xl font-medium">{shop?.name}</h1>
-      <div className="mb-6">Welcome to the site!</div>
+    <MainShell channel={channel} checkout={checkout}>
+      <h1 className="mb-2 text-3xl font-medium">{channel?.name}</h1>
+      <div className="mb-6">{channel?.description}</div>
 
       {categories}
     </MainShell>

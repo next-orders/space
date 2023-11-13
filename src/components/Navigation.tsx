@@ -7,17 +7,16 @@ import {
   IconLink,
   IconTruckDelivery,
 } from "@tabler/icons-react";
-import type { Channel, Checkout, Shop } from "@next-orders/api-sdk";
+import type { Channel, Checkout } from "@next-orders/api-sdk";
 import { LinkButton } from "@/components/LinkButton";
 import { useUIStore } from "@/store/ui";
 
 type NavigationProps = {
-  shop: Shop | null;
   channel: Channel | null;
   checkout: Checkout | null;
 };
 
-export const Navigation = ({ shop, channel, checkout }: NavigationProps) => {
+export const Navigation = ({ channel, checkout }: NavigationProps) => {
   const isNavbarOpened = useUIStore((state) => state.isNavbarOpened);
   const toggleNavbar = useUIStore((state) => state.toggleNavbar);
   const toggleDeliveryInfoModal = useUIStore(
@@ -51,10 +50,10 @@ export const Navigation = ({ shop, channel, checkout }: NavigationProps) => {
               style={{ color: channel?.accentTextColor }}
               onClick={toggleNavbar}
             >
-              {shop?.name}
+              {channel?.name}
             </Link>
             <div className="mt-1 text-sm leading-tight">
-              {shop?.description}
+              {channel?.description}
             </div>
           </div>
 
