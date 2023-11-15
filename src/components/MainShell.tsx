@@ -31,7 +31,15 @@ export const MainShell = ({ channel, checkout, children }: MainShellProps) => {
         )}
 
         <div className="px-4 pb-10 pt-4">{children}</div>
-        <DeliveryInfoModal checkout={checkout} />
+
+        {channel && checkout && (
+          <DeliveryInfoModal
+            checkout={checkout}
+            channel={channel}
+            locale={locale}
+          />
+        )}
+
         <CartDrawer channel={channel} checkout={checkout} />
         <Footer />
       </main>

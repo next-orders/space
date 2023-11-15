@@ -11,6 +11,7 @@ import type { Channel, Checkout } from "@next-orders/api-sdk";
 import { LinkButton } from "@/components/LinkButton";
 import { useUIStore } from "@/store/ui";
 import { getDictionary, Locale } from "@/dictionaries";
+import { getCurrencySign } from "@/client/helpers";
 
 type NavigationProps = {
   channel: Channel | null;
@@ -37,6 +38,7 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
     );
   });
 
+  const currencyCode = channel?.currencyCode || "USD";
   const locale = channel?.languageCode || "EN";
   const { SHOW_DETAILS_LABEL, CATALOG_LABEL } = getDictionary(locale);
 
@@ -62,12 +64,11 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
           </div>
 
           <div className="mb-8">
-            {checkout?.deliveryMethod === "WAREHOUSE" && (
-              <SelfPickupInfoBlock locale={locale} />
-            )}
-            {checkout?.deliveryMethod === "DELIVERY" && (
-              <DeliveryInfoBlock locale={locale} />
-            )}
+            <DeliveryInfoBlock
+              locale={locale}
+              method={checkout?.deliveryMethod || "DELIVERY"}
+              currencyCode={currencyCode}
+            />
 
             <button
               onClick={toggleDeliveryInfoModal}
@@ -89,48 +90,64 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
 
 type DeliveryInfoBlockProps = {
   locale: Locale;
+  method: Checkout["deliveryMethod"];
+  currencyCode: Channel["currencyCode"];
 };
 
-const DeliveryInfoBlock = ({ locale }: DeliveryInfoBlockProps) => {
-  const { DELIVERY_LABEL } = getDictionary(locale);
+const DeliveryInfoBlock = ({
+  locale,
+  method,
+  currencyCode,
+}: DeliveryInfoBlockProps) => {
+  const {
+    DELIVERY_LABEL,
+    SELF_PICKUP_LABEL,
+    TODAY_UNTIL_LABEL,
+    FREE_FROM_LABEL,
+    DISCOUNT_LABEL,
+  } = getDictionary(locale);
 
-  return (
-    <>
-      <p className="font-medium text-lg mb-2">{DELIVERY_LABEL}</p>
-      <div className="flex flex-row gap-2 items-center mb-2">
-        <IconClock stroke={1.5} /> today until 22:00
-      </div>
-      <div className="flex flex-row gap-2 items-center mb-2">
-        <IconTruckDelivery stroke={1.5} />
-        <div>
-          free from 25
-          <span className="text-sm">$</span>
-        </div>
-      </div>
-    </>
-  );
-};
+  const currencySign = getCurrencySign(currencyCode);
 
-type SelfPickupInfoBlockProps = {
-  locale: Locale;
-};
+  let title;
+  let todayUntil;
+  let block;
 
-const SelfPickupInfoBlock = ({ locale }: SelfPickupInfoBlockProps) => {
-  const { SELF_PICKUP_LABEL } = getDictionary(locale);
-
-  return (
-    <>
-      <p className="font-medium text-lg mb-2">{SELF_PICKUP_LABEL}</p>
-      <div className="flex flex-row gap-2 items-center mb-2">
-        <IconClock stroke={1.5} /> today until 23:00
-      </div>
-      <div className="flex flex-row gap-2 items-center mb-2">
+  if (method === "WAREHOUSE") {
+    title = SELF_PICKUP_LABEL;
+    todayUntil = "23:00";
+    block = (
+      <>
         <IconDiscount2 stroke={1.5} />
-        <div>
-          discount 10
+        <div className="lowercase">
+          {DISCOUNT_LABEL} 10
           <span className="text-sm">%</span>
         </div>
+      </>
+    );
+  }
+
+  if (method === "DELIVERY") {
+    title = DELIVERY_LABEL;
+    todayUntil = "22:00";
+    block = (
+      <>
+        <IconTruckDelivery stroke={1.5} />
+        <div className="lowercase">
+          {FREE_FROM_LABEL} 25
+          <span className="text-sm">{currencySign}</span>
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <p className="font-medium text-lg mb-2">{title}</p>
+      <div className="flex flex-row gap-2 items-center mb-2">
+        <IconClock stroke={1.5} /> {TODAY_UNTIL_LABEL} {todayUntil}
       </div>
+      <div className="flex flex-row gap-2 items-center mb-2">{block}</div>
     </>
   );
 };

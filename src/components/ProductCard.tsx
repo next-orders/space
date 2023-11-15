@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ProductVariant } from "@next-orders/api-sdk";
-import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
+import { getCurrencySign } from "@/client/helpers";
 
 type ProductCardProps = {
   productUrl: string;
@@ -18,6 +18,7 @@ export const ProductCard = ({
   productUrl,
 }: ProductCardProps) => {
   const photo = media?.length ? media[0] : undefined;
+  const currencySign = getCurrencySign(currency);
 
   return (
     <Link href={productUrl}>
@@ -34,9 +35,7 @@ export const ProductCard = ({
             />
             <div className="mt-2 text-xl font-medium">
               <Price value={gross} />
-              <span className="pl-1 text-lg">
-                <CurrencySign code={currency} />
-              </span>
+              <span className="pl-1 text-lg">{currencySign}</span>
             </div>
             <div className="font-light leading-tight line-clamp-2">{name}</div>
             <div className="mt-2 font-light text-zinc-500">

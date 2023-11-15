@@ -1,9 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
+import { Inter } from "next/font/google";
 import { GetChannel } from "@/client/api";
 
 import "./globals.scss";
+
+const inter = Inter({ subsets: ["latin", "cyrillic-ext"] });
 
 export async function generateMetadata(): Promise<Metadata> {
   const channel = await GetChannel();
@@ -18,7 +20,7 @@ type RootLayoutProps = {
 
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={GeistSans.className}>
+    <html lang="en" className={inter.className}>
       <body className="bg-white md:bg-zinc-100">{children}</body>
     </html>
   );

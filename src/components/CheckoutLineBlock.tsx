@@ -2,12 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import type { CheckoutLine } from "@next-orders/api-sdk";
 import { Price } from "@/components/Price";
-import { CurrencySign } from "@/components/CurrencySign";
 import { Counter } from "@/components/Counter";
+import { getCurrencySign } from "@/client/helpers";
 
 export const CheckoutLineBlock = ({ quantity, variant, id }: CheckoutLine) => {
   const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
+
+  const currencySign = getCurrencySign(variant.currency);
 
   // Prepare Item URL
   const pageUrl = `/catalog/${variant.category.slug}/${variant.slug}`;
@@ -44,9 +46,7 @@ export const CheckoutLineBlock = ({ quantity, variant, id }: CheckoutLine) => {
 
       <div className="min-w-[3rem] ml-4 text-lg text-right">
         <Price value={price} />
-        <span className="text-sm">
-          <CurrencySign code={variant.currency} />
-        </span>
+        <span className="text-sm">{currencySign}</span>
       </div>
     </div>
   );

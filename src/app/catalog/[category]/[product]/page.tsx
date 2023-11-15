@@ -1,10 +1,10 @@
-import { notFound } from "next/navigation";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
 import { AddToCart } from "@/components/AddToCart";
 import { GetChannel, GetCheckout, GetProductBySlug } from "@/client/api";
+import { getCurrencySign } from "@/client/helpers";
 
 type PageProps = {
   params: { product: string };
@@ -25,6 +25,7 @@ export default async function Page({ params }: PageProps) {
   );
 
   const photo = product.media?.length ? product.media[0] : undefined;
+  const currencySign = getCurrencySign(product.currency);
 
   const breadcrumbs = [
     { title: "Home page", href: "/" },
@@ -62,9 +63,7 @@ export default async function Page({ params }: PageProps) {
             <div className="mt-4 flex flex-row gap-6 items-center">
               <div className="text-2xl font-medium tracking-tight">
                 <Price value={product.gross} />
-                <span className="pl-1 text-xl">
-                  <CurrencySign code={product.currency} />
-                </span>
+                <span className="pl-1 text-xl">{currencySign}</span>
               </div>
 
               <AddToCart product={product} channel={channel} />

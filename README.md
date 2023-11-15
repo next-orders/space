@@ -28,7 +28,6 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - [React](https://reactjs.org/): JavaScript library for building user interfaces.
 - [TailwindCSS](https://tailwindcss.com/): Utility-first CSS framework for rapid UI development.
 - [Tabler Icons](https://tabler-icons.io/): Free and open source icons.
-- [Geist Font](https://vercel.com/font): A typeface made for developers and designers.
 - [Sharp](https://sharp.pixelplumbing.com/): High performance Node.js image processing.
 - [Zustand](https://github.com/pmndrs/zustand): A small, fast and scalable bearbones state-management solution.
 - [TypeScript](https://www.typescriptlang.org/): Typed superset of JavaScript that compiles to plain JavaScript.
@@ -61,8 +60,8 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - [src/app/website-api](src/app/website-api): API endpoints for internal calls from the Main API.
 - [src/components](src/components): Reusable UI components.
 - [src/store](src/store): Client-side state of the app.
-- [src/client](src/client): Wrapper functions for Main API SDK.
-- [src/server](src/server): Server-side logic for the website.
+- [src/client](src/client): Wrapper functions for Main API SDK and helper functions.
+- [src/server](src/server): Next.js Server Actions with data revalidation.
 - [src/dictionaries](src/dictionaries): Localization for the UI with TypeScript protection.
 
 ## ☕ How to deploy

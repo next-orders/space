@@ -5,11 +5,11 @@ import Link from "next/link";
 import { IconInfoHexagon, IconX } from "@tabler/icons-react";
 import type { Channel, Checkout, CheckoutLine } from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
-import { CurrencySign } from "@/components/CurrencySign";
 import { Price } from "@/components/Price";
 import { CartDeliveryMethodToggle } from "@/components/CartDeliveryMethodToggle";
 import { useUIStore } from "@/store/ui";
 import { getDictionary, Locale } from "@/dictionaries";
+import { getCurrencySign } from "@/client/helpers";
 
 type CartProps = {
   channel: Channel | null;
@@ -34,6 +34,8 @@ export const Cart = ({ channel, checkout }: CartProps) => {
   const locale = channel?.languageCode || "EN";
   const { CART_LABEL, CART_NEXT_BUTTON, DETAILED_CONDITIONS_LABEL } =
     getDictionary(channel?.languageCode);
+
+  const currencySign = getCurrencySign(channel?.currencyCode);
 
   return (
     <div className="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
@@ -68,12 +70,12 @@ export const Cart = ({ channel, checkout }: CartProps) => {
           <IconInfoHexagon stroke={1.5} className="w-8 h-8 text-zinc-300" />
 
           <div className="text-left">
-            {checkout?.deliveryMethod === "WAREHOUSE" && (
-              <SelfPickupInfoBlock />
-            )}
-            {checkout?.deliveryMethod === "DELIVERY" && (
-              <DeliveryInfoBlock shippingPrice={checkout.shippingPrice} />
-            )}
+            <DeliveryInfoBlock
+              method={checkout?.deliveryMethod || "DELIVERY"}
+              shippingPrice={checkout?.shippingPrice || 0}
+              currencySign={currencySign}
+              locale={locale}
+            />
 
             <div className="text-sm text-zinc-500">
               {DETAILED_CONDITIONS_LABEL}
@@ -104,6 +106,8 @@ const CartItemLine = ({ quantity, variant, id }: CheckoutLine) => {
   const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
 
+  const currencySign = getCurrencySign(variant.currency);
+
   // Prepare Item URL
   const pageUrl = `/catalog/${variant.category.slug}/${variant.slug}`;
 
@@ -126,9 +130,7 @@ const CartItemLine = ({ quantity, variant, id }: CheckoutLine) => {
             <div className="mt-1 flex flex-row gap-2 flex-nowrap">
               <div className="text-sm font-medium">
                 <Price value={price} />
-                <span className="text-xs">
-                  <CurrencySign code={variant.currency} />
-                </span>
+                <span className="text-xs">{currencySign}</span>
               </div>
               <div className="text-sm text-zinc-500 font-light">
                 {variant?.weightValue}
@@ -169,29 +171,48 @@ const CartEmpty = ({ locale }: CartEmptyProps) => {
 
 type DeliveryInfoBlockProps = {
   shippingPrice: number;
+  method: Checkout["deliveryMethod"];
+  currencySign: string;
+  locale: Locale;
 };
 
-const DeliveryInfoBlock = ({ shippingPrice }: DeliveryInfoBlockProps) => {
-  return (
-    <div className="flex flex-row gap-1 leading-tight">
-      <div className="text-sm">45–60 min</div>
-      <span className="text-zinc-300">/</span>
-      <div className="text-sm">
-        Cost {shippingPrice}
-        <span className="text-xs">$</span>
-      </div>
-    </div>
-  );
-};
+const DeliveryInfoBlock = ({
+  shippingPrice,
+  method,
+  currencySign,
+  locale,
+}: DeliveryInfoBlockProps) => {
+  const { DISCOUNT_LABEL, MIN_LABEL, DELIVERY_LABEL } = getDictionary(locale);
 
-const SelfPickupInfoBlock = () => {
+  let avg;
+  let block;
+
+  if (method === "WAREHOUSE") {
+    avg = "15–20";
+    block = (
+      <>
+        {DISCOUNT_LABEL} 10<span className="text-xs">%</span>
+      </>
+    );
+  }
+
+  if (method === "DELIVERY") {
+    avg = "45–60";
+    block = (
+      <>
+        {DELIVERY_LABEL} {shippingPrice}
+        <span className="text-xs">{currencySign}</span>
+      </>
+    );
+  }
+
   return (
     <div className="flex flex-row gap-1 leading-tight">
-      <div className="text-sm">15–20 min</div>
-      <span className="text-zinc-300">/</span>
       <div className="text-sm">
-        Discount 10<span className="text-xs">%</span>
+        {avg} {MIN_LABEL}
       </div>
+      <span className="text-zinc-300">/</span>
+      <div className="text-sm">{block}</div>
     </div>
   );
 };
