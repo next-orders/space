@@ -10,15 +10,7 @@ const nextConfig = {
       // What if we don't know prod hostname?
       {
         protocol: "https",
-        hostname: "**.org",
-      },
-      {
-        protocol: "https",
-        hostname: "**.com",
-      },
-      {
-        protocol: "https",
-        hostname: "**.ru",
+        hostname: "**",
       },
     ],
   },
