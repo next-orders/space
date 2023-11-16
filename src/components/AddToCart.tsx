@@ -3,6 +3,7 @@
 import { IconShoppingCartPlus } from "@tabler/icons-react";
 import { Channel, ProductVariant } from "@next-orders/api-sdk";
 import { AddProductToCheckout } from "@/server/actions";
+import { getDictionary } from "@/dictionaries";
 
 type AddToCartProps = {
   channel: Channel | null;
@@ -15,13 +16,16 @@ export const AddToCart = ({ channel, product }: AddToCartProps) => {
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
 
+  const locale = channel?.languageCode || "EN";
+  const { ADD_TO_CART_LABEL } = getDictionary(locale);
+
   return (
     <button
       onClick={() => AddProductToCheckout("123", product.id)}
       className="px-5 py-3 flex flex-row gap-2 text-base font-medium cursor-pointer rounded-2xl hover:scale-95 duration-200"
       style={{ backgroundColor, backgroundImage }}
     >
-      <IconShoppingCartPlus stroke={1.5} /> Add to Cart
+      <IconShoppingCartPlus stroke={1.5} /> {ADD_TO_CART_LABEL}
     </button>
   );
 };
