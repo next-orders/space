@@ -12,6 +12,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "**.org",
       },
+      {
+        protocol: "https",
+        hostname: "**.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**.ru",
+      },
     ],
   },
   output: "standalone",
