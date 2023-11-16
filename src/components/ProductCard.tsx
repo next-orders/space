@@ -2,13 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { ProductVariant } from "@next-orders/api-sdk";
 import { Price } from "@/components/Price";
-import { getCurrencySign } from "@/client/helpers";
+import { getCurrencySign, getWeightLocalizedUnit } from "@/client/helpers";
+import { Locale } from "@/dictionaries";
 
 type ProductCardProps = {
+  locale: Locale;
   productUrl: string;
 } & ProductVariant;
 
 export const ProductCard = ({
+  locale,
   name,
   weightUnit,
   weightValue,
@@ -19,6 +22,7 @@ export const ProductCard = ({
 }: ProductCardProps) => {
   const photo = media?.length ? media[0] : undefined;
   const currencySign = getCurrencySign(currency);
+  const weightUnitLocalized = getWeightLocalizedUnit(weightUnit, locale);
 
   return (
     <Link href={productUrl}>
@@ -40,7 +44,7 @@ export const ProductCard = ({
             <div className="font-light leading-tight line-clamp-2">{name}</div>
             <div className="mt-2 font-light text-zinc-500">
               {weightValue}
-              {weightUnit}
+              {weightUnitLocalized}
             </div>
           </div>
 

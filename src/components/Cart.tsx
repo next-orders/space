@@ -9,7 +9,7 @@ import { Price } from "@/components/Price";
 import { CartDeliveryMethodToggle } from "@/components/CartDeliveryMethodToggle";
 import { useUIStore } from "@/store/ui";
 import { getDictionary, Locale } from "@/dictionaries";
-import { getCurrencySign } from "@/client/helpers";
+import { getCurrencySign, getWeightLocalizedUnit } from "@/client/helpers";
 
 type CartProps = {
   channel: Channel | null;
@@ -22,18 +22,18 @@ export const Cart = ({ channel, checkout }: CartProps) => {
     (state) => state.toggleDeliveryInfoModal,
   );
 
+  const locale = channel?.languageCode || "EN";
+  const { CART_LABEL, CART_NEXT_BUTTON, DETAILED_CONDITIONS_LABEL } =
+    getDictionary(channel?.languageCode);
+
   const items = checkout?.lines?.map((line) => (
-    <CartItemLine key={line.id} {...line} />
+    <CartItemLine key={line.id} locale={locale} {...line} />
   ));
 
   const isEmpty = items?.length === 0;
 
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
-
-  const locale = channel?.languageCode || "EN";
-  const { CART_LABEL, CART_NEXT_BUTTON, DETAILED_CONDITIONS_LABEL } =
-    getDictionary(channel?.languageCode);
 
   const currencySign = getCurrencySign(channel?.currencyCode);
 
@@ -103,11 +103,20 @@ export const Cart = ({ channel, checkout }: CartProps) => {
   );
 };
 
-const CartItemLine = ({ quantity, variant, id }: CheckoutLine) => {
+type CartItemLineProps = {
+  locale: Locale;
+} & CheckoutLine;
+
+const CartItemLine = ({ locale, quantity, variant, id }: CartItemLineProps) => {
   const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
 
   const currencySign = getCurrencySign(variant.currency);
+
+  const weightUnitLocalized = getWeightLocalizedUnit(
+    variant.weightUnit,
+    locale,
+  );
 
   // Prepare Item URL
   const pageUrl = `/catalog/${variant.category.slug}/${variant.slug}`;
@@ -135,7 +144,7 @@ const CartItemLine = ({ quantity, variant, id }: CheckoutLine) => {
               </div>
               <div className="text-sm text-zinc-500 font-light">
                 {variant?.weightValue}
-                {variant?.weightUnit}
+                {weightUnitLocalized}
               </div>
             </div>
           </div>

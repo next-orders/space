@@ -64,7 +64,12 @@ export default async function Page({ params }: PageProps) {
     const productUrl = category.slug + "/" + product.slug;
 
     return (
-      <ProductCard key={product.id} productUrl={productUrl} {...product} />
+      <ProductCard
+        key={product.id}
+        locale={locale}
+        productUrl={productUrl}
+        {...product}
+      />
     );
   });
 

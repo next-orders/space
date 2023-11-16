@@ -13,24 +13,8 @@ export default async function Page() {
     GetChannel(),
   ]);
 
-  const items = checkout?.lines?.map((line) => (
-    <CheckoutLineBlock key={line.id} {...line} />
-  ));
-
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
-
-  // Load Products for additional sales
-  const products = await GetProductsInCategory("hcs9nywdrigyeqjljnkohpl0"); // Sushi
-
-  // Limit 6 products
-  const showProducts = products?.slice(0, 6).map((product) => {
-    const productUrl = "/catalog/" + product.category.slug + "/" + product.slug;
-
-    return (
-      <ProductCard key={product.id} productUrl={productUrl} {...product} />
-    );
-  });
 
   const locale = channel?.languageCode || "EN";
   const {
@@ -46,7 +30,30 @@ export default async function Page() {
     CREATE_ORDER_LABEL,
     ANYTHING_ELSE_LABEL,
     PRICE_OF_GOODS_LABEL,
+    NOW_LABEL,
+    MIN_LABEL,
   } = getDictionary(locale);
+
+  const items = checkout?.lines?.map((line) => (
+    <CheckoutLineBlock key={line.id} locale={locale} {...line} />
+  ));
+
+  // Load Products for additional sales
+  const products = await GetProductsInCategory("hcs9nywdrigyeqjljnkohpl0"); // Sushi
+
+  // Limit 6 products
+  const showProducts = products?.slice(0, 6).map((product) => {
+    const productUrl = "/catalog/" + product.category.slug + "/" + product.slug;
+
+    return (
+      <ProductCard
+        key={product.id}
+        locale={locale}
+        productUrl={productUrl}
+        {...product}
+      />
+    );
+  });
 
   const currencySign = getCurrencySign(channel?.currencyCode);
 
@@ -65,7 +72,9 @@ export default async function Page() {
 
             <div className="px-4 py-2 bg-zinc-100 rounded-2xl inline-block">
               <div className="font-medium">{DELIVERY_LABEL}</div>
-              <div>5$</div>
+              <div>
+                5<span className="text-xs">{currencySign}</span>
+              </div>
             </div>
 
             <div className="w-full mt-4">
@@ -123,7 +132,7 @@ export default async function Page() {
 
             <div className="flex flex-row gap-2">
               <IconClock stroke={1.5} />
-              Now: 45-60 min
+              {NOW_LABEL}: 45-60 {MIN_LABEL}
             </div>
           </Block>
 
@@ -145,13 +154,15 @@ export default async function Page() {
               <div className="mb-2 flex flex-row justify-between text-lg">
                 <div>{PRICE_OF_GOODS_LABEL}</div>
                 <div>
-                  {checkout?.totalPrice} {currencySign}
+                  {checkout?.totalPrice}
+                  <span className="text-sm">{currencySign}</span>
                 </div>
               </div>
               <div className="mb-2 flex flex-row justify-between text-lg">
                 <div>{COST_OF_DELIVERY_LABEL}</div>
                 <div>
-                  {checkout?.shippingPrice} {currencySign}
+                  {checkout?.shippingPrice}
+                  <span className="text-sm">{currencySign}</span>
                 </div>
               </div>
 
@@ -172,7 +183,7 @@ export default async function Page() {
               </Link>
 
               <div className="font-medium text-right text-xl min-w-[6rem]">
-                {checkout?.totalPrice}{" "}
+                {checkout?.totalPrice}
                 <span className="text-base">{currencySign}</span>
               </div>
             </div>

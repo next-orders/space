@@ -56,7 +56,12 @@ const CategoryBlock = async ({ category, locale }: CategoryBlockProps) => {
     const productUrl = "/catalog/" + product.category.slug + "/" + product.slug;
 
     return (
-      <ProductCard key={product.id} productUrl={productUrl} {...product} />
+      <ProductCard
+        key={product.id}
+        locale={locale}
+        productUrl={productUrl}
+        {...product}
+      />
     );
   });
 

@@ -3,13 +3,28 @@ import Image from "next/image";
 import type { CheckoutLine } from "@next-orders/api-sdk";
 import { Price } from "@/components/Price";
 import { Counter } from "@/components/Counter";
-import { getCurrencySign } from "@/client/helpers";
+import { getCurrencySign, getWeightLocalizedUnit } from "@/client/helpers";
+import { Locale } from "@/dictionaries";
 
-export const CheckoutLineBlock = ({ quantity, variant, id }: CheckoutLine) => {
+type CheckoutLineBlockProps = {
+  locale: Locale;
+} & CheckoutLine;
+
+export const CheckoutLineBlock = ({
+  locale,
+  quantity,
+  variant,
+  id,
+}: CheckoutLineBlockProps) => {
   const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
 
   const currencySign = getCurrencySign(variant.currency);
+
+  const weightUnitLocalized = getWeightLocalizedUnit(
+    variant.weightUnit,
+    locale,
+  );
 
   // Prepare Item URL
   const pageUrl = `/catalog/${variant.category.slug}/${variant.slug}`;
@@ -32,8 +47,8 @@ export const CheckoutLineBlock = ({ quantity, variant, id }: CheckoutLine) => {
             </div>
             <div className="mt-1 flex flex-row gap-2 flex-nowrap">
               <div className="text-sm text-zinc-500 font-light">
-                {variant?.weightValue}
-                {variant?.weightUnit}
+                {variant.weightValue}
+                {weightUnitLocalized}
               </div>
             </div>
           </div>

@@ -41,6 +41,8 @@ export const RU: Dictionary = {
   MORE_INFO_LABEL: "Больше информации",
   NOW_LABEL: "Сейчас",
   MIN_LABEL: "мин",
+  GRAM_SHORT_LABEL: "г",
+  KG_SHORT_LABEL: "кг",
   SEARCH_PLACEHOLDER: "Найти товар",
   EMPTY_CART_DESCRIPTION: "Ваша корзина пуста",
   MINIMUM_ORDER_VALUE: "Минимальная стоимость заказа",

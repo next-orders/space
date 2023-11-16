@@ -41,6 +41,8 @@ export const EN = {
   MORE_INFO_LABEL: "More info",
   NOW_LABEL: "Now",
   MIN_LABEL: "min",
+  GRAM_SHORT_LABEL: "g",
+  KG_SHORT_LABEL: "kg",
   SEARCH_PLACEHOLDER: "Find a product",
   EMPTY_CART_DESCRIPTION: "Your cart is empty",
   MINIMUM_ORDER_VALUE: "Minimum order value",

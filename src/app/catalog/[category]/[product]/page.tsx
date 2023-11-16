@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Price } from "@/components/Price";
 import { AddToCart } from "@/components/AddToCart";
 import { GetChannel, GetCheckout, GetProductBySlug } from "@/client/api";
-import { getCurrencySign } from "@/client/helpers";
+import { getCurrencySign, getWeightLocalizedUnit } from "@/client/helpers";
 import { getDictionary } from "@/dictionaries";
 
 type PageProps = {
@@ -40,6 +40,11 @@ export default async function Page({ params }: PageProps) {
     KCAL_LABEL,
   } = getDictionary(locale);
 
+  const weightUnitLocalized = getWeightLocalizedUnit(
+    product.weightUnit,
+    locale,
+  );
+
   const breadcrumbs = [
     { title: HOME_PAGE_BUTTON, href: "/" },
     {
@@ -70,7 +75,7 @@ export default async function Page({ params }: PageProps) {
             </h1>
             <div className="mt-1 font-normal text-zinc-400">
               {product?.weightValue}
-              {product?.weightUnit}
+              {weightUnitLocalized}
             </div>
 
             <div className="mt-4 flex flex-row gap-6 items-center">
