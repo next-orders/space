@@ -4,6 +4,8 @@ import { IconClock } from "@tabler/icons-react";
 import { GetChannel, GetCheckout, GetProductsInCategory } from "@/client/api";
 import { CheckoutLineBlock } from "@/components/CheckoutLineBlock";
 import { ProductCard } from "@/components/ProductCard";
+import { getDictionary } from "@/dictionaries";
+import { getCurrencySign } from "@/client/helpers";
 
 export default async function Page() {
   const [checkout, channel] = await Promise.all([
@@ -30,17 +32,34 @@ export default async function Page() {
     );
   });
 
+  const locale = channel?.languageCode || "EN";
+  const {
+    CHECKOUT_LABEL,
+    DELIVERY_CONDITIONS_LABEL,
+    INDICATE_ADDRESS_LABEL,
+    DELIVERY_TIME_LABEL,
+    COST_OF_DELIVERY_LABEL,
+    YOU_ORDER_LABEL,
+    TOTAL_LABEL,
+    HAVE_A_PROMO_LABEL,
+    CREATE_ORDER_LABEL,
+    ANYTHING_ELSE_LABEL,
+    PRICE_OF_GOODS_LABEL,
+  } = getDictionary(locale);
+
+  const currencySign = getCurrencySign(channel?.currencyCode);
+
   return (
     <>
       <h1 className="pt-8 mb-4 md:mb-8 text-3xl md:text-4xl font-medium">
-        Checkout
+        {CHECKOUT_LABEL}
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
         <div className="col-span-full md:col-span-7">
           <Block>
             <h2 className="mb-2 text-xl md:text-2xl font-medium">
-              Delivery conditions
+              {DELIVERY_CONDITIONS_LABEL}
             </h2>
 
             <div className="px-4 py-2 bg-zinc-100 rounded-2xl inline-block">
@@ -50,7 +69,7 @@ export default async function Page() {
 
             <div className="w-full mt-4">
               <h3 className="mb-2 text-lg md:text-xl font-medium">
-                Indicate your address
+                {INDICATE_ADDRESS_LABEL}
               </h3>
               <input
                 type="text"
@@ -98,7 +117,7 @@ export default async function Page() {
             </div>
 
             <h2 className="mt-4 mb-2 text-xl md:text-2xl font-medium">
-              Delivery time
+              {DELIVERY_TIME_LABEL}
             </h2>
 
             <div className="flex flex-row gap-2">
@@ -108,29 +127,36 @@ export default async function Page() {
           </Block>
 
           <Block>
-            <h2 className="mb-4 text-xl md:text-2xl font-medium">You order</h2>
-
+            <h2 className="mb-4 text-xl md:text-2xl font-medium">
+              {YOU_ORDER_LABEL}
+            </h2>
             {items}
           </Block>
         </div>
 
         <div className="col-span-full md:col-span-5 h-fit sticky top-20">
           <Block>
-            <h2 className="mb-4 text-xl md:text-2xl font-medium">Total</h2>
+            <h2 className="mb-4 text-xl md:text-2xl font-medium">
+              {TOTAL_LABEL}
+            </h2>
 
             <div className="mb-4">
               <div className="mb-2 flex flex-row justify-between text-lg">
-                <div>Price of goods</div>
-                <div>{checkout?.totalPrice} $</div>
+                <div>{PRICE_OF_GOODS_LABEL}</div>
+                <div>
+                  {checkout?.totalPrice} {currencySign}
+                </div>
               </div>
               <div className="mb-2 flex flex-row justify-between text-lg">
-                <div>Cost of delivery</div>
-                <div>{checkout?.shippingPrice} $</div>
+                <div>{COST_OF_DELIVERY_LABEL}</div>
+                <div>
+                  {checkout?.shippingPrice} {currencySign}
+                </div>
               </div>
 
               <div className="mt-4 mb-6">
                 <div className="text-base text-zinc-500">
-                  Do you have a promo code?
+                  {HAVE_A_PROMO_LABEL}?
                 </div>
               </div>
             </div>
@@ -141,11 +167,12 @@ export default async function Page() {
                 className="w-full px-4 py-4 text-lg font-medium text-center rounded-xl cursor-pointer hover:scale-95 duration-200"
                 style={{ backgroundColor, backgroundImage }}
               >
-                Create Order
+                {CREATE_ORDER_LABEL}
               </Link>
 
               <div className="font-medium text-right text-xl min-w-[6rem]">
-                {checkout?.totalPrice} <span className="text-base">$</span>
+                {checkout?.totalPrice}{" "}
+                <span className="text-base">{currencySign}</span>
               </div>
             </div>
           </Block>
@@ -154,7 +181,7 @@ export default async function Page() {
 
       <div className="mt-4">
         <h2 className="mb-2 md:mb-4 text-2xl md:text-3xl font-medium">
-          Anything else?
+          {ANYTHING_ELSE_LABEL}?
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-7 gap-2">

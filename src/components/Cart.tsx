@@ -92,7 +92,8 @@ export const Cart = ({ channel, checkout }: CartProps) => {
             >
               <div className="font-normal">{CART_NEXT_BUTTON}</div>
               <div className="font-medium text-lg">
-                {checkout?.totalPrice} <span className="text-base">$</span>
+                {checkout?.totalPrice}{" "}
+                <span className="text-base">{currencySign}</span>
               </div>
             </Link>
           </div>
