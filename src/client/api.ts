@@ -41,8 +41,8 @@ export const GetMenu = async (id: string) => {
   return menu;
 };
 
-export const GetCategories = async () => {
-  const categories = await apiPublicClient.getMenuCategories({
+export const GetCategories = async (menuId: string) => {
+  const categories = await apiPublicClient.getMenuCategories(menuId, {
     next: {
       ...nextConfig,
       tags: ["all", "categories"],

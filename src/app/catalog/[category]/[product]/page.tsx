@@ -5,6 +5,7 @@ import { Price } from "@/components/Price";
 import { AddToCart } from "@/components/AddToCart";
 import { GetChannel, GetCheckout, GetProductBySlug } from "@/client/api";
 import { getCurrencySign } from "@/client/helpers";
+import { getDictionary } from "@/dictionaries";
 
 type PageProps = {
   params: { product: string };
@@ -27,8 +28,12 @@ export default async function Page({ params }: PageProps) {
   const photo = product.media?.length ? product.media[0] : undefined;
   const currencySign = getCurrencySign(product.currency);
 
+  const locale = channel?.languageCode || "EN";
+  const { HOME_PAGE_BUTTON, IN_CART_LABEL, DESCRIPTION_LABEL } =
+    getDictionary(locale);
+
   const breadcrumbs = [
-    { title: "Home page", href: "/" },
+    { title: HOME_PAGE_BUTTON, href: "/" },
     {
       title: product.category?.name,
       href: `/catalog/${product.category?.slug}`,
@@ -68,7 +73,7 @@ export default async function Page({ params }: PageProps) {
 
               <AddToCart product={product} channel={channel} />
 
-              {isInCart && <p>In Cart!</p>}
+              {isInCart && <p>{IN_CART_LABEL}!</p>}
             </div>
           </div>
         </div>
@@ -76,7 +81,9 @@ export default async function Page({ params }: PageProps) {
         <div className="mt-6 flex flex-col xl:flex-row justify-between gap-4">
           {product.description && (
             <div>
-              <div className="mb-1 font-medium text-zinc-400">Description</div>
+              <div className="mb-1 font-medium text-zinc-400">
+                {DESCRIPTION_LABEL}
+              </div>
               <div className="leading-snug">{product.description}</div>
             </div>
           )}

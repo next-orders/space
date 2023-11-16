@@ -3,12 +3,14 @@ export type Dictionary = typeof EN;
 export const EN = {
   OPEN_CATEGORY_BUTTON: "Open category",
   RETURN_BUTTON: "Return",
+  HOME_PAGE_BUTTON: "Home page",
   CART_NEXT_BUTTON: "Okay, next",
   SHOW_DETAILS_LABEL: "show details",
   TODAY_UNTIL_LABEL: "today until",
   FREE_FROM_LABEL: "free from",
   DISCOUNT_LABEL: "Discount",
   CATALOG_LABEL: "Catalog",
+  DESCRIPTION_LABEL: "Description",
   COURIER_PAYMENT_LABEL: "Courier payment",
   DELIVERY_LABEL: "Delivery",
   DELIVERY_DETAILS_LABEL: "Delivery Details",
@@ -17,6 +19,7 @@ export const EN = {
   SELF_PICKUP_LABEL: "Self-pickup",
   SELF_PICKUP_DETAILS_LABEL: "Self-pickup Details",
   CART_LABEL: "Cart",
+  IN_CART_LABEL: "In Cart",
   DETAILED_CONDITIONS_LABEL: "Detailed conditions",
   MORE_INFO_LABEL: "More info",
   NOW_LABEL: "Now",
@@ -27,4 +30,6 @@ export const EN = {
   MAXIMUM_ORDER_WEIGHT: "Maximum order weight",
   DEMO_WARNING_DESCRIPTION:
     "This is a demo version of the website! All information is not real.",
+  CATEGORY_PAGE_DEFAULT_DESCRIPTION:
+    "Here are all the products from this category",
 };

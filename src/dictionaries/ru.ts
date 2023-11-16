@@ -3,12 +3,14 @@ import { Dictionary } from "@/dictionaries/en";
 export const RU: Dictionary = {
   OPEN_CATEGORY_BUTTON: "Открыть категорию",
   RETURN_BUTTON: "Вернуться",
+  HOME_PAGE_BUTTON: "Главная страница",
   CART_NEXT_BUTTON: "Хорошо, далее",
   SHOW_DETAILS_LABEL: "показать детали",
   TODAY_UNTIL_LABEL: "сегодня до",
   FREE_FROM_LABEL: "бесплатно от",
   DISCOUNT_LABEL: "Скидка",
   CATALOG_LABEL: "Каталог",
+  DESCRIPTION_LABEL: "Описание",
   COURIER_PAYMENT_LABEL: "Курьерская оплата",
   DELIVERY_LABEL: "Доставка",
   DELIVERY_DETAILS_LABEL: "Детали доставки",
@@ -17,6 +19,7 @@ export const RU: Dictionary = {
   SELF_PICKUP_LABEL: "Самовывоз",
   SELF_PICKUP_DETAILS_LABEL: "Детали самовывоза",
   CART_LABEL: "Корзина",
+  IN_CART_LABEL: "В корзине",
   DETAILED_CONDITIONS_LABEL: "Подробные условия",
   MORE_INFO_LABEL: "Больше информации",
   NOW_LABEL: "Сейчас",
@@ -27,4 +30,6 @@ export const RU: Dictionary = {
   MAXIMUM_ORDER_WEIGHT: "Максимальный вес заказа",
   DEMO_WARNING_DESCRIPTION:
     "Это демо-версия сайта! Вся информация не соответствует действительности.",
+  CATEGORY_PAGE_DEFAULT_DESCRIPTION:
+    "Здесь представлены все товары из этой категории",
 };

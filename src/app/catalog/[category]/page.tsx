@@ -6,8 +6,10 @@ import {
   GetCategories,
   GetCategoryBySlug,
   GetChannel,
+  GetMenu,
   GetProductsInCategory,
 } from "@/client/api";
+import { getDictionary } from "@/dictionaries";
 
 type PageProps = {
   params: { category: string };
@@ -25,7 +27,9 @@ export async function generateMetadata({
 export default async function Page({ params }: PageProps) {
   const channel = await GetChannel();
 
-  const categories = await GetCategories();
+  const menu = await GetMenu(channel?.menus[0].id || "");
+
+  const categories = await GetCategories(menu?.id || "");
   if (!categories) {
     notFound();
   }
@@ -47,8 +51,12 @@ export default async function Page({ params }: PageProps) {
     return <div>No Products here :(</div>;
   }
 
+  const locale = channel?.languageCode || "EN";
+  const { HOME_PAGE_BUTTON, CATEGORY_PAGE_DEFAULT_DESCRIPTION } =
+    getDictionary(locale);
+
   const breadcrumbs = [
-    { title: "Home page", href: "/" },
+    { title: HOME_PAGE_BUTTON, href: "/" },
     { title: category.name, href: "#" },
   ];
 
@@ -65,7 +73,7 @@ export default async function Page({ params }: PageProps) {
       <Breadcrumbs links={breadcrumbs} locale={channel?.languageCode || "EN"} />
 
       <h1 className="text-3xl font-medium">{category.name}</h1>
-      <div>Here are all the products from this category</div>
+      <div>{CATEGORY_PAGE_DEFAULT_DESCRIPTION}</div>
 
       <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-2">
         {products}
