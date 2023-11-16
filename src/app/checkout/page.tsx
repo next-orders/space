@@ -36,6 +36,7 @@ export default async function Page() {
   const {
     CHECKOUT_LABEL,
     DELIVERY_CONDITIONS_LABEL,
+    DELIVERY_LABEL,
     INDICATE_ADDRESS_LABEL,
     DELIVERY_TIME_LABEL,
     COST_OF_DELIVERY_LABEL,
@@ -63,7 +64,7 @@ export default async function Page() {
             </h2>
 
             <div className="px-4 py-2 bg-zinc-100 rounded-2xl inline-block">
-              <div className="font-medium">Delivery</div>
+              <div className="font-medium">{DELIVERY_LABEL}</div>
               <div>5$</div>
             </div>
 
