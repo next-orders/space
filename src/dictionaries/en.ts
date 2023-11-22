@@ -47,6 +47,9 @@ export const EN = {
   EMPTY_CART_DESCRIPTION: "Your cart is empty",
   MINIMUM_ORDER_VALUE: "Minimum order value",
   MAXIMUM_ORDER_WEIGHT: "Maximum order weight",
+  CHANNEL_IS_NOT_CONFIGURED_LABEL: "Channel is not configured",
+  CHANNEL_IS_NOT_CONFIGURED_DESCRIPTION:
+    "You need to prepare all entities in Command Center.",
   DEMO_WARNING_DESCRIPTION:
     "This is a demo version of the website! All information is not real.",
   CATEGORY_PAGE_DEFAULT_DESCRIPTION:

@@ -47,6 +47,9 @@ export const RU: Dictionary = {
   EMPTY_CART_DESCRIPTION: "Ваша корзина пуста",
   MINIMUM_ORDER_VALUE: "Минимальная стоимость заказа",
   MAXIMUM_ORDER_WEIGHT: "Максимальный вес заказа",
+  CHANNEL_IS_NOT_CONFIGURED_LABEL: "Канал не настроен",
+  CHANNEL_IS_NOT_CONFIGURED_DESCRIPTION:
+    "Вам необходимо подготовить все сущности в Командном центре.",
   DEMO_WARNING_DESCRIPTION:
     "Это демо-версия сайта! Вся информация не соответствует действительности.",
   CATEGORY_PAGE_DEFAULT_DESCRIPTION:

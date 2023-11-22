@@ -4,6 +4,7 @@ import type { MenuCategory } from "@next-orders/api-sdk";
 import {
   GetChannel,
   GetCheckout,
+  GetLocale,
   GetMenu,
   GetProductsInCategory,
 } from "@/client/api";
@@ -12,10 +13,15 @@ import { MainShell } from "@/components/MainShell";
 import { getDictionary, Locale } from "@/dictionaries";
 
 export default async function Page() {
-  const [channel, checkout] = await Promise.all([
+  const [channel, checkout, locale] = await Promise.all([
     GetChannel(),
     GetCheckout("123"),
+    GetLocale(),
   ]);
+
+  if (!channel) {
+    return <ChannelEmptyBlock locale={locale} />;
+  }
 
   const menu = await GetMenu(channel?.menus[0].id || "");
 
@@ -84,5 +90,25 @@ const CategoryBlock = async ({ category, locale }: CategoryBlockProps) => {
         {showProducts}
       </div>
     </>
+  );
+};
+
+type ChannelEmptyBlockProps = {
+  locale: Locale;
+};
+
+const ChannelEmptyBlock = ({ locale }: ChannelEmptyBlockProps) => {
+  const {
+    CHANNEL_IS_NOT_CONFIGURED_LABEL,
+    CHANNEL_IS_NOT_CONFIGURED_DESCRIPTION,
+  } = getDictionary(locale);
+
+  return (
+    <div className="max-w-md mx-auto mt-20 text-center">
+      <h1 className="mb-2 text-xl font-medium">
+        {CHANNEL_IS_NOT_CONFIGURED_LABEL}
+      </h1>
+      <p>{CHANNEL_IS_NOT_CONFIGURED_DESCRIPTION}</p>
+    </div>
   );
 };

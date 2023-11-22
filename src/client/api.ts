@@ -1,4 +1,7 @@
+import { headers } from "next/headers";
 import { MainAPI } from "@next-orders/api-sdk";
+import { Locale } from "@/dictionaries";
+import { getBrowserLocale } from "@/client/helpers";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "no-api-url-env";
 const CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID || "no-channel-id-env";
@@ -11,6 +14,19 @@ const nextConfig = {
   // Problem: on build time Next try to fetch API, which is not declared. Empty data on deploy, until revalidation.
   // Solution: set revalidate to 0
   revalidate: process.env.DATA_CACHE_DISABLED ? 0 : MAX_CACHE_SECONDS,
+};
+
+export const GetLocale = async (): Promise<Locale> => {
+  const language = headers().get("Accept-Language");
+  const browserLocale = getBrowserLocale(language);
+
+  const channel = await GetChannel();
+  const locale = channel?.languageCode;
+  if (!locale) {
+    return browserLocale;
+  }
+
+  return locale as Locale;
 };
 
 export const GetChannel = async () => {
