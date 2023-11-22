@@ -23,7 +23,11 @@ export default async function Page() {
     return <ChannelEmptyBlock locale={locale} />;
   }
 
-  const menu = await GetMenu(channel?.menus[0].id || "");
+  const menu = await GetMenu(channel?.menus[0]?.id || "");
+
+  if (!menu) {
+    return <ChannelEmptyBlock locale={locale} />;
+  }
 
   const categories = menu?.categories?.map(async (category) => (
     <CategoryBlock
