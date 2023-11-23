@@ -46,9 +46,13 @@ export const getBrowserLocale = (
   switch (browserLanguage[0]) {
     case "ru":
     case "ru-ru":
+    case "ru-ua":
+    case "ru-by":
+    case "ru-kz":
       return "RU";
     case "en":
     case "en-us":
+    case "en-gb":
       return "EN";
     default:
       console.warn(
