@@ -75,7 +75,7 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
         <div className="block xl:hidden font-medium">
           <button
             onClick={toggleCartDrawer}
-            className="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
+            className="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center rounded-xl cursor-pointer hover:scale-95 active:scale-90 duration-200"
             style={{ backgroundColor, backgroundImage }}
           >
             <span className="font-medium">{CART_LABEL}</span>

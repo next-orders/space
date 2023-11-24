@@ -182,7 +182,7 @@ export default async function Page() {
             <div className="flex flex-row flex-nowrap gap-4 items-center">
               <Link
                 href={"#"}
-                className="w-full px-4 py-4 text-lg font-medium text-center rounded-xl cursor-pointer hover:scale-95 duration-200"
+                className="w-full px-4 py-4 text-lg font-medium text-center rounded-xl cursor-pointer hover:scale-95 active:scale-90 duration-200"
                 style={{ backgroundColor, backgroundImage }}
               >
                 {CREATE_ORDER_LABEL}

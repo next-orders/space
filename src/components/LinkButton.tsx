@@ -20,7 +20,7 @@ export const LinkButton = ({ link, label, iconUrl }: LinkButtonProps) => {
     <Link
       href={link}
       onClick={toggleNavbar}
-      className="text-base font-normal flex flex-row items-center gap-4 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-zinc-200 data-[active=true]:font-medium hover:bg-zinc-100 hover:scale-95 duration-200 group"
+      className="text-base font-normal flex flex-row items-center gap-4 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-zinc-200 data-[active=true]:font-medium hover:bg-zinc-100 hover:scale-95 active:scale-90 duration-200 group"
       data-active={activePath === link}
     >
       <Image

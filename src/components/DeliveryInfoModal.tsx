@@ -44,7 +44,7 @@ export const DeliveryInfoModal = ({
 
           <button
             onClick={closeDeliveryInfoModal}
-            className="mt-4 px-5 py-3 w-full text-center text-base font-medium cursor-pointer rounded-2xl bg-zinc-200 hover:bg-zinc-300 hover:scale-95 duration-200"
+            className="mt-4 px-5 py-3 w-full text-center text-base font-medium cursor-pointer rounded-2xl bg-zinc-200 hover:bg-zinc-300 hover:scale-95 active:scale-90 duration-200"
           >
             OK
           </button>

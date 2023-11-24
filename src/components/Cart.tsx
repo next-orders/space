@@ -75,7 +75,7 @@ export const Cart = ({ channel, checkout }: CartProps) => {
       <div className="absolute bottom-0 left-0 right-0 rounded-2xl bg-zinc-50">
         <button
           onClick={toggleDeliveryInfoModal}
-          className="relative my-4 mx-4 flex flex-row gap-3 flex-wrap items-center hover:scale-95 duration-200"
+          className="relative my-4 mx-4 flex flex-row gap-3 flex-wrap items-center hover:scale-95 active:scale-90 duration-200"
         >
           <IconInfoHexagon stroke={1.5} className="w-8 h-8 text-zinc-300" />
 
@@ -97,7 +97,7 @@ export const Cart = ({ channel, checkout }: CartProps) => {
           <div className="my-4 mx-4">
             <Link
               href={"/checkout"}
-              className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer hover:scale-95 duration-200"
+              className="w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer hover:scale-95 active:scale-90 duration-200"
               style={{ backgroundColor, backgroundImage }}
             >
               <div className="font-normal">{CART_NEXT_BUTTON}</div>
@@ -141,7 +141,7 @@ const CartItemLine = ({
   return (
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
       <Link href={pageUrl}>
-        <div className="max-w-[11rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 duration-200 group">
+        <div className="max-w-[11rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 active:scale-90 duration-200 group">
           <Image
             src={photo?.url ?? "/static/no-image-zinc.png"}
             alt={photo?.alt ?? ""}

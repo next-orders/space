@@ -34,7 +34,7 @@ export const CheckoutLineBlock = ({
   return (
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
       <Link href={pageUrl}>
-        <div className="max-w-[16rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 duration-200 group">
+        <div className="max-w-[16rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 active:scale-90 duration-200 group">
           <Image
             src={photo?.url ?? "/static/no-image-zinc.png"}
             alt={photo?.alt ?? ""}
