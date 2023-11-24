@@ -26,7 +26,7 @@ export default async function Page({ params }: PageProps) {
   );
 
   const photo = product.media?.length ? product.media[0] : undefined;
-  const currencySign = getCurrencySign(product.currency);
+  const currencySign = getCurrencySign(channel?.currencyCode);
 
   const locale = channel?.languageCode || "EN";
   const {

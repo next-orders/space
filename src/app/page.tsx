@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { IconArrowRight } from "@tabler/icons-react";
-import type { MenuCategory } from "@next-orders/api-sdk";
+import type { CurrencyCode, MenuCategory } from "@next-orders/api-sdk";
 import {
   GetChannel,
   GetCheckout,
@@ -33,7 +33,8 @@ export default async function Page() {
     <CategoryBlock
       key={category.id}
       category={category}
-      locale={channel?.languageCode || "EN"}
+      locale={channel.languageCode}
+      currencyCode={channel.currencyCode}
     />
   ));
 
@@ -50,9 +51,14 @@ export default async function Page() {
 type CategoryBlockProps = {
   category: MenuCategory;
   locale: Locale;
+  currencyCode: CurrencyCode;
 };
 
-const CategoryBlock = async ({ category, locale }: CategoryBlockProps) => {
+const CategoryBlock = async ({
+  category,
+  locale,
+  currencyCode,
+}: CategoryBlockProps) => {
   const { OPEN_CATEGORY_BUTTON } = getDictionary(locale);
 
   // Load Products in this category
@@ -70,6 +76,7 @@ const CategoryBlock = async ({ category, locale }: CategoryBlockProps) => {
         key={product.id}
         locale={locale}
         productUrl={productUrl}
+        currencyCode={currencyCode}
         {...product}
       />
     );

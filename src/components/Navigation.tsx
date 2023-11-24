@@ -7,7 +7,12 @@ import {
   IconLink,
   IconTruckDelivery,
 } from "@tabler/icons-react";
-import type { Channel, Checkout } from "@next-orders/api-sdk";
+import type {
+  Channel,
+  Checkout,
+  CheckoutDeliveryMethod,
+  CurrencyCode,
+} from "@next-orders/api-sdk";
 import { LinkButton } from "@/components/LinkButton";
 import { useUIStore } from "@/store/ui";
 import { getDictionary, Locale } from "@/dictionaries";
@@ -38,7 +43,7 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
     );
   });
 
-  const currencyCode = channel?.currencyCode || "USD";
+  const currencyCode = channel?.currencyCode;
   const locale = channel?.languageCode || "EN";
   const { SHOW_DETAILS_LABEL, CATALOG_LABEL } = getDictionary(locale);
 
@@ -90,8 +95,8 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
 
 type DeliveryInfoBlockProps = {
   locale: Locale;
-  method: Checkout["deliveryMethod"];
-  currencyCode: Channel["currencyCode"];
+  method: CheckoutDeliveryMethod;
+  currencyCode: CurrencyCode | undefined;
 };
 
 const DeliveryInfoBlock = ({

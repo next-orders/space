@@ -68,6 +68,7 @@ export default async function Page({ params }: PageProps) {
         key={product.id}
         locale={locale}
         productUrl={productUrl}
+        currencyCode={channel?.currencyCode}
         {...product}
       />
     );

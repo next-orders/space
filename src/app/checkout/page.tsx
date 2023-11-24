@@ -50,6 +50,7 @@ export default async function Page() {
         key={product.id}
         locale={locale}
         productUrl={productUrl}
+        currencyCode={channel?.currencyCode}
         {...product}
       />
     );
