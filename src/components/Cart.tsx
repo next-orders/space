@@ -3,7 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { IconInfoHexagon, IconX } from "@tabler/icons-react";
-import type { Channel, Checkout, CheckoutLine } from "@next-orders/api-sdk";
+import type {
+  Channel,
+  Checkout,
+  CheckoutLine,
+  CurrencyCode,
+} from "@next-orders/api-sdk";
 import { Counter } from "@/components/Counter";
 import { Price } from "@/components/Price";
 import { CartDeliveryMethodToggle } from "@/components/CartDeliveryMethodToggle";
@@ -27,7 +32,12 @@ export const Cart = ({ channel, checkout }: CartProps) => {
     getDictionary(channel?.languageCode);
 
   const items = checkout?.lines?.map((line) => (
-    <CartItemLine key={line.id} locale={locale} {...line} />
+    <CartItemLine
+      key={line.id}
+      locale={locale}
+      currencyCode={channel?.currencyCode}
+      {...line}
+    />
   ));
 
   const isEmpty = items?.length === 0;
@@ -105,13 +115,20 @@ export const Cart = ({ channel, checkout }: CartProps) => {
 
 type CartItemLineProps = {
   locale: Locale;
+  currencyCode: CurrencyCode | undefined;
 } & CheckoutLine;
 
-const CartItemLine = ({ locale, quantity, variant, id }: CartItemLineProps) => {
+const CartItemLine = ({
+  locale,
+  currencyCode,
+  quantity,
+  variant,
+  id,
+}: CartItemLineProps) => {
   const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
 
-  const currencySign = getCurrencySign(variant.currency);
+  const currencySign = getCurrencySign(currencyCode);
 
   const weightUnitLocalized = getWeightLocalizedUnit(
     variant.weightUnit,

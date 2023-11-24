@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { CheckoutLine } from "@next-orders/api-sdk";
+import type { CheckoutLine, CurrencyCode } from "@next-orders/api-sdk";
 import { Price } from "@/components/Price";
 import { Counter } from "@/components/Counter";
 import { getCurrencySign, getWeightLocalizedUnit } from "@/client/helpers";
@@ -8,10 +8,12 @@ import { Locale } from "@/dictionaries";
 
 type CheckoutLineBlockProps = {
   locale: Locale;
+  currencyCode: CurrencyCode | undefined;
 } & CheckoutLine;
 
 export const CheckoutLineBlock = ({
   locale,
+  currencyCode,
   quantity,
   variant,
   id,
@@ -19,7 +21,7 @@ export const CheckoutLineBlock = ({
   const price = variant?.gross;
   const photo = variant.media?.length ? variant.media[0] : undefined;
 
-  const currencySign = getCurrencySign(variant.currency);
+  const currencySign = getCurrencySign(currencyCode);
 
   const weightUnitLocalized = getWeightLocalizedUnit(
     variant.weightUnit,

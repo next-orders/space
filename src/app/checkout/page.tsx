@@ -35,7 +35,12 @@ export default async function Page() {
   } = getDictionary(locale);
 
   const items = checkout?.lines?.map((line) => (
-    <CheckoutLineBlock key={line.id} locale={locale} {...line} />
+    <CheckoutLineBlock
+      key={line.id}
+      locale={locale}
+      currencyCode={channel?.currencyCode}
+      {...line}
+    />
   ));
 
   // Load Products for additional sales
