@@ -70,7 +70,9 @@ You can use latest Docker Image:
 
 ```shell
 docker pull ghcr.io/next-orders/v1:latest
-# or use specific version
+
+# or use the specific version
+docker pull ghcr.io/next-orders/v1:v0.1.0
 ```
 
 You need to use env variables:

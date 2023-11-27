@@ -1,6 +1,6 @@
 {
   "name": "v1",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Modern e-commerce website: clients will be happy to order delicious food!",
   "scripts": {
     "dev": "next dev",
