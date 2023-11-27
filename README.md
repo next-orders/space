@@ -69,7 +69,8 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 You can use latest Docker Image:
 
 ```shell
-docker pull ghcr.io/next-orders/v1:main
+docker pull ghcr.io/next-orders/v1:latest
+# or use specific version
 ```
 
 You need to use env variables:
