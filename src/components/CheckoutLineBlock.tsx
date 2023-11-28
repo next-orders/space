@@ -15,21 +15,23 @@ export const CheckoutLineBlock = ({
   locale,
   currencyCode,
   quantity,
-  variant,
+  productVariant,
   id,
 }: CheckoutLineBlockProps) => {
-  const price = variant?.gross;
-  const photo = variant.media?.length ? variant.media[0] : undefined;
+  const price = productVariant?.gross;
+  const photo = productVariant.media?.length
+    ? productVariant.media[0].media
+    : undefined;
 
   const currencySign = getCurrencySign(currencyCode);
 
   const weightUnitLocalized = getWeightLocalizedUnit(
-    variant.weightUnit,
+    productVariant.weightUnit,
     locale,
   );
 
   // Prepare Item URL
-  const pageUrl = `/catalog/${variant.category.slug}/${variant.slug}`;
+  const pageUrl = `/catalog/${productVariant.category.slug}/${productVariant.slug}`;
 
   return (
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
@@ -45,11 +47,11 @@ export const CheckoutLineBlock = ({
 
           <div>
             <div className="font-base text-sm leading-tight line-clamp-1">
-              {variant.name}
+              {productVariant.name}
             </div>
             <div className="mt-1 flex flex-row gap-2 flex-nowrap">
               <div className="text-sm text-zinc-500 font-light">
-                {variant.weightValue}
+                {productVariant.weightValue}
                 {weightUnitLocalized}
               </div>
             </div>

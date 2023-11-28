@@ -21,7 +21,7 @@ export const ProductCard = ({
   media,
   productUrl,
 }: ProductCardProps) => {
-  const photo = media?.length ? media[0] : undefined;
+  const photo = media?.length ? media[0].media : undefined;
   const currencySign = getCurrencySign(currencyCode);
   const weightUnitLocalized = getWeightLocalizedUnit(weightUnit, locale);
 

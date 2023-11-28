@@ -22,10 +22,10 @@ export default async function Page({ params }: PageProps) {
   // Check, if in Cart already
   const checkout = await GetCheckout("123");
   const isInCart = checkout?.lines.find(
-    (line) => line.variant.id === product.id,
+    (line) => line.productVariant.id === product.id,
   );
 
-  const photo = product.media?.length ? product.media[0] : undefined;
+  const photo = product.media?.length ? product.media[0].media : undefined;
   const currencySign = getCurrencySign(channel?.currencyCode);
 
   const locale = channel?.languageCode || "EN";
