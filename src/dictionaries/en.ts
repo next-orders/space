@@ -21,6 +21,7 @@ export const EN = {
   SELF_PICKUP_DETAILS_LABEL: "Self-pickup Details",
   CART_LABEL: "Cart",
   IN_CART_LABEL: "In Cart",
+  ADD_LABEL: "Add",
   ADD_TO_CART_LABEL: "Add to Cart",
   IN_100_GRAMS_LABEL: "In 100 grams",
   KCAL_LABEL: "kcal",

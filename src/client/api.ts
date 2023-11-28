@@ -1,7 +1,7 @@
-import { headers } from "next/headers";
-import { MainAPI } from "@next-orders/api-sdk";
+import { cookies, headers } from "next/headers";
+import { Checkout, MainAPI } from "@next-orders/api-sdk";
 import { Locale } from "@/dictionaries";
-import { getBrowserLocale } from "@/client/helpers";
+import { COOKIES_CHECKOUT_ID, getBrowserLocale } from "@/client/helpers";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "no-api-url-env";
 const CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID || "no-channel-id-env";
@@ -102,4 +102,20 @@ export const GetProductBySlug = async (slug: string) => {
   }
 
   return product;
+};
+
+export const GetCheckout = async (): Promise<Checkout | null> => {
+  const id = cookies().get(COOKIES_CHECKOUT_ID)?.value;
+  if (!id) {
+    return null;
+  }
+
+  const checkout = await apiPublicClient.getCheckout(id, {
+    next: { revalidate: 0, tags: ["all", "checkout", `checkout-${id}`] },
+  });
+  if (!checkout || checkout instanceof Error) {
+    return null;
+  }
+
+  return checkout;
 };

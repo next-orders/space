@@ -1,12 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import { IconClock } from "@tabler/icons-react";
-import { GetChannel, GetProductsInCategory } from "@/client/api";
+import { GetChannel, GetCheckout, GetProductsInCategory } from "@/client/api";
 import { CheckoutLineBlock } from "@/components/CheckoutLineBlock";
 import { ProductCard } from "@/components/ProductCard";
 import { getDictionary } from "@/dictionaries";
 import { getCurrencySign } from "@/client/helpers";
-import { GetCheckout } from "@/server/actions";
 
 export default async function Page() {
   const [checkout, channel] = await Promise.all([GetCheckout(), GetChannel()]);
@@ -180,7 +179,7 @@ export default async function Page() {
             <div className="flex flex-row flex-nowrap gap-4 items-center">
               <Link
                 href={"#"}
-                className="w-full px-4 py-4 text-lg font-medium text-center rounded-xl cursor-pointer hover:scale-95 active:scale-90 duration-200"
+                className="w-full px-4 py-4 text-lg font-normal text-center rounded-xl cursor-pointer hover:scale-95 active:scale-90 duration-200"
                 style={{ backgroundColor, backgroundImage }}
               >
                 {CREATE_ORDER_LABEL}

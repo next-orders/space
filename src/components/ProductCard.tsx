@@ -3,7 +3,8 @@ import Image from "next/image";
 import { CurrencyCode, ProductVariant } from "@next-orders/api-sdk";
 import { Price } from "@/components/Price";
 import { getCurrencySign, getWeightLocalizedUnit } from "@/client/helpers";
-import { Locale } from "@/dictionaries";
+import { getDictionary, Locale } from "@/dictionaries";
+import { IconPlus } from "@tabler/icons-react";
 
 type ProductCardProps = {
   locale: Locale;
@@ -24,6 +25,8 @@ export const ProductCard = ({
   const photo = media?.length ? media[0].media : undefined;
   const currencySign = getCurrencySign(currencyCode);
   const weightUnitLocalized = getWeightLocalizedUnit(weightUnit, locale);
+
+  const { ADD_LABEL } = getDictionary(locale);
 
   return (
     <Link href={productUrl}>
@@ -49,8 +52,9 @@ export const ProductCard = ({
             </div>
           </div>
 
-          <div className="flex flex-row gap-2 items-center justify-between mt-2 w-full h-12 bg-zinc-100 rounded-xl">
-            <div className="w-full text-center text-2xl font-light">+</div>
+          <div className="flex flex-row gap-2 items-center justify-center mt-2 w-full h-12 bg-zinc-100 rounded-xl">
+            <IconPlus stroke={1.5} className="w-5 h-5" />
+            <div className="text-center text-base font-light">{ADD_LABEL}</div>
           </div>
         </div>
       </div>

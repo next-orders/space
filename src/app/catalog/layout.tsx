@@ -1,7 +1,6 @@
 import React from "react";
 import { MainShell } from "@/components/MainShell";
-import { GetChannel } from "@/client/api";
-import { GetCheckout } from "@/server/actions";
+import { GetChannel, GetCheckout } from "@/client/api";
 
 type CatalogLayoutProps = {
   children: React.ReactNode;

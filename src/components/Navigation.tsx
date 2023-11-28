@@ -75,12 +75,14 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
               currencyCode={currencyCode}
             />
 
-            <button
-              onClick={toggleDeliveryInfoModal}
-              className="flex flex-row gap-2 items-center hover:scale-95 active:scale-90 duration-200"
-            >
-              <IconLink stroke={1.5} /> {SHOW_DETAILS_LABEL}
-            </button>
+            {checkout && (
+              <button
+                onClick={toggleDeliveryInfoModal}
+                className="flex flex-row gap-2 items-center hover:scale-95 active:scale-90 duration-200"
+              >
+                <IconLink stroke={1.5} /> {SHOW_DETAILS_LABEL}
+              </button>
+            )}
           </div>
 
           <div className="mb-32">

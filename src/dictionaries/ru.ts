@@ -21,6 +21,7 @@ export const RU: Dictionary = {
   SELF_PICKUP_DETAILS_LABEL: "Детали самовывоза",
   CART_LABEL: "Корзина",
   IN_CART_LABEL: "В корзине",
+  ADD_LABEL: "Добавить",
   ADD_TO_CART_LABEL: "Добавить в корзину",
   IN_100_GRAMS_LABEL: "В 100 граммах",
   KCAL_LABEL: "ккал",

@@ -47,6 +47,10 @@ export const Cart = ({ channel, checkout }: CartProps) => {
 
   const currencySign = getCurrencySign(channel?.currencyCode);
 
+  if (!checkout) {
+    return null;
+  }
+
   return (
     <div className="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
       <div className="h-screen overflow-y-auto">

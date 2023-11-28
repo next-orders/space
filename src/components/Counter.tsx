@@ -16,7 +16,7 @@ export const Counter = ({ count, lineId }: CounterProps) => {
     <div className="flex flex-row justify-between items-center bg-zinc-100 w-20 min-w-[5.5rem] rounded-2xl px-1 py-2">
       <button
         aria-label="Minus"
-        onClick={async () => await RemoveOneFromCheckoutLine("123", lineId)}
+        onClick={async () => await RemoveOneFromCheckoutLine(lineId)}
         className="px-1 py-1 rounded-xl hover:scale-90 hover:bg-zinc-200 duration-200"
       >
         <IconMinus stroke={1.5} className="w-5 h-5" />
@@ -26,7 +26,7 @@ export const Counter = ({ count, lineId }: CounterProps) => {
 
       <button
         aria-label="Plus"
-        onClick={async () => await AddOneToCheckoutLine("123", lineId)}
+        onClick={async () => await AddOneToCheckoutLine(lineId)}
         className="px-1 py-1 rounded-xl hover:scale-90 hover:bg-zinc-200 duration-200"
       >
         <IconPlus stroke={1.5} className="w-5 h-5" />

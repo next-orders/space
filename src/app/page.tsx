@@ -3,6 +3,7 @@ import { IconArrowRight } from "@tabler/icons-react";
 import type { CurrencyCode, MenuCategory } from "@next-orders/api-sdk";
 import {
   GetChannel,
+  GetCheckout,
   GetLocale,
   GetMenu,
   GetProductsInCategory,
@@ -10,7 +11,6 @@ import {
 import { ProductCard } from "@/components/ProductCard";
 import { MainShell } from "@/components/MainShell";
 import { getDictionary, Locale } from "@/dictionaries";
-import { GetCheckout } from "@/server/actions";
 
 export default async function Page() {
   const [channel, checkout, locale] = await Promise.all([

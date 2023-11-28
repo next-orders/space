@@ -2,19 +2,20 @@
 
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
-import { Checkout, MainAPI } from "@next-orders/api-sdk";
+import { CheckoutDeliveryMethod, MainAPI } from "@next-orders/api-sdk";
+import { COOKIES_CHECKOUT_ID } from "@/client/helpers";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "no-api-url-env";
 const CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID || "no-channel-id-env";
 
-const COOKIES_CHECKOUT_ID = "next-orders.checkout-id";
-
 const api = new MainAPI(API_URL, ""); // Public only
 
-export const AddProductToCheckout = async (
-  checkoutId: string,
-  productVariantId: string,
-) => {
+export const AddProductToCheckout = async (productVariantId: string) => {
+  const checkoutId = await GetCheckoutId();
+  if (!checkoutId) {
+    return null;
+  }
+
   const add = await api.addProductToCheckout(
     checkoutId,
     { productVariantId },
@@ -32,10 +33,12 @@ export const AddProductToCheckout = async (
   return add;
 };
 
-export const AddOneToCheckoutLine = async (
-  checkoutId: string,
-  lineId: string,
-) => {
+export const AddOneToCheckoutLine = async (lineId: string) => {
+  const checkoutId = await GetCheckoutId();
+  if (!checkoutId) {
+    return null;
+  }
+
   const change = await api.addOneToCheckoutLine(checkoutId, lineId, {
     next: { revalidate: 0 },
   });
@@ -49,10 +52,12 @@ export const AddOneToCheckoutLine = async (
   return change;
 };
 
-export const RemoveOneFromCheckoutLine = async (
-  checkoutId: string,
-  lineId: string,
-) => {
+export const RemoveOneFromCheckoutLine = async (lineId: string) => {
+  const checkoutId = await GetCheckoutId();
+  if (!checkoutId) {
+    return null;
+  }
+
   const change = await api.removeOneFromCheckoutLine(checkoutId, lineId, {
     next: { revalidate: 0 },
   });
@@ -67,9 +72,13 @@ export const RemoveOneFromCheckoutLine = async (
 };
 
 export const ChangeCheckoutDeliveryMethod = async (
-  checkoutId: string,
-  method: Checkout["deliveryMethod"],
+  method: CheckoutDeliveryMethod,
 ) => {
+  const checkoutId = await GetCheckoutId();
+  if (!checkoutId) {
+    return null;
+  }
+
   const change = await api.changeCheckoutDeliveryMethod(
     checkoutId,
     { method },
@@ -87,30 +96,27 @@ export const ChangeCheckoutDeliveryMethod = async (
   return change;
 };
 
-export const GetCheckout = async (): Promise<Checkout | null> => {
+export const GetCheckoutId = async (): Promise<string | null> => {
   const id = cookies().get(COOKIES_CHECKOUT_ID)?.value;
-  if (!id) {
-    // Need to create new Checkout
-    const newCheckout = await api.createCheckout({
-      deliveryMethod: "DELIVERY",
-      channelId: CHANNEL_ID,
-    });
-    if (!newCheckout || newCheckout instanceof Error) {
-      return null;
-    }
-
-    // Update cookies
-    cookies().set(COOKIES_CHECKOUT_ID, newCheckout.result.id);
-
-    return newCheckout.result;
+  if (id) {
+    // Already exist
+    return id;
   }
 
-  const checkout = await api.getCheckout(id, {
-    next: { revalidate: 0, tags: ["all", "checkout", `checkout-${id}`] },
+  const newCheckout = await api.createCheckout({
+    deliveryMethod: "DELIVERY",
+    channelId: CHANNEL_ID,
   });
-  if (!checkout || checkout instanceof Error) {
+  if (!newCheckout || newCheckout instanceof Error) {
     return null;
   }
 
-  return checkout;
+  // Update cookies
+  SetCheckoutId(newCheckout.result.id);
+
+  return newCheckout.result.id;
+};
+
+export const SetCheckoutId = (checkoutId: string) => {
+  cookies().set(COOKIES_CHECKOUT_ID, checkoutId);
 };
