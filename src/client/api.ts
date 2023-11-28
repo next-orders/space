@@ -121,14 +121,7 @@ export const GetCheckout = async (): Promise<Checkout | null> => {
     // Update cookies
     cookies().set(COOKIES_CHECKOUT_ID, newCheckout.result.id);
 
-    const checkout = await apiPublicClient.getCheckout(newCheckout.result.id, {
-      next: { revalidate: 0, tags: ["all", "checkout", `checkout-${id}`] },
-    });
-    if (!checkout || checkout instanceof Error) {
-      return null;
-    }
-
-    return checkout;
+    return newCheckout.result;
   }
 
   const checkout = await apiPublicClient.getCheckout(id, {
