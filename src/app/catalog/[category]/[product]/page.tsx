@@ -3,9 +3,10 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Price } from "@/components/Price";
 import { AddToCart } from "@/components/AddToCart";
-import { GetChannel, GetCheckout, GetProductBySlug } from "@/client/api";
+import { GetChannel, GetProductBySlug } from "@/client/api";
 import { getCurrencySign, getWeightLocalizedUnit } from "@/client/helpers";
 import { getDictionary } from "@/dictionaries";
+import { GetCheckout } from "@/server/actions";
 
 type PageProps = {
   params: { product: string };

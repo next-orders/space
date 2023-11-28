@@ -1,12 +1,10 @@
-import { cookies, headers } from "next/headers";
-import { Checkout, MainAPI } from "@next-orders/api-sdk";
+import { headers } from "next/headers";
+import { MainAPI } from "@next-orders/api-sdk";
 import { Locale } from "@/dictionaries";
 import { getBrowserLocale } from "@/client/helpers";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "no-api-url-env";
 const CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID || "no-channel-id-env";
-
-const COOKIES_CHECKOUT_ID = "next-orders.checkout-id";
 
 export const apiPublicClient = new MainAPI(API_URL, "");
 
@@ -104,32 +102,4 @@ export const GetProductBySlug = async (slug: string) => {
   }
 
   return product;
-};
-
-export const GetCheckout = async (): Promise<Checkout | null> => {
-  const id = cookies().get(COOKIES_CHECKOUT_ID)?.value;
-  if (!id) {
-    // Need to create new Checkout
-    const newCheckout = await apiPublicClient.createCheckout({
-      deliveryMethod: "DELIVERY",
-      channelId: CHANNEL_ID,
-    });
-    if (!newCheckout || newCheckout instanceof Error) {
-      return null;
-    }
-
-    // Update cookies
-    cookies().set(COOKIES_CHECKOUT_ID, newCheckout.result.id);
-
-    return newCheckout.result;
-  }
-
-  const checkout = await apiPublicClient.getCheckout(id, {
-    next: { revalidate: 0, tags: ["all", "checkout", `checkout-${id}`] },
-  });
-  if (!checkout || checkout instanceof Error) {
-    return null;
-  }
-
-  return checkout;
 };
