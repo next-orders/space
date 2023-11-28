@@ -7,10 +7,7 @@ type CatalogLayoutProps = {
 };
 
 export default async function CatalogLayout({ children }: CatalogLayoutProps) {
-  const [channel, checkout] = await Promise.all([
-    GetChannel(),
-    GetCheckout("123"),
-  ]);
+  const [channel, checkout] = await Promise.all([GetChannel(), GetCheckout()]);
 
   return (
     <MainShell channel={channel} checkout={checkout}>

@@ -15,7 +15,7 @@ import { getDictionary, Locale } from "@/dictionaries";
 export default async function Page() {
   const [channel, checkout, locale] = await Promise.all([
     GetChannel(),
-    GetCheckout("123"),
+    GetCheckout(),
     GetLocale(),
   ]);
 

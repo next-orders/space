@@ -20,7 +20,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   // Check, if in Cart already
-  const checkout = await GetCheckout("123");
+  const checkout = await GetCheckout();
   const isInCart = checkout?.lines.find(
     (line) => line.productVariant.id === product.id,
   );

@@ -8,10 +8,7 @@ import { getDictionary } from "@/dictionaries";
 import { getCurrencySign } from "@/client/helpers";
 
 export default async function Page() {
-  const [checkout, channel] = await Promise.all([
-    GetCheckout("123"),
-    GetChannel(),
-  ]);
+  const [checkout, channel] = await Promise.all([GetCheckout(), GetChannel()]);
 
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
