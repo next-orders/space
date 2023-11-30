@@ -5,6 +5,7 @@ export const EN = {
   RETURN_BUTTON: "Return",
   HOME_PAGE_BUTTON: "Home page",
   CART_NEXT_BUTTON: "Okay, next",
+  FOUND_MOST_OFTEN: "Found most often",
   SHOW_DETAILS_LABEL: "show details",
   TODAY_UNTIL_LABEL: "today until",
   FREE_FROM_LABEL: "free from",

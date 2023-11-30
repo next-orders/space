@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
 import type { Channel, Checkout } from "@next-orders/api-sdk";
 import { useUIStore } from "@/store/ui";
 import { useSearchStore } from "@/store/search";
 import { getDictionary } from "@/dictionaries";
+import { SearchBlock } from "@/components/SearchBlock";
 
 type HeaderProps = {
   channel: Channel | null;
@@ -17,8 +17,8 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
   const toggleNavbar = useUIStore((state) => state.toggleNavbar);
   const toggleCartDrawer = useUIStore((state) => state.toggleCartDrawer);
 
-  const search = useSearchStore((state) => state.search);
-  const setSearch = useSearchStore((state) => state.setSearch);
+  const query = useSearchStore((state) => state.query);
+  const setQuery = useSearchStore((state) => state.setQuery);
 
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
@@ -30,9 +30,8 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
   const cartNumber = checkout?.lines.length;
   const isCartEmpty = !checkout?.lines.length;
 
-  const { SEARCH_PLACEHOLDER, CART_LABEL } = getDictionary(
-    channel?.languageCode,
-  );
+  const locale = channel?.languageCode || "EN";
+  const { SEARCH_PLACEHOLDER, CART_LABEL } = getDictionary(locale);
 
   return (
     <div className="z-10 w-full h-full px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-zinc-100">
@@ -60,15 +59,15 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
           <IconSearch stroke={1.5} />
           <input
             type="text"
-            value={search}
-            onChange={(event) => setSearch(event.currentTarget.value)}
+            value={query}
+            onChange={(event) => setQuery(event.currentTarget.value)}
             placeholder={SEARCH_PLACEHOLDER}
             onInput={handleSearchInput}
             className="px-2 py-2 w-32 md:w-56 group-focus:bg-zinc-400 rounded-xl"
           />
         </div>
 
-        <SearchBlock />
+        <SearchBlock locale={locale} />
       </div>
 
       {!isCartEmpty && (
@@ -86,56 +85,5 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
         </div>
       )}
     </div>
-  );
-};
-
-const SearchBlock = () => {
-  const search = useSearchStore((state) => state.search);
-  const isEmpty = !search;
-
-  const searchResult = [
-    {
-      id: "1",
-      label: "Salmon",
-      link: "/catalog/pizza/four-seasons",
-    },
-  ];
-
-  const searchResults = searchResult.map((line) => (
-    <SearchLine key={line.id} link={line.link} label={line.label} />
-  ));
-
-  return (
-    <div className="invisible group-hover:visible group-focus:visible group-active:visible group-focus-within:visible group-focus-visible:visible fixed top-16 left-0 w-72 bg-white px-4 py-4 rounded-b-2xl shadow-lg duration-200">
-      <div className="flex flex-col gap-2">
-        {isEmpty ? <SearchBlockPopular /> : searchResults}
-      </div>
-    </div>
-  );
-};
-
-const SearchLine = ({ label, link }: { label: string; link: string }) => {
-  return (
-    <Link
-      href={link}
-      className="px-4 py-4 rounded-xl bg-zinc-50 hover:bg-zinc-100 text-base cursor-pointer"
-    >
-      {label}
-    </Link>
-  );
-};
-
-const SearchBlockPopular = () => {
-  return (
-    <>
-      <div className="font-medium">Found most often:</div>
-      <SearchLine label="Four seasons" link={"/catalog/pizza/four-seasons"} />
-      <SearchLine label="Mediterranean" link={"/catalog/pizza/mediterranean"} />
-      <SearchLine label="Salmon" link={"/catalog/sushi/salmon"} />
-      <SearchLine
-        label="Philadelphia light"
-        link={"/catalog/roll/philadelphia-light"}
-      />
-    </>
   );
 };

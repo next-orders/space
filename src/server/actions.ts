@@ -120,3 +120,14 @@ export const GetCheckoutId = async (): Promise<string | null> => {
 export const SetCheckoutId = (checkoutId: string) => {
   cookies().set(COOKIES_CHECKOUT_ID, checkoutId);
 };
+
+export const SearchInChannel = async (query: string) => {
+  const found = await api.searchInChannel(CHANNEL_ID, query, {
+    next: { revalidate: 0 },
+  });
+  if (!found || found instanceof Error) {
+    return null;
+  }
+
+  return found;
+};

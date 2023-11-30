@@ -5,6 +5,7 @@ export const RU: Dictionary = {
   RETURN_BUTTON: "Вернуться",
   HOME_PAGE_BUTTON: "Главная страница",
   CART_NEXT_BUTTON: "Хорошо, далее",
+  FOUND_MOST_OFTEN: "Находят чаще всего",
   SHOW_DETAILS_LABEL: "показать детали",
   TODAY_UNTIL_LABEL: "сегодня до",
   FREE_FROM_LABEL: "бесплатно от",
