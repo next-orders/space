@@ -2,13 +2,19 @@
 
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
-import { CheckoutDeliveryMethod, MainAPI } from "@next-orders/api-sdk";
+import {
+  CheckoutDeliveryMethod,
+  MainAPI,
+  ProductVariant,
+} from "@next-orders/api-sdk";
 import { COOKIES_CHECKOUT_ID } from "@/client/helpers";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "no-api-url-env";
 const CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID || "no-channel-id-env";
 
 const api = new MainAPI(API_URL, ""); // Public only
+
+const MAX_CACHE_SECONDS = 10800; // 3 hours
 
 export const AddProductToCheckout = async (productVariantId: string) => {
   const checkoutId = await GetCheckoutId();
@@ -122,12 +128,26 @@ export const SetCheckoutId = (checkoutId: string) => {
 };
 
 export const SearchInChannel = async (query: string) => {
-  const found = await api.searchInChannel(CHANNEL_ID, query, {
-    next: { revalidate: 0 },
+  const found = await api.searchInChannel(CHANNEL_ID, query.toLowerCase(), {
+    next: { revalidate: 120, tags: ["all", "search", `search-query-${query}`] },
   });
   if (!found || found instanceof Error) {
     return null;
   }
 
   return found;
+};
+
+export const GetTopSearch = async (): Promise<ProductVariant[] | null> => {
+  const top = await api.getTopSearchInChannel(CHANNEL_ID, {
+    next: {
+      revalidate: MAX_CACHE_SECONDS,
+      tags: ["all", "search", "top-search"],
+    },
+  });
+  if (!top || top instanceof Error) {
+    return null;
+  }
+
+  return top;
 };
