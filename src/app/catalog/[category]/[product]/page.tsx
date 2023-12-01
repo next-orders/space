@@ -60,14 +60,18 @@ export default async function Page({ params }: PageProps) {
 
       <div className="bg-white px-5 py-5 rounded-2xl">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-0 gap-y-4 sm:gap-4">
-          <Image
-            src={photo?.url ?? "/static/no-image-zinc.png"}
-            alt={photo?.alt ?? ""}
-            priority
-            width={400}
-            height={400}
-            className="col-span-1 aspect-square rounded-xl"
-          />
+          <div className="col-span-1 relative w-full aspect-square">
+            <Image
+              src={photo?.url ?? "/static/no-image-zinc.png"}
+              alt={photo?.alt ?? ""}
+              priority
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              objectPosition="center"
+              objectFit="cover"
+              className="rounded-xl"
+            />
+          </div>
 
           <div className="col-span-2">
             <h1 className="text-xl md:text-2xl lg:text-3xl font-medium">

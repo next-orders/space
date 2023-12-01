@@ -33,14 +33,19 @@ export const ProductCard = ({
       <div className="bg-white rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer hover:scale-95 active:scale-90 duration-200">
         <div className="flex flex-col justify-between h-full">
           <div>
-            <Image
-              src={photo?.url ?? "/static/no-image-zinc.png"}
-              alt={photo?.alt ?? ""}
-              width={400}
-              height={400}
-              priority
-              className="w-full aspect-square rounded-xl"
-            />
+            <div className="relative w-full aspect-square">
+              <Image
+                src={photo?.url ?? "/static/no-image-zinc.png"}
+                alt={photo?.alt ?? ""}
+                priority
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                objectPosition="center"
+                objectFit="cover"
+                className="rounded-xl"
+              />
+            </div>
+
             <div className="mt-2 text-xl font-medium">
               <Price value={gross} />
               <span className="pl-1 text-lg">{currencySign}</span>

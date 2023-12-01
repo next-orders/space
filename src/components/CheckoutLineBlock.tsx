@@ -37,13 +37,18 @@ export const CheckoutLineBlock = ({
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
       <Link href={pageUrl}>
         <div className="max-w-[16rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 active:scale-90 duration-200 group">
-          <Image
-            src={photo?.url ?? "/static/no-image-zinc.png"}
-            alt={photo?.alt ?? ""}
-            width={48}
-            height={48}
-            className="w-16 h-16 aspect-square rounded-xl"
-          />
+          <div className="relative w-16 h-16 aspect-square">
+            <Image
+              src={photo?.url ?? "/static/no-image-zinc.png"}
+              alt={photo?.alt ?? ""}
+              priority
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              objectPosition="center"
+              objectFit="cover"
+              className="rounded-xl"
+            />
+          </div>
 
           <div>
             <div className="font-base text-sm leading-tight line-clamp-1">

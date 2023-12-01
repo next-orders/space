@@ -148,13 +148,18 @@ const CartItemLine = ({
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
       <Link href={pageUrl}>
         <div className="max-w-[11rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 active:scale-90 duration-200 group">
-          <Image
-            src={photo?.url ?? "/static/no-image-zinc.png"}
-            alt={photo?.alt ?? ""}
-            width={48}
-            height={48}
-            className="w-12 h-12 aspect-square rounded-xl xl:grayscale xl:contrast-75 xl:brightness-150 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
-          />
+          <div className="relative w-12 h-12 aspect-square">
+            <Image
+              src={photo?.url ?? "/static/no-image-zinc.png"}
+              alt={photo?.alt ?? ""}
+              priority
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              objectPosition="center"
+              objectFit="cover"
+              className="rounded-xl xl:grayscale xl:contrast-75 xl:brightness-150 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
+            />
+          </div>
 
           <div>
             <div className="font-base text-sm leading-tight line-clamp-1">
