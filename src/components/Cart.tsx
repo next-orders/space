@@ -154,9 +154,11 @@ const CartItemLine = ({
               alt={photo?.alt ?? ""}
               priority
               fill
+              style={{
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
               sizes="(max-width: 768px) 100vw, 768px"
-              objectPosition="center"
-              objectFit="cover"
               className="rounded-xl xl:grayscale xl:contrast-75 xl:brightness-150 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
             />
           </div>

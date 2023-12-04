@@ -4,17 +4,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useUIStore } from "@/store/ui";
+import { getIconUrl } from "@/client/helpers";
 
 type LinkButtonProps = {
   link: string;
   label: string;
-  iconUrl: string | null;
+  icon: string | null;
 };
 
-export const LinkButton = ({ link, label, iconUrl }: LinkButtonProps) => {
+export const LinkButton = ({ link, label, icon }: LinkButtonProps) => {
   const activePath = usePathname();
 
   const toggleNavbar = useUIStore((state) => state.toggleNavbar);
+
+  const iconUrl = getIconUrl(icon);
 
   return (
     <Link
@@ -24,7 +27,7 @@ export const LinkButton = ({ link, label, iconUrl }: LinkButtonProps) => {
       data-active={activePath === link}
     >
       <Image
-        src={iconUrl ?? "/static/default-icon.png"}
+        src={iconUrl}
         alt=""
         width={32}
         height={32}

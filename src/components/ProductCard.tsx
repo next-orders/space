@@ -39,9 +39,11 @@ export const ProductCard = ({
                 alt={photo?.alt ?? ""}
                 priority
                 fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
                 sizes="(max-width: 768px) 100vw, 768px"
-                objectPosition="center"
-                objectFit="cover"
                 className="rounded-xl"
               />
             </div>

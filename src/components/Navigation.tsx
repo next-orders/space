@@ -38,7 +38,7 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
         key={item.id}
         link={"/catalog/" + item.slug}
         label={item.name}
-        iconUrl={item.iconUrl}
+        icon={item.icon}
       />
     );
   });

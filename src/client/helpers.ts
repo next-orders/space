@@ -63,3 +63,11 @@ export const getBrowserLocale = (
       return "EN";
   }
 };
+
+export const getIconUrl = (icon: string | null) => {
+  if (!icon) {
+    return "/static/food-icon/DEFAULT.png";
+  }
+
+  return `/static/food-icon/${icon}.png`;
+};
