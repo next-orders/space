@@ -27,7 +27,7 @@
   "dependencies": {
     "@next-orders/api-sdk": "^0.2.27",
     "@tabler/icons-react": "2.42.0",
-    "next": "14.0.3",
+    "next": "14.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sharp": "0.33.0",
