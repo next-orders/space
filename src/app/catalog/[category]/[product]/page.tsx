@@ -4,7 +4,12 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Price } from "@/components/Price";
 import { AddToCart } from "@/components/AddToCart";
 import { GetChannel, GetCheckout, GetProductBySlug } from "@/client/api";
-import { getCurrencySign, getWeightLocalizedUnit } from "@/client/helpers";
+import {
+  DEFAULT_IMAGE_URL,
+  getCurrencySign,
+  getProductFirstPhoto,
+  getWeightLocalizedUnit,
+} from "@/client/helpers";
 import { getDictionary } from "@/dictionaries";
 
 type PageProps = {
@@ -25,7 +30,7 @@ export default async function Page({ params }: PageProps) {
     (line) => line.productVariant.id === product.id,
   );
 
-  const photo = product.media?.length ? product.media[0].media : undefined;
+  const firstPhoto = getProductFirstPhoto(product.media);
   const currencySign = getCurrencySign(channel?.currencyCode);
 
   const locale = channel?.languageCode || "EN";
@@ -62,8 +67,8 @@ export default async function Page({ params }: PageProps) {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-0 gap-y-4 sm:gap-4">
           <div className="col-span-1 relative w-full aspect-square">
             <Image
-              src={photo?.url ?? "/static/no-image-zinc.png"}
-              alt={photo?.alt ?? ""}
+              src={firstPhoto?.url ?? DEFAULT_IMAGE_URL}
+              alt={firstPhoto?.alt ?? ""}
               priority
               fill
               sizes="(max-width: 768px) 100vw, 768px"
@@ -87,9 +92,11 @@ export default async function Page({ params }: PageProps) {
               </div>
 
               <AddToCart product={product} channel={channel} />
-
-              {isInCart && <p>{IN_CART_LABEL}!</p>}
             </div>
+
+            {isInCart && (
+              <div className="mt-2 text-zinc-500">{IN_CART_LABEL}!</div>
+            )}
           </div>
         </div>
 

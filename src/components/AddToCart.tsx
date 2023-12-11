@@ -22,7 +22,7 @@ export const AddToCart = ({ channel, product }: AddToCartProps) => {
   return (
     <button
       onClick={() => AddProductToCheckout(product.id)}
-      className="px-5 py-3 flex flex-row gap-2 text-base font-normal cursor-pointer rounded-2xl hover:scale-95 active:scale-90 duration-200"
+      className="px-5 py-3 flex flex-row gap-2 text-base font-normal cursor-pointer rounded-2xl lg:hover:scale-95 active:scale-90 duration-200"
       style={{ backgroundColor, backgroundImage }}
     >
       <IconShoppingCartPlus stroke={1.5} /> {ADD_TO_CART_LABEL}

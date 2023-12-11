@@ -14,7 +14,12 @@ import { Price } from "@/components/Price";
 import { CartDeliveryMethodToggle } from "@/components/CartDeliveryMethodToggle";
 import { useUIStore } from "@/store/ui";
 import { getDictionary, Locale } from "@/dictionaries";
-import { getCurrencySign, getWeightLocalizedUnit } from "@/client/helpers";
+import {
+  DEFAULT_IMAGE_URL,
+  getCurrencySign,
+  getProductFirstPhoto,
+  getWeightLocalizedUnit,
+} from "@/client/helpers";
 
 type CartProps = {
   channel: Channel | null;
@@ -130,9 +135,7 @@ const CartItemLine = ({
   id,
 }: CartItemLineProps) => {
   const price = productVariant?.gross;
-  const photo = productVariant.media?.length
-    ? productVariant.media[0].media
-    : undefined;
+  const firstPhoto = getProductFirstPhoto(productVariant.media);
 
   const currencySign = getCurrencySign(currencyCode);
 
@@ -150,8 +153,8 @@ const CartItemLine = ({
         <div className="max-w-[11rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 active:scale-90 duration-200 group">
           <div className="relative w-12 h-12 aspect-square">
             <Image
-              src={photo?.url ?? "/static/no-image-zinc.png"}
-              alt={photo?.alt ?? ""}
+              src={firstPhoto?.url ?? DEFAULT_IMAGE_URL}
+              alt={firstPhoto?.alt ?? ""}
               priority
               fill
               sizes="(max-width: 768px) 100vw, 768px"

@@ -2,6 +2,7 @@ import type { ProductVariant } from "@next-orders/api-sdk";
 import { getDictionary, Locale } from "@/dictionaries";
 
 export const COOKIES_CHECKOUT_ID = "next-orders.checkout-id";
+export const DEFAULT_IMAGE_URL = "/static/no-image-zinc.png";
 
 export const getCurrencySign = (
   code: "RUB" | "USD" | string | null | undefined,
@@ -15,6 +16,9 @@ export const getCurrencySign = (
       return "";
   }
 };
+
+export const getProductFirstPhoto = (media: ProductVariant["media"]) =>
+  media?.length ? media[0].media : undefined;
 
 export const getWeightLocalizedUnit = (
   unit: ProductVariant["weightUnit"],
