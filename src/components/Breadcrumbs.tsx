@@ -20,7 +20,7 @@ export const Breadcrumbs = ({ links, locale }: Props) => {
     >
       <Link
         href={link.href}
-        className="px-3 py-2 inline-block rounded-xl hover:bg-zinc-200 hover:scale-95 active:scale-90 duration-200 bg-zinc-50 data-[active=true]:bg-zinc-50"
+        className="px-3 py-2 inline-block rounded-xl lg:hover:bg-zinc-200 lg:hover:scale-95 active:scale-90 duration-200 bg-zinc-50 data-[active=true]:bg-zinc-50"
         data-active={link.href === "#"}
       >
         {link.title}

@@ -35,7 +35,7 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
 
   return (
     <div className="z-10 w-full h-full px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-zinc-100">
-      <div className="mr-2 md:mr-0 flex justify-center items-center justify-items-center md:hidden h-full hover:scale-110 transition duration-200">
+      <div className="mr-2 md:mr-0 flex justify-center items-center justify-items-center md:hidden h-full lg:hover:scale-110 transition duration-200">
         <button
           aria-label="Close Navigation"
           data-active={isNavbarOpened}
@@ -74,7 +74,7 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
         <div className="block xl:hidden font-medium">
           <button
             onClick={toggleCartDrawer}
-            className="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center rounded-xl cursor-pointer hover:scale-95 active:scale-90 duration-200"
+            className="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center rounded-xl cursor-pointer lg:hover:scale-95 active:scale-90 duration-200"
             style={{ backgroundColor, backgroundImage }}
           >
             <span className="font-medium">{CART_LABEL}</span>

@@ -29,7 +29,7 @@ const CopyrightBlock = () => {
           href="https://github.com/next-orders/v1"
           target="_blank"
           aria-label="Open GitHub repository of this project"
-          className="px-3 py-3 bg-zinc-800 inline-block rounded-full text-white hover:scale-95 active:scale-90 duration-200"
+          className="px-3 py-3 bg-zinc-800 inline-block rounded-full text-white lg:hover:scale-95 active:scale-90 duration-200"
         >
           <IconBrandGithubFilled stroke={1.5} size={24} />
         </Link>
@@ -62,7 +62,7 @@ const CommandCenterBlock = () => {
         href={process.env.NEXT_PUBLIC_COMMAND_CENTER_URL || "/command-center"}
         target="_blank"
         aria-label="Open Command Center"
-        className="mx-auto px-8 py-4 flex flex-row flex-wrap gap-2 justify-center text-base font-medium cursor-pointer rounded-2xl bg-gradient-to-br from-violet-100 to-sky-200 hover:bg-gradient-to-r hover:scale-95 active:scale-90 duration-200"
+        className="mx-auto px-8 py-4 flex flex-row flex-wrap gap-2 justify-center text-base font-medium cursor-pointer rounded-2xl bg-gradient-to-br from-violet-100 to-sky-200 hover:bg-gradient-to-r lg:hover:scale-95 active:scale-90 duration-200"
       >
         <IconTableOptions stroke={1.5} /> Open Command Center
       </Link>
