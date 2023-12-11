@@ -55,7 +55,7 @@ export const ProductCard = ({
             <Price value={gross} />
             <span className="pl-1 text-lg">{currencySign}</span>
           </div>
-          <div className="font-light leading-tight line-clamp-2">{name}</div>
+          <p className="font-normal leading-tight line-clamp-2">{name}</p>
           <div className="mt-2 font-light text-zinc-500">
             {weightValue}
             {weightUnitLocalized}

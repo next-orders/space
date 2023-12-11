@@ -150,7 +150,7 @@ const CartItemLine = ({
   return (
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
       <Link href={pageUrl}>
-        <div className="max-w-[11rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 active:scale-90 duration-200 group">
+        <div className="max-w-[15rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer hover:scale-95 active:scale-90 duration-200 group">
           <div className="relative w-12 h-12 aspect-square">
             <Image
               src={firstPhoto?.url ?? DEFAULT_IMAGE_URL}
@@ -158,14 +158,14 @@ const CartItemLine = ({
               priority
               fill
               sizes="(max-width: 768px) 100vw, 768px"
-              className="rounded-xl object-cover object-center xl:grayscale xl:contrast-75 xl:brightness-150 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
+              className="rounded-xl object-cover object-center xl:grayscale xl:contrast-75 xl:brightness-125 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
             />
           </div>
 
           <div>
-            <div className="font-base text-sm leading-tight line-clamp-1">
+            <p className="font-base text-sm leading-tight line-clamp-1">
               {productVariant.name}
-            </div>
+            </p>
             <div className="mt-1 flex flex-row gap-2 flex-nowrap">
               <div className="text-sm font-medium">
                 <Price value={price} />
