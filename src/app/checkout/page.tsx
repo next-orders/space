@@ -76,7 +76,7 @@ export default async function Page() {
             <div className="px-4 py-2 bg-zinc-100 rounded-2xl inline-block">
               <div className="font-medium">{DELIVERY_LABEL}</div>
               <div>
-                5<span className="text-xs">{currencySign}</span>
+                5<span className="pl-1 text-xs">{currencySign}</span>
               </div>
             </div>
 
@@ -156,16 +156,16 @@ export default async function Page() {
             <div className="mb-4">
               <div className="mb-2 flex flex-row justify-between text-lg">
                 <div>{PRICE_OF_GOODS_LABEL}</div>
-                <div>
+                <div className="tracking-tight">
                   {checkout?.totalPrice}
-                  <span className="text-sm">{currencySign}</span>
+                  <span className="pl-1 text-sm">{currencySign}</span>
                 </div>
               </div>
               <div className="mb-2 flex flex-row justify-between text-lg">
                 <div>{COST_OF_DELIVERY_LABEL}</div>
-                <div>
+                <div className="tracking-tight">
                   {checkout?.shippingPrice}
-                  <span className="text-sm">{currencySign}</span>
+                  <span className="pl-1 text-sm">{currencySign}</span>
                 </div>
               </div>
 
@@ -185,9 +185,9 @@ export default async function Page() {
                 {CREATE_ORDER_LABEL}
               </Link>
 
-              <div className="font-medium text-right text-xl min-w-[6rem]">
+              <div className="font-medium text-right text-xl min-w-[6rem] tracking-tight">
                 {checkout?.totalPrice}
-                <span className="text-base">{currencySign}</span>
+                <span className="pl-1 text-base">{currencySign}</span>
               </div>
             </div>
           </Block>

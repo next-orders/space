@@ -142,7 +142,7 @@ const DeliveryInfoBlock = ({
         <IconTruckDelivery stroke={1.5} />
         <div className="lowercase">
           {FREE_FROM_LABEL} 25
-          <span className="text-sm">{currencySign}</span>
+          <span className="pl-1 text-sm">{currencySign}</span>
         </div>
       </>
     );

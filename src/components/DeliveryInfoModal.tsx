@@ -110,7 +110,9 @@ const DeliveryInfoBlock = ({
 
         <div className="mb-2 flex flex-row justify-between">
           <div>{MINIMUM_ORDER_VALUE}</div>
-          <div>10 {currencySign}</div>
+          <div>
+            10<span className="pl-1 text-sm">{currencySign}</span>
+          </div>
         </div>
       </>
     );
@@ -126,7 +128,8 @@ const DeliveryInfoBlock = ({
             {COURIER_PAYMENT_LABEL}
           </div>
           <div>
-            {checkout.shippingPrice} {currencySign}
+            {checkout.shippingPrice}
+            <span className="pl-1 text-sm">{currencySign}</span>
           </div>
         </div>
 
@@ -144,7 +147,9 @@ const DeliveryInfoBlock = ({
 
         <div className="mb-2 flex flex-row justify-between">
           <div>{MINIMUM_ORDER_VALUE}</div>
-          <div>10 {currencySign}</div>
+          <div>
+            10<span className="pl-1 text-sm">{currencySign}</span>
+          </div>
         </div>
 
         <div className="mb-2 flex flex-row justify-between">

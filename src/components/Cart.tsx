@@ -110,9 +110,9 @@ export const Cart = ({ channel, checkout }: CartProps) => {
               style={{ backgroundColor, backgroundImage }}
             >
               <div className="font-normal">{CART_NEXT_BUTTON}</div>
-              <div className="font-medium text-lg">
-                {checkout?.totalPrice}{" "}
-                <span className="text-base">{currencySign}</span>
+              <div className="font-medium text-lg tracking-tight">
+                {checkout?.totalPrice}
+                <span className="pl-1 text-base">{currencySign}</span>
               </div>
             </Link>
           </div>
@@ -167,9 +167,9 @@ const CartItemLine = ({
               {productVariant.name}
             </p>
             <div className="mt-1 flex flex-row gap-2 flex-nowrap">
-              <div className="text-sm font-medium">
+              <div className="text-sm font-medium tracking-tight">
                 <Price value={price} />
-                <span className="text-xs">{currencySign}</span>
+                <span className="pl-1 text-xs">{currencySign}</span>
               </div>
               <div className="text-sm text-zinc-500 font-light">
                 {productVariant?.weightValue}
@@ -240,7 +240,7 @@ const DeliveryInfoBlock = ({
     block = (
       <>
         {DELIVERY_LABEL} {shippingPrice}
-        <span className="text-xs">{currencySign}</span>
+        <span className="pl-1 text-xs">{currencySign}</span>
       </>
     );
   }

@@ -69,9 +69,9 @@ export const CheckoutLineBlock = ({
         <Counter count={quantity} lineId={id} />
       </div>
 
-      <div className="min-w-[3rem] ml-4 text-lg text-right">
+      <div className="min-w-[3rem] ml-4 text-lg text-right tracking-tight">
         <Price value={price} />
-        <span className="text-sm">{currencySign}</span>
+        <span className="pl-1 text-sm">{currencySign}</span>
       </div>
     </div>
   );
