@@ -1,9 +1,9 @@
 # 🍔 v1: Food Orders
 First version of frontend. Products, cart, full ordering process.
 
-![main-screen-desktop](https://github.com/next-orders/v1/blob/main/public/static/main-screen-desktop.jpg?raw=true)
+![main-screen-desktop](https://github.com/next-orders/v1/blob/main/.github/media/main-screen-desktop.jpg?raw=true)
 
-![checkout-screen-desktop](https://github.com/next-orders/v1/blob/main/public/static/checkout-screen-desktop.jpg?raw=true)
+![checkout-screen-desktop](https://github.com/next-orders/v1/blob/main/.github/media/checkout-screen-desktop.jpg?raw=true)
 
 ## 🍕 Main idea and architecture of Next-Orders
 
@@ -11,7 +11,7 @@ There is a great desire to create software that is ideal for ordering and delive
 It will be a set of solutions that can work together. It is important that each element can be easily replaced later.
 So the project does not become one big monolith.
 
-![next-orders-arch](https://github.com/next-orders/v1/blob/main/public/static/next-orders-arch.png?raw=true)
+![next-orders-arch](https://github.com/next-orders/v1/blob/main/.github/media/next-orders-arch.png?raw=true)
 
 - [Website](https://github.com/next-orders/v1): First version of storefront, where client can order delicious food.
 - [Main API and SDK](https://github.com/next-orders/api): All business entities in one spot. Other parts can access data here.
@@ -34,7 +34,7 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - [ESlint](https://eslint.org/): JavaScript linter for identifying and reporting code quality issues.
 - [Prettier](https://prettier.io/): Opinionated code formatter for maintaining consistent code style.
 
-![lighthouse-score](https://github.com/next-orders/v1/blob/main/public/static/lighthouse.jpg?raw=true)
+![lighthouse-score](https://github.com/next-orders/v1/blob/main/.github/media/lighthouse.jpg?raw=true)
 
 ## 🍣 Customer and Seller Features (WIP)
 
