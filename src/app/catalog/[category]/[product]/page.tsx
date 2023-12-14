@@ -33,6 +33,12 @@ export default async function Page({ params }: PageProps) {
   const firstPhoto = getProductFirstPhoto(product.media);
   const currencySign = getCurrencySign(channel?.currencyCode);
 
+  const isNutritionShown =
+    product.per100gEnergy ||
+    product.per100gProtein ||
+    product.per100gCarbohydrate ||
+    product.per100gFat;
+
   const locale = channel?.languageCode || "EN";
   const {
     HOME_PAGE_LABEL,
@@ -111,29 +117,40 @@ export default async function Page({ params }: PageProps) {
             </div>
           )}
 
-          <div>
-            <div className="mb-1 font-medium text-zinc-400">
-              {IN_100_GRAMS_LABEL}
+          {isNutritionShown && (
+            <div>
+              <div className="mb-1 font-medium text-zinc-400">
+                {IN_100_GRAMS_LABEL}
+              </div>
+              <div className="mt-2 px-4 py-4 w-fit flex flex-row gap-4 bg-zinc-100 rounded-2xl">
+                <div>
+                  <div className="font-medium">{product.per100gEnergy}</div>
+                  <div>{KCAL_LABEL}</div>
+                </div>
+                <div>
+                  <div className="font-medium">
+                    {product.per100gProtein}
+                    {GRAM_SHORT_LABEL}
+                  </div>
+                  <div>{PROTEINS_LABEL}</div>
+                </div>
+                <div>
+                  <div className="font-medium">
+                    {product.per100gFat}
+                    {GRAM_SHORT_LABEL}
+                  </div>
+                  <div>{FATS_LABEL}</div>
+                </div>
+                <div>
+                  <div className="font-medium">
+                    {product.per100gCarbohydrate}
+                    {GRAM_SHORT_LABEL}
+                  </div>
+                  <div>{CARBS_LABEL}</div>
+                </div>
+              </div>
             </div>
-            <div className="mt-2 px-4 py-4 w-fit flex flex-row gap-4 bg-zinc-100 rounded-2xl">
-              <div>
-                <div className="font-medium">684</div>
-                <div>{KCAL_LABEL}</div>
-              </div>
-              <div>
-                <div className="font-medium">5{GRAM_SHORT_LABEL}</div>
-                <div>{PROTEINS_LABEL}</div>
-              </div>
-              <div>
-                <div className="font-medium">18{GRAM_SHORT_LABEL}</div>
-                <div>{FATS_LABEL}</div>
-              </div>
-              <div>
-                <div className="font-medium">14{GRAM_SHORT_LABEL}</div>
-                <div>{CARBS_LABEL}</div>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </>
