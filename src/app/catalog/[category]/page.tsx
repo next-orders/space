@@ -52,11 +52,11 @@ export default async function Page({ params }: PageProps) {
   }
 
   const locale = channel?.languageCode || "EN";
-  const { HOME_PAGE_BUTTON, CATEGORY_PAGE_DEFAULT_DESCRIPTION } =
+  const { HOME_PAGE_LABEL, CATEGORY_PAGE_DEFAULT_DESCRIPTION } =
     getDictionary(locale);
 
   const breadcrumbs = [
-    { title: HOME_PAGE_BUTTON, href: "/" },
+    { title: HOME_PAGE_LABEL, href: "/" },
     { title: category.name, href: "#" },
   ];
 
@@ -76,7 +76,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumbs links={breadcrumbs} locale={channel?.languageCode || "EN"} />
+      <Breadcrumbs links={breadcrumbs} />
 
       <h1 className="text-3xl font-medium">{category.name}</h1>
       <div>{CATEGORY_PAGE_DEFAULT_DESCRIPTION}</div>
