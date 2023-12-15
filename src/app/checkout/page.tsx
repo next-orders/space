@@ -35,6 +35,10 @@ export default async function Page() {
     ADDRESS_ENTRANCE_PLACEHOLDER,
     ADDRESS_FLOOR_PLACEHOLDER,
     COMMENT_PLACEHOLDER,
+    CONTACTS_LABEL,
+    CONTACT_PHONE_PLACEHOLDER,
+    CONTACT_NAME_PLACEHOLDER,
+    PAYMENT_METHOD_LABEL,
   } = getDictionary(locale);
 
   const items = checkout?.lines?.map((line) => (
@@ -83,6 +87,28 @@ export default async function Page() {
               <div className="font-medium">{DELIVERY_LABEL}</div>
               <div>
                 5<span className="pl-1 text-xs">{currencySign}</span>
+              </div>
+            </div>
+
+            <div className="w-full mt-4">
+              <h3 className="mb-2 text-lg md:text-xl font-medium">
+                {CONTACTS_LABEL}
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2">
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder={CONTACT_PHONE_PLACEHOLDER}
+                  className="px-4 py-3 mb-2 w-full border border-zinc-200 rounded-2xl"
+                />
+
+                <input
+                  type="text"
+                  name="name"
+                  placeholder={CONTACT_NAME_PLACEHOLDER}
+                  className="px-4 py-3 mb-2 w-full border border-zinc-200 rounded-2xl"
+                />
               </div>
             </div>
 
@@ -155,9 +181,13 @@ export default async function Page() {
 
         <div className="col-span-full md:col-span-5 h-fit sticky top-20">
           <Block>
-            <h2 className="mb-4 text-xl md:text-2xl font-medium">
+            <h3 className="mb-16 text-lg md:text-xl font-medium">
+              {PAYMENT_METHOD_LABEL}
+            </h3>
+
+            <h3 className="mb-2 text-lg md:text-xl font-medium">
               {TOTAL_LABEL}
-            </h2>
+            </h3>
 
             <div className="mb-4">
               <div className="mb-2 flex flex-row justify-between text-lg">

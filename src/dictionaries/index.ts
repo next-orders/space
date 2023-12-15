@@ -46,6 +46,22 @@ const Translations = {
     EN: "Delivery conditions",
     RU: "Условия доставки",
   },
+  CONTACTS_LABEL: {
+    EN: "Contacts",
+    RU: "Контакты",
+  },
+  CONTACT_PHONE_PLACEHOLDER: {
+    EN: "Your phone",
+    RU: "Ваш телефон",
+  },
+  CONTACT_NAME_PLACEHOLDER: {
+    EN: "Your name",
+    RU: "Ваше имя",
+  },
+  PAYMENT_METHOD_LABEL: {
+    EN: "Payment method",
+    RU: "Метод оплаты",
+  },
   INDICATE_ADDRESS_LABEL: {
     EN: "Indicate your address",
     RU: "Укажите свой адрес",
