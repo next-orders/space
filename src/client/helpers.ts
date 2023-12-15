@@ -1,4 +1,4 @@
-import type { ProductVariant } from "@next-orders/api-sdk";
+import type { ProductVariant, WeightUnit } from "@next-orders/api-sdk";
 import { getDictionary, Locale } from "@/dictionaries";
 
 export const COOKIES_CHECKOUT_ID = "next-orders.checkout-id";
@@ -20,17 +20,29 @@ export const getCurrencySign = (
 export const getProductFirstPhoto = (media: ProductVariant["media"]) =>
   media?.length ? media[0].media : undefined;
 
-export const getWeightLocalizedUnit = (
-  unit: ProductVariant["weightUnit"],
-  locale: Locale,
-) => {
-  const { GRAM_SHORT_LABEL, KG_SHORT_LABEL } = getDictionary(locale);
+export const getWeightLocalizedUnit = (unit: WeightUnit, locale: Locale) => {
+  const {
+    GRAM_SHORT_LABEL,
+    KG_SHORT_LABEL,
+    ML_SHORT_LABEL,
+    L_SHORT_LABEL,
+    LB_SHORT_LABEL,
+    OZ_SHORT_LABEL,
+  } = getDictionary(locale);
 
   switch (unit) {
     case "G":
       return GRAM_SHORT_LABEL;
     case "KG":
       return KG_SHORT_LABEL;
+    case "ML":
+      return ML_SHORT_LABEL;
+    case "L":
+      return L_SHORT_LABEL;
+    case "LB":
+      return LB_SHORT_LABEL;
+    case "OZ":
+      return OZ_SHORT_LABEL;
     default:
       return "";
   }

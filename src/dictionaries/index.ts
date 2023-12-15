@@ -63,6 +63,10 @@ const Translations = {
   MIN_LABEL: { EN: "min", RU: "мин" },
   GRAM_SHORT_LABEL: { EN: "g", RU: "г" },
   KG_SHORT_LABEL: { EN: "kg", RU: "кг" },
+  ML_SHORT_LABEL: { EN: "ml", RU: "мл" },
+  L_SHORT_LABEL: { EN: "l", RU: "л" },
+  LB_SHORT_LABEL: { EN: "lb", RU: "фунтов" },
+  OZ_SHORT_LABEL: { EN: "oz", RU: "унций" },
   SEARCH_PLACEHOLDER: { EN: "Find a product", RU: "Найти товар" },
   EMPTY_CART_DESCRIPTION: {
     EN: "Your cart is empty",
