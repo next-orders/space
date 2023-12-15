@@ -29,6 +29,12 @@ export default async function Page() {
     PRICE_OF_GOODS_LABEL,
     NOW_LABEL,
     MIN_LABEL,
+    ADDRESS_STREET_PLACEHOLDER,
+    ADDRESS_APT_OFFICE_PLACEHOLDER,
+    ADDRESS_DOOR_PHONE_PLACEHOLDER,
+    ADDRESS_ENTRANCE_PLACEHOLDER,
+    ADDRESS_FLOOR_PLACEHOLDER,
+    COMMENT_PLACEHOLDER,
   } = getDictionary(locale);
 
   const items = checkout?.lines?.map((line) => (
@@ -86,8 +92,8 @@ export default async function Page() {
               </h3>
               <input
                 type="text"
-                name="address"
-                placeholder="Address"
+                name="street"
+                placeholder={ADDRESS_STREET_PLACEHOLDER}
                 className="px-4 py-3 mb-2 w-full border border-zinc-200 rounded-2xl"
               />
 
@@ -95,28 +101,28 @@ export default async function Page() {
                 <input
                   type="text"
                   name="apartment"
-                  placeholder="Apt./office"
+                  placeholder={ADDRESS_APT_OFFICE_PLACEHOLDER}
                   className="px-4 py-3 mb-2 border border-zinc-200 rounded-2xl"
                 />
 
                 <input
                   type="text"
                   name="doorphone"
-                  placeholder="Doorphone"
+                  placeholder={ADDRESS_DOOR_PHONE_PLACEHOLDER}
                   className="px-4 py-3 mb-2 border border-zinc-200 rounded-2xl"
                 />
 
                 <input
                   type="text"
                   name="entrance"
-                  placeholder="Entrance"
+                  placeholder={ADDRESS_ENTRANCE_PLACEHOLDER}
                   className="px-4 py-3 mb-2 border border-zinc-200 rounded-2xl"
                 />
 
                 <input
                   type="text"
                   name="floor"
-                  placeholder="Floor"
+                  placeholder={ADDRESS_FLOOR_PLACEHOLDER}
                   className="px-4 py-3 mb-2 border border-zinc-200 rounded-2xl"
                 />
               </div>
@@ -124,7 +130,7 @@ export default async function Page() {
               <input
                 type="text"
                 name="comment"
-                placeholder="Comment"
+                placeholder={COMMENT_PLACEHOLDER}
                 className="px-4 py-3 mb-2 w-full border border-zinc-200 rounded-2xl"
               />
             </div>

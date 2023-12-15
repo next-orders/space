@@ -50,6 +50,30 @@ const Translations = {
     EN: "Indicate your address",
     RU: "Укажите свой адрес",
   },
+  ADDRESS_STREET_PLACEHOLDER: {
+    EN: "Street",
+    RU: "Улица и дом",
+  },
+  ADDRESS_APT_OFFICE_PLACEHOLDER: {
+    EN: "Apt./office",
+    RU: "Кв./офис",
+  },
+  ADDRESS_DOOR_PHONE_PLACEHOLDER: {
+    EN: "Doorphone",
+    RU: "Домофон",
+  },
+  ADDRESS_ENTRANCE_PLACEHOLDER: {
+    EN: "Entrance",
+    RU: "Подъезд",
+  },
+  ADDRESS_FLOOR_PLACEHOLDER: {
+    EN: "Floor",
+    RU: "Этаж",
+  },
+  COMMENT_PLACEHOLDER: {
+    EN: "Comment",
+    RU: "Комментарий",
+  },
   DELIVERY_TIME_LABEL: { EN: "Delivery time", RU: "Время доставки" },
   COST_OF_DELIVERY_LABEL: { EN: "Cost of delivery", RU: "Стоимость доставки" },
   YOU_ORDER_LABEL: { EN: "You order", RU: "Вы заказываете" },
