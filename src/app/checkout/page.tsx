@@ -54,7 +54,7 @@ export default async function Page() {
   const products = await GetProductsInCategory("hcs9nywdrigyeqjljnkohpl0"); // Sushi
 
   // Limit 6 products
-  const showProducts = products?.slice(0, 6).map((product) => {
+  const showAdditionalProducts = products?.slice(0, 6).map((product) => {
     const productUrl = "/catalog/" + product.category.slug + "/" + product.slug;
 
     return (
@@ -67,6 +67,8 @@ export default async function Page() {
       />
     );
   });
+  const isAdditionalProductsShown =
+    showAdditionalProducts && showAdditionalProducts?.length > 0;
 
   const currencySign = getCurrencySign(channel?.currencyCode);
 
@@ -123,33 +125,33 @@ export default async function Page() {
                 className="px-4 py-3 mb-2 w-full border border-zinc-200 rounded-2xl"
               />
 
-              <div className="grid grid-cols-1 md:grid-cols-4 md:gap-2">
+              <div className="mb-2 grid grid-cols-2 md:grid-cols-4 gap-2">
                 <input
                   type="text"
                   name="apartment"
                   placeholder={ADDRESS_APT_OFFICE_PLACEHOLDER}
-                  className="px-4 py-3 mb-2 border border-zinc-200 rounded-2xl"
+                  className="px-4 py-3 border border-zinc-200 rounded-2xl"
                 />
 
                 <input
                   type="text"
                   name="doorphone"
                   placeholder={ADDRESS_DOOR_PHONE_PLACEHOLDER}
-                  className="px-4 py-3 mb-2 border border-zinc-200 rounded-2xl"
+                  className="px-4 py-3 border border-zinc-200 rounded-2xl"
                 />
 
                 <input
                   type="text"
                   name="entrance"
                   placeholder={ADDRESS_ENTRANCE_PLACEHOLDER}
-                  className="px-4 py-3 mb-2 border border-zinc-200 rounded-2xl"
+                  className="px-4 py-3 border border-zinc-200 rounded-2xl"
                 />
 
                 <input
                   type="text"
                   name="floor"
                   placeholder={ADDRESS_FLOOR_PLACEHOLDER}
-                  className="px-4 py-3 mb-2 border border-zinc-200 rounded-2xl"
+                  className="px-4 py-3 border border-zinc-200 rounded-2xl"
                 />
               </div>
 
@@ -221,7 +223,7 @@ export default async function Page() {
                 {CREATE_ORDER_LABEL}
               </Link>
 
-              <div className="font-medium text-right text-xl min-w-[6rem] tracking-tight">
+              <div className="font-medium text-right text-xl min-w-[5rem] tracking-tight">
                 {checkout?.totalPrice}
                 <span className="pl-1 text-base">{currencySign}</span>
               </div>
@@ -230,15 +232,17 @@ export default async function Page() {
         </div>
       </div>
 
-      <div className="mt-4">
-        <h2 className="mb-2 md:mb-4 text-2xl md:text-3xl font-medium">
-          {ANYTHING_ELSE_LABEL}?
-        </h2>
+      {isAdditionalProductsShown && (
+        <div className="mt-4">
+          <h2 className="mb-2 md:mb-4 text-2xl md:text-3xl font-medium">
+            {ANYTHING_ELSE_LABEL}?
+          </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-7 gap-2">
-          {showProducts}
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-7 gap-2">
+            {showAdditionalProducts}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

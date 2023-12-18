@@ -134,7 +134,7 @@ const CartItemLine = ({
   productVariant,
   id,
 }: CartItemLineProps) => {
-  const price = productVariant?.gross;
+  const price = productVariant?.gross * quantity;
   const firstPhoto = getProductFirstPhoto(productVariant.media);
 
   const currencySign = getCurrencySign(currencyCode);
@@ -151,7 +151,7 @@ const CartItemLine = ({
     <div className="mb-4 flex flex-row gap-2 items-center justify-between">
       <Link href={pageUrl}>
         <div className="max-w-[15rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer lg:hover:scale-95 active:scale-90 duration-200 group">
-          <div className="relative w-12 h-12 aspect-square">
+          <div className="relative w-14 h-14 aspect-square">
             <Image
               src={firstPhoto?.url ?? DEFAULT_IMAGE_URL}
               alt={firstPhoto?.alt ?? ""}
@@ -163,7 +163,7 @@ const CartItemLine = ({
           </div>
 
           <div>
-            <p className="font-base text-sm leading-tight line-clamp-1">
+            <p className="font-base text-xs leading-tight line-clamp-2">
               {productVariant.name}
             </p>
             <div className="mt-1 flex flex-row gap-2 flex-nowrap">
