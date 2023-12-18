@@ -5,11 +5,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useUIStore } from "@/store/ui";
 import { getIconUrl } from "@/client/helpers";
+import { MenuCategoryIcon } from "@next-orders/api-sdk";
 
 type LinkButtonProps = {
   link: string;
   label: string;
-  icon: string | null;
+  icon: MenuCategoryIcon | null;
 };
 
 export const LinkButton = ({ link, label, icon }: LinkButtonProps) => {

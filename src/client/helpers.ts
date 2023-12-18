@@ -1,5 +1,6 @@
 import type {
   CurrencyCode,
+  MenuCategoryIcon,
   ProductVariant,
   WeightUnit,
 } from "@next-orders/api-sdk";
@@ -94,7 +95,7 @@ export const getBrowserLocale = (acceptLanguage: unknown): Locale => {
   return getSupportedLocale(primaryLanguage);
 };
 
-export const getIconUrl = (icon: string | null) => {
+export const getIconUrl = (icon: MenuCategoryIcon | null) => {
   if (!icon) {
     return "/static/food-icon/DEFAULT.png";
   }
