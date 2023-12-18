@@ -1,6 +1,6 @@
 {
   "name": "v1",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Modern e-commerce website: clients will be happy to order delicious food!",
   "scripts": {
     "dev": "next dev",
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/next-orders/v1#readme",
   "dependencies": {
-    "@next-orders/api-sdk": "^0.2.29",
+    "@next-orders/api-sdk": "^0.2.30",
     "@tabler/icons-react": "2.44.0",
     "next": "14.0.4",
     "react": "18.2.0",

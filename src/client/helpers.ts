@@ -1,17 +1,21 @@
-import type { ProductVariant, WeightUnit } from "@next-orders/api-sdk";
+import type {
+  CurrencyCode,
+  ProductVariant,
+  WeightUnit,
+} from "@next-orders/api-sdk";
 import { getDictionary, Locale } from "@/dictionaries";
 
 export const COOKIES_CHECKOUT_ID = "next-orders.checkout-id";
 export const DEFAULT_IMAGE_URL = "/static/no-image-zinc.png";
 
-export const getCurrencySign = (
-  code: "RUB" | "USD" | string | null | undefined,
-) => {
+export const getCurrencySign = (code: CurrencyCode | null | undefined) => {
   switch (code) {
     case "RUB":
       return "₽";
     case "USD":
       return "$";
+    case "EUR":
+      return "€";
     default:
       return "";
   }
@@ -48,20 +52,19 @@ export const getWeightLocalizedUnit = (unit: WeightUnit, locale: Locale) => {
   }
 };
 
-export const getBrowserLocale = (
-  acceptLanguage: unknown | null | undefined,
-): Locale => {
+const ensureLanguage = (acceptLanguage: unknown): string => {
   if (!acceptLanguage || typeof acceptLanguage !== "string") {
     return "EN";
   }
+  return acceptLanguage;
+};
 
-  const browserLanguage = acceptLanguage.toLowerCase().split(",", 2);
-  if (!browserLanguage[0]) {
-    console.warn(`Not found lang in headers: ${browserLanguage}`);
-    return "EN";
-  }
+const getPrimaryLanguage = (acceptLanguage: string): string => {
+  return acceptLanguage.toLowerCase().split(",", 2)[0];
+};
 
-  switch (browserLanguage[0]) {
+const getSupportedLocale = (browserLanguage: string): Locale => {
+  switch (browserLanguage) {
     case "ru":
     case "ru-ru":
     case "ru-ua":
@@ -71,13 +74,24 @@ export const getBrowserLocale = (
     case "en":
     case "en-us":
     case "en-gb":
+    case "en-gr":
       return "EN";
+    case "es":
+    case "es-es":
+    case "es-mx":
+      return "ES";
     default:
       console.warn(
         `Not found available lang: ${browserLanguage}. Returning default EN.`,
       );
       return "EN";
   }
+};
+
+export const getBrowserLocale = (acceptLanguage: unknown): Locale => {
+  const ensuredLanguage = ensureLanguage(acceptLanguage);
+  const primaryLanguage = getPrimaryLanguage(ensuredLanguage);
+  return getSupportedLocale(primaryLanguage);
 };
 
 export const getIconUrl = (icon: string | null) => {
