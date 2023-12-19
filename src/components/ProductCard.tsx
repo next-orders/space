@@ -36,7 +36,7 @@ export const ProductCard = ({
   return (
     <Link
       href={productUrl}
-      className="bg-white rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer lg:hover:scale-95 active:scale-90 duration-200"
+      className="bg-white rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer active:scale-95 lg:active:scale-90 lg:hover:scale-95 duration-200"
     >
       <div className="flex flex-col justify-between h-full">
         <div>

@@ -89,7 +89,7 @@ const CategoryBlock = async ({
 
         <Link
           href={`/catalog/${category.slug}`}
-          className="px-5 py-3 flex flex-row gap-2 text-base font-normal cursor-pointer rounded-2xl bg-zinc-200 hover:bg-zinc-300 lg:hover:scale-95 active:scale-90 duration-200"
+          className="px-5 py-3 flex flex-row gap-2 text-base font-normal cursor-pointer rounded-2xl bg-zinc-200 active:scale-95 hover:bg-zinc-300 lg:hover:scale-95 lg:active:scale-90 duration-200"
         >
           {OPEN_CATEGORY_BUTTON} <IconArrowRight stroke={1.5} />
         </Link>
