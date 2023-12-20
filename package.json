@@ -1,6 +1,6 @@
 {
   "name": "v1",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Modern e-commerce website: clients will be happy to order delicious food!",
   "scripts": {
     "dev": "next dev",
@@ -45,7 +45,7 @@
     "postcss": "8.4.32",
     "prettier": "^3.1.1",
     "sass": "^1.69.5",
-    "tailwindcss": "3.3.7",
+    "tailwindcss": "3.4.0",
     "typescript": "5.3.3"
   }
 }
