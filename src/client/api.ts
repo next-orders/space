@@ -30,7 +30,7 @@ export const GetLocale = async (): Promise<Locale> => {
 };
 
 export const GetChannel = async () => {
-  const channel = await apiPublicClient.getChannel(CHANNEL_ID, {
+  const channel = await apiPublicClient.channel.get(CHANNEL_ID, {
     next: {
       ...nextConfig,
       tags: ["all", "channel"],
@@ -44,7 +44,7 @@ export const GetChannel = async () => {
 };
 
 export const GetMenu = async (id: string) => {
-  const menu = await apiPublicClient.getMenuById(id, {
+  const menu = await apiPublicClient.menu.getById(id, {
     next: {
       ...nextConfig,
       tags: ["all", `menu-${id}`],
@@ -58,7 +58,7 @@ export const GetMenu = async (id: string) => {
 };
 
 export const GetCategories = async (menuId: string) => {
-  const categories = await apiPublicClient.getMenuCategories(menuId, {
+  const categories = await apiPublicClient.menuCategory.listInMenu(menuId, {
     next: {
       ...nextConfig,
       tags: ["all", "categories"],
@@ -72,7 +72,7 @@ export const GetCategories = async (menuId: string) => {
 };
 
 export const GetCategoryBySlug = async (slug: string) => {
-  const category = await apiPublicClient.getMenuCategoryBySlug(slug, {
+  const category = await apiPublicClient.menuCategory.getBySlug(slug, {
     next: { ...nextConfig, tags: ["all", `category-${slug}`] },
   });
   if (!category || category instanceof Error) {
@@ -83,7 +83,7 @@ export const GetCategoryBySlug = async (slug: string) => {
 };
 
 export const GetProductsInCategory = async (id: string) => {
-  const products = await apiPublicClient.getProductVariantsInCategory(id, {
+  const products = await apiPublicClient.productVariant.listInCategory(id, {
     next: { ...nextConfig, tags: ["all", `category-products-${id}`] },
   });
   if (!products || products instanceof Error) {
@@ -94,7 +94,7 @@ export const GetProductsInCategory = async (id: string) => {
 };
 
 export const GetProductBySlug = async (slug: string) => {
-  const product = await apiPublicClient.getProductVariantBySlug(slug, {
+  const product = await apiPublicClient.productVariant.getBySlug(slug, {
     next: { ...nextConfig, tags: ["all", `product-${slug}`] },
   });
   if (!product || product instanceof Error) {
@@ -110,7 +110,7 @@ export const GetCheckout = async (): Promise<Checkout | null> => {
     return null;
   }
 
-  const checkout = await apiPublicClient.getCheckout(id, {
+  const checkout = await apiPublicClient.checkout.get(id, {
     next: { revalidate: 0, tags: ["all", "checkout", `checkout-${id}`] },
   });
   if (!checkout || checkout instanceof Error) {

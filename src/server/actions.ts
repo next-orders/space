@@ -22,7 +22,7 @@ export const AddProductToCheckout = async (productVariantId: string) => {
     return null;
   }
 
-  const add = await api.addProductToCheckout(
+  const add = await api.checkout.addProduct(
     checkoutId,
     { productVariantId },
     {
@@ -45,7 +45,7 @@ export const AddOneToCheckoutLine = async (lineId: string) => {
     return null;
   }
 
-  const change = await api.addOneToCheckoutLine(checkoutId, lineId, {
+  const change = await api.checkout.addOneToCheckoutLine(checkoutId, lineId, {
     next: { revalidate: 0 },
   });
   if (!change || change instanceof Error) {
@@ -64,9 +64,13 @@ export const RemoveOneFromCheckoutLine = async (lineId: string) => {
     return null;
   }
 
-  const change = await api.removeOneFromCheckoutLine(checkoutId, lineId, {
-    next: { revalidate: 0 },
-  });
+  const change = await api.checkout.removeOneFromCheckoutLine(
+    checkoutId,
+    lineId,
+    {
+      next: { revalidate: 0 },
+    },
+  );
   if (!change || change instanceof Error) {
     return null;
   }
@@ -85,7 +89,7 @@ export const ChangeCheckoutDeliveryMethod = async (
     return null;
   }
 
-  const change = await api.changeCheckoutDeliveryMethod(
+  const change = await api.checkout.changeDeliveryMethod(
     checkoutId,
     { method },
     {
@@ -109,7 +113,7 @@ export const GetCheckoutId = async (): Promise<string | null> => {
     return id;
   }
 
-  const newCheckout = await api.createCheckout({
+  const newCheckout = await api.checkout.create({
     deliveryMethod: "DELIVERY",
     channelId: CHANNEL_ID,
   });
@@ -128,7 +132,7 @@ export const SetCheckoutId = (checkoutId: string) => {
 };
 
 export const SearchInChannel = async (query: string) => {
-  const found = await api.searchInChannel(CHANNEL_ID, query.toLowerCase(), {
+  const found = await api.channel.search(CHANNEL_ID, query.toLowerCase(), {
     next: { revalidate: 120, tags: ["all", "search", `search-query-${query}`] },
   });
   if (!found || found instanceof Error) {
@@ -139,7 +143,7 @@ export const SearchInChannel = async (query: string) => {
 };
 
 export const GetTopSearch = async (): Promise<ProductVariant[] | null> => {
-  const top = await api.getTopSearchInChannel(CHANNEL_ID, {
+  const top = await api.channel.getTopSearch(CHANNEL_ID, {
     next: {
       revalidate: MAX_CACHE_SECONDS,
       tags: ["all", "search", "top-search"],
