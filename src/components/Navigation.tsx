@@ -44,7 +44,7 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
   });
 
   const currencyCode = channel?.currencyCode;
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
   const { SHOW_DETAILS_LABEL, CATALOG_LABEL } = getDictionary(locale);
 
   return (
@@ -71,7 +71,7 @@ export const Navigation = ({ channel, checkout }: NavigationProps) => {
           <div className="mb-8">
             <DeliveryInfoBlock
               locale={locale}
-              method={checkout?.deliveryMethod || "DELIVERY"}
+              method={checkout?.deliveryMethod ?? "DELIVERY"}
               currencyCode={currencyCode}
             />
 

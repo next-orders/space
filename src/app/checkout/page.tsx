@@ -13,7 +13,7 @@ export default async function Page() {
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
 
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
   const {
     CHECKOUT_LABEL,
     DELIVERY_CONDITIONS_LABEL,

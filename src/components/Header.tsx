@@ -30,7 +30,7 @@ export const Header = ({ channel, checkout }: HeaderProps) => {
   const cartNumber = checkout?.lines.length;
   const isCartEmpty = !checkout?.lines.length;
 
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
   const { SEARCH_PLACEHOLDER, CART_LABEL } = getDictionary(locale);
 
   return (

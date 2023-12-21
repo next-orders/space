@@ -12,7 +12,7 @@ import {
 import { getDictionary } from "@/dictionaries";
 
 type PageProps = {
-  params: { category: string };
+  readonly params: { category: string };
 };
 
 export async function generateMetadata({
@@ -27,9 +27,9 @@ export async function generateMetadata({
 export default async function Page({ params }: PageProps) {
   const channel = await GetChannel();
 
-  const menu = await GetMenu(channel?.menus[0].id || "");
+  const menu = await GetMenu(channel?.menus[0].id ?? "");
 
-  const categories = await GetCategories(menu?.id || "");
+  const categories = await GetCategories(menu?.id ?? "");
   if (!categories) {
     notFound();
   }
@@ -51,7 +51,7 @@ export default async function Page({ params }: PageProps) {
     return <div>No Products here :(</div>;
   }
 
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
   const { HOME_PAGE_LABEL, CATEGORY_PAGE_DEFAULT_DESCRIPTION } =
     getDictionary(locale);
 

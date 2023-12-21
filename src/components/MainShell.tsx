@@ -15,7 +15,7 @@ type MainShellProps = {
 };
 
 export const MainShell = ({ channel, checkout, children }: MainShellProps) => {
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
 
   return (
     <>

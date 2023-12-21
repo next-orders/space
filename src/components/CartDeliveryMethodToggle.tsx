@@ -14,7 +14,7 @@ export const CartDeliveryMethodToggle = ({
   channel,
   checkout,
 }: CartTypeToggleProps) => {
-  const deliveryMethod = checkout?.deliveryMethod || "DELIVERY";
+  const deliveryMethod = checkout?.deliveryMethod ?? "DELIVERY";
 
   return (
     <div className="px-0 py-0 flex flex-row gap-0 justify-center bg-zinc-50 rounded-2xl">
@@ -39,7 +39,7 @@ type MethodButtonProps = {
 };
 
 const MethodButton = ({ channel, method, methodNow }: MethodButtonProps) => {
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
   const label = getMethodButtonLabel(method, locale);
   const isActive = method === methodNow;
 

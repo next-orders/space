@@ -3,8 +3,8 @@ import { Checkout, MainAPI } from "@next-orders/api-sdk";
 import { Locale } from "@/dictionaries";
 import { COOKIES_CHECKOUT_ID, getBrowserLocale } from "@/client/helpers";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "no-api-url-env";
-const CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID || "no-channel-id-env";
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "no-api-url-env";
+const CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID ?? "no-channel-id-env";
 
 export const apiPublicClient = new MainAPI(API_URL, "");
 
@@ -26,7 +26,7 @@ export const GetLocale = async (): Promise<Locale> => {
     return browserLocale;
   }
 
-  return locale as Locale;
+  return locale;
 };
 
 export const GetChannel = async () => {

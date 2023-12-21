@@ -13,19 +13,16 @@ type BreadcrumbsProps = {
 
 export const Breadcrumbs = async ({ links }: BreadcrumbsProps) => {
   const channel = await GetChannel();
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
 
-  const breadcrumbItems = links.map((link, index) => (
-    <BreadcrumbItem key={index} link={link} />
+  const breadcrumbItems = links.map((link) => (
+    <BreadcrumbItem key={link.href} link={link} />
   ));
 
   return (
     <div className="mb-6 flex flex-row justify-between items-center">
       <nav className="hidden lg:block">
-        <ol
-          role="list"
-          className="flex flex-row flex-wrap gap-y-2 items-center"
-        >
+        <ol className="flex flex-row flex-wrap gap-y-2 items-center">
           {breadcrumbItems}
         </ol>
       </nav>

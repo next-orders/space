@@ -32,7 +32,7 @@ export const Cart = ({ channel, checkout }: CartProps) => {
     (state) => state.toggleDeliveryInfoModal,
   );
 
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
   const { CART_LABEL, CART_NEXT_BUTTON, DETAILED_CONDITIONS_LABEL } =
     getDictionary(channel?.languageCode);
 

@@ -9,8 +9,8 @@ import {
 } from "@next-orders/api-sdk";
 import { COOKIES_CHECKOUT_ID } from "@/client/helpers";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "no-api-url-env";
-const CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID || "no-channel-id-env";
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "no-api-url-env";
+const CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID ?? "no-channel-id-env";
 
 const api = new MainAPI(API_URL, ""); // Public only
 

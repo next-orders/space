@@ -13,7 +13,7 @@ import {
 import { getDictionary } from "@/dictionaries";
 
 type PageProps = {
-  params: { product: string };
+  readonly params: { product: string };
 };
 
 export default async function Page({ params }: PageProps) {
@@ -34,12 +34,12 @@ export default async function Page({ params }: PageProps) {
   const currencySign = getCurrencySign(channel?.currencyCode);
 
   const isNutritionShown =
-    product.per100gEnergy ||
-    product.per100gProtein ||
-    product.per100gCarbohydrate ||
+    product.per100gEnergy ??
+    product.per100gProtein ??
+    product.per100gCarbohydrate ??
     product.per100gFat;
 
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
   const {
     HOME_PAGE_LABEL,
     IN_CART_LABEL,

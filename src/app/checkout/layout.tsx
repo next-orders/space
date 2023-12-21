@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { GetChannel } from "@/client/api";
 
 type CheckoutLayoutProps = {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 };
 
 export default async function CheckoutLayout({
@@ -12,7 +12,7 @@ export default async function CheckoutLayout({
 }: CheckoutLayoutProps) {
   const channel = await GetChannel();
 
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
 
   return (
     <>

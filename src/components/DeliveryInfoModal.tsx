@@ -26,8 +26,8 @@ export const DeliveryInfoModal = ({
 
   return (
     <>
-      <div
-        className="z-40 fixed left-0 right-0 -top-20 -bottom-20 bg-zinc-700/50 opacity-0 data-[active=true]:opacity-100 translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
+      <button
+        className="z-40 fixed left-0 right-0 -top-20 -bottom-20 appearance-none bg-zinc-700/50 opacity-0 data-[active=true]:opacity-100 translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
         onClick={closeDeliveryInfoModal}
         data-active={isDeliveryInfoModalOpened}
       />

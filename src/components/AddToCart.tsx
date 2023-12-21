@@ -16,7 +16,7 @@ export const AddToCart = ({ channel, product }: AddToCartProps) => {
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
 
-  const locale = channel?.languageCode || "EN";
+  const locale = channel?.languageCode ?? "EN";
   const { ADD_TO_CART_LABEL } = getDictionary(locale);
 
   return (

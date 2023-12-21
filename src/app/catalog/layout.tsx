@@ -3,7 +3,7 @@ import { MainShell } from "@/components/MainShell";
 import { GetChannel, GetCheckout } from "@/client/api";
 
 type CatalogLayoutProps = {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 };
 
 export default async function CatalogLayout({ children }: CatalogLayoutProps) {

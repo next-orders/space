@@ -63,7 +63,7 @@ const CategoryBlock = async ({
 
   // Load Products in this category
   const products = await GetProductsInCategory(category.id);
-  if (!products || !products.length) {
+  if (!products?.length) {
     return null;
   }
 

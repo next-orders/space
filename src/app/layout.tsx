@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 type RootLayoutProps = {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 };
 
 export default async function RootLayout({ children }: RootLayoutProps) {
