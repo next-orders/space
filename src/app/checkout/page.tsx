@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import { IconClock } from "@tabler/icons-react";
 import { GetChannel, GetCheckout, GetProductsInCategory } from "@/client/api";
 import { CheckoutLineBlock } from "@/components/CheckoutLineBlock";
 import { ProductCard } from "@/components/ProductCard";
 import { getDictionary } from "@/dictionaries";
 import { getCurrencySign } from "@/client/helpers";
+import { DeliveryConditionsBlock } from "@/app/checkout/DeliveryConditionsBlock";
 
 export default async function Page() {
   const [checkout, channel] = await Promise.all([GetCheckout(), GetChannel()]);
@@ -13,13 +13,11 @@ export default async function Page() {
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
 
+  const countryCode = "US";
+  const currencyCode = channel?.currencyCode ?? "USD";
   const locale = channel?.languageCode ?? "EN";
   const {
     CHECKOUT_LABEL,
-    DELIVERY_CONDITIONS_LABEL,
-    DELIVERY_LABEL,
-    INDICATE_ADDRESS_LABEL,
-    DELIVERY_TIME_LABEL,
     COST_OF_DELIVERY_LABEL,
     YOU_ORDER_LABEL,
     TOTAL_LABEL,
@@ -27,17 +25,6 @@ export default async function Page() {
     CREATE_ORDER_LABEL,
     ANYTHING_ELSE_LABEL,
     PRICE_OF_GOODS_LABEL,
-    NOW_LABEL,
-    MIN_LABEL,
-    ADDRESS_STREET_PLACEHOLDER,
-    ADDRESS_APT_OFFICE_PLACEHOLDER,
-    ADDRESS_DOOR_PHONE_PLACEHOLDER,
-    ADDRESS_ENTRANCE_PLACEHOLDER,
-    ADDRESS_FLOOR_PLACEHOLDER,
-    COMMENT_PLACEHOLDER,
-    CONTACTS_LABEL,
-    CONTACT_PHONE_PLACEHOLDER,
-    CONTACT_NAME_PLACEHOLDER,
     PAYMENT_METHOD_LABEL,
   } = getDictionary(locale);
 
@@ -80,98 +67,11 @@ export default async function Page() {
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
         <div className="col-span-full md:col-span-7">
-          <Block>
-            <h2 className="mb-2 text-xl md:text-2xl font-medium">
-              {DELIVERY_CONDITIONS_LABEL}
-            </h2>
-
-            <div className="px-4 py-2 bg-zinc-100 rounded-2xl inline-block">
-              <div className="font-medium">{DELIVERY_LABEL}</div>
-              <div>
-                5<span className="pl-1 text-xs">{currencySign}</span>
-              </div>
-            </div>
-
-            <div className="w-full mt-4">
-              <h3 className="mb-2 text-lg md:text-xl font-medium">
-                {CONTACTS_LABEL}
-              </h3>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2">
-                <input
-                  type="text"
-                  name="phone"
-                  placeholder={CONTACT_PHONE_PLACEHOLDER}
-                  className="px-4 py-3 mb-2 w-full border border-zinc-200 rounded-2xl"
-                />
-
-                <input
-                  type="text"
-                  name="name"
-                  placeholder={CONTACT_NAME_PLACEHOLDER}
-                  className="px-4 py-3 mb-2 w-full border border-zinc-200 rounded-2xl"
-                />
-              </div>
-            </div>
-
-            <div className="w-full mt-4">
-              <h3 className="mb-2 text-lg md:text-xl font-medium">
-                {INDICATE_ADDRESS_LABEL}
-              </h3>
-              <input
-                type="text"
-                name="street"
-                placeholder={ADDRESS_STREET_PLACEHOLDER}
-                className="px-4 py-3 mb-2 w-full border border-zinc-200 rounded-2xl"
-              />
-
-              <div className="mb-2 grid grid-cols-2 md:grid-cols-4 gap-2">
-                <input
-                  type="text"
-                  name="apartment"
-                  placeholder={ADDRESS_APT_OFFICE_PLACEHOLDER}
-                  className="px-4 py-3 border border-zinc-200 rounded-2xl"
-                />
-
-                <input
-                  type="text"
-                  name="doorphone"
-                  placeholder={ADDRESS_DOOR_PHONE_PLACEHOLDER}
-                  className="px-4 py-3 border border-zinc-200 rounded-2xl"
-                />
-
-                <input
-                  type="text"
-                  name="entrance"
-                  placeholder={ADDRESS_ENTRANCE_PLACEHOLDER}
-                  className="px-4 py-3 border border-zinc-200 rounded-2xl"
-                />
-
-                <input
-                  type="text"
-                  name="floor"
-                  placeholder={ADDRESS_FLOOR_PLACEHOLDER}
-                  className="px-4 py-3 border border-zinc-200 rounded-2xl"
-                />
-              </div>
-
-              <input
-                type="text"
-                name="comment"
-                placeholder={COMMENT_PLACEHOLDER}
-                className="px-4 py-3 mb-2 w-full border border-zinc-200 rounded-2xl"
-              />
-            </div>
-
-            <h2 className="mt-4 mb-2 text-xl md:text-2xl font-medium">
-              {DELIVERY_TIME_LABEL}
-            </h2>
-
-            <div className="flex flex-row gap-2">
-              <IconClock stroke={1.5} />
-              {NOW_LABEL}: 45-60 {MIN_LABEL}
-            </div>
-          </Block>
+          <DeliveryConditionsBlock
+            locale={locale}
+            currencyCode={currencyCode}
+            countryCode={countryCode}
+          />
 
           <Block>
             <h2 className="mb-4 text-xl md:text-2xl font-medium">
