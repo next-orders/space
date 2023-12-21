@@ -4,13 +4,12 @@ import React from "react";
 import { IconClock } from "@tabler/icons-react";
 import { getDictionary, Locale } from "@/dictionaries";
 import { getCurrencySign } from "@/client/helpers";
-import { CurrencyCode } from "@next-orders/api-sdk";
+import { CountryCode, CurrencyCode } from "@next-orders/api-sdk";
 import {
   checkPhoneNumberValidity,
   formatPhoneNumber,
   getPhoneNumberFormatter,
 } from "@/client/phoneHelpers";
-import { CountryCode } from "libphonenumber-js";
 
 type DeliveryConditionsBlockProps = {
   locale: Locale;

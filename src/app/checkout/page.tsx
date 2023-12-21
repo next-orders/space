@@ -13,7 +13,7 @@ export default async function Page() {
   const backgroundColor = channel?.accentButtonColor;
   const backgroundImage = `linear-gradient(to bottom right, ${channel?.accentGradientFrom}, ${channel?.accentGradientTo})`;
 
-  const countryCode = "US";
+  const countryCode = channel?.countryCode ?? "US";
   const currencyCode = channel?.currencyCode ?? "USD";
   const locale = channel?.languageCode ?? "EN";
   const {
