@@ -12,6 +12,7 @@ import type {
   Checkout,
   CheckoutDeliveryMethod,
   CurrencyCode,
+  Menu,
 } from "@next-orders/api-sdk";
 import { LinkButton } from "@/components/LinkButton";
 import { useUIStore } from "@/store/ui";
@@ -20,17 +21,16 @@ import { getCurrencySign } from "@/client/helpers";
 
 type NavigationProps = {
   channel: Channel | null;
+  menu: Menu;
   checkout: Checkout | null;
 };
 
-export const Navigation = ({ channel, checkout }: NavigationProps) => {
+export const Navigation = ({ channel, menu, checkout }: NavigationProps) => {
   const isNavbarOpened = useUIStore((state) => state.isNavbarOpened);
   const toggleNavbar = useUIStore((state) => state.toggleNavbar);
   const toggleDeliveryInfoModal = useUIStore(
     (state) => state.toggleDeliveryInfoModal,
   );
-
-  const menu = channel?.menus[0];
 
   const buttons = menu?.categories?.map((item) => {
     return (

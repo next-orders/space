@@ -2,6 +2,7 @@ import Link from "next/link";
 import { IconArrowRight } from "@tabler/icons-react";
 import type { CurrencyCode, MenuCategory } from "@next-orders/api-sdk";
 import {
+  GetAllMenusInChannel,
   GetChannel,
   GetCheckout,
   GetLocale,
@@ -11,20 +12,21 @@ import {
 import { ProductCard } from "@/components/ProductCard";
 import { MainShell } from "@/components/MainShell";
 import { getDictionary, Locale } from "@/dictionaries";
+import { ChannelEmptyBlock } from "@/components/ChannelEmptyBlock";
 
 export default async function Page() {
-  const [channel, checkout, locale] = await Promise.all([
+  const [channel, menus, checkout, locale] = await Promise.all([
     GetChannel(),
+    GetAllMenusInChannel(),
     GetCheckout(),
     GetLocale(),
   ]);
 
-  if (!channel) {
+  if (!channel || !menus) {
     return <ChannelEmptyBlock locale={locale} />;
   }
 
-  const menu = await GetMenu(channel?.menus[0]?.id || "");
-
+  const menu = await GetMenu(menus[0]?.id || "");
   if (!menu) {
     return <ChannelEmptyBlock locale={locale} />;
   }
@@ -39,7 +41,7 @@ export default async function Page() {
   ));
 
   return (
-    <MainShell channel={channel} checkout={checkout}>
+    <MainShell channel={channel} menu={menu} checkout={checkout}>
       <h1 className="mb-2 text-3xl font-medium">{channel?.name}</h1>
       <div className="mb-6">{channel?.description}</div>
 
@@ -101,25 +103,5 @@ const CategoryBlock = async ({
         {showProducts}
       </div>
     </>
-  );
-};
-
-type ChannelEmptyBlockProps = {
-  locale: Locale;
-};
-
-const ChannelEmptyBlock = ({ locale }: ChannelEmptyBlockProps) => {
-  const {
-    CHANNEL_IS_NOT_CONFIGURED_LABEL,
-    CHANNEL_IS_NOT_CONFIGURED_DESCRIPTION,
-  } = getDictionary(locale);
-
-  return (
-    <div className="max-w-md mx-auto mt-20 text-center">
-      <h1 className="mb-2 text-xl font-medium">
-        {CHANNEL_IS_NOT_CONFIGURED_LABEL}
-      </h1>
-      <p>{CHANNEL_IS_NOT_CONFIGURED_DESCRIPTION}</p>
-    </div>
   );
 };

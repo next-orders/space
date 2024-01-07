@@ -1,15 +1,18 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ProductCard } from "@/components/ProductCard";
 import {
+  GetAllMenusInChannel,
   GetCategories,
   GetCategoryBySlug,
   GetChannel,
+  GetLocale,
   GetMenu,
   GetProductsInCategory,
 } from "@/client/api";
 import { getDictionary } from "@/dictionaries";
+import { ChannelEmptyBlock } from "@/components/ChannelEmptyBlock";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ProductCard } from "@/components/ProductCard";
 
 type PageProps = {
   readonly params: { category: string };
@@ -25,9 +28,17 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: PageProps) {
-  const channel = await GetChannel();
+  const [channel, menus, locale] = await Promise.all([
+    GetChannel(),
+    GetAllMenusInChannel(),
+    GetLocale(),
+  ]);
 
-  const menu = await GetMenu(channel?.menus[0].id ?? "");
+  if (!channel || !menus) {
+    return <ChannelEmptyBlock locale={locale} />;
+  }
+
+  const menu = await GetMenu(menus[0].id);
 
   const categories = await GetCategories(menu?.id ?? "");
   if (!categories) {
@@ -51,7 +62,6 @@ export default async function Page({ params }: PageProps) {
     return <div>No Products here :(</div>;
   }
 
-  const locale = channel?.languageCode ?? "EN";
   const { HOME_PAGE_LABEL, CATEGORY_PAGE_DEFAULT_DESCRIPTION } =
     getDictionary(locale);
 

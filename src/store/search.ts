@@ -1,20 +1,21 @@
 import { create } from "zustand";
 import { ProductVariant } from "@next-orders/api-sdk";
-import { GetTopSearch, SearchInChannel } from "@/server/actions";
+import { GetTopSearch, SearchInMenu } from "@/server/actions";
 
 interface SearchState {
   query: string;
   // eslint-disable-next-line no-unused-vars
-  setQuery: (value: string) => void;
+  setQuery: (menuId: string, query: string) => void;
   searchResults: ProductVariant[];
   topSearchResults: ProductVariant[];
-  setTopSearchResults: () => void;
+  // eslint-disable-next-line no-unused-vars
+  setTopSearchResults: (menuId: string) => void;
 }
 
 export const useSearchStore = create<SearchState>((set) => ({
   query: "",
-  setQuery: (query) => {
-    SearchInChannel(query).then((res) => {
+  setQuery: (menuId, query) => {
+    SearchInMenu(menuId, query).then((res) => {
       if (!res) return;
 
       set(() => ({ searchResults: res }));
@@ -23,8 +24,8 @@ export const useSearchStore = create<SearchState>((set) => ({
   },
   searchResults: [],
   topSearchResults: [],
-  setTopSearchResults: () => {
-    GetTopSearch().then((res) => {
+  setTopSearchResults: (menuId) => {
+    GetTopSearch(menuId).then((res) => {
       if (!res) return;
 
       set(() => ({ topSearchResults: res }));

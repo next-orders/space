@@ -4,10 +4,11 @@ import React from "react";
 import Link from "next/link";
 import { getDictionary, Locale } from "@/dictionaries";
 import { useSearchStore } from "@/store/search";
+import { Menu } from "@next-orders/api-sdk";
 
-type SearchBlockProps = { locale: Locale };
+type SearchBlockProps = { locale: Locale; menu: Menu };
 
-export const SearchBlock = ({ locale }: SearchBlockProps) => {
+export const SearchBlock = ({ locale, menu }: SearchBlockProps) => {
   const query = useSearchStore((state) => state.query);
   const searchResults = useSearchStore((state) => state.searchResults);
   const isEmpty = !query;
@@ -27,7 +28,11 @@ export const SearchBlock = ({ locale }: SearchBlockProps) => {
   return (
     <div className="invisible group-hover:visible group-focus:visible group-active:visible group-focus-within:visible group-focus-visible:visible fixed top-16 left-0 w-72 bg-white px-4 py-4 rounded-b-2xl shadow-lg duration-200">
       <div className="flex flex-col gap-2">
-        {isEmpty ? <SearchBlockPopular locale={locale} /> : showSearchResults}
+        {isEmpty ? (
+          <SearchBlockPopular locale={locale} menuId={menu.id} />
+        ) : (
+          showSearchResults
+        )}
       </div>
     </div>
   );
@@ -44,7 +49,13 @@ const SearchLine = ({ label, link }: { label: string; link: string }) => {
   );
 };
 
-const SearchBlockPopular = ({ locale }: { locale: Locale }) => {
+const SearchBlockPopular = ({
+  locale,
+  menuId,
+}: {
+  locale: Locale;
+  menuId: string;
+}) => {
   const { FOUND_MOST_OFTEN_LABEL } = getDictionary(locale);
 
   const setTopSearchResults = useSearchStore(
@@ -53,8 +64,8 @@ const SearchBlockPopular = ({ locale }: { locale: Locale }) => {
 
   // Get top only once
   React.useEffect(() => {
-    setTopSearchResults();
-  }, [setTopSearchResults]);
+    setTopSearchResults(menuId);
+  }, [menuId, setTopSearchResults]);
 
   const topSearchResults = useSearchStore((state) => state.topSearchResults);
 

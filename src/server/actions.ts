@@ -131,8 +131,8 @@ export const SetCheckoutId = (checkoutId: string) => {
   cookies().set(COOKIES_CHECKOUT_ID, checkoutId);
 };
 
-export const SearchInChannel = async (query: string) => {
-  const found = await api.channel.search(CHANNEL_ID, query.toLowerCase(), {
+export const SearchInMenu = async (menuId: string, query: string) => {
+  const found = await api.menu.search(menuId, query.toLowerCase(), {
     next: { revalidate: 120, tags: ["all", "search", `search-query-${query}`] },
   });
   if (!found || found instanceof Error) {
@@ -142,8 +142,10 @@ export const SearchInChannel = async (query: string) => {
   return found;
 };
 
-export const GetTopSearch = async (): Promise<ProductVariant[] | null> => {
-  const top = await api.channel.getTopSearch(CHANNEL_ID, {
+export const GetTopSearch = async (
+  menuId: string,
+): Promise<ProductVariant[] | null> => {
+  const top = await api.menu.getTopSearch(menuId, {
     next: {
       revalidate: MAX_CACHE_SECONDS,
       tags: ["all", "search", "top-search"],

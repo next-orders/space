@@ -1,5 +1,5 @@
 import React from "react";
-import type { Channel, Checkout } from "@next-orders/api-sdk";
+import type { Channel, Checkout, Menu } from "@next-orders/api-sdk";
 import { Navigation } from "@/components/Navigation";
 import { DeliveryInfoModal } from "@/components/DeliveryInfoModal";
 import { CartDrawer } from "@/components/CartDrawer";
@@ -10,20 +10,26 @@ import { DemoWarningBlock } from "@/components/DemoWarningBlock";
 
 type MainShellProps = {
   channel: Channel | null;
+  menu: Menu;
   checkout: Checkout | null;
   children: React.ReactNode;
 };
 
-export const MainShell = ({ channel, checkout, children }: MainShellProps) => {
+export const MainShell = ({
+  channel,
+  menu,
+  checkout,
+  children,
+}: MainShellProps) => {
   const locale = channel?.languageCode ?? "EN";
 
   return (
     <>
       <header className="z-20 h-16 bg-white fixed top-0 left-0 right-0">
-        <Header channel={channel} checkout={checkout} />
+        <Header channel={channel} menu={menu} checkout={checkout} />
       </header>
 
-      <Navigation channel={channel} checkout={checkout} />
+      <Navigation channel={channel} menu={menu} checkout={checkout} />
 
       <main className="relative w-auto bg-zinc-100 md:pl-72 xl:pr-80 top-16">
         {process.env.NEXT_PUBLIC_ENABLE_DEMO && (

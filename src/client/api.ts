@@ -43,6 +43,20 @@ export const GetChannel = async () => {
   return channel;
 };
 
+export const GetAllMenusInChannel = async () => {
+  const menus = await apiPublicClient.menu.listInChannel(CHANNEL_ID, {
+    next: {
+      ...nextConfig,
+      tags: ["all", "menus"],
+    },
+  });
+  if (!menus || menus instanceof Error) {
+    return null;
+  }
+
+  return menus;
+};
+
 export const GetMenu = async (id: string) => {
   const menu = await apiPublicClient.menu.getById(id, {
     next: {
