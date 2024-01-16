@@ -36,7 +36,7 @@
     "zustand": "4.4.7"
   },
   "devDependencies": {
-    "@types/node": "^20.11.0",
+    "@types/node": "^20.11.3",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "autoprefixer": "10.4.16",
