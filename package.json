@@ -1,6 +1,6 @@
 {
   "name": "v1",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Modern e-commerce website: clients will be happy to order delicious food!",
   "scripts": {
     "dev": "next dev --turbo",
@@ -26,26 +26,26 @@
   },
   "homepage": "https://github.com/next-orders/v1#readme",
   "dependencies": {
-    "@next-orders/api-sdk": "^0.3.6",
-    "@tabler/icons-react": "2.45.0",
-    "libphonenumber-js": "1.10.53",
-    "next": "14.0.4",
+    "@next-orders/api-sdk": "^0.3.9",
+    "@tabler/icons-react": "2.47.0",
+    "libphonenumber-js": "1.10.56",
+    "next": "14.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sharp": "0.33.1",
-    "zustand": "4.4.7"
+    "sharp": "0.33.2",
+    "zustand": "4.5.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.0",
-    "@types/react": "^18.2.47",
-    "@types/react-dom": "^18.2.18",
-    "autoprefixer": "10.4.16",
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "autoprefixer": "10.4.17",
     "eslint": "8.56.0",
-    "eslint-config-next": "14.0.4",
+    "eslint-config-next": "14.1.0",
     "eslint-config-prettier": "9.1.0",
-    "postcss": "8.4.33",
-    "prettier": "^3.1.1",
-    "sass": "^1.69.7",
+    "postcss": "8.4.35",
+    "prettier": "^3.2.5",
+    "sass": "^1.71.0",
     "tailwindcss": "3.4.1",
     "typescript": "5.3.3"
   }
