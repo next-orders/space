@@ -31,8 +31,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm ci
-      - run: nx test ${APP_NAME}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run unit tests
+        run: npx nx@latest test ${APP_NAME}
   docker:
     needs: test
     runs-on: ubuntu-latest
