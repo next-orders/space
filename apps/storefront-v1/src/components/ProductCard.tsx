@@ -46,7 +46,7 @@ export const ProductCard = ({
               alt={firstPhoto?.alt ?? ''}
               priority
               fill
-              sizes="(max-width: 768px) 100vw, 768px"
+              sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
               className="rounded-xl object-cover object-center"
             />
           </div>
