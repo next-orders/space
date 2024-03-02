@@ -16,7 +16,7 @@ env:
   APP_NAME: storefront-v1
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}/${{ env.APP_NAME }}
+  IMAGE_NAME: ${{ github.repository }}/storefront-v1
 
 jobs:
   docker:
