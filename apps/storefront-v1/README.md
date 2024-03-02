@@ -1,26 +1,9 @@
-# 🍔 v1: Food Orders
+# 🍔 v1
 First version of frontend. Products, cart, full ordering process.
 
-![main-screen-desktop](https://github.com/next-orders/v1/blob/main/.github/media/main-screen-desktop.jpg?raw=true)
+![main-screen-desktop](https://github.com/next-orders/food/blob/main/.github/media/main-screen-desktop.jpg?raw=true)
 
-![checkout-screen-desktop](https://github.com/next-orders/v1/blob/main/.github/media/checkout-screen-desktop.jpg?raw=true)
-
-## 🍕 Main idea and architecture of Next-Orders
-
-There is a great desire to create software that is ideal for ordering and delivering food.
-It will be a set of solutions that can work together. It is important that each element can be easily replaced later.
-So the project does not become one big monolith.
-
-![next-orders-arch](https://github.com/next-orders/v1/blob/main/.github/media/next-orders-arch.png?raw=true)
-
-- [Website](https://github.com/next-orders/v1): First version of storefront, where client can order delicious food.
-- [Main API and SDK](https://github.com/next-orders/api): All business entities in one spot. Other parts can access data here.
-- [Command Center](https://github.com/next-orders/command-center): Headless CMS designed to build and manage storefronts.
-- Image Proxy: in future
-
-I'm currently working on first version of the website. Next year there will be a new version that will easily replace the old one as the Main API with business logic will remain the same.
-
-Let's see what happens. Give the project a star ⭐. Offer your ideas and make commits.
+![checkout-screen-desktop](https://github.com/next-orders/food/blob/main/.github/media/checkout-screen-desktop.jpg?raw=true)
 
 ## 🥗 Stack
 
@@ -34,7 +17,7 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - [ESlint](https://eslint.org/): JavaScript linter for identifying and reporting code quality issues.
 - [Prettier](https://prettier.io/): Opinionated code formatter for maintaining consistent code style.
 
-![lighthouse-score](https://github.com/next-orders/v1/blob/main/.github/media/lighthouse.jpg?raw=true)
+![lighthouse-score](https://github.com/next-orders/food/blob/main/.github/media/lighthouse.jpg?raw=true)
 
 ## 🍣 Customer and Seller Features (WIP)
 
@@ -69,10 +52,10 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 You can use latest Docker Image:
 
 ```shell
-docker pull ghcr.io/next-orders/v1:latest
+docker pull ghcr.io/next-orders/food/storefront-v1:latest
 
 # or use the specific version
-docker pull ghcr.io/next-orders/v1:v0.1.0
+docker pull ghcr.io/next-orders/food/storefront-v1:v0.1.0
 ```
 
 You need to use env variables:
@@ -100,11 +83,11 @@ livenessProbe:
 Clone this repo and use standard commands:
 
 ```shell
-git clone https://github.com/next-orders/v1
+git clone https://github.com/next-orders/food
 npm i
-npm run dev
+nx dev storefront-v1
 ```
 
 ## 🍰 License
 
-This project is licensed under the **MIT License** - see the [**MIT License**](https://github.com/next-orders/v1/blob/main/LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [**MIT License**](https://github.com/next-orders/food/blob/main/LICENSE) file for details.

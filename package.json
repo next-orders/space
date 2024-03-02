@@ -1,16 +1,13 @@
 {
-  "name": "@next-orders/source",
+  "name": "@next-orders/food",
   "version": "0.0.0",
-  "description": "Modern e-commerce website: clients will be happy to order delicious food!",
-  "scripts": {
-    "dev": "next dev --turbo",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "lint:types": "tsc --noEmit"
-  },
+  "description": "Modern e-commerce self-hosted platform: clients will be happy to order delicious food!",
   "keywords": [
     "ecommerce",
+    "ecommerce-platform",
+    "multilingual",
+    "shop",
+    "self-hosted",
     "website",
     "nextjs",
     "tailwind"
@@ -19,12 +16,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/next-orders/v1.git"
+    "url": "git+https://github.com/next-orders/food.git"
   },
   "bugs": {
-    "url": "https://github.com/next-orders/v1/issues"
+    "url": "https://github.com/next-orders/food/issues"
   },
-  "homepage": "https://github.com/next-orders/v1#readme",
+  "homepage": "https://github.com/next-orders/food#readme",
   "dependencies": {
     "@next-orders/api-sdk": "0.3.9",
     "@tabler/icons-react": "2.47.0",

@@ -26,7 +26,7 @@ const CopyrightBlock = () => {
 
       <div className="mt-4">
         <Link
-          href="https://github.com/next-orders/v1"
+          href="https://github.com/next-orders/food"
           target="_blank"
           aria-label="Open GitHub repository of this project"
           className="px-3 py-3 bg-zinc-800 inline-block rounded-full text-white active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
