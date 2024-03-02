@@ -155,7 +155,6 @@ const CartItemLine = ({
             <Image
               src={firstPhoto?.url ?? DEFAULT_IMAGE_URL}
               alt={firstPhoto?.alt ?? ''}
-              priority
               fill
               sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
               className="rounded-xl object-cover object-center xl:grayscale xl:contrast-75 xl:brightness-125 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
