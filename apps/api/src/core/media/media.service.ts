@@ -6,15 +6,16 @@ import type { Media } from '@next-orders/api-sdk';
 import { PrismaService } from '@/db/prisma.service';
 import { S3Service } from '@/s3/s3.service';
 import { UploadMediaDto } from '@/core/media/dto/upload-media.dto';
+import { File } from '@/core/media/media.types';
 
 @Injectable()
 export class MediaService {
-  private readonly apiUrl;
+  private readonly apiUrl: string;
 
   constructor(
     private readonly config: ConfigService,
     private readonly prisma: PrismaService,
-    private readonly s3: S3Service
+    private readonly s3: S3Service,
   ) {
     this.apiUrl = this.config.getOrThrow<string>('API_URL');
   }
@@ -32,9 +33,9 @@ export class MediaService {
     return file;
   }
 
-  async uploadMedia(file: Express.Multer.File, dto: UploadMediaDto) {
+  async uploadMedia(file: File, dto: UploadMediaDto) {
     const isPossibleExtension = this.checkIfPossibleFileExtension(
-      file?.mimetype
+      file?.mimetype,
     );
 
     if (!isPossibleExtension) {

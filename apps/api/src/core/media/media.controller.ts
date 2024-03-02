@@ -20,6 +20,7 @@ import { Permissions, Public } from '@/core/auth/auth.decorator';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadMediaDto } from '@/core/media/dto/upload-media.dto';
 import { UploadMediaResponse } from '@next-orders/api-sdk';
+import { File } from '@/core/media/media.types';
 
 @Controller('media')
 export class MediaController {
@@ -41,9 +42,9 @@ export class MediaController {
   @UseInterceptors(FileInterceptor('file'))
   async uploadImage(
     @UploadedFile(new ParseFilePipe({ validators: [] }))
-    file: Express.Multer.File,
+    file: File,
     @Body()
-    dto: UploadMediaDto
+    dto: UploadMediaDto,
   ): Promise<UploadMediaResponse> {
     const uploaded = await this.service.uploadMedia(file, dto);
     if (uploaded instanceof Error) {
@@ -57,7 +58,7 @@ export class MediaController {
   @Get('static/:fileName')
   async getMediaFileFromBucket(
     @Param('fileName') fileName: string,
-    @Res({ passthrough: true }) res: Response
+    @Res({ passthrough: true }) res: Response,
   ): Promise<StreamableFile> {
     const file = await this.service.getMediaFileFromBucket(fileName);
     if (!file) {
