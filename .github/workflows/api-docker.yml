@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run unit tests
-        run: npx nx@latest test ${APP_NAME}
+        run: npx nx@latest test ${{ env.APP_NAME }}
   docker:
     needs: test
     runs-on: ubuntu-latest
