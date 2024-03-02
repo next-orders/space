@@ -46,7 +46,7 @@ export const DeliveryConditionsBlock = ({
   const [isValidPhone, setIsValidPhone] = React.useState<boolean>(false);
 
   const handlePhoneChange: React.ChangeEventHandler<HTMLInputElement> = (
-    el,
+    el
   ) => {
     const phoneInputValue = el.target.value;
     if (phoneInputValue.length > 17) return;

@@ -23,6 +23,9 @@
     "paths": {
       "@/*": [
         "apps/storefront-v1/src/*"
+      ],
+      "@next-orders/api-sdk": [
+        "packages/api-sdk/src/index.ts"
       ]
     }
   },

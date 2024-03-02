@@ -1,0 +1,237 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Main Entity
+model Shop {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+}
+
+// Shop Entities
+model Domain {
+  id        String    @id @default(cuid())
+  host      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  channel   Channel[]
+}
+
+model Media {
+  id           String         @id @default(cuid())
+  alt          String
+  url          String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now())
+  productMedia ProductMedia[]
+}
+
+model Warehouse {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  name      String
+}
+
+model WarehouseProduct {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  name      String
+  unit      String
+}
+
+model Product {
+  id                     String           @id @default(cuid())
+  type                   String           @default("PRODUCTION")
+  name                   String
+  description            String?
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @default(now())
+  rating                 Float            @default(0)
+  score                  Int              @default(0)
+  isAvailableForPurchase Boolean          @default(true)
+  variants               ProductVariant[]
+}
+
+model Employee {
+  id          String               @id @default(cuid())
+  firstName   String
+  lastName    String?
+  isActive    Boolean              @default(true)
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @default(now())
+  lastLogin   DateTime?
+  permissions EmployeePermission[]
+  contacts    EmployeeContact[]
+  passwords   EmployeePassword[]
+}
+
+model EmployeePermission {
+  id         String   @id @default(cuid())
+  type       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id])
+}
+
+model EmployeeContact {
+  id                      String   @id @default(cuid())
+  type                    String
+  value                   String
+  isUsedForAuthentication Boolean  @default(false)
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @default(now())
+  employeeId              String
+  employee                Employee @relation(fields: [employeeId], references: [id])
+}
+
+model EmployeePassword {
+  id         String   @id @default(cuid())
+  hash       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id])
+}
+
+model Client {
+  id        String        @id @default(cuid())
+  firstName String
+  lastName  String?
+  isActive  Boolean       @default(true)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @default(now())
+  level     Int           @default(0)
+  gender    String        @default("UNKNOWN")
+  emotion   Int           @default(7)
+  loyalty   Int           @default(0)
+  avatarId  String
+  traits    ClientTrait[]
+}
+
+model ClientTrait {
+  id        String   @id @default(cuid())
+  type      String   @default("BLANK")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id])
+}
+
+model Channel {
+  id                 String     @id @default(cuid())
+  slug               String
+  name               String
+  description        String?
+  currencyCode       String     @default("USD")
+  languageCode       String     @default("EN")
+  countryCode        String     @default("US")
+  isActive           Boolean    @default(true)
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @default(now())
+  accentTextColor    String     @default("#15803d")
+  accentButtonColor  String     @default("#86efac")
+  accentGradientFrom String?    @default("#fef3c7")
+  accentGradientTo   String?    @default("#86efac")
+  domainId           String?
+  domain             Domain?    @relation(fields: [domainId], references: [id])
+  menus              Menu[]
+  checkouts          Checkout[]
+}
+
+// Channel Entities
+model Menu {
+  id         String           @id @default(cuid())
+  name       String
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @default(now())
+  channelId  String
+  channel    Channel          @relation(fields: [channelId], references: [id])
+  categories MenuCategory[]
+  products   ProductVariant[]
+}
+
+model MenuCategory {
+  id        String           @id @default(cuid())
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @default(now())
+  name      String
+  slug      String
+  icon      String?
+  menuId    String
+  menu      Menu             @relation(fields: [menuId], references: [id])
+  products  ProductVariant[]
+}
+
+model ProductVariant {
+  id                  String         @id @default(cuid())
+  name                String
+  description         String?
+  slug                String
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @default(now())
+  sku                 String?
+  weightUnit          String         @default("G")
+  weightValue         Float
+  onSale              Boolean        @default(false)
+  gross               Float          @default(0)
+  net                 Float?
+  tax                 Float?
+  per100gEnergy       Float?
+  per100gProtein      Float?
+  per100gFat          Float?
+  per100gCarbohydrate Float?
+  seoTitle            String?
+  seoDescription      String?
+  productId           String
+  product             Product        @relation(fields: [productId], references: [id])
+  categoryId          String
+  category            MenuCategory   @relation(fields: [categoryId], references: [id])
+  menuId              String
+  menu                Menu           @relation(fields: [menuId], references: [id])
+  media               ProductMedia[]
+  checkoutLines       CheckoutLine[]
+}
+
+model ProductMedia {
+  id               String         @id @default(cuid())
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @default(now())
+  mediaId          String
+  media            Media          @relation(fields: [mediaId], references: [id])
+  productVariantId String
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id])
+}
+
+model Checkout {
+  id             String         @id @default(cuid())
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @default(now())
+  deliveryMethod String
+  shippingPrice  Float          @default(0)
+  totalPrice     Float          @default(0)
+  channelId      String
+  channel        Channel        @relation(fields: [channelId], references: [id])
+  lines          CheckoutLine[]
+}
+
+model CheckoutLine {
+  id               String         @id @default(cuid())
+  quantity         Int
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @default(now())
+  productVariantId String
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id])
+  checkoutId       String
+  checkout         Checkout       @relation(fields: [checkoutId], references: [id])
+}
