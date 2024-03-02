@@ -1,0 +1,9 @@
+{
+  "name": "storefront-v1-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/storefront-v1-e2e/src",
+  "targets": {},
+  "implicitDependencies": [
+    "storefront-v1"
+  ]
+}
