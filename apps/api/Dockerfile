@@ -8,8 +8,9 @@ WORKDIR /app
 
 COPY . .
 RUN npm ci
-RUN npx prisma@latest generate
-RUN npx nx@latest build ${PROJECT}
+RUN prisma generate
+RUN nx build ${PROJECT}
+RUN npm prune --production
 
 FROM base AS runner
 WORKDIR /app
