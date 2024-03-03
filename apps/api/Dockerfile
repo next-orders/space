@@ -6,10 +6,11 @@ ARG PROJECT=api
 FROM base as builder
 WORKDIR /app
 
-COPY . .
+COPY package*.json .
 RUN npm ci
+
+COPY . .
 RUN npx nx@latest build ${PROJECT}
-RUN npm prune --omit=dev
 
 FROM base AS runner
 WORKDIR /app
