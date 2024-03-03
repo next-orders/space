@@ -6,10 +6,8 @@ ARG PROJECT=api
 FROM base as builder
 WORKDIR /app
 
-COPY package*.json .
-RUN npm ci
-
 COPY . .
+RUN npm ci
 RUN npx nx@latest build ${PROJECT}
 
 FROM base AS runner
