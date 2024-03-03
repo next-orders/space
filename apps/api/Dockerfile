@@ -8,12 +8,13 @@ WORKDIR /app
 
 COPY . .
 RUN npm ci
-# RUN prisma generate
 RUN npx nx@latest build ${PROJECT}
-RUN npm prune --production
+RUN npm prune --omit=dev
 
 FROM base AS runner
 WORKDIR /app
+
+ENV NODE_ENV production
 
 COPY --from=builder --chown=node:node /app/node_modules ./node_modules
 COPY --from=builder --chown=node:node /app/dist .
