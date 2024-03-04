@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useUIStore } from '@/store/ui';
-import { getIconUrl } from '@/client/helpers';
+import { useUIStore } from '../store/ui';
+import { getIconUrl } from '../client/helpers';
 import { MenuCategoryIcon } from '@next-orders/api-sdk';
 
 type LinkButtonProps = {

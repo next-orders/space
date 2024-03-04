@@ -7,8 +7,8 @@ import {
   getPossibleAccessories,
   getPossibleFaces,
   getPossibleSkinColors,
-} from '@/core/avatar/avatar.helpers';
-import { Public } from '@/core/auth/auth.decorator';
+} from './avatar.helpers';
+import { Public } from '../auth/auth.decorator';
 import { Options } from './avatar.types';
 
 const dynamicImport = async (packageName: string) =>

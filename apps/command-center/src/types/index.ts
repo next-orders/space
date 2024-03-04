@@ -27,3 +27,8 @@ export type MenuAction = {
   url?: string;
   icon: ReactNode;
 };
+
+export type BreadcrumbLink = {
+  title: string;
+  href: string;
+};

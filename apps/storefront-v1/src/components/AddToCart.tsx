@@ -2,8 +2,8 @@
 
 import { IconShoppingCartPlus } from '@tabler/icons-react';
 import { Channel, ProductVariant } from '@next-orders/api-sdk';
-import { AddProductToCheckout } from '@/server/actions';
-import { getDictionary } from '@/dictionaries';
+import { AddProductToCheckout } from '../server/actions';
+import { getDictionary } from '../dictionaries';
 
 type AddToCartProps = {
   channel: Channel | null;

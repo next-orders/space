@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { Provider } from '@nestjs/common';
-import { ChannelService } from '@/core/channel/channel.service';
-import { ChannelRepository } from '@/core/channel/channel.repository';
-import { CreateChannelDto } from '@/core/channel/dto/create-channel.dto';
-import { ChannelMapper, ModelChannel } from '@/core/channel/channel.mapper';
+import { ChannelService } from './channel.service';
+import { ChannelRepository } from './channel.repository';
+import { CreateChannelDto } from './dto/create-channel.dto';
+import { ChannelMapper, ModelChannel } from './channel.mapper';
 
 describe('ChannelService', () => {
   let service: ChannelService;

@@ -1,5 +1,5 @@
 import { createId } from '@paralleldrive/cuid2';
-import { PrismaModels } from '@/db/prisma.service';
+import { PrismaModels } from '../../../db/prisma.service';
 import { Menu, MenuCategory } from '@next-orders/api-sdk';
 
 export type ModelMenu = PrismaModels['Menu'];
@@ -22,7 +22,7 @@ export class MenuEntity implements ModelMenu {
 
   public static toEntity(
     menu: ModelMenu,
-    categories: ModelMenuCategory[]
+    categories: ModelMenuCategory[],
   ): Menu {
     return {
       ...menu,

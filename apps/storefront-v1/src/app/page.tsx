@@ -8,11 +8,11 @@ import {
   GetLocale,
   GetMenu,
   GetProductsInCategory,
-} from '@/client/api';
-import { ProductCard } from '@/components/ProductCard';
-import { MainShell } from '@/components/MainShell';
-import { getDictionary, Locale } from '@/dictionaries';
-import { ChannelEmptyBlock } from '@/components/ChannelEmptyBlock';
+} from '../client/api';
+import { ProductCard } from '../components/ProductCard';
+import { MainShell } from '../components/MainShell';
+import { getDictionary, Locale } from '../dictionaries';
+import { ChannelEmptyBlock } from '../components/ChannelEmptyBlock';
 
 export default async function Page() {
   const [channel, menus, checkout, locale] = await Promise.all([

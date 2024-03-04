@@ -4,7 +4,7 @@ import { IconMinus, IconPlus } from '@tabler/icons-react';
 import {
   AddOneToCheckoutLine,
   RemoveOneFromCheckoutLine,
-} from '@/server/actions';
+} from '../server/actions';
 
 type CounterProps = {
   count: number;

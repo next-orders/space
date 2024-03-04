@@ -1,16 +1,20 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { Price } from '@/components/Price';
-import { AddToCart } from '@/components/AddToCart';
-import { GetChannel, GetCheckout, GetProductBySlug } from '@/client/api';
+import { Breadcrumbs } from '../../../../components/Breadcrumbs';
+import { Price } from '../../../../components/Price';
+import { AddToCart } from '../../../../components/AddToCart';
+import {
+  GetChannel,
+  GetCheckout,
+  GetProductBySlug,
+} from '../../../../client/api';
 import {
   DEFAULT_IMAGE_URL,
   getCurrencySign,
   getProductFirstPhoto,
   getWeightLocalizedUnit,
-} from '@/client/helpers';
-import { getDictionary } from '@/dictionaries';
+} from '../../../../client/helpers';
+import { getDictionary } from '../../../../dictionaries';
 
 type PageProps = {
   readonly params: { product: string };

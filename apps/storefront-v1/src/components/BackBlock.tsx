@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { IconArrowBackUp } from '@tabler/icons-react';
-import { getDictionary, Locale } from '@/dictionaries';
+import { getDictionary, Locale } from '../dictionaries';
 
 type BackBlockProps = {
   locale: Locale;

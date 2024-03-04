@@ -14,10 +14,10 @@ import type {
   CurrencyCode,
   Menu,
 } from '@next-orders/api-sdk';
-import { LinkButton } from '@/components/LinkButton';
-import { useUIStore } from '@/store/ui';
-import { getDictionary, Locale } from '@/dictionaries';
-import { getCurrencySign } from '@/client/helpers';
+import { LinkButton } from './LinkButton';
+import { useUIStore } from '../store/ui';
+import { getDictionary, Locale } from '../dictionaries';
+import { getCurrencySign } from '../client/helpers';
 
 type NavigationProps = {
   channel: Channel | null;

@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { createId } from '@paralleldrive/cuid2';
-import { PrismaService } from '@/db/prisma.service';
+import { PrismaService } from '../../db/prisma.service';
 import { Product } from '@next-orders/api-sdk';
-import { CreateProductDto } from '@/core/product/dto/create-product.dto';
+import { CreateProductDto } from './dto/create-product.dto';
 
 @Injectable()
 export class ProductService {

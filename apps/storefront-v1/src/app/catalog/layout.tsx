@@ -1,12 +1,12 @@
 import React from 'react';
-import { MainShell } from '@/components/MainShell';
+import { MainShell } from '../../components/MainShell';
 import {
   GetAllMenusInChannel,
   GetChannel,
   GetCheckout,
   GetLocale,
-} from '@/client/api';
-import { ChannelEmptyBlock } from '@/components/ChannelEmptyBlock';
+} from '../../client/api';
+import { ChannelEmptyBlock } from '../../components/ChannelEmptyBlock';
 
 type CatalogLayoutProps = {
   readonly children: React.ReactNode;

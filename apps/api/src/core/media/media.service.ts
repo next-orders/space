@@ -3,10 +3,10 @@ import { ConfigService } from '@nestjs/config';
 import { createId } from '@paralleldrive/cuid2';
 import sharp from 'sharp';
 import type { Media } from '@next-orders/api-sdk';
-import { PrismaService } from '@/db/prisma.service';
-import { S3Service } from '@/s3/s3.service';
-import { UploadMediaDto } from '@/core/media/dto/upload-media.dto';
-import { File } from '@/core/media/media.types';
+import { PrismaService } from '../../db/prisma.service';
+import { S3Service } from '../../s3/s3.service';
+import { UploadMediaDto } from './dto/upload-media.dto';
+import { File } from './media.types';
 
 @Injectable()
 export class MediaService {

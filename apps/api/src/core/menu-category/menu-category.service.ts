@@ -1,11 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { createId } from '@paralleldrive/cuid2';
 import { MenuCategory } from '@next-orders/api-sdk';
-import { PrismaService } from '@/db/prisma.service';
-import {
-  CreateMenuCategoryDto,
-  UpdateMenuCategoryDto,
-} from '@/core/menu-category/dto';
+import { PrismaService } from '../../db/prisma.service';
+import { CreateMenuCategoryDto, UpdateMenuCategoryDto } from './dto';
 
 @Injectable()
 export class MenuCategoryService {
@@ -45,7 +42,7 @@ export class MenuCategoryService {
   }
 
   async createCategory(
-    dto: CreateMenuCategoryDto
+    dto: CreateMenuCategoryDto,
   ): Promise<MenuCategory | null> {
     const category = await this.prisma.menuCategory.create({
       data: {
@@ -64,7 +61,7 @@ export class MenuCategoryService {
 
   async updateCategory(
     categoryId: string,
-    dto: UpdateMenuCategoryDto
+    dto: UpdateMenuCategoryDto,
   ): Promise<MenuCategory | null> {
     // Exist?
     const category = await this.prisma.menuCategory.findFirst({

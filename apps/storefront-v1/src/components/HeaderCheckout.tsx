@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { IconArrowBackUp } from '@tabler/icons-react';
-import { getDictionary, Locale } from '@/dictionaries';
+import { getDictionary, Locale } from '../dictionaries';
 
 type HeaderCheckoutProps = {
   locale: Locale;

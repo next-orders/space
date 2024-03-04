@@ -1,8 +1,8 @@
 'use client';
 
-import { Cart } from '@/components/Cart';
+import { Cart } from './Cart';
 import { Channel, Checkout } from '@next-orders/api-sdk';
-import { useUIStore } from '@/store/ui';
+import { useUIStore } from '../store/ui';
 
 type CartDrawerProps = {
   channel: Channel | null;

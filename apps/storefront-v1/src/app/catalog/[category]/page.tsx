@@ -8,11 +8,11 @@ import {
   GetLocale,
   GetMenu,
   GetProductsInCategory,
-} from '@/client/api';
-import { getDictionary } from '@/dictionaries';
-import { ChannelEmptyBlock } from '@/components/ChannelEmptyBlock';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { ProductCard } from '@/components/ProductCard';
+} from '../../../client/api';
+import { getDictionary } from '../../../dictionaries';
+import { ChannelEmptyBlock } from '../../../components/ChannelEmptyBlock';
+import { Breadcrumbs } from '../../../components/Breadcrumbs';
+import { ProductCard } from '../../../components/ProductCard';
 
 type PageProps = {
   readonly params: { category: string };

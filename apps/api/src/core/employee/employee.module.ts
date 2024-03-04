@@ -1,20 +1,20 @@
 import { Module } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from '@/db/prisma.service';
-import { AuthService } from '@/core/auth/auth.service';
-import { EmployeeController } from '@/core/employee/employee.controller';
-import { EmployeeService } from '@/core/employee/employee.service';
+import { PrismaService } from '../../db/prisma.service';
+import { AuthService } from '../auth/auth.service';
+import { EmployeeController } from './employee.controller';
+import { EmployeeService } from './employee.service';
 import {
   EmployeeContactRepository,
   EmployeePasswordRepository,
   EmployeePermissionRepository,
   EmployeeRepository,
-} from '@/core/employee/repositories';
+} from './repositories';
 import {
   EmployeeContactMapper,
   EmployeeMapper,
   EmployeePermissionMapper,
-} from '@/core/employee/mappers';
+} from './mappers';
 
 @Module({
   controllers: [EmployeeController],

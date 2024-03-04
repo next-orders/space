@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import { BackBlock } from './BackBlock';
-import { getDictionary, prepareLocalizedLinks } from '../dictionaries';
+import { getDictionary } from '../dictionaries';
 import { PageKey } from '../lib/pages';
 import { getLocale } from '../client/locale';
 import { Button } from '@next-orders/ui';
+import { BreadcrumbLink } from '../types';
+import { prepareLocalizedLinks } from '../dictionaries/helpers';
 
 type BreadcrumbsProps = {
   keys: PageKey[];
@@ -34,11 +36,6 @@ export const Breadcrumbs = ({ keys }: BreadcrumbsProps) => {
       <BackBlock locale={locale} />
     </div>
   );
-};
-
-export type BreadcrumbLink = {
-  title: string;
-  href: string;
 };
 
 type BreadcrumbItemProps = {

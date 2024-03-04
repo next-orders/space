@@ -11,12 +11,6 @@
     }
   ],
   "compilerOptions": {
-    "esModuleInterop": true,
-    "paths": {
-      "@/*": ["apps/api/src/*"],
-      "@next-orders/api-sdk": [
-        "packages/api-sdk/src/index.ts"
-      ]
-    }
+    "esModuleInterop": true
   }
 }

@@ -2,14 +2,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { IconPlus } from '@tabler/icons-react';
 import { CurrencyCode, ProductVariant } from '@next-orders/api-sdk';
-import { Price } from '@/components/Price';
+import { Price } from './Price';
 import {
   DEFAULT_IMAGE_URL,
   getCurrencySign,
   getProductFirstPhoto,
   getWeightLocalizedUnit,
-} from '@/client/helpers';
-import { getDictionary, Locale } from '@/dictionaries';
+} from '../client/helpers';
+import { getDictionary, Locale } from '../dictionaries';
 
 type ProductCardProps = {
   locale: Locale;

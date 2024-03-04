@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { PrismaService } from '@/db/prisma.service';
-import { ProductVariantService } from '@/core/product-variant/product-variant.service';
-import { MenuController } from '@/core/menu/menu.controller';
-import { MenuService } from '@/core/menu/menu.service';
-import { MenuRepository } from '@/core/menu/menu.repository';
+import { PrismaService } from '../../db/prisma.service';
+import { ProductVariantService } from '../product-variant/product-variant.service';
+import { MenuController } from './menu.controller';
+import { MenuService } from './menu.service';
+import { MenuRepository } from './menu.repository';
 
 @Module({
   controllers: [MenuController],

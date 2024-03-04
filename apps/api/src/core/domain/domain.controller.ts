@@ -1,6 +1,6 @@
 import { Controller, Get, NotFoundException } from '@nestjs/common';
-import { DomainService } from '@/core/domain/domain.service';
-import { Public } from '@/core/auth/auth.decorator';
+import { DomainService } from './domain.service';
+import { Public } from '../auth/auth.decorator';
 
 @Controller('domain')
 export class DomainController {

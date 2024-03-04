@@ -10,8 +10,8 @@ import {
   Post,
   UnauthorizedException,
 } from '@nestjs/common';
-import { EmployeeService } from '@/core/employee/employee.service';
-import { Public } from '@/core/auth/auth.decorator';
+import { EmployeeService } from './employee.service';
+import { Public } from '../auth/auth.decorator';
 import {
   Employee,
   EmployeeContactCreateResponse,
@@ -26,7 +26,7 @@ import {
   CreateEmployeePasswordDto,
   CreateEmployeePermissionDto,
   SignInByEmailDto,
-} from '@/core/employee/dto';
+} from './dto';
 
 @Controller('employee')
 export class EmployeeController {
@@ -35,7 +35,7 @@ export class EmployeeController {
   @Public()
   @Post()
   async create(
-    @Body() dto: CreateEmployeeDto
+    @Body() dto: CreateEmployeeDto,
   ): Promise<EmployeeCreateResponse> {
     const created = await this.service.create(dto);
     if (!created) {
@@ -51,7 +51,7 @@ export class EmployeeController {
   @Public()
   @Post('contact')
   async createContact(
-    @Body() dto: CreateEmployeeContactDto
+    @Body() dto: CreateEmployeeContactDto,
   ): Promise<EmployeeContactCreateResponse> {
     const created = await this.service.createContact(dto);
     if (!created) {
@@ -67,7 +67,7 @@ export class EmployeeController {
   @Public()
   @Post('password')
   async createPassword(
-    @Body() dto: CreateEmployeePasswordDto
+    @Body() dto: CreateEmployeePasswordDto,
   ): Promise<EmployeePasswordCreateResponse> {
     const created = await this.service.createPassword(dto);
     if (!created) {
@@ -82,7 +82,7 @@ export class EmployeeController {
   @Public()
   @Post('permission')
   async createPermission(
-    @Body() dto: CreateEmployeePermissionDto
+    @Body() dto: CreateEmployeePermissionDto,
   ): Promise<EmployeePermissionCreateResponse> {
     const created = await this.service.createPermission(dto);
     if (!created) {
@@ -99,7 +99,7 @@ export class EmployeeController {
   @HttpCode(HttpStatus.OK)
   @Post('email')
   async signInByEmail(
-    @Body() dto: SignInByEmailDto
+    @Body() dto: SignInByEmailDto,
   ): Promise<SignInByEmailResponse> {
     const jwt = await this.service.signInByEmail(dto);
     if (!jwt) {

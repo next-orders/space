@@ -7,9 +7,9 @@ import {
   Param,
   Post,
 } from '@nestjs/common';
-import { ProductVariantService } from '@/core/product-variant/product-variant.service';
-import { Permissions, Public } from '@/core/auth/auth.decorator';
-import { CreateProductVariantDto } from '@/core/product-variant/dto/create-product-variant.dto';
+import { ProductVariantService } from './product-variant.service';
+import { Permissions, Public } from '../auth/auth.decorator';
+import { CreateProductVariantDto } from './dto/create-product-variant.dto';
 
 @Controller('product-variant')
 export class ProductVariantController {

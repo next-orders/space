@@ -1,6 +1,6 @@
 import { BadRequestException, Controller, Get, Param } from '@nestjs/common';
-import { AuthService } from '@/core/auth/auth.service';
-import { Public } from '@/core/auth/auth.decorator';
+import { AuthService } from './auth.service';
+import { Public } from './auth.decorator';
 import { ConfigService } from '@nestjs/config';
 
 @Controller('auth')

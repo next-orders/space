@@ -15,12 +15,12 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { MediaService } from '@/core/media/media.service';
-import { Permissions, Public } from '@/core/auth/auth.decorator';
+import { MediaService } from './media.service';
+import { Permissions, Public } from '../auth/auth.decorator';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { UploadMediaDto } from '@/core/media/dto/upload-media.dto';
+import { UploadMediaDto } from './dto/upload-media.dto';
 import { UploadMediaResponse } from '@next-orders/api-sdk';
-import { File } from '@/core/media/media.types';
+import { File } from './media.types';
 
 @Controller('media')
 export class MediaController {

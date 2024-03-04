@@ -13,14 +13,14 @@ import type {
   EmployeePermissionType,
   JWTEmployeeAccessTokenPayload,
 } from '@next-orders/api-sdk';
-import { IS_PUBLIC_KEY, Permissions } from '@/core/auth/auth.decorator';
+import { IS_PUBLIC_KEY, Permissions } from './auth.decorator';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
     private readonly config: ConfigService,
     private readonly jwt: JwtService,
-    private readonly reflector: Reflector
+    private readonly reflector: Reflector,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -49,14 +49,14 @@ export class AuthGuard implements CanActivate {
   /** If endpoint have @Permissions decorator */
   private async processPermissionsDecorator(
     context: ExecutionContext,
-    requiredPermissions: EmployeePermissionType[]
+    requiredPermissions: EmployeePermissionType[],
   ): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
     if (!token) {
       throw new HttpException(
         'You have no access token',
-        HttpStatus.UNAUTHORIZED
+        HttpStatus.UNAUTHORIZED,
       );
     }
 
@@ -64,7 +64,7 @@ export class AuthGuard implements CanActivate {
     if (!payload) {
       throw new HttpException(
         'Payload in token is not correct',
-        HttpStatus.FORBIDDEN
+        HttpStatus.FORBIDDEN,
       );
     }
 
@@ -73,7 +73,7 @@ export class AuthGuard implements CanActivate {
       if (!payload.user.permissions.includes(p)) {
         throw new HttpException(
           `You have no required permission: ${p}`,
-          HttpStatus.FORBIDDEN
+          HttpStatus.FORBIDDEN,
         );
       }
     }
@@ -87,7 +87,7 @@ export class AuthGuard implements CanActivate {
   }
 
   private async extractPayloadFromToken(
-    token: string
+    token: string,
   ): Promise<JWTEmployeeAccessTokenPayload | null> {
     try {
       return this.jwt.verifyAsync<JWTEmployeeAccessTokenPayload>(token, {

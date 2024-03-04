@@ -1,11 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
-import { GetChannel, GetCheckout, GetProductsInCategory } from '@/client/api';
-import { CheckoutLineBlock } from '@/components/CheckoutLineBlock';
-import { ProductCard } from '@/components/ProductCard';
-import { getDictionary } from '@/dictionaries';
-import { getCurrencySign } from '@/client/helpers';
-import { DeliveryConditionsBlock } from '@/app/checkout/DeliveryConditionsBlock';
+import {
+  GetChannel,
+  GetCheckout,
+  GetProductsInCategory,
+} from '../../client/api';
+import { CheckoutLineBlock } from '../../components/CheckoutLineBlock';
+import { ProductCard } from '../../components/ProductCard';
+import { getDictionary } from '../../dictionaries';
+import { getCurrencySign } from '../../client/helpers';
+import { DeliveryConditionsBlock } from './DeliveryConditionsBlock';
 
 export default async function Page() {
   const [checkout, channel] = await Promise.all([GetCheckout(), GetChannel()]);

@@ -1,9 +1,6 @@
 import { Options } from '@dicebear/open-peeps';
 import { StyleOptions } from '@dicebear/core';
-import {
-  PossibleAccessories,
-  PossibleEmotion,
-} from '@/core/avatar/avatar.types';
+import { PossibleAccessories, PossibleEmotion } from './avatar.types';
 
 // 1 to 10
 export const emotions: PossibleEmotion[] = [

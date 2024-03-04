@@ -1,13 +1,11 @@
-import { PageKey, PAGES } from '../lib/pages';
-import { BreadcrumbLink } from '../components/Breadcrumbs';
-import { ClientTrait } from '@next-orders/api-sdk';
+import type { ClientTrait } from '@next-orders/api-sdk';
 
 export type Locale = 'EN' | 'ES' | 'RU';
 
 export type Translation = typeof Translations;
 export type TranslationKey = keyof Translation;
 
-type Dictionary = Record<TranslationKey, string>;
+export type Dictionary = Record<TranslationKey, string>;
 
 const Translations = {
   RETURN_BUTTON: { EN: 'Return', ES: 'Devolver', RU: 'Вернуться' },
@@ -386,22 +384,6 @@ const createDictionaryForLocale = (locale: Locale): Dictionary =>
 export const getDictionary = (locale: Locale = 'EN'): Dictionary => {
   return createDictionaryForLocale(locale);
 };
-
-const createLinkFromPageKey = (
-  dictionary: Dictionary,
-  pageKey: PageKey,
-): BreadcrumbLink => {
-  const { dictionaryKey, href } = PAGES[pageKey];
-  const title = dictionary[dictionaryKey];
-
-  return { title, href };
-};
-
-export const prepareLocalizedLinks = (
-  keys: PageKey[],
-  dictionary: Dictionary,
-): BreadcrumbLink[] =>
-  keys.map((key) => createLinkFromPageKey(dictionary, key));
 
 const traitToTooltipKeyMap: Record<ClientTrait['type'], TranslationKey> = {
   BLANK: 'CLIENT_TRAIT_BLANK_TOOLTIP',

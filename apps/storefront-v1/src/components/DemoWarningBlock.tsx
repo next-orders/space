@@ -1,5 +1,5 @@
 import { IconTrafficCone } from '@tabler/icons-react';
-import { getDictionary, Locale } from '@/dictionaries';
+import { getDictionary, Locale } from '../dictionaries';
 
 type DemoWarningBlockProps = {
   locale: Locale;

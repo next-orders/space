@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Channel, Checkout } from '@next-orders/api-sdk';
-import { ChangeCheckoutDeliveryMethod } from '@/server/actions';
-import { getDictionary, Locale } from '@/dictionaries';
+import { ChangeCheckoutDeliveryMethod } from '../server/actions';
+import { getDictionary, Locale } from '../dictionaries';
 
 type CartTypeToggleProps = {
   channel: Channel | null;

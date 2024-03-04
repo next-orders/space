@@ -6,9 +6,9 @@ import {
   NotFoundException,
   Post,
 } from '@nestjs/common';
-import { ShopService } from '@/core/shop/shop.service';
-import { Public } from '@/core/auth/auth.decorator';
-import { CreateShopDto } from '@/core/shop/dto/create-shop.dto';
+import { ShopService } from './shop.service';
+import { Public } from '../auth/auth.decorator';
+import { CreateShopDto } from './dto/create-shop.dto';
 
 @Controller('shop')
 export class ShopController {

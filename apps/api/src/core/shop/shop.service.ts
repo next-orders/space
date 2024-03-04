@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { createId } from '@paralleldrive/cuid2';
-import { PrismaService } from '@/db/prisma.service';
+import { PrismaService } from '../../db/prisma.service';
 import type { Shop } from '@next-orders/api-sdk';
-import { CreateShopDto } from '@/core/shop/dto/create-shop.dto';
+import { CreateShopDto } from './dto/create-shop.dto';
 
 @Injectable()
 export class ShopService {

@@ -9,17 +9,17 @@ import type {
   CheckoutLine,
   CurrencyCode,
 } from '@next-orders/api-sdk';
-import { Counter } from '@/components/Counter';
-import { Price } from '@/components/Price';
-import { CartDeliveryMethodToggle } from '@/components/CartDeliveryMethodToggle';
-import { useUIStore } from '@/store/ui';
-import { getDictionary, Locale } from '@/dictionaries';
+import { Counter } from './Counter';
+import { Price } from './Price';
+import { CartDeliveryMethodToggle } from './CartDeliveryMethodToggle';
+import { useUIStore } from '../store/ui';
+import { getDictionary, Locale } from '../dictionaries';
 import {
   DEFAULT_IMAGE_URL,
   getCurrencySign,
   getProductFirstPhoto,
   getWeightLocalizedUnit,
-} from '@/client/helpers';
+} from '../client/helpers';
 
 type CartProps = {
   channel: Channel | null;

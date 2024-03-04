@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { ChannelEntity } from '@/core/channel/entities';
+import { ChannelEntity } from './entities';
 import { CountryCode, CurrencyCode, LanguageCode } from '@next-orders/api-sdk';
-import { PrismaModels } from '@/db/prisma.service';
+import { PrismaModels } from '../../db/prisma.service';
 
 export type ModelChannel = PrismaModels['Channel'];
 

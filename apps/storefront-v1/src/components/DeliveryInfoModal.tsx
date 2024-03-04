@@ -1,10 +1,10 @@
 'use client';
 
 import { IconBike, IconClock, IconDiscount2 } from '@tabler/icons-react';
-import { useUIStore } from '@/store/ui';
+import { useUIStore } from '../store/ui';
 import type { Channel, Checkout } from '@next-orders/api-sdk';
-import { getDictionary, Locale } from '@/dictionaries';
-import { getCurrencySign } from '@/client/helpers';
+import { getDictionary, Locale } from '../dictionaries';
+import { getCurrencySign } from '../client/helpers';
 
 type DeliveryInfoModalProps = {
   checkout: Checkout;

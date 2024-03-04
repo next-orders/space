@@ -14,20 +14,20 @@ import {
   CreateEmployeePasswordDto,
   CreateEmployeePermissionDto,
   SignInByEmailDto,
-} from '@/core/employee/dto';
-import { AuthService } from '@/core/auth/auth.service';
+} from './dto';
+import { AuthService } from '../auth/auth.service';
 import {
   EmployeeContactRepository,
   EmployeePasswordRepository,
   EmployeePermissionRepository,
   EmployeeRepository,
-} from '@/core/employee/repositories';
+} from './repositories';
 import {
   EmployeeContactEntity,
   EmployeeEntity,
   EmployeePasswordEntity,
   EmployeePermissionEntity,
-} from '@/core/employee/entities';
+} from './entities';
 
 @Injectable()
 export class EmployeeService {
@@ -36,7 +36,7 @@ export class EmployeeService {
     private readonly contactRepository: EmployeeContactRepository,
     private readonly passwordRepository: EmployeePasswordRepository,
     private readonly permissionRepository: EmployeePermissionRepository,
-    private readonly auth: AuthService
+    private readonly auth: AuthService,
   ) {}
 
   async create(dto: CreateEmployeeDto): Promise<Employee> {
@@ -59,7 +59,7 @@ export class EmployeeService {
   }
 
   async createPassword(
-    dto: CreateEmployeePasswordDto
+    dto: CreateEmployeePasswordDto,
   ): Promise<EmployeePassword> {
     const hashedPassword = await hash(dto.password, 10);
     const employeePasswordEntity = new EmployeePasswordEntity({
@@ -71,7 +71,7 @@ export class EmployeeService {
   }
 
   async createPermission(
-    dto: CreateEmployeePermissionDto
+    dto: CreateEmployeePermissionDto,
   ): Promise<EmployeePermission> {
     const employeePermissionEntity = new EmployeePermissionEntity({
       employeeId: dto.employeeId,
@@ -87,11 +87,11 @@ export class EmployeeService {
 
   async findEmployeeByContact(
     contactValue: string,
-    type: EmployeeContactType
+    type: EmployeeContactType,
   ): Promise<Employee | null> {
     const employeeContact = await this.contactRepository.findByValueAndType(
       contactValue,
-      type
+      type,
     );
     if (!employeeContact) {
       return null;
@@ -101,9 +101,8 @@ export class EmployeeService {
   }
 
   async checkPassword(employeeId: string, password: string): Promise<boolean> {
-    const passwords = await this.passwordRepository.findAllWithEmployeeId(
-      employeeId
-    );
+    const passwords =
+      await this.passwordRepository.findAllWithEmployeeId(employeeId);
     if (!passwords || !passwords.length) {
       return false;
     }
@@ -132,15 +131,15 @@ export class EmployeeService {
     }
 
     const permissions = await this.permissionRepository.findAllWithEmployeeId(
-      employee.id
+      employee.id,
     );
     const permissionTypes: EmployeePermissionType[] = permissions.map(
-      (p) => p.type
+      (p) => p.type,
     );
 
     const accessToken = await this.auth.createToken(
       employee.id,
-      permissionTypes
+      permissionTypes,
     );
 
     return {

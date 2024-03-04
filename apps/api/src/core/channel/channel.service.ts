@@ -5,9 +5,9 @@ import type {
   CurrencyCode,
   LanguageCode,
 } from '@next-orders/api-sdk';
-import { CreateChannelDto } from '@/core/channel/dto/create-channel.dto';
-import { ChannelRepository } from '@/core/channel/channel.repository';
-import { ChannelEntity } from '@/core/channel/entities';
+import { CreateChannelDto } from './dto/create-channel.dto';
+import { ChannelRepository } from './channel.repository';
+import { ChannelEntity } from './entities';
 
 @Injectable()
 export class ChannelService {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { HeaderCheckout } from '@/components/HeaderCheckout';
-import { Footer } from '@/components/Footer';
-import { GetChannel } from '@/client/api';
+import { HeaderCheckout } from '../../components/HeaderCheckout';
+import { Footer } from '../../components/Footer';
+import { GetChannel } from '../../client/api';
 
 type CheckoutLayoutProps = {
   readonly children: React.ReactNode;

@@ -1,4 +1,4 @@
-import { TranslationKey } from '../dictionaries';
+import type { TranslationKey } from '../dictionaries';
 
 export type Pages = typeof PAGES;
 export type PageKey = keyof Pages;

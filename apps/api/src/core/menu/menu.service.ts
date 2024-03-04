@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { Menu, ProductVariant } from '@next-orders/api-sdk';
-import { ProductVariantService } from '@/core/product-variant/product-variant.service';
-import { CreateMenuDto } from '@/core/menu/dto/create-menu.dto';
-import { MenuRepository } from '@/core/menu/menu.repository';
-import { MenuEntity } from '@/core/menu/entities';
+import { ProductVariantService } from '../product-variant/product-variant.service';
+import { CreateMenuDto } from './dto/create-menu.dto';
+import { MenuRepository } from './menu.repository';
+import { MenuEntity } from './entities';
 
 @Injectable()
 export class MenuService {
   constructor(
     private readonly repository: MenuRepository,
-    private readonly productVariant: ProductVariantService
+    private readonly productVariant: ProductVariantService,
   ) {}
 
   async create(dto: CreateMenuDto): Promise<Menu> {
@@ -40,7 +40,7 @@ export class MenuService {
 
   async searchOnMenu(
     menuId: string,
-    query: string
+    query: string,
   ): Promise<ProductVariant[] | null> {
     if (query.length < 2) {
       return null;

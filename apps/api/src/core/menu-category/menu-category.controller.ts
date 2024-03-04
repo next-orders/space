@@ -8,12 +8,9 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { Permissions, Public } from '@/core/auth/auth.decorator';
-import { MenuCategoryService } from '@/core/menu-category/menu-category.service';
-import {
-  CreateMenuCategoryDto,
-  UpdateMenuCategoryDto,
-} from '@/core/menu-category/dto';
+import { Permissions, Public } from '../auth/auth.decorator';
+import { MenuCategoryService } from './menu-category.service';
+import { CreateMenuCategoryDto, UpdateMenuCategoryDto } from './dto';
 import {
   MenuCategoryCreateResponse,
   MenuCategoryUpdateResponse,
@@ -26,7 +23,7 @@ export class MenuCategoryController {
   @Permissions(['EDIT_MENUS'])
   @Post()
   async createCategory(
-    @Body() dto: CreateMenuCategoryDto
+    @Body() dto: CreateMenuCategoryDto,
   ): Promise<MenuCategoryCreateResponse> {
     const category = await this.service.createCategory(dto);
     if (!category) {
@@ -43,7 +40,7 @@ export class MenuCategoryController {
   @Patch(':categoryId')
   async updateCategory(
     @Param('categoryId') categoryId: string,
-    @Body() dto: UpdateMenuCategoryDto
+    @Body() dto: UpdateMenuCategoryDto,
   ): Promise<MenuCategoryUpdateResponse> {
     const category = await this.service.updateCategory(categoryId, dto);
     if (!category) {

@@ -13,23 +13,23 @@ import {
   AddProductDto,
   ChangeDeliveryMethodDto,
   CreateCheckoutDto,
-} from '@/core/checkout/dto';
-import { PrismaService } from '@/db/prisma.service';
-import { ProductVariantService } from '@/core/product-variant/product-variant.service';
+} from './dto';
+import { PrismaService } from '../../db/prisma.service';
+import { ProductVariantService } from '../product-variant/product-variant.service';
 
 @Injectable()
 export class CheckoutService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly productVariant: ProductVariantService
+    private readonly productVariant: ProductVariantService,
   ) {}
 
   async createCheckout(
-    dto: CreateCheckoutDto
+    dto: CreateCheckoutDto,
   ): Promise<CheckoutCreateResponse> {
     Logger.log(
       `Creating new Checkout on Channel Id ${dto.channelId}`,
-      'createCheckout'
+      'createCheckout',
     );
 
     const newCheckout = await this.prisma.checkout.create({
@@ -61,11 +61,11 @@ export class CheckoutService {
 
   async changeCheckoutDeliveryMethod(
     id: string,
-    dto: ChangeDeliveryMethodDto
+    dto: ChangeDeliveryMethodDto,
   ): Promise<CheckoutChangeDeliveryMethodResponse> {
     Logger.log(
       `Checkout ${id}: delivery method changing to ${dto.method}`,
-      'changeCheckoutDeliveryMethod'
+      'changeCheckoutDeliveryMethod',
     );
 
     // Update data
@@ -89,11 +89,11 @@ export class CheckoutService {
 
   async addProductToCheckout(
     id: string,
-    dto: AddProductDto
+    dto: AddProductDto,
   ): Promise<ProductVariantAddToCheckoutResponse> {
     Logger.log(
       `Checkout ${id}: adding product Id ${dto.productVariantId}`,
-      'addProductToCheckout'
+      'addProductToCheckout',
     );
 
     // Limit lines
@@ -104,7 +104,7 @@ export class CheckoutService {
 
     // Find ProductVariant
     const variant = await this.productVariant.findProductVariantById(
-      dto.productVariantId
+      dto.productVariantId,
     );
     if (!variant) {
       throw new BadRequestException();
@@ -129,11 +129,11 @@ export class CheckoutService {
 
   async addOneToCheckoutLine(
     checkoutId: string,
-    lineId: string
+    lineId: string,
   ): Promise<CheckoutAddOneToLineResponse> {
     Logger.log(
       `Checkout ${checkoutId}: adding one to line Id ${lineId}`,
-      'addOneToCheckoutLine'
+      'addOneToCheckoutLine',
     );
 
     await this.addOneToCheckoutLineByLineId(lineId);
@@ -150,11 +150,11 @@ export class CheckoutService {
 
   async removeOneFromCheckoutLine(
     checkoutId: string,
-    lineId: string
+    lineId: string,
   ): Promise<CheckoutRemoveOneFromLineResponse> {
     Logger.log(
       `Checkout ${checkoutId}: removing one from line Id ${lineId}`,
-      'removeOneFromCheckoutLine'
+      'removeOneFromCheckoutLine',
     );
 
     await this.removeOneFromCheckoutLineByLineId(lineId);
@@ -209,9 +209,9 @@ export class CheckoutService {
         .reduce(
           (accumulator, line) =>
             accumulator + line.quantity * (line.productVariant.gross || 1),
-          0
+          0,
         )
-        .toFixed(2)
+        .toFixed(2),
     );
 
     // Custom: recount cart with 10% discount
@@ -242,7 +242,7 @@ export class CheckoutService {
 
   async checkIfAlreadyInCheckout(
     checkoutId: string,
-    variantId: string
+    variantId: string,
   ): Promise<CheckoutLine | undefined> {
     const checkout = await this.findCheckoutById(checkoutId);
     if (!checkout) {
@@ -284,7 +284,7 @@ export class CheckoutService {
 
   async addNewLineToCheckout(
     checkoutId: string,
-    productVariantId: string
+    productVariantId: string,
   ): Promise<boolean> {
     await this.prisma.checkoutLine.create({
       data: {

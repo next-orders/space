@@ -2,14 +2,14 @@
 
 import React from 'react';
 import { IconClock } from '@tabler/icons-react';
-import { getDictionary, Locale } from '@/dictionaries';
-import { getCurrencySign } from '@/client/helpers';
+import { getDictionary, Locale } from '../../dictionaries';
+import { getCurrencySign } from '../../client/helpers';
 import { CountryCode, CurrencyCode } from '@next-orders/api-sdk';
 import {
   checkPhoneNumberValidity,
   formatPhoneNumber,
   getPhoneNumberFormatter,
-} from '@/client/phoneHelpers';
+} from '../../client/phoneHelpers';
 
 type DeliveryConditionsBlockProps = {
   locale: Locale;
@@ -46,7 +46,7 @@ export const DeliveryConditionsBlock = ({
   const [isValidPhone, setIsValidPhone] = React.useState<boolean>(false);
 
   const handlePhoneChange: React.ChangeEventHandler<HTMLInputElement> = (
-    el
+    el,
   ) => {
     const phoneInputValue = el.target.value;
     if (phoneInputValue.length > 17) return;

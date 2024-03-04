@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '@/db/prisma.service';
-import { EmployeePermissionEntity } from '@/core/employee/entities';
-import { EmployeePermissionMapper } from '@/core/employee/mappers';
+import { PrismaService } from '../../../db/prisma.service';
+import { EmployeePermissionEntity } from '../entities';
+import { EmployeePermissionMapper } from '../mappers';
 
 @Injectable()
 export class EmployeePermissionRepository {

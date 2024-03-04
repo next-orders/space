@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { getDictionary, Locale } from '@/dictionaries';
-import { useSearchStore } from '@/store/search';
+import { getDictionary, Locale } from '../dictionaries';
+import { useSearchStore } from '../store/search';
 import { Menu } from '@next-orders/api-sdk';
 
 type SearchBlockProps = { locale: Locale; menu: Menu };

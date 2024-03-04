@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { GetChannel } from '@/client/api';
-import { BackBlock } from '@/components/BackBlock';
+import { GetChannel } from '../client/api';
+import { BackBlock } from './BackBlock';
 
 export type BreadcrumbLink = {
   title: string;

@@ -7,9 +7,9 @@ import {
   Param,
   Post,
 } from '@nestjs/common';
-import { MenuService } from '@/core/menu/menu.service';
-import { Permissions, Public } from '@/core/auth/auth.decorator';
-import { CreateMenuDto } from '@/core/menu/dto/create-menu.dto';
+import { MenuService } from './menu.service';
+import { Permissions, Public } from '../auth/auth.decorator';
+import { CreateMenuDto } from './dto/create-menu.dto';
 import { MenuCreateResponse } from '@next-orders/api-sdk';
 
 @Controller('menu')

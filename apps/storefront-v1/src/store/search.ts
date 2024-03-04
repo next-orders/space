@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { ProductVariant } from '@next-orders/api-sdk';
-import { GetTopSearch, SearchInMenu } from '@/server/actions';
+import { GetTopSearch, SearchInMenu } from '../server/actions';
 
 interface SearchState {
   query: string;

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { EmployeeContactType } from '@next-orders/api-sdk';
-import { PrismaModels } from '@/db/prisma.service';
-import { EmployeeContactEntity } from '@/core/employee/entities';
+import { PrismaModels } from '../../../db/prisma.service';
+import { EmployeeContactEntity } from '../entities';
 
 export type ModelEmployeeContact = PrismaModels['EmployeeContact'];
 

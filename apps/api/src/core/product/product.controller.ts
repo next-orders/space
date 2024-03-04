@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
-import { Permissions, Public } from '@/core/auth/auth.decorator';
+import { Permissions, Public } from '../auth/auth.decorator';
 
 @Controller('product')
 export class ProductController {

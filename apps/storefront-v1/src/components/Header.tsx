@@ -2,10 +2,10 @@
 
 import { IconMenu2, IconSearch, IconX } from '@tabler/icons-react';
 import type { Channel, Checkout, Menu } from '@next-orders/api-sdk';
-import { useUIStore } from '@/store/ui';
-import { useSearchStore } from '@/store/search';
-import { getDictionary } from '@/dictionaries';
-import { SearchBlock } from '@/components/SearchBlock';
+import { useUIStore } from '../store/ui';
+import { useSearchStore } from '../store/search';
+import { getDictionary } from '../dictionaries';
+import { SearchBlock } from './SearchBlock';
 import { ChangeEvent } from 'react';
 
 type HeaderProps = {

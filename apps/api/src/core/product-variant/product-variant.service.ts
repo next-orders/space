@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { createId } from '@paralleldrive/cuid2';
-import { PrismaService } from '@/db/prisma.service';
+import { PrismaService } from '../../db/prisma.service';
 import { ProductVariant } from '@next-orders/api-sdk';
-import { CreateProductVariantDto } from '@/core/product-variant/dto/create-product-variant.dto';
+import { CreateProductVariantDto } from './dto/create-product-variant.dto';
 
 @Injectable()
 export class ProductVariantService {
   constructor(private readonly prisma: PrismaService) {}
 
   async findProductVariantsInCategory(
-    categoryId: string
+    categoryId: string,
   ): Promise<ProductVariant[] | null> {
     const products = await this.prisma.productVariant.findMany({
       where: { categoryId },
@@ -50,7 +50,7 @@ export class ProductVariantService {
 
   async findProductVariantByNameAndMenuId(
     menuId: string,
-    name: string
+    name: string,
   ): Promise<ProductVariant[] | null> {
     const product = await this.prisma.productVariant.findMany({
       where: {
@@ -77,7 +77,7 @@ export class ProductVariantService {
   }
 
   async findPopularProductVariantsByMenuId(
-    menuId: string
+    menuId: string,
   ): Promise<ProductVariant[] | null> {
     const products = await this.prisma.productVariant.findMany({
       where: { menuId },
@@ -118,7 +118,7 @@ export class ProductVariantService {
   }
 
   async createProductVariant(
-    dto: CreateProductVariantDto
+    dto: CreateProductVariantDto,
   ): Promise<ProductVariant | null> {
     const product = await this.prisma.productVariant.create({
       data: {

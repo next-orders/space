@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { CheckoutLine, CurrencyCode } from '@next-orders/api-sdk';
-import { Price } from '@/components/Price';
-import { Counter } from '@/components/Counter';
+import { Price } from './Price';
+import { Counter } from './Counter';
 import {
   DEFAULT_IMAGE_URL,
   getCurrencySign,
   getProductFirstPhoto,
   getWeightLocalizedUnit,
-} from '@/client/helpers';
-import { Locale } from '@/dictionaries';
+} from '../client/helpers';
+import { Locale } from '../dictionaries';
 
 type CheckoutLineBlockProps = {
   locale: Locale;

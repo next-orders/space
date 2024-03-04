@@ -1,12 +1,12 @@
 import React from 'react';
 import type { Channel, Checkout, Menu } from '@next-orders/api-sdk';
-import { Navigation } from '@/components/Navigation';
-import { DeliveryInfoModal } from '@/components/DeliveryInfoModal';
-import { CartDrawer } from '@/components/CartDrawer';
-import { Footer } from '@/components/Footer';
-import { Cart } from '@/components/Cart';
-import { Header } from '@/components/Header';
-import { DemoWarningBlock } from '@/components/DemoWarningBlock';
+import { Navigation } from './Navigation';
+import { DeliveryInfoModal } from './DeliveryInfoModal';
+import { CartDrawer } from './CartDrawer';
+import { Footer } from './Footer';
+import { Cart } from './Cart';
+import { Header } from './Header';
+import { DemoWarningBlock } from './DemoWarningBlock';
 
 type MainShellProps = {
   channel: Channel | null;

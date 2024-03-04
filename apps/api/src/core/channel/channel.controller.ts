@@ -7,9 +7,9 @@ import {
   Param,
   Post,
 } from '@nestjs/common';
-import { Permissions, Public } from '@/core/auth/auth.decorator';
-import { ChannelService } from '@/core/channel/channel.service';
-import { CreateChannelDto } from '@/core/channel/dto/create-channel.dto';
+import { Permissions, Public } from '../auth/auth.decorator';
+import { ChannelService } from './channel.service';
+import { CreateChannelDto } from './dto/create-channel.dto';
 import { Channel, ChannelCreateResponse } from '@next-orders/api-sdk';
 
 @Controller('channel')
@@ -36,7 +36,7 @@ export class ChannelController {
   @Permissions(['EDIT_CHANNELS'])
   @Post()
   async createChannel(
-    @Body() dto: CreateChannelDto
+    @Body() dto: CreateChannelDto,
   ): Promise<ChannelCreateResponse> {
     const created = await this.service.createChannel(dto);
     if (!created) {

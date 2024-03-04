@@ -1,6 +1,6 @@
 import { Controller, Get, NotFoundException, Param } from '@nestjs/common';
-import { ClientService } from '@/core/client/client.service';
-import { Permissions } from '@/core/auth/auth.decorator';
+import { ClientService } from './client.service';
+import { Permissions } from '../auth/auth.decorator';
 
 @Controller('client')
 export class ClientController {

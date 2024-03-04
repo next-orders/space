@@ -1,4 +1,3 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
 import type { Config } from 'tailwindcss';
 
 export const tailwindConfig: Config = {
@@ -6,9 +5,6 @@ export const tailwindConfig: Config = {
   darkMode: ['class'],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
-      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

@@ -1,9 +1,8 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { GetChannel } from '@/client/api';
-
-import './globals.scss';
+import { GetChannel } from '../client/api';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin', 'cyrillic-ext'] });
 
