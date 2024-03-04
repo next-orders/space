@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { IconBrandGithubFilled, IconHearts } from '@tabler/icons-react';
-import { Locale } from '@/dictionaries';
-import { LanguageBlock } from '@/components/LanguageBlock';
+import { Locale } from '../dictionaries';
+import { LanguageBlock } from './LanguageBlock';
 
 export const Footer = ({ locale }: { locale: Locale }) => {
   return (

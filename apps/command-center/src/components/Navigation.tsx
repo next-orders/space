@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { MenuItem } from '@/types';
-import { TablerIcon } from '@/components/TablerIcon';
-import { useUIStore } from '@/store/ui';
-import { LinkButton } from '@/components/LinkButton';
-import { getDictionary, Locale } from '@/dictionaries';
+import { MenuItem } from '../types';
+import { TablerIcon } from './TablerIcon';
+import { useUIStore } from '../store/ui';
+import { LinkButton } from './LinkButton';
+import { getDictionary, Locale } from '../dictionaries';
 
 type NavigationProps = {
   menu: MenuItem[];

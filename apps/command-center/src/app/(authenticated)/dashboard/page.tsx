@@ -1,38 +1,38 @@
-import { GetEmployeeAccessPayload } from "@/server/actions";
-import { GetEmployeeById, GetShop } from "@/client/api";
-import { Employee, Shop } from "@next-orders/api-sdk";
+import { GetEmployeeAccessPayload } from '../../../server/actions';
+import { GetEmployeeById, GetShop } from '../../../client/api';
+import { Employee, Shop } from '@next-orders/api-sdk';
 import {
   IconBuildingCommunity,
   IconThumbUp,
   IconUserScan,
-} from "@tabler/icons-react";
-import { getLocale } from "@/client/locale";
-import { getDictionary, Locale } from "@/dictionaries";
+} from '@tabler/icons-react';
+import { getLocale } from '../../../client/locale';
+import { getDictionary, Locale } from '../../../dictionaries';
 
 const events = [
   {
-    id: "1",
+    id: '1',
     text: 'After receiving his delivery, John Doe rates his experience. He gives the restaurant "Good Eats" a 4-star rating and the delivery partner "D4321" a 5-star rating. This rating event is logged on 02 April 2023 at 8:20 PM.',
     createdAt: new Date(),
   },
   {
-    id: "2",
+    id: '2',
     text: 'John Doe makes payment for the order "O7892" using his credit card. The platform confirms the payment on 02 April 2023 at 8:15 PM.',
     createdAt: new Date(),
   },
   {
-    id: "3",
-    text: "Jennifer applies a promo code to her order, which she got from a friend who referred her to the platform. The promo code provides a 20% discount on her first order.",
+    id: '3',
+    text: 'Jennifer applies a promo code to her order, which she got from a friend who referred her to the platform. The promo code provides a 20% discount on her first order.',
     createdAt: new Date(),
   },
   {
-    id: "4",
-    text: "The platform manager sets daily goals for the team, such as making 200 orders and maintaining a 95% customer satisfaction rate.",
+    id: '4',
+    text: 'The platform manager sets daily goals for the team, such as making 200 orders and maintaining a 95% customer satisfaction rate.',
     createdAt: new Date(),
   },
   {
-    id: "5",
-    text: "When a 5-star review comes in praising the quality and taste of a meal, the cook who prepared it is informed and appreciated, highlighting their exceptional work for the day.",
+    id: '5',
+    text: 'When a 5-star review comes in praising the quality and taste of a meal, the cook who prepared it is informed and appreciated, highlighting their exceptional work for the day.',
     createdAt: new Date(),
   },
 ];

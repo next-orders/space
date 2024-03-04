@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { IconEyeOff, IconFileArrowRight } from '@tabler/icons-react';
 import { Media } from '@next-orders/api-sdk';
-import { MenuAction } from '@/types';
-import { getDictionary, Locale } from '@/dictionaries';
+import { MenuAction } from '../types';
+import { getDictionary, Locale } from '../dictionaries';
 
 type MediaCardProps = {
   media: Media;

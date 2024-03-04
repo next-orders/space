@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { IconChefHat } from '@tabler/icons-react';
-import { getDictionary, Locale } from '@/dictionaries';
+import { getDictionary, Locale } from '../dictionaries';
 
 type BusinessEntity = {
   id: string;

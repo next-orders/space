@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { IconArrowBackUp, IconRefreshAlert } from "@tabler/icons-react";
-import { useRouter } from "next/navigation";
+import { useEffect } from 'react';
+import { IconArrowBackUp, IconRefreshAlert } from '@tabler/icons-react';
+import { useRouter } from 'next/navigation';
 
 type ErrorProps = {
   error: Error & { digest?: string };

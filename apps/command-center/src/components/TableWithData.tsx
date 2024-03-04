@@ -1,4 +1,4 @@
-import { TableData } from '@/types';
+import { TableData } from '../types';
 
 type Props = {
   data: TableData | null;

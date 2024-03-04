@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import { IconMenu2, IconSearch, IconX } from '@tabler/icons-react';
-import { SignOut } from '@/server/actions';
-import { useUIStore } from '@/store/ui';
-import { getDictionary, Locale } from '@/dictionaries';
+import { SignOut } from '../server/actions';
+import { useUIStore } from '../store/ui';
+import { getDictionary, Locale } from '../dictionaries';
 
 export const Header = ({ locale }: { locale: Locale }) => {
   const isNavbarOpened = useUIStore((state) => state.isNavbarOpened);

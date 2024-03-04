@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { IconArrowBackUp } from '@tabler/icons-react';
-import { getDictionary, Locale } from '@/dictionaries';
-import { Button } from '@/components/Button';
+import { getDictionary, Locale } from '../dictionaries';
+import { Button } from '@next-orders/ui';
 
 type BackBlockProps = {
   locale: Locale;
@@ -17,7 +17,7 @@ export const BackBlock = ({ locale }: BackBlockProps) => {
 
   return (
     <div className="w-full md:w-auto mx-auto md:mx-0">
-      <Button onClick={handleClick}>
+      <Button variant="secondary" size="lg" onClick={handleClick}>
         <IconArrowBackUp stroke={1.5} /> {RETURN_BUTTON}
       </Button>
     </div>

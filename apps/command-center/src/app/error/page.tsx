@@ -1,4 +1,4 @@
-import ErrorPage from '@/app/error/client';
+import ErrorPage from './client';
 
 export default async function Page() {
   return <ErrorPage />;

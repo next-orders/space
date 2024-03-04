@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { GetChannelById, GetMenusInChannel } from "@/client/api";
-import { Menu, MenuCategory } from "@next-orders/api-sdk";
-import { getDictionary, Locale } from "@/dictionaries";
-import { getLocale } from "@/client/locale";
-import { IconCategory } from "@tabler/icons-react";
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { Breadcrumbs } from '../../../../components/Breadcrumbs';
+import { GetChannelById, GetMenusInChannel } from '../../../../client/api';
+import { Menu, MenuCategory } from '@next-orders/api-sdk';
+import { getDictionary, Locale } from '../../../../dictionaries';
+import { getLocale } from '../../../../client/locale';
+import { IconCategory } from '@tabler/icons-react';
 
 type PageProps = {
   params: { id: string };
@@ -29,7 +29,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumbs keys={["CHANNELS", "CHANNEL_PAGE"]} />
+      <Breadcrumbs keys={['CHANNELS', 'CHANNEL_PAGE']} />
 
       <h1 className="mb-2 text-3xl font-semibold">{CHANNEL_PAGE_LABEL}</h1>
 

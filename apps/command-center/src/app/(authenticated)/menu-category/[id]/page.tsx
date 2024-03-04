@@ -1,7 +1,7 @@
-import { GetMenuCategoryById } from "@/client/api";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { getLocale } from "@/client/locale";
-import { CategoryEditModal } from "@/app/(authenticated)/menu-category/[id]/CategoryEditModal";
+import { GetMenuCategoryById } from '../../../../client/api';
+import { Breadcrumbs } from '../../../../components/Breadcrumbs';
+import { getLocale } from '../../../../client/locale';
+import { CategoryEditModal } from './CategoryEditModal';
 
 type PageProps = {
   params: { id: string };
@@ -13,7 +13,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumbs keys={["MENU_CATEGORY_PAGE"]} />
+      <Breadcrumbs keys={['MENU_CATEGORY_PAGE']} />
 
       <h1 className="mb-2 text-3xl font-semibold">Menu Category Page</h1>
       <div>You can see the loaded data</div>

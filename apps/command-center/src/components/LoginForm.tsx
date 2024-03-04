@@ -3,9 +3,9 @@
 import React from 'react';
 import { IconArrowRight, IconWand } from '@tabler/icons-react';
 import { useFormState, useFormStatus } from 'react-dom';
-import { SignInForm } from '@/server/actions';
-import { getDictionary, Locale } from '@/dictionaries';
-import { Input } from '@/components/Input';
+import { SignInForm } from '../server/actions';
+import { getDictionary, Locale } from '../dictionaries';
+import { Input } from './Input';
 
 const initialState = {
   message: '',

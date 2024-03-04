@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useUIStore } from '@/store/ui';
+import { useUIStore } from '../store/ui';
 
 type LinkButtonProps = {
   link: string;

@@ -1,7 +1,7 @@
 'use client';
 
-import { Locale } from '@/dictionaries';
-import { SetLocale } from '@/server/actions';
+import { Locale } from '../dictionaries';
+import { SetLocale } from '../server/actions';
 
 type LanguageBlockProps = {
   locale: Locale;

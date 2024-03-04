@@ -1,5 +1,5 @@
-import { MediaCardSkeleton } from "@/components/MediaCard";
-import { Locale } from "@/dictionaries";
+import { MediaCardSkeleton } from '../../../components/MediaCard';
+import { Locale } from '../../../dictionaries';
 
 export const MediaBlockSkeleton = ({ locale }: { locale: Locale }) => {
   return (

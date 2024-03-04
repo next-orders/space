@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Modal } from "@/components/Modal";
-import { useModalStore } from "@/store/modal";
-import { Button } from "@/components/Button";
-import { useFormState, useFormStatus } from "react-dom";
-import { CreateChannelForm } from "@/server/actions";
-import { Input } from "@/components/Input";
-import { getDictionary, Locale } from "@/dictionaries";
-import { Select } from "@/components/Select";
+import React from 'react';
+import { Modal } from '../../../components/Modal';
+import { useModalStore } from '../../../store/modal';
+import { useFormState, useFormStatus } from 'react-dom';
+import { CreateChannelForm } from '../../../server/actions';
+import { Input } from '../../../components/Input';
+import { getDictionary, Locale } from '../../../dictionaries';
+import { Select } from '../../../components/Select';
+import { Button } from '@next-orders/ui';
 
 const initialState = {
-  message: "",
+  message: '',
 };
 
 type ChannelCreateModalProps = {
@@ -35,12 +35,12 @@ export const ChannelCreateModal = ({ locale }: ChannelCreateModalProps) => {
 
   const [state, formAction] = useFormState(CreateChannelForm, initialState);
 
-  const [slug, setSlug] = React.useState("");
-  const [name, setName] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [currencyCode, setCurrencyCode] = React.useState("");
-  const [languageCode, setLanguageCode] = React.useState("");
-  const [countryCode, setCountryCode] = React.useState("");
+  const [slug, setSlug] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [description, setDescription] = React.useState('');
+  const [currencyCode, setCurrencyCode] = React.useState('');
+  const [languageCode, setLanguageCode] = React.useState('');
+  const [countryCode, setCountryCode] = React.useState('');
 
   return (
     <Modal title={CREATE_CHANNEL_LABEL} toggle={toggle} isOpened={isOpened}>
@@ -88,9 +88,9 @@ export const ChannelCreateModal = ({ locale }: ChannelCreateModalProps) => {
               onChange={setCurrencyCode}
               locale={locale}
               options={[
-                { value: "USD", label: "USD" },
-                { value: "EUR", label: "EUR" },
-                { value: "RUB", label: "RUB" },
+                { value: 'USD', label: 'USD' },
+                { value: 'EUR', label: 'EUR' },
+                { value: 'RUB', label: 'RUB' },
               ]}
             />
           </div>
@@ -103,9 +103,9 @@ export const ChannelCreateModal = ({ locale }: ChannelCreateModalProps) => {
               onChange={setLanguageCode}
               locale={locale}
               options={[
-                { value: "EN", label: "EN" },
-                { value: "ES", label: "ES" },
-                { value: "RU", label: "RU" },
+                { value: 'EN', label: 'EN' },
+                { value: 'ES', label: 'ES' },
+                { value: 'RU', label: 'RU' },
               ]}
             />
           </div>
@@ -118,11 +118,11 @@ export const ChannelCreateModal = ({ locale }: ChannelCreateModalProps) => {
               onChange={setCountryCode}
               locale={locale}
               options={[
-                { value: "US", label: "US" },
-                { value: "GB", label: "GB" },
-                { value: "ES", label: "ES" },
-                { value: "MX", label: "MX" },
-                { value: "RU", label: "RU" },
+                { value: 'US', label: 'US' },
+                { value: 'GB', label: 'GB' },
+                { value: 'ES', label: 'ES' },
+                { value: 'MX', label: 'MX' },
+                { value: 'RU', label: 'RU' },
               ]}
             />
           </div>
@@ -141,7 +141,7 @@ const SubmitBlock = ({ locale }: { locale: Locale }) => {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" isLoading={pending}>
+    <Button type="submit" size="lg" className="w-full" disabled={pending}>
       {CREATE_BUTTON}
     </Button>
   );

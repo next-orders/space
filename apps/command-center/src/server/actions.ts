@@ -5,8 +5,8 @@ import { redirect } from 'next/navigation';
 import { revalidateTag } from 'next/cache';
 import { z } from 'zod';
 import { MainAPI, WeightUnit } from '@next-orders/api-sdk';
-import { COOKIES_ACCESS_TOKEN_KEY, COOKIES_LOCALE_KEY } from '@/lib/helpers';
-import { Locale } from '@/dictionaries';
+import { COOKIES_ACCESS_TOKEN_KEY, COOKIES_LOCALE_KEY } from '../lib/helpers';
+import { Locale } from '../dictionaries';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'no-api-url-env';
 

@@ -1,5 +1,5 @@
-import { PageKey, PAGES } from '@/lib/pages';
-import { BreadcrumbLink } from '@/components/Breadcrumbs';
+import { PageKey, PAGES } from '../lib/pages';
+import { BreadcrumbLink } from '../components/Breadcrumbs';
 import { ClientTrait } from '@next-orders/api-sdk';
 
 export type Locale = 'EN' | 'ES' | 'RU';

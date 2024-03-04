@@ -1,6 +1,6 @@
-import { Locale } from '@/dictionaries';
+import { Locale } from '../dictionaries';
 import { cookies, headers } from 'next/headers';
-import { COOKIES_LOCALE_KEY, getBrowserLocale } from '@/lib/helpers';
+import { COOKIES_LOCALE_KEY, getBrowserLocale } from '../lib/helpers';
 
 export const getLocale = (): Locale => {
   const language = headers().get('Accept-Language');

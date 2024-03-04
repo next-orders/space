@@ -1,12 +1,12 @@
-import { Suspense } from "react";
-import Image from "next/image";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import ChannelsBlock from "@/app/(authenticated)/channel/ChannelsBlock";
-import { ChannelsBlockSkeleton } from "@/app/(authenticated)/channel/ChannelsBlockSkeleton";
-import { ChannelCreateModal } from "@/app/(authenticated)/channel/ChannelCreateModal";
-import { getLocale } from "@/client/locale";
-import { getDictionary } from "@/dictionaries";
-import StaticEggs from "@/../public/static/eggs.png";
+import { Suspense } from 'react';
+import Image from 'next/image';
+import { Breadcrumbs } from '../../../components/Breadcrumbs';
+import ChannelsBlock from '../../../app/(authenticated)/channel/ChannelsBlock';
+import { ChannelsBlockSkeleton } from './ChannelsBlockSkeleton';
+import { ChannelCreateModal } from './ChannelCreateModal';
+import { getLocale } from '../../../client/locale';
+import { getDictionary } from '../../../dictionaries';
+import StaticEggs from '../../../../public/static/eggs.png';
 
 export default async function Page() {
   const locale = getLocale();
@@ -15,7 +15,7 @@ export default async function Page() {
 
   return (
     <>
-      <Breadcrumbs keys={["CHANNELS"]} />
+      <Breadcrumbs keys={['CHANNELS']} />
 
       <h1 className="mb-2 text-3xl font-semibold">{CHANNELS_LABEL}</h1>
 

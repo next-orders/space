@@ -1,5 +1,5 @@
-import { ClientCardSkeleton } from "@/components/ClientCard";
-import { Locale } from "@/dictionaries";
+import { ClientCardSkeleton } from '../../../components/ClientCard';
+import { Locale } from '../../../dictionaries';
 
 export const ClientsBlockSkeleton = ({ locale }: { locale: Locale }) => {
   return (

@@ -1,5 +1,5 @@
-import { TraitsBlock } from "@/components/TraitsBlock";
-import { getDictionary, Locale } from "@/dictionaries";
+import { TraitsBlock } from '../../../../components/TraitsBlock';
+import { getDictionary, Locale } from '../../../../dictionaries';
 
 export const ClientAvatarBlockSkeleton = ({ locale }: { locale: Locale }) => {
   const { LOADING_LABEL } = getDictionary(locale);

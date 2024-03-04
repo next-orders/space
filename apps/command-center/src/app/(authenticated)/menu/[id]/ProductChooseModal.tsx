@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import React from "react";
-import { IconChefHat, IconSquareRoundedCheckFilled } from "@tabler/icons-react";
-import { useModalStore } from "@/store/modal";
-import { Button } from "@/components/Button";
-import { EntityModal } from "@/components/EntityModal";
-import { Product } from "@next-orders/api-sdk";
-import { getDictionary, Locale } from "@/dictionaries";
+import React from 'react';
+import { IconChefHat, IconSquareRoundedCheckFilled } from '@tabler/icons-react';
+import { useModalStore } from '../../../../store/modal';
+import { EntityModal } from '../../../../components/EntityModal';
+import { Product } from '@next-orders/api-sdk';
+import { getDictionary, Locale } from '../../../../dictionaries';
+import { Button } from '@next-orders/ui';
 
 type ProductChooseModalProps = {
   locale: Locale;
@@ -28,11 +28,11 @@ export const ProductChooseModal = ({
   const { FIND_BY_NAME_PLACEHOLDER, CHOOSE_BUTTON, CHOOSE_A_PRODUCT_LABEL } =
     getDictionary(locale);
 
-  const [find, setFind] = React.useState("");
+  const [find, setFind] = React.useState('');
 
   const showProducts = products
     ?.filter(
-      (product) => product.type === "PRODUCTION" || product.type === "READY",
+      (product) => product.type === 'PRODUCTION' || product.type === 'READY',
     )
     ?.filter((product) =>
       product.name.toLowerCase().includes(find.toLowerCase()),
@@ -71,7 +71,9 @@ export const ProductChooseModal = ({
       </div>
 
       <div className="mt-6">
-        <Button onClick={toggle}>{CHOOSE_BUTTON}</Button>
+        <Button size="lg" className="w-full" onClick={toggle}>
+          {CHOOSE_BUTTON}
+        </Button>
       </div>
     </EntityModal>
   );
@@ -91,13 +93,13 @@ const ProductChooseCard = ({
 }: ProductChooseCardProps) => {
   return (
     <div
-      className="relative px-4 py-4 bg-zinc-50 rounded-2xl cursor-pointer hover:scale-95 active:scale-90 duration-200 group border-4 border-transparent data-[active=true]:border-teal-500"
+      className="relative px-4 py-4 bg-zinc-50 rounded-2xl cursor-pointer hover:scale-95 active:scale-90 duration-200 group border-2 border-transparent data-[active=true]:border-primary"
       data-active={isSelected}
       onClick={() => setSelected(product.id)}
     >
       <IconSquareRoundedCheckFilled
         stroke={1.5}
-        className="z-10 w-8 h-8 absolute hidden top-2 left-2 text-teal-500 group-data-[active=true]:block"
+        className="z-10 w-8 h-8 absolute hidden top-2 left-2 text-primary group-data-[active=true]:block"
       />
 
       <div className="mb-2 px-4 py-4 bg-white rounded-2xl group-hover:scale-105 duration-200">

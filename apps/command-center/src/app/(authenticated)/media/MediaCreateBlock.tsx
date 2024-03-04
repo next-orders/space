@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { IconPhotoPlus } from "@tabler/icons-react";
-import { Button } from "@/components/Button";
-import { getDictionary, Locale } from "@/dictionaries";
-import { useModalStore } from "@/store/modal";
-import { CreateBlock } from "@/components/CreateBlock";
+import { IconPhotoPlus } from '@tabler/icons-react';
+import { getDictionary, Locale } from '../../../dictionaries';
+import { useModalStore } from '../../../store/modal';
+import { CreateBlock } from '../../../components/CreateBlock';
+import { Button } from '@next-orders/ui';
 
 type MediaCreateBlockProps = {
   locale: Locale;
@@ -17,7 +17,7 @@ export const MediaCreateBlock = ({ locale }: MediaCreateBlockProps) => {
 
   return (
     <CreateBlock locale={locale}>
-      <Button onClick={toggle}>
+      <Button variant="secondary" onClick={toggle}>
         <IconPhotoPlus stroke={1.5} /> {CREATE_MEDIA_LABEL}
       </Button>
     </CreateBlock>

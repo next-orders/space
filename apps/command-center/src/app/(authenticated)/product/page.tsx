@@ -1,11 +1,11 @@
-import Link from "next/link";
-import Image from "next/image";
-import { IconCheese, IconChefHat, IconPaperBag } from "@tabler/icons-react";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { getDictionary } from "@/dictionaries";
-import { getLocale } from "@/client/locale";
-import StaticRecipeBook from "@/../public/static/recipe-book.png";
-import StaticRecipeList from "@/../public/static/recipe-list.png";
+import Link from 'next/link';
+import Image from 'next/image';
+import { IconCheese, IconChefHat, IconPaperBag } from '@tabler/icons-react';
+import { Breadcrumbs } from '../../../components/Breadcrumbs';
+import { getDictionary } from '../../../dictionaries';
+import { getLocale } from '../../../client/locale';
+import StaticRecipeBook from '../../../../public/static/recipe-book.png';
+import StaticRecipeList from '../../../../public/static/recipe-list.png';
 
 export default async function Page() {
   const locale = getLocale();
@@ -22,13 +22,13 @@ export default async function Page() {
 
   return (
     <>
-      <Breadcrumbs keys={["PRODUCTS"]} />
+      <Breadcrumbs keys={['PRODUCTS']} />
 
       <h1 className="mb-2 text-3xl font-semibold">{PRODUCTS_LABEL}</h1>
 
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <Link
-          href={"/product/production"}
+          href={'/product/production'}
           className="px-4 py-4 flex flex-col justify-between bg-zinc-50 rounded-2xl text-center cursor-pointer hover:scale-95 duration-200 group"
         >
           <div className="mt-4">
@@ -51,7 +51,7 @@ export default async function Page() {
         </Link>
 
         <Link
-          href={"/product/ready"}
+          href={'/product/ready'}
           className="px-4 py-4 flex flex-col justify-between bg-zinc-50 rounded-2xl text-center cursor-pointer hover:scale-95 duration-200 group"
         >
           <div className="mt-4">
@@ -74,7 +74,7 @@ export default async function Page() {
         </Link>
 
         <Link
-          href={"/product/ingredient"}
+          href={'/product/ingredient'}
           className="px-4 py-4 flex flex-col justify-between bg-zinc-50 rounded-2xl text-center cursor-pointer hover:scale-95 duration-200 group"
         >
           <div className="mt-4">
@@ -109,7 +109,7 @@ export default async function Page() {
           Ok, let&apos;s understand a little theory
         </h2>
         <p className="text-left">
-          For ease of understanding, we will divide goods into <b>abstract</b>{" "}
+          For ease of understanding, we will divide goods into <b>abstract</b>{' '}
           and <b>real</b>. In this section you manage abstract products. They
           come in three types: to be produced, finished goods, and ingredients.
         </p>

@@ -1,9 +1,9 @@
-import { GetMenuById, GetProducts } from "@/client/api";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import CategoriesBlock from "@/app/(authenticated)/menu/[id]/CategoriesBlock";
-import { ProductVariantCreateModal } from "@/app/(authenticated)/menu/[id]/ProductVariantCreateModal";
-import { getLocale } from "@/client/locale";
-import { getDictionary } from "@/dictionaries";
+import { GetMenuById, GetProducts } from '../../../../client/api';
+import { Breadcrumbs } from '../../../../components/Breadcrumbs';
+import CategoriesBlock from './CategoriesBlock';
+import { ProductVariantCreateModal } from './ProductVariantCreateModal';
+import { getLocale } from '../../../../client/locale';
+import { getDictionary } from '../../../../dictionaries';
 
 type PageProps = {
   params: { id: string };
@@ -18,7 +18,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumbs keys={["MENU_PAGE"]} />
+      <Breadcrumbs keys={['MENU_PAGE']} />
 
       <h1 className="mb-2 text-3xl font-semibold">{MENU_PAGE_LABEL}</h1>
 

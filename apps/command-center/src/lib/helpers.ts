@@ -1,4 +1,4 @@
-import { Locale } from '@/dictionaries';
+import { Locale } from '../dictionaries';
 import { MenuCategoryIcon } from '@next-orders/api-sdk';
 
 export const COOKIES_ACCESS_TOKEN_KEY = 'next-orders.access-token';

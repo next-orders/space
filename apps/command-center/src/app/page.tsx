@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
-import { GetEmployeeAccessPayload } from "@/server/actions";
+import { redirect } from 'next/navigation';
+import { GetEmployeeAccessPayload } from '../server/actions';
 
 export default async function Page() {
   let isLoggedIn = false;
@@ -11,7 +11,7 @@ export default async function Page() {
     // No Auth?
   }
 
-  if (isLoggedIn) return redirect("/dashboard");
+  if (isLoggedIn) return redirect('/dashboard');
 
-  return redirect("/auth/login");
+  return redirect('/auth/login');
 }

@@ -1,14 +1,14 @@
-import { GetProducts } from "@/client/api";
-import { ProductProductionCard } from "@/components/ProductProductionCard";
-import { ProductionCreateBlock } from "@/app/(authenticated)/product/production/ProductionCreateBlock";
-import { getLocale } from "@/client/locale";
+import { GetProducts } from '../../../../client/api';
+import { ProductProductionCard } from '../../../../components/ProductProductionCard';
+import { ProductionCreateBlock } from './ProductionCreateBlock';
+import { getLocale } from '../../../../client/locale';
 
 export default async function ProductionBlock() {
   const products = await GetProducts();
   const locale = getLocale();
 
   const showProducts = products
-    ?.filter((product) => product.type === "PRODUCTION")
+    ?.filter((product) => product.type === 'PRODUCTION')
     ?.map((product) => (
       <ProductProductionCard key={product.id} product={product} />
     ));

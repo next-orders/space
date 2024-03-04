@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Modal } from "@/components/Modal";
-import { Button } from "@/components/Button";
-import { useFormState, useFormStatus } from "react-dom";
-import { CreateProductionForm } from "@/server/actions";
-import { useModalStore } from "@/store/modal";
-import { Input } from "@/components/Input";
-import { getDictionary, Locale } from "@/dictionaries";
+import React from 'react';
+import { Modal } from '../../../../components/Modal';
+import { useFormState, useFormStatus } from 'react-dom';
+import { CreateProductionForm } from '../../../../server/actions';
+import { useModalStore } from '../../../../store/modal';
+import { Input } from '../../../../components/Input';
+import { getDictionary, Locale } from '../../../../dictionaries';
+import { Button } from '@next-orders/ui';
 
 const initialState = {
-  message: "",
+  message: '',
 };
 
 type ProductionCreateModalProps = {
@@ -28,8 +28,8 @@ export const ProductionCreateModal = ({
 
   const [state, formAction] = useFormState(CreateProductionForm, initialState);
 
-  const [name, setName] = React.useState("");
-  const [description, setDescription] = React.useState("");
+  const [name, setName] = React.useState('');
+  const [description, setDescription] = React.useState('');
 
   return (
     <Modal title={CREATE_PRODUCTION_LABEL} toggle={toggle} isOpened={isOpened}>
@@ -69,7 +69,7 @@ const SubmitBlock = ({ locale }: { locale: Locale }) => {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" isLoading={pending}>
+    <Button type="submit" size="lg" className="w-full" disabled={pending}>
       {CREATE_BUTTON}
     </Button>
   );

@@ -1,9 +1,9 @@
-import Image from "next/image";
-import { LoginForm } from "@/components/LoginForm";
-import { GetDemoSignInData } from "@/client/api";
-import { getDictionary } from "@/dictionaries";
-import { getLocale } from "@/client/locale";
-import StaticEggs from "@/../public/static/eggs.png";
+import Image from 'next/image';
+import { LoginForm } from '../../../components/LoginForm';
+import { GetDemoSignInData } from '../../../client/api';
+import { getDictionary } from '../../../dictionaries';
+import { getLocale } from '../../../client/locale';
+import StaticEggs from '../../../../public/static/eggs.png';
 
 export default async function Page() {
   const demoData = await GetDemoSignInData();

@@ -1,8 +1,8 @@
-import { MediaCard } from "@/components/MediaCard";
-import { ErrorBlock } from "@/components/ErrorBlock";
-import { MediaCreateBlock } from "@/app/(authenticated)/media/MediaCreateBlock";
-import { getLocale } from "@/client/locale";
-import { GetAllMedia } from "@/client/access";
+import { MediaCard } from '../../../components/MediaCard';
+import { ErrorBlock } from '../../../components/ErrorBlock';
+import { MediaCreateBlock } from './MediaCreateBlock';
+import { getLocale } from '../../../client/locale';
+import { GetAllMedia } from '../../../client/access';
 
 export default async function MediaBlock() {
   const media = await GetAllMedia();

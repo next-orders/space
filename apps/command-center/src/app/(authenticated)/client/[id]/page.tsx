@@ -1,13 +1,13 @@
-import { Suspense } from "react";
-import Image from "next/image";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ClientTraitBadge } from "@/components/ClientTraitBadge";
-import ClientAvatarBlock from "@/app/(authenticated)/client/[id]/ClientAvatarBlock";
-import { ClientAvatarBlockSkeleton } from "@/app/(authenticated)/client/[id]/ClientAvatarBlockSkeleton";
-import { getLocale } from "@/client/locale";
-import { getDictionary } from "@/dictionaries";
-import StaticEggs from "@/../public/static/eggs.png";
-import StaticRecipeBook from "@/../public/static/recipe-book.png";
+import { Suspense } from 'react';
+import Image from 'next/image';
+import { Breadcrumbs } from '../../../../components/Breadcrumbs';
+import { ClientTraitBadge } from '../../../../components/ClientTraitBadge';
+import ClientAvatarBlock from './ClientAvatarBlock';
+import { ClientAvatarBlockSkeleton } from './ClientAvatarBlockSkeleton';
+import { getLocale } from '../../../../client/locale';
+import { getDictionary } from '../../../../dictionaries';
+import StaticEggs from '../../../../../public/static/eggs.png';
+import StaticRecipeBook from '../../../../../public/static/recipe-book.png';
 
 type PageProps = {
   params: { id: string };
@@ -20,7 +20,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumbs keys={["CLIENT_BASE", "CLIENT_PAGE"]} />
+      <Breadcrumbs keys={['CLIENT_BASE', 'CLIENT_PAGE']} />
 
       <h1 className="mb-2 text-3xl font-semibold">{CLIENT_PAGE_LABEL}</h1>
 

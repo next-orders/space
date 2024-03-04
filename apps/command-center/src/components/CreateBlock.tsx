@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { getDictionary, Locale } from '@/dictionaries';
-import StaticGreenNotebook from '@/../public/static/green-notebook.png';
+import { getDictionary, Locale } from '../dictionaries';
+import StaticGreenNotebook from '../../public/static/green-notebook.png';
 
 type CreateBlockProps = {
   locale: Locale;

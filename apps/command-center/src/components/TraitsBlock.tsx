@@ -1,7 +1,7 @@
 import { ClientTrait } from '@next-orders/api-sdk';
-import { HoverDropdown } from '@/components/HoverDropdown';
-import { ClientTraitBadge } from '@/components/ClientTraitBadge';
-import { getDropdownByTraitType, Locale } from '@/dictionaries';
+import { HoverDropdown } from './HoverDropdown';
+import { ClientTraitBadge } from './ClientTraitBadge';
+import { getDropdownByTraitType, Locale } from '../dictionaries';
 
 type TraitsBlockProps = {
   traits: ClientTrait[];

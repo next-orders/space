@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useFormState, useFormStatus } from "react-dom";
-import { useModalStore } from "@/store/modal";
-import { CreateMediaForm } from "@/server/actions";
-import { getDictionary, Locale } from "@/dictionaries";
-import { Modal } from "@/components/Modal";
-import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
+import React from 'react';
+import { useFormState, useFormStatus } from 'react-dom';
+import { useModalStore } from '../../../store/modal';
+import { CreateMediaForm } from '../../../server/actions';
+import { getDictionary, Locale } from '../../../dictionaries';
+import { Modal } from '../../../components/Modal';
+import { Input } from '../../../components/Input';
+import { Button } from '@next-orders/ui';
 
 const initialState = {
-  message: "",
+  message: '',
 };
 
 type MediaCreateModalProps = {
@@ -26,7 +26,7 @@ export const MediaCreateModal = ({ locale }: MediaCreateModalProps) => {
 
   const [state, formAction] = useFormState(CreateMediaForm, initialState);
 
-  const [alt, setAlt] = React.useState("");
+  const [alt, setAlt] = React.useState('');
 
   return (
     <Modal title={UPLOAD_MEDIA_LABEL} toggle={toggle} isOpened={isOpened}>
@@ -61,7 +61,7 @@ const SubmitBlock = ({ locale }: { locale: Locale }) => {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" isLoading={pending}>
+    <Button type="submit" size="lg" className="w-full" disabled={pending}>
       {UPLOAD_BUTTON}
     </Button>
   );

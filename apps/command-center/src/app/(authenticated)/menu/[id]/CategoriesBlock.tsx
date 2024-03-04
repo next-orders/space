@@ -1,11 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
-import { GetMenuById, GetProductVariantsInCategory } from "@/client/api";
-import { MenuCategory, ProductVariant } from "@next-orders/api-sdk";
-import { CategoryCreateBlock } from "@/app/(authenticated)/menu/[id]/CategoryCreateBlock";
-import { CategoryButton } from "@/app/(authenticated)/menu/[id]/CategoryButton";
-import { getLocale } from "@/client/locale";
-import NoImage from "@/../public/static/no-image-zinc.png";
+import Image from 'next/image';
+import Link from 'next/link';
+import {
+  GetMenuById,
+  GetProductVariantsInCategory,
+} from '../../../../client/api';
+import { MenuCategory, ProductVariant } from '@next-orders/api-sdk';
+import { CategoryCreateBlock } from './CategoryCreateBlock';
+import { CategoryButton } from './CategoryButton';
+import { getLocale } from '../../../../client/locale';
+import NoImage from '../../../../../public/static/no-image-zinc.png';
 
 type CategoriesBlockProps = {
   menuId: string;
@@ -76,7 +79,7 @@ const ProductVariantCard = ({ variant }: ProductVariantCardProps) => {
       <div className="relative w-full aspect-square">
         <Image
           src={photo?.url ?? NoImage}
-          alt={photo?.alt ?? ""}
+          alt={photo?.alt ?? ''}
           priority
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33.3vw"

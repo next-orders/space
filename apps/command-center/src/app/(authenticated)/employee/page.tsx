@@ -1,6 +1,6 @@
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { getDictionary } from "@/dictionaries";
-import { getLocale } from "@/client/locale";
+import { Breadcrumbs } from '../../../components/Breadcrumbs';
+import { getDictionary } from '../../../dictionaries';
+import { getLocale } from '../../../client/locale';
 
 export default async function Page() {
   const locale = getLocale();
@@ -9,7 +9,7 @@ export default async function Page() {
 
   return (
     <>
-      <Breadcrumbs keys={["EMPLOYEE_BASE"]} />
+      <Breadcrumbs keys={['EMPLOYEE_BASE']} />
 
       <h1 className="mb-2 text-3xl font-semibold">{EMPLOYEE_BASE_LABEL}</h1>
 

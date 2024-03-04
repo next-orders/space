@@ -1,5 +1,4 @@
 export async function GET() {
-  // TODO: check API
   // const res = await fetch("/", {
   //   headers: {
   //     "content-type": "application/json",

@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Modal } from "@/components/Modal";
-import { useModalStore } from "@/store/modal";
-import { Button } from "@/components/Button";
-import { useFormState, useFormStatus } from "react-dom";
-import { AddProductVariantMediaForm } from "@/server/actions";
-import { Input } from "@/components/Input";
+import React from 'react';
+import { Modal } from '../../../../components/Modal';
+import { useModalStore } from '../../../../store/modal';
+import { useFormState, useFormStatus } from 'react-dom';
+import { AddProductVariantMediaForm } from '../../../../server/actions';
+import { Input } from '../../../../components/Input';
+import { Button } from '@next-orders/ui';
 
 const initialState = {
-  message: "",
+  message: '',
 };
 
 type ProductVariantEditMediaModalProps = {
@@ -30,7 +30,7 @@ export const ProductVariantEditMediaModal = ({
   );
   const { pending } = useFormStatus();
 
-  const [mediaId, setMediaId] = React.useState("");
+  const [mediaId, setMediaId] = React.useState('');
 
   return (
     <Modal title="Edit Media" toggle={toggle} isOpened={isOpened}>
@@ -51,7 +51,7 @@ export const ProductVariantEditMediaModal = ({
         </div>
 
         <div className="mt-6">
-          <Button type="submit" isLoading={pending}>
+          <Button type="submit" size="lg" className="w-full" disabled={pending}>
             Add
           </Button>
         </div>

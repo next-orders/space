@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { IconCopyPlus, IconTextPlus } from "@tabler/icons-react";
-import { useModalStore } from "@/store/modal";
-import { Button } from "@/components/Button";
-import { getDictionary, Locale } from "@/dictionaries";
-import { CreateBlock } from "@/components/CreateBlock";
-import { CategoryCreateModal } from "@/app/(authenticated)/menu/[id]/CategoryCreateModal";
+import { IconCopyPlus, IconTextPlus } from '@tabler/icons-react';
+import { useModalStore } from '../../../../store/modal';
+import { getDictionary, Locale } from '../../../../dictionaries';
+import { CreateBlock } from '../../../../components/CreateBlock';
+import { CategoryCreateModal } from './CategoryCreateModal';
+import { Button } from '@next-orders/ui';
 
 type CategoryCreateBlockProps = {
   menuId: string;
@@ -29,14 +29,21 @@ export const CategoryCreateBlock = ({
   return (
     <>
       <CreateBlock locale={locale}>
-        <Button onClick={toggleCreateMenuCategory}>
+        <Button
+          variant="secondary"
+          onClick={toggleCreateMenuCategory}
+          className="mx-auto"
+        >
           <IconTextPlus stroke={1.5} /> {CREATE_MENU_CATEGORY_LABEL}
         </Button>
-        <div className="mt-2">
-          <Button onClick={toggleCreateProductVariant}>
-            <IconCopyPlus stroke={1.5} /> {CREATE_PRODUCT_VARIANT_LABEL}
-          </Button>
-        </div>
+
+        <Button
+          variant="secondary"
+          onClick={toggleCreateProductVariant}
+          className="mt-2 mx-auto"
+        >
+          <IconCopyPlus stroke={1.5} /> {CREATE_PRODUCT_VARIANT_LABEL}
+        </Button>
       </CreateBlock>
 
       <CategoryCreateModal locale={locale} menuId={menuId} />

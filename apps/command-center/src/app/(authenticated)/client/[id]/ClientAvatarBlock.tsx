@@ -1,14 +1,14 @@
-import Image from "next/image";
-import { HoverDropdown } from "@/components/HoverDropdown";
-import { LevelBadge } from "@/components/LevelBadge";
-import { notFound } from "next/navigation";
-import { getColorByClientLevel } from "@/lib/helpers";
-import { TraitsBlock } from "@/components/TraitsBlock";
-import { LoyaltyProgress } from "@/components/LoyaltyProgress";
-import { GetAvatarURL } from "@/client/api";
-import { ErrorBlock } from "@/components/ErrorBlock";
-import { getDictionary, Locale } from "@/dictionaries";
-import { GetClientById } from "@/client/access";
+import Image from 'next/image';
+import { HoverDropdown } from '../../../../components/HoverDropdown';
+import { LevelBadge } from '../../../../components/LevelBadge';
+import { notFound } from 'next/navigation';
+import { getColorByClientLevel } from '../../../../lib/helpers';
+import { TraitsBlock } from '../../../../components/TraitsBlock';
+import { LoyaltyProgress } from '../../../../components/LoyaltyProgress';
+import { GetAvatarURL } from '../../../../client/api';
+import { ErrorBlock } from '../../../../components/ErrorBlock';
+import { getDictionary, Locale } from '../../../../dictionaries';
+import { GetClientById } from '../../../../client/access';
 
 type ClientAvatarBlockProps = {
   id: string;

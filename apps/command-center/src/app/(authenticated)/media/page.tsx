@@ -1,10 +1,10 @@
-import { Suspense } from "react";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import MediaBlock from "./MediaBlock";
-import { MediaBlockSkeleton } from "./MediaBlockSkeleton";
-import { MediaCreateModal } from "@/app/(authenticated)/media/MediaCreateModal";
-import { getLocale } from "@/client/locale";
-import { getDictionary } from "@/dictionaries";
+import { Suspense } from 'react';
+import { Breadcrumbs } from '../../../components/Breadcrumbs';
+import MediaBlock from './MediaBlock';
+import { MediaBlockSkeleton } from './MediaBlockSkeleton';
+import { MediaCreateModal } from './MediaCreateModal';
+import { getLocale } from '../../../client/locale';
+import { getDictionary } from '../../../dictionaries';
 
 export default async function Page() {
   const locale = getLocale();
@@ -12,7 +12,7 @@ export default async function Page() {
 
   return (
     <>
-      <Breadcrumbs keys={["MEDIA"]} />
+      <Breadcrumbs keys={['MEDIA']} />
 
       <h1 className="mb-2 text-3xl font-semibold">{MEDIA_LABEL}</h1>
 

@@ -1,9 +1,9 @@
-import { Suspense } from "react";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import ClientsBlock from "./ClientsBlock";
-import { ClientsBlockSkeleton } from "./ClientsBlockSkeleton";
-import { getLocale } from "@/client/locale";
-import { getDictionary } from "@/dictionaries";
+import { Suspense } from 'react';
+import { Breadcrumbs } from '../../../components/Breadcrumbs';
+import ClientsBlock from './ClientsBlock';
+import { ClientsBlockSkeleton } from './ClientsBlockSkeleton';
+import { getLocale } from '../../../client/locale';
+import { getDictionary } from '../../../dictionaries';
 
 export default async function Page() {
   const locale = getLocale();
@@ -12,7 +12,7 @@ export default async function Page() {
 
   return (
     <>
-      <Breadcrumbs keys={["CLIENT_BASE"]} />
+      <Breadcrumbs keys={['CLIENT_BASE']} />
 
       <h1 className="mb-2 text-3xl font-semibold">{CLIENT_BASE_LABEL}</h1>
 

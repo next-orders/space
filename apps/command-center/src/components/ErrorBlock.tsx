@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { ErrorBase } from '@next-orders/api-sdk';
-import StaticHotDrink from '@/../public/static/hot-drink.png';
+import StaticHotDrink from '../../public/static/hot-drink.png';
 
 type ErrorBlockProps = {
   error: ErrorBase;

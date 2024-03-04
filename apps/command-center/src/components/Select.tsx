@@ -1,4 +1,4 @@
-import { getDictionary, Locale } from '@/dictionaries';
+import { getDictionary, Locale } from '../dictionaries';
 
 type SelectProps = {
   name: string;

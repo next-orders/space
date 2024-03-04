@@ -1,6 +1,6 @@
-import { MenuItem } from '@/types';
-import { getLocale } from '@/client/locale';
-import { getDictionary } from '@/dictionaries';
+import { MenuItem } from '../types';
+import { getLocale } from './locale';
+import { getDictionary } from '../dictionaries';
 
 export const GetNavigationMenu = async (): Promise<MenuItem[]> => {
   const locale = getLocale();

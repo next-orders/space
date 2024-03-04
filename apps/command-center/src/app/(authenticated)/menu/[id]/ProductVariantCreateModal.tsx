@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import React from "react";
-import slugify from "slug";
-import { useFormState, useFormStatus } from "react-dom";
-import { useModalStore } from "@/store/modal";
-import { CreateProductVariantForm } from "@/server/actions";
-import { ProductChooseModal } from "@/app/(authenticated)/menu/[id]/ProductChooseModal";
-import { Menu, MenuCategory, Product } from "@next-orders/api-sdk";
-import { getDictionary, Locale } from "@/dictionaries";
-import { Button } from "@/components/Button";
-import { Modal } from "@/components/Modal";
-import { Input } from "@/components/Input";
-import { EntitySelect } from "@/components/EntitySelect";
-import { Select } from "@/components/Select";
+import React from 'react';
+import slugify from 'slug';
+import { useFormState, useFormStatus } from 'react-dom';
+import { useModalStore } from '../../../../store/modal';
+import { CreateProductVariantForm } from '../../../../server/actions';
+import { ProductChooseModal } from './ProductChooseModal';
+import { Menu, MenuCategory, Product } from '@next-orders/api-sdk';
+import { getDictionary, Locale } from '../../../../dictionaries';
+import { Modal } from '../../../../components/Modal';
+import { Input } from '../../../../components/Input';
+import { EntitySelect } from '../../../../components/EntitySelect';
+import { Select } from '../../../../components/Select';
+import { Button } from '@next-orders/ui';
 
 const initialState = {
-  message: "",
+  message: '',
 };
 
 type ProductVariantCreateModalProps = {
@@ -62,14 +62,14 @@ export const ProductVariantCreateModal = ({
   );
 
   const menuId = menu?.id;
-  const [categoryId, setCategoryId] = React.useState("");
-  const [productId, setProductId] = React.useState("");
-  const [slug, setSlug] = React.useState("");
-  const [name, setName] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [weightUnit, setWeightUnit] = React.useState("");
-  const [weightValue, setWeightValue] = React.useState("");
-  const [gross, setGross] = React.useState("");
+  const [categoryId, setCategoryId] = React.useState('');
+  const [productId, setProductId] = React.useState('');
+  const [slug, setSlug] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [description, setDescription] = React.useState('');
+  const [weightUnit, setWeightUnit] = React.useState('');
+  const [weightValue, setWeightValue] = React.useState('');
+  const [gross, setGross] = React.useState('');
 
   // Lets generate slug on Name change
   const handleNameChange = (value: string) => {
@@ -166,27 +166,27 @@ export const ProductVariantCreateModal = ({
                 locale={locale}
                 options={[
                   {
-                    value: "G",
+                    value: 'G',
                     label: GRAM_SHORT_LABEL,
                   },
                   {
-                    value: "KG",
+                    value: 'KG',
                     label: KG_SHORT_LABEL,
                   },
                   {
-                    value: "ML",
+                    value: 'ML',
                     label: ML_SHORT_LABEL,
                   },
                   {
-                    value: "L",
+                    value: 'L',
                     label: L_SHORT_LABEL,
                   },
                   {
-                    value: "LB",
+                    value: 'LB',
                     label: LB_SHORT_LABEL,
                   },
                   {
-                    value: "OZ",
+                    value: 'OZ',
                     label: OZ_SHORT_LABEL,
                   },
                 ]}
@@ -227,7 +227,7 @@ const SubmitBlock = ({ locale }: { locale: Locale }) => {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" isLoading={pending}>
+    <Button type="submit" size="lg" className="w-full" disabled={pending}>
       {CREATE_BUTTON}
     </Button>
   );

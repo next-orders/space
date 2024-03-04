@@ -1,12 +1,12 @@
-import { redirect } from "next/navigation";
-import { GetShop } from "@/client/api";
-import InstallPage from "@/app/install/client";
+import { redirect } from 'next/navigation';
+import { GetShop } from '../../client/api';
+import InstallPage from './client';
 
 export default async function Page() {
   const shop = await GetShop();
   if (shop) {
     // Shop is already in DB
-    return redirect("/auth/login");
+    return redirect('/auth/login');
   }
 
   return <InstallPage />;

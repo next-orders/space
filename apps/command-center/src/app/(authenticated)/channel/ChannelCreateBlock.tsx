@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { IconTextPlus } from "@tabler/icons-react";
-import { useModalStore } from "@/store/modal";
-import { Button } from "@/components/Button";
-import { getDictionary, Locale } from "@/dictionaries";
-import { CreateBlock } from "@/components/CreateBlock";
+import { IconTextPlus } from '@tabler/icons-react';
+import { useModalStore } from '../../../store/modal';
+import { getDictionary, Locale } from '../../../dictionaries';
+import { CreateBlock } from '../../../components/CreateBlock';
+import { Button } from '@next-orders/ui';
 
 type ChannelCreateBlockProps = {
   locale: Locale;
@@ -17,7 +17,7 @@ export const ChannelCreateBlock = ({ locale }: ChannelCreateBlockProps) => {
 
   return (
     <CreateBlock locale={locale}>
-      <Button onClick={toggle}>
+      <Button variant="secondary" onClick={toggle}>
         <IconTextPlus stroke={1.5} /> {CREATE_CHANNEL_LABEL}
       </Button>
     </CreateBlock>

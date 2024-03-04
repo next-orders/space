@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import React from "react";
-import slugify from "slug";
-import { Modal } from "@/components/Modal";
-import { useModalStore } from "@/store/modal";
-import { Button } from "@/components/Button";
-import { useFormState, useFormStatus } from "react-dom";
-import { CreateMenuCategoryForm } from "@/server/actions";
-import { Input } from "@/components/Input";
-import { getDictionary, Locale } from "@/dictionaries";
+import React from 'react';
+import slugify from 'slug';
+import { Modal } from '../../../../components/Modal';
+import { useModalStore } from '../../../../store/modal';
+import { useFormState, useFormStatus } from 'react-dom';
+import { CreateMenuCategoryForm } from '../../../../server/actions';
+import { Input } from '../../../../components/Input';
+import { getDictionary, Locale } from '../../../../dictionaries';
+import { Button } from '@next-orders/ui';
 
 const initialState = {
-  message: "",
+  message: '',
 };
 
 type CategoryCreateModalProps = {
@@ -38,8 +38,8 @@ export const CategoryCreateModal = ({
     initialState,
   );
 
-  const [name, setName] = React.useState("");
-  const [slug, setSlug] = React.useState("");
+  const [name, setName] = React.useState('');
+  const [slug, setSlug] = React.useState('');
 
   // Lets generate slug on Name change
   const handleNameChange = (value: string) => {
@@ -92,7 +92,7 @@ const SubmitBlock = ({ locale }: { locale: Locale }) => {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" isLoading={pending}>
+    <Button type="submit" size="lg" className="w-full" disabled={pending}>
       {CREATE_BUTTON}
     </Button>
   );

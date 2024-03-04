@@ -1,10 +1,10 @@
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { TextInput } from "@/components/TextInput";
-import { ProductVariant } from "@next-orders/api-sdk";
-import { GetProductById } from "@/client/api";
-import NoImage from "@/../public/static/no-image-zinc.png";
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { Breadcrumbs } from '../../../../components/Breadcrumbs';
+import { TextInput } from '../../../../components/TextInput';
+import { ProductVariant } from '@next-orders/api-sdk';
+import { GetProductById } from '../../../../client/api';
+import NoImage from '../../../../../public/static/no-image-zinc.png';
 
 type PageProps = {
   params: { id: string };
@@ -22,7 +22,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumbs keys={["PRODUCTS", "PRODUCT_PAGE"]} />
+      <Breadcrumbs keys={['PRODUCTS', 'PRODUCT_PAGE']} />
 
       <h1 className="mb-2 text-3xl font-semibold">Product page</h1>
       <div className="mb-8">Here you can edit product data</div>
@@ -36,7 +36,7 @@ export default async function Page({ params }: PageProps) {
 
         <TextInput
           label="Description"
-          value={product.description || ""}
+          value={product.description || ''}
           placeholder=""
         />
       </div>
@@ -66,7 +66,7 @@ const ProductVariantBlock = ({ variant }: ProductVariantBlockProps) => {
         <div className="flex flex-row gap-2 items-center">
           <Image
             src={media?.url || NoImage}
-            alt={media?.alt || "Photo"}
+            alt={media?.alt || 'Photo'}
             width={60}
             height={60}
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33.3vw"

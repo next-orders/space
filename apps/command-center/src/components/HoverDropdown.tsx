@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Markdown } from '@/components/Markdown';
+import { Markdown } from './Markdown';
 
 type HoverDropdownProps = {
   dropdown: string;

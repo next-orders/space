@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import { useFormState, useFormStatus } from "react-dom";
-import { CreateShopForm } from "@/server/actions";
-import { IconArrowRight } from "@tabler/icons-react";
-import StaticEggs from "@/../public/static/eggs.png";
+import React from 'react';
+import Image from 'next/image';
+import { useFormState, useFormStatus } from 'react-dom';
+import { CreateShopForm } from '../../server/actions';
+import { IconArrowRight } from '@tabler/icons-react';
+import StaticEggs from '../../../public/static/eggs.png';
 
 const initialState = {
-  message: "",
+  message: '',
 };
 
 export default function InstallPage() {
   const [state, formAction] = useFormState(CreateShopForm, initialState);
-  const [name, setName] = React.useState("");
-  const [description, setDescription] = React.useState("");
+  const [name, setName] = React.useState('');
+  const [description, setDescription] = React.useState('');
 
   return (
     <div className="w-full h-screen mx-auto flex flex-row justify-center items-center">

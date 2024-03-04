@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import React from "react";
-import slugify from "slug";
-import Image from "next/image";
-import { Modal } from "@/components/Modal";
-import { Button } from "@/components/Button";
-import { useFormState, useFormStatus } from "react-dom";
-import { UpdateMenuCategoryForm } from "@/server/actions";
-import { Input } from "@/components/Input";
-import { getDictionary, Locale } from "@/dictionaries";
-import { MenuCategory, MenuCategoryIcon } from "@next-orders/api-sdk";
-import { getIconUrl } from "@/lib/helpers";
-import { useRouter } from "next/navigation";
+import React from 'react';
+import slugify from 'slug';
+import Image from 'next/image';
+import { Modal } from '../../../../components/Modal';
+import { useFormState, useFormStatus } from 'react-dom';
+import { UpdateMenuCategoryForm } from '../../../../server/actions';
+import { Input } from '../../../../components/Input';
+import { getDictionary, Locale } from '../../../../dictionaries';
+import { MenuCategory, MenuCategoryIcon } from '@next-orders/api-sdk';
+import { getIconUrl } from '../../../../lib/helpers';
+import { useRouter } from 'next/navigation';
+import { Button } from '@next-orders/ui';
 
 const initialState = {
-  message: "",
+  message: '',
 };
 
 type CategoryEditModalProps = {
@@ -30,10 +30,10 @@ export const CategoryEditModal = ({
 }: CategoryEditModalProps) => {
   const router = useRouter();
 
-  const [name, setName] = React.useState(category?.name || "");
-  const [slug, setSlug] = React.useState(category?.slug || "");
+  const [name, setName] = React.useState(category?.name || '');
+  const [slug, setSlug] = React.useState(category?.slug || '');
   const [icon, setIcon] = React.useState<MenuCategoryIcon>(
-    category?.icon || "DEFAULT",
+    category?.icon || 'DEFAULT',
   );
 
   const {
@@ -69,7 +69,7 @@ export const CategoryEditModal = ({
         <div className="w-full text-center text-red-700">{state?.message}</div>
 
         <input type="hidden" name="categoryId" value={category?.id} />
-        <input type="hidden" name="icon" value={icon || ""} />
+        <input type="hidden" name="icon" value={icon || ''} />
 
         <div className="mb-4">
           <Input
@@ -112,7 +112,7 @@ const SubmitBlock = ({ locale }: { locale: Locale }) => {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" isLoading={pending}>
+    <Button type="submit" size="lg" className="w-full" disabled={pending}>
       {SAVE_BUTTON}
     </Button>
   );
@@ -129,15 +129,15 @@ const MenuCategoryIconChooseBlock = ({
   setIcon,
 }: MenuCategoryIconChooseBlockProps) => {
   const allPossible: MenuCategoryIcon[] = [
-    "DEFAULT",
-    "BURGER",
-    "PIZZA",
-    "LASAGNA",
-    "ROLLS",
-    "SUSHI",
-    "WOK",
-    "CAKE",
-    "DRINK",
+    'DEFAULT',
+    'BURGER',
+    'PIZZA',
+    'LASAGNA',
+    'ROLLS',
+    'SUSHI',
+    'WOK',
+    'CAKE',
+    'DRINK',
   ];
 
   const IconBlock = ({
@@ -151,7 +151,7 @@ const MenuCategoryIconChooseBlock = ({
 
     return (
       <button
-        className="p-2 rounded-2xl border-4 border-transparent data-[active=true]:border-teal-500 cursor-pointer hover:bg-zinc-100 hover:scale-95 active:scale-90 duration-200"
+        className="p-2 rounded-2xl border-2 border-transparent data-[active=true]:border-primary cursor-pointer hover:bg-zinc-100 hover:scale-95 active:scale-90 duration-200"
         data-active={isSelected}
         onClick={() => setIcon(icon)}
       >

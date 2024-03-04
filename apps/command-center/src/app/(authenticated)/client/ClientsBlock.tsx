@@ -1,6 +1,6 @@
-import { ClientCard } from "@/components/ClientCard";
-import { ErrorBlock } from "@/components/ErrorBlock";
-import { GetClients } from "@/client/access";
+import { ClientCard } from '../../../components/ClientCard';
+import { ErrorBlock } from '../../../components/ErrorBlock';
+import { GetClients } from '../../../client/access';
 
 export default async function ClientsBlock() {
   const clients = await GetClients();

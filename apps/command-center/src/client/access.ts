@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import { COOKIES_ACCESS_TOKEN_KEY } from '@/lib/helpers';
+import { COOKIES_ACCESS_TOKEN_KEY } from '../lib/helpers';
 import { MainAPI } from '@next-orders/api-sdk';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'no-api-url-env';

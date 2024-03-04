@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { BackBlock } from '@/components/BackBlock';
-import { getDictionary, prepareLocalizedLinks } from '@/dictionaries';
-import { PageKey } from '@/lib/pages';
-import { getLocale } from '@/client/locale';
+import { BackBlock } from './BackBlock';
+import { getDictionary, prepareLocalizedLinks } from '../dictionaries';
+import { PageKey } from '../lib/pages';
+import { getLocale } from '../client/locale';
+import { Button } from '@next-orders/ui';
 
 type BreadcrumbsProps = {
   keys: PageKey[];
@@ -44,14 +45,20 @@ type BreadcrumbItemProps = {
   link: BreadcrumbLink;
 };
 
-const BreadcrumbItem = ({ link }: BreadcrumbItemProps) => (
-  <li className="relative after:content-['/'] after:px-1 after:text-lg after:text-zinc-300 last:after:content-['']">
-    <Link
-      href={link.href}
-      className="px-3 py-2 inline-block rounded-xl outline-2 outline-offset-1 outline-zinc-500 focus:ring-zinc-500 focus:border-zinc-500 hover:bg-zinc-200 hover:scale-95 duration-200 bg-zinc-100 data-[active=true]:bg-zinc-50"
-      data-active={link.href === '#'}
-    >
-      {link.title}
-    </Link>
-  </li>
-);
+const BreadcrumbItem = ({ link }: BreadcrumbItemProps) => {
+  const isActive = link.href === '#';
+
+  return (
+    <li className="relative after:content-['/'] after:px-1 after:text-lg after:text-zinc-300 last:after:content-['']">
+      <Link href={link.href} className="inline-block">
+        <Button
+          variant="secondary"
+          data-active={isActive}
+          className="data-[active=true]:bg-zinc-50"
+        >
+          {link.title}
+        </Button>
+      </Link>
+    </li>
+  );
+};

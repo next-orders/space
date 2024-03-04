@@ -1,9 +1,9 @@
 import React from 'react';
-import { Header } from '@/components/Header';
-import { Navigation } from '@/components/Navigation';
-import { Footer } from '@/components/Footer';
-import { MenuItem } from '@/types';
-import { Locale } from '@/dictionaries';
+import { Header } from './Header';
+import { Navigation } from './Navigation';
+import { Footer } from './Footer';
+import { MenuItem } from '../types';
+import { Locale } from '../dictionaries';
 
 type Props = {
   menu: MenuItem[];

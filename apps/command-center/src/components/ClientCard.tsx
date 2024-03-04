@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { LevelBadge } from '@/components/LevelBadge';
+import { LevelBadge } from './LevelBadge';
 import { Client } from '@next-orders/api-sdk';
-import { getColorByClientLevel } from '@/lib/helpers';
-import { GetAvatarURL } from '@/client/api';
-import { getDictionary, Locale } from '@/dictionaries';
+import { getColorByClientLevel } from '../lib/helpers';
+import { GetAvatarURL } from '../client/api';
+import { getDictionary, Locale } from '../dictionaries';
 
 type ClientCardProps = {
   client: Client;

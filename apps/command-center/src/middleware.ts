@@ -1,7 +1,7 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { GetEmployeeAccessPayload } from '@/server/actions';
-import { GetApiVersion, GetShop } from '@/client/api';
+import { GetEmployeeAccessPayload } from './server/actions';
+import { GetApiVersion, GetShop } from './client/api';
 
 const PAGES = {
   LOGIN: '/auth/login',

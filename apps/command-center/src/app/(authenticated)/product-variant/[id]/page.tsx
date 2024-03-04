@@ -1,10 +1,10 @@
-import { notFound } from "next/navigation";
-import { GetProductVariantById } from "@/client/api";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ProductVariantEditMediaModal } from "@/app/(authenticated)/product-variant/[id]/ProductVariantEditMediaModal";
-import { ProductVariantBlock } from "@/app/(authenticated)/product-variant/[id]/ProductVariantBlock";
-import { getDictionary } from "@/dictionaries";
-import { getLocale } from "@/client/locale";
+import { notFound } from 'next/navigation';
+import { GetProductVariantById } from '../../../../client/api';
+import { Breadcrumbs } from '../../../../components/Breadcrumbs';
+import { ProductVariantEditMediaModal } from './ProductVariantEditMediaModal';
+import { ProductVariantBlock } from './ProductVariantBlock';
+import { getDictionary } from '../../../../dictionaries';
+import { getLocale } from '../../../../client/locale';
 
 type PageProps = {
   params: { id: string };
@@ -22,7 +22,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumbs keys={["PRODUCT_VARIANT_PAGE"]} />
+      <Breadcrumbs keys={['PRODUCT_VARIANT_PAGE']} />
 
       <h1 className="mb-2 text-3xl font-semibold">
         {PRODUCT_VARIANT_PAGE_LABEL}

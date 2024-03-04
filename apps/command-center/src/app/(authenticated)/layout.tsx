@@ -1,12 +1,12 @@
-import React from "react";
-import type { Metadata } from "next";
-import { Shell } from "@/components/Shell";
-import { getLocale } from "@/client/locale";
-import { GetNavigationMenu } from "@/client/navigation";
+import React from 'react';
+import type { Metadata } from 'next';
+import { Shell } from '../../components/Shell';
+import { getLocale } from '../../client/locale';
+import { GetNavigationMenu } from '../../client/navigation';
 
 export const metadata: Metadata = {
-  title: "Command Center",
-  description: "Management of all Business Entities",
+  title: 'Command Center',
+  description: 'Management of all Business Entities',
 };
 
 type Props = {
