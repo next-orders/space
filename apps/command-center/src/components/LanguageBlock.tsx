@@ -18,6 +18,7 @@ export const LanguageBlock = ({ locale }: LanguageBlockProps) => {
         <option value="EN">🇺🇸 English</option>
         <option value="ES">🇪🇸 Español</option>
         <option value="RU">🇷🇺 Русский</option>
+        <option value="DE">🇩🇪 Deutsch</option>
       </select>
     </div>
   );
