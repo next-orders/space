@@ -41,7 +41,11 @@ const getSupportedLocale = (browserLanguage: string): Locale => {
     case 'es':
     case 'es-es':
     case 'es-mx':
+    case 'es-cl':
+    case 'es-419':
       return 'ES';
+    case 'de':
+      return 'DE';
     default:
       console.warn(
         `Not found available lang: ${browserLanguage}. Returning default EN.`,

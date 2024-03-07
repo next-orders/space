@@ -7,8 +7,8 @@ import {
 } from '../types/objects';
 
 const currencyCodes: CurrencyCode[] = ['USD', 'EUR', 'RUB'];
-const languageCodes: LanguageCode[] = ['EN', 'ES', 'RU'];
-const countriesCodes: CountryCode[] = ['US', 'GB', 'ES', 'MX', 'RU'];
+const languageCodes: LanguageCode[] = ['EN', 'ES', 'RU', 'DE'];
+const countriesCodes: CountryCode[] = ['US', 'GB', 'ES', 'MX', 'RU', 'DE'];
 
 export const ChannelCreateRequestSchema = z.object({
   slug: z.string(),

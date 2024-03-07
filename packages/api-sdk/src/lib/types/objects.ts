@@ -134,7 +134,7 @@ export type Channel = {
   accentGradientTo: string | null;
 };
 
-export type LanguageCode = 'EN' | 'ES' | 'RU';
+export type LanguageCode = 'EN' | 'ES' | 'RU' | 'DE';
 
 export type CurrencyCode = 'USD' | 'EUR' | 'RUB';
 

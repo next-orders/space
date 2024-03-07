@@ -106,6 +106,7 @@ export const ChannelCreateModal = ({ locale }: ChannelCreateModalProps) => {
                 { value: 'EN', label: 'EN' },
                 { value: 'ES', label: 'ES' },
                 { value: 'RU', label: 'RU' },
+                { value: 'DE', label: 'DE' },
               ]}
             />
           </div>
@@ -123,6 +124,7 @@ export const ChannelCreateModal = ({ locale }: ChannelCreateModalProps) => {
                 { value: 'ES', label: 'ES' },
                 { value: 'MX', label: 'MX' },
                 { value: 'RU', label: 'RU' },
+                { value: 'DE', label: 'DE' },
               ]}
             />
           </div>
