@@ -189,7 +189,7 @@ module.exports = {
     /* Which modules not to follow further when encountered */
     doNotFollow: {
       /* path: an array of regular expressions in strings to match against */
-      path: ['node_modules'],
+      path: ['node_modules', '.next'],
     },
 
     /* Which modules to exclude */
