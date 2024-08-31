@@ -1,0 +1,26 @@
+{
+  "name": "Next Orders Space",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "npm i -g pnpm@9.9.0 && pnpm i",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "Vue.volar",
+        "ms-azuretools.vscode-docker",
+        "Codeium.codeium",
+        "Vercel.turbo-vsc"
+      ]
+    }
+  }
+}
