@@ -1,0 +1,21 @@
+{
+  "name": "@next-orders/eslint",
+  "type": "module",
+  "private": true,
+  "files": [
+    "base.mjs",
+    "nuxt.mjs"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "clean:modules": "rm -rf .turbo node_modules",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "dependencies": {
+    "@antfu/eslint-config": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.9.1"
+  }
+}

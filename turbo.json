@@ -17,9 +17,6 @@
     },
     "clean:modules": {
       "cache": false
-    },
-    "db:generate": {
-      "cache": false
     }
   }
 }

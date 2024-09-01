@@ -7,7 +7,7 @@
   // "features": {},
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "npm i -g pnpm@9.9.0 && npm i",
+  "postCreateCommand": "npm i -g pnpm@9.9.0 turbo@latest && pnpm i",
 
   // Configure tool-specific properties.
   "customizations": {
@@ -15,6 +15,7 @@
     "vscode": {
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
+        "bradlc.vscode-tailwindcss",
         "dbaeumer.vscode-eslint",
         "Vue.volar",
         "ms-azuretools.vscode-docker",
