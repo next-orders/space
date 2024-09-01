@@ -1,0 +1,33 @@
+{
+  "name": "@next-orders/website",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "preview": "nuxt preview",
+    "clean": "rm -rf dist",
+    "clean:modules": "rm -rf .turbo .nuxt node_modules",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "typecheck": "nuxt typecheck",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@next-orders/eslint": "workspace:*",
+    "@nuxt/devtools": "^1.4.1",
+    "@nuxt/fonts": "^0.7.2",
+    "@nuxt/kit": "^3.13.0",
+    "@nuxt/ui": "^2.18.4",
+    "@nuxtjs/device": "^3.2.2",
+    "@nuxtjs/i18n": "^8.5.1",
+    "@types/node": "^22.5.2",
+    "@vueuse/core": "^11.0.3",
+    "@vueuse/nuxt": "^11.0.3",
+    "nuxt": "^3.13.0",
+    "nuxt-auth-utils": "^0.3.5",
+    "nuxt-time": "^0.1.3",
+    "tailwindcss": "^3.4.10",
+    "vue-tsc": "^2.1.4"
+  }
+}
