@@ -26,6 +26,12 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
+          env:
+            - name: NUXT_SESSION_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: env
+                  key: NUXT_SESSION_PASSWORD
           resources:
             limits:
               cpu: 250m
