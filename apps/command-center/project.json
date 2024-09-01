@@ -1,8 +1,0 @@
-{
-  "name": "command-center",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/command-center",
-  "projectType": "application",
-  "targets": {},
-  "tags": []
-}

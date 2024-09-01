@@ -1,8 +1,0 @@
-{
-  "name": "storefront-v1",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/storefront-v1",
-  "projectType": "application",
-  "targets": {},
-  "tags": []
-}
