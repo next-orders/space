@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package: [website]
+        package: [website, food]
     runs-on: ubuntu-latest
     permissions:
       packages: write

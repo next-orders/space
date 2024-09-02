@@ -7,13 +7,18 @@ on:
       - completed
   workflow_dispatch:
 
-env:
-  APP_URL: https://nextorders.ru
-  APP_ENV: website-production
-
 jobs:
   deploy:
-    name: Deploy image
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - url: "https://nextorders.ru"
+            environment: "website-production"
+            deployment: "website-deployment"
+          - url: "https://food-demo.nextorders.ru"
+            environment: "food-production"
+            deployment: "food-deployment"
     runs-on: ubuntu-latest
     permissions:
       deployments: write
@@ -27,15 +32,15 @@ jobs:
         id: deployment
         with:
           token: '${{ github.token }}'
-          environment-url: ${{ env.APP_URL }}
-          environment: ${{ env.APP_ENV }}
+          environment-url: ${{ matrix.url }}
+          environment: ${{ matrix.environment }}
 
       - name: Connect to k8s cluster and restart deployment
         uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-          args: rollout restart deployment/website-deployment -n next-orders
+          args: rollout restart deployment/${{ matrix.deployment }} -n next-orders
 
       - name: Update deployment status (success)
         if: success()

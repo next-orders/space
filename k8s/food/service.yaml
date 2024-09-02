@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: food-service
+  namespace: next-orders
+spec:
+  selector:
+    app: food
+  ports:
+    - name: id
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
