@@ -22,5 +22,19 @@
       "minute": "minute | minutes",
       "second": "second | seconds"
     }
+  },
+  "app": {
+    "colorMode": {
+      "title": "Theme",
+      "select": "Select your theme",
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark",
+      "switch": {
+        "system": "Switch to System Theme",
+        "light": "Switch to Light Mode",
+        "dark": "Switch to Dark Mode"
+      }
+    }
   }
 }

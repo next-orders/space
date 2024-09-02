@@ -1,0 +1,56 @@
+name: Deploy Docker Image on k8s
+
+on:
+  workflow_run:
+    workflows: ["Build and Push Docker"]
+    types:
+      - completed
+  workflow_dispatch:
+
+env:
+  APP_URL: https://nextorders.ru
+  APP_ENV: website-production
+
+jobs:
+  deploy:
+    name: Deploy image
+    runs-on: ubuntu-latest
+    permissions:
+      deployments: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: chrnorm/deployment-action@v2
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: '${{ github.token }}'
+          environment-url: ${{ env.APP_URL }}
+          environment: ${{ env.APP_ENV }}
+
+      - name: Connect to k8s cluster and restart deployment
+        uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: rollout restart deployment/website-deployment -n next-orders
+
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          state: 'success'
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          state: 'failure'

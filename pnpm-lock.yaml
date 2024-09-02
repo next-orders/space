@@ -32,6 +32,9 @@ importers:
 
   apps/website:
     devDependencies:
+      '@iconify-json/lucide':
+        specifier: ^1.2.1
+        version: 1.2.1
       '@next-orders/eslint':
         specifier: workspace:*
         version: link:../../packages/eslint
@@ -1029,6 +1032,9 @@ packages:
 
   '@iconify-json/heroicons@1.2.0':
     resolution: {integrity: sha512-EmvGN0L9EUJCmQ82rkLGZ4tkz0YGQfZV7ugKT6UvHni/bxNitQrD0gLj6NJj2W9zsSoXyNHyCX236+EJmO4pmA==}
+
+  '@iconify-json/lucide@1.2.1':
+    resolution: {integrity: sha512-papXuksFsPmrfQTfUKH09N9XX2dsKSp5cdMYolV2hqP/JLL5yzsBGmn1P4eCqB1FwU+oTyh44zFS410yP530fQ==}
 
   '@iconify/collections@1.0.455':
     resolution: {integrity: sha512-jfH6SiRiz4quxh+5ECQDM1ue4+RE2z2MADySYUNZcC2Nz46q5Es29sCdk9s5o4hUpkUKj+vPnzoF0UAF0mXajg==}
@@ -6346,6 +6352,10 @@ snapshots:
   '@humanwhocodes/retry@0.3.0': {}
 
   '@iconify-json/heroicons@1.2.0':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/lucide@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 
