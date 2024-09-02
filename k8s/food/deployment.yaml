@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: food-deployment
+  namespace: next-orders
+spec:
+  selector:
+    matchLabels:
+      app: food
+  replicas: 1
+  revisionHistoryLimit: 1
+  minReadySeconds: 20
+  template:
+    metadata:
+      labels:
+        app: food
+    spec:
+      securityContext:
+        runAsUser: 1001
+      imagePullSecrets:
+        - name: ghcr-login-secret
+      containers:
+        - name: food
+          image: ghcr.io/next-orders/food:nightly
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: 250m
+              memory: 256Mi
+            requests:
+              cpu: 10m
+              memory: 64Mi
+          livenessProbe:
+            httpGet:
+              port: 3000
+              path: /
+            initialDelaySeconds: 20
+            periodSeconds: 30
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
