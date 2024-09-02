@@ -1,13 +1,14 @@
 export default defineAppConfig({
   ui: {
-    primary: 'green',
-    gray: 'cool',
+    primary: 'blue',
+    gray: 'slate',
   },
   icons: {
     colorMode: {
-      system: 'i-lucide-monitor-cog',
-      dark: 'i-lucide-moon',
-      light: 'i-lucide-sun',
+      system: 'pixelarticons:device-laptop',
+      dark: 'pixelarticons:moon',
+      light: 'pixelarticons:sun',
     },
+    github: 'pixelarticons:github',
   },
 })

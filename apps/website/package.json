@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.1",
+    "@iconify-json/pixelarticons": "^1.2.0",
     "@next-orders/eslint": "workspace:*",
     "@nuxt/devtools": "^1.4.1",
     "@nuxt/fonts": "^0.7.2",

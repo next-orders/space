@@ -21,6 +21,10 @@ export default defineNuxtConfig({
     host: '0.0.0.0',
     port: 4200,
   },
+  components: [
+    { path: '~/components/ui', prefix: 'U', pathPrefix: false },
+    '~/components',
+  ],
   colorMode: {
     classSuffix: '',
     preference: 'dark',
@@ -31,6 +35,11 @@ export default defineNuxtConfig({
     families: [
       {
         name: 'Noto Serif',
+        provider: 'google',
+        weights: [300, 400, 500, 600, 700, 800, 900],
+      },
+      {
+        name: 'Noto Sans',
         provider: 'google',
         weights: [300, 400, 500, 600, 700, 800, 900],
       },

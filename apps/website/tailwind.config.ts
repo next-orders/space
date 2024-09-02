@@ -6,7 +6,8 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Noto Serif', ...defaultTheme.fontFamily.serif],
+        serif: ['Noto Serif', ...defaultTheme.fontFamily.serif],
+        sans: ['Noto Sans', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         background: 'rgb(var(--ui-background) / <alpha-value>)',
