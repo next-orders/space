@@ -1,10 +1,15 @@
 <template>
   <UContainer class="max-w-screen-md">
+    <div class="flex items-center justify-center group">
+      <img src="/mike/idle.png" alt="" class="h-40 w-40 group-hover:-translate-x-8 duration-200">
+      <img src="/jake/idle.png" alt="" class="h-40 w-40 scale-x-[-1] group-hover:translate-x-8 duration-200">
+    </div>
+
     <div class="space-y-6 mt-10 text-lg">
       <p>
         Живут в одном чудесном городе два давних друга и коллеги:
-        <span class="text-green-600 font-medium">Миша</span> и
-        <span class="text-blue-600 font-medium">Женя</span>. Дружат с
+        <span class="text-green-500 font-medium">Миша</span> и
+        <span class="text-blue-500 font-medium">Женя</span>. Дружат с
         детства, вместе ходят в спортзал, ездят на рыбалку. Любят обсуждать
         технологии и автомобили. Миша – оптимист. Верит в развитие предприятий
         и постоянно улучшающийся сервис. Увлеченно наблюдает за сферой еды.
