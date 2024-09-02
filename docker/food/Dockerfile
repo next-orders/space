@@ -17,7 +17,7 @@ RUN pnpm build --filter @next-orders/food
 
 FROM $NODE
 WORKDIR /app
-COPY --from=builder /app/apps/website/.output .
+COPY --from=builder /app/apps/food/.output .
 
 ARG VERSION=nightly
 ENV VERSION=${VERSION}
