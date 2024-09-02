@@ -1,18 +1,12 @@
 <template>
-  <ClientOnly v-if="!colorMode?.forced">
-    <UToggle
-      v-if="switchMode"
-      v-model="isDark"
-      :on-icon="icons.colorMode.dark"
-      :off-icon="icons.colorMode.light"
-      :aria-label="areaLabel"
-    />
-    <UTooltip v-else :text="areaLabel">
+  <ClientOnly>
+    <UTooltip :text="ariaLabel">
       <UButton
         :icon="isDark ? icons.colorMode.dark : icons.colorMode.light"
-        :aria-label="areaLabel"
+        :aria-label="ariaLabel"
         variant="ghost"
         color="gray"
+        size="xl"
         @click="isDark = !isDark"
       />
     </UTooltip>
@@ -24,14 +18,6 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
-  switchMode?: boolean
-}
-
-withDefaults(defineProps<Props>(), {
-  switchMode: false,
-})
-
 const { icons } = useAppConfig()
 const colorMode = useColorMode()
 const { t } = useI18n()
@@ -45,5 +31,5 @@ const isDark = computed({
   },
 })
 
-const areaLabel = computed(() => isDark.value ? t('app.colorMode.switch.light') : t('app.colorMode.switch.dark'))
+const ariaLabel = computed(() => isDark.value ? t('app.colorMode.switch.light') : t('app.colorMode.switch.dark'))
 </script>
