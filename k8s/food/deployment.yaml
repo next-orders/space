@@ -27,6 +27,11 @@ spec:
           ports:
             - containerPort: 3000
           env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: food.env
+                  key: DATABASE_URL
             - name: NUXT_CHANNEL_ID
               valueFrom:
                 secretKeyRef:

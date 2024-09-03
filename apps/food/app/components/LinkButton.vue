@@ -16,10 +16,10 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  link: String,
-  label: String,
-})
+defineProps<{
+  link: string
+  label: string
+}>()
 
 const route = useRoute()
 const iconUrl = '/food-icon/BURGER.png'

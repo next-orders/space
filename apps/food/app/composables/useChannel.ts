@@ -1,4 +1,4 @@
-async function _useChannel() {
+export async function useChannel() {
   const { data } = await useAsyncData('channel', async () => {
     const [channel, products] = await Promise.all([
       $fetch('/api/channel'),
@@ -14,5 +14,3 @@ async function _useChannel() {
 
   return data
 }
-
-export const useChannel = createSharedComposable(_useChannel)
