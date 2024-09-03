@@ -5,6 +5,7 @@ declare global {
     updatedAt: Date
     slug: string
     name: string
+    description: string | null
   }
 
   interface Menu {
@@ -32,6 +33,18 @@ declare global {
     updatedAt: Date
     slug: string
     name: string
+    description: string
+    isAvailableForPurchase: boolean
+    channelId: string
+    categoryId: string
+    variants: ProductVariant[]
+  }
+
+  interface ProductVariant {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    productId: string
   }
 }
 

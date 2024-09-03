@@ -12,7 +12,15 @@ export default defineEventHandler(async () => {
     include: {
       menus: {
         include: {
-          categories: true,
+          categories: {
+            include: {
+              products: {
+                include: {
+                  variants: true,
+                },
+              },
+            },
+          },
         },
       },
     },

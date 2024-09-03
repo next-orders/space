@@ -1,23 +1,18 @@
 async function _useChannel() {
-  const route = useRoute()
+  const { data } = await useAsyncData('channel', async () => {
+    const [channel, products] = await Promise.all([
+      $fetch('/api/channel'),
+      $fetch('/api/channel/product'),
+    ])
 
-  const { data: channel } = await useFetch('/api/channel')
-  const activeMenu = computed(() => channel.value?.menus[0] || null)
-  const activeCategories = computed(() => activeMenu.value?.categories || [])
+    const menus = channel?.menus || []
+    const activeMenu = menus[0] || null
+    const categories = activeMenu?.categories || []
 
-  watch(
-    () => route.fullPath,
-    () => {
-      // revalidate data
-    },
-  )
+    return { channel, menus, activeMenu, categories, products }
+  })
 
-  return {
-    channel,
-    menus: computed(() => channel.value?.menus || []),
-    menu: activeMenu,
-    categories: activeCategories,
-  }
+  return data
 }
 
 export const useChannel = createSharedComposable(_useChannel)
