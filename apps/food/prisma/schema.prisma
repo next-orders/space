@@ -8,12 +8,14 @@ datasource db {
 }
 
 model Channel {
-  id        String   @id
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @map("updated_at")
-  slug      String
-  name      String
-  menus     Menu[]
+  id          String    @id
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @default(now()) @map("updated_at")
+  slug        String
+  name        String
+  description String?
+  menus       Menu[]
+  products    Product[]
 
   @@map("channel")
 }
@@ -32,23 +34,41 @@ model Menu {
 }
 
 model MenuCategory {
-  id        String   @id
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @map("updated_at")
+  id        String    @id
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @map("updated_at")
   slug      String
   name      String
-  menuId    String   @map("menu_id")
-  menu      Menu     @relation(fields: [menuId], references: [id])
+  menuId    String    @map("menu_id")
+  menu      Menu      @relation(fields: [menuId], references: [id])
+  products  Product[]
 
   @@map("menu_category")
 }
 
 model Product {
+  id                     String           @id
+  createdAt              DateTime         @default(now()) @map("created_at")
+  updatedAt              DateTime         @default(now()) @map("updated_at")
+  slug                   String
+  name                   String
+  description            String
+  isAvailableForPurchase Boolean          @default(true) @map("is_available_for_purchase")
+  channelId              String           @map("channel_id")
+  channel                Channel          @relation(fields: [channelId], references: [id])
+  categoryId             String           @map("category_id")
+  category               MenuCategory     @relation(fields: [categoryId], references: [id])
+  variants               ProductVariant[]
+
+  @@map("product")
+}
+
+model ProductVariant {
   id        String   @id
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @map("updated_at")
-  slug      String
-  name      String
+  productId String   @map("product_id")
+  product   Product  @relation(fields: [productId], references: [id])
 
-  @@map("product")
+  @@map("product_variant")
 }

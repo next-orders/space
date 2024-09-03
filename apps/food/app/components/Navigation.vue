@@ -39,7 +39,7 @@
           </p>
 
           <LinkButton
-            v-for="category in categories"
+            v-for="category in channelData?.categories"
             :key="category.id"
             :link="`/catalog/${category.slug}`"
             :label="category.name"
@@ -53,7 +53,7 @@
 <script setup lang="ts">
 const { isNavbarOpened } = useApp()
 const { icons } = useAppConfig()
-const { categories } = await useChannel()
+const channelData = await useChannel()
 
 const checkout = {
   deliveryMethod: 'DELIVERY',

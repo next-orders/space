@@ -39,6 +39,9 @@ importers:
       '@iconify-json/lucide':
         specifier: ^1.2.1
         version: 1.2.1
+      '@iconify-json/simple-icons':
+        specifier: ^1.2.1
+        version: 1.2.1
       '@next-orders/eslint':
         specifier: workspace:*
         version: link:../../packages/eslint
@@ -1093,6 +1096,9 @@ packages:
 
   '@iconify-json/pixelarticons@1.2.0':
     resolution: {integrity: sha512-rCEJ3uO59VqdDTmiK8idfxxtApn1lHN/PM8ORc5q8HkQMGBH9V/d7DjOzJLpEESzfu/gv8v64WhCtyYnu5m9Hw==}
+
+  '@iconify-json/simple-icons@1.2.1':
+    resolution: {integrity: sha512-eBXREU+jazfOBTl944Uq/ZpOJnbx1/IBw1MpLw0VmmNk0HSvmnvhdcz+3obja7uAp25yNtVcKo3I04ppnuv3NQ==}
 
   '@iconify/collections@1.0.455':
     resolution: {integrity: sha512-jfH6SiRiz4quxh+5ECQDM1ue4+RE2z2MADySYUNZcC2Nz46q5Es29sCdk9s5o4hUpkUKj+vPnzoF0UAF0mXajg==}
@@ -6447,6 +6453,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/pixelarticons@1.2.0':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/simple-icons@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 

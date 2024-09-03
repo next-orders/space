@@ -20,6 +20,7 @@ defineProps({
   link: String,
   label: String,
 })
+
 const route = useRoute()
 const iconUrl = '/food-icon/BURGER.png'
 </script>

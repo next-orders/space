@@ -13,5 +13,9 @@ export default defineAppConfig({
     menu: 'lucide:menu',
     search: 'lucide:search',
     link: 'lucide:link',
+    github: 'simple-icons:github',
+    heart: 'lucide:heart',
+    arrowRight: 'lucide:chevron-right',
+    plus: 'lucide:plus',
   },
 })
