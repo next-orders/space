@@ -26,8 +26,8 @@
 
           <button
             v-if="!!checkout"
-            onClick="{toggleDeliveryInfoModal}"
             class="flex flex-row gap-2 items-center active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
+            @click="() => {}"
           >
             <Icon :name="icons.link" /> показать детали
           </button>

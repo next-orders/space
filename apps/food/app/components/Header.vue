@@ -26,7 +26,6 @@
           <input
             type="text"
             value=""
-            onChange="{handleSearchChange}"
             placeholder="Найти блюдо..."
             class="px-2 py-2 w-32 md:w-56 group-focus:bg-zinc-400 rounded-xl"
           >
@@ -37,8 +36,8 @@
 
       <div v-if="!isCartEmpty" class="block xl:hidden font-medium">
         <button
-          onClick="{toggleCartDrawer}"
           class="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center bg-primary rounded-xl cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
+          @click="() => {}"
         >
           <span class="font-medium">Корзина</span>
           <div class="rounded-full bg-white w-6 h-6 text-center">

@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    to="{productUrl}"
+    to="/"
     class="bg-white rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer active:scale-95 lg:active:scale-90 lg:hover:scale-95 duration-200"
   >
     <div class="flex flex-col justify-between h-full">
