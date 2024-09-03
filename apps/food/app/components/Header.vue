@@ -1,6 +1,6 @@
 <template>
   <header class="z-20 h-16 bg-white fixed top-0 left-0 right-0">
-    <div class="z-10 w-full h-full px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-zinc-100">
+    <div class="z-10 w-full h-full px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-gray-100">
       <div class="mr-2 md:mr-0 flex justify-center items-center justify-items-center md:hidden h-full lg:hover:scale-110 transition duration-200">
         <button
           aria-label="Close Navigation"
@@ -27,7 +27,7 @@
             type="text"
             value=""
             placeholder="Найти блюдо..."
-            class="px-2 py-2 w-32 md:w-56 group-focus:bg-zinc-400 rounded-xl"
+            class="px-2 py-2 w-32 md:w-56 group-focus:bg-gray-400 rounded-xl"
           >
         </div>
 

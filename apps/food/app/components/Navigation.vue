@@ -3,7 +3,7 @@
     class="z-10 w-0 hidden md:block md:w-72 fixed top-16 data-[active=true]:w-full data-[active=true]:block md:data-[active=true]:w-72"
     :data-active="isNavbarOpened"
   >
-    <div class="w-full bg-zinc-50 px-4 pt-4 border-r border-zinc-100">
+    <div class="w-full bg-gray-50 px-4 pt-4 border-r border-gray-100">
       <div class="h-screen overflow-y-auto">
         <div class="mb-8">
           <NuxtLink

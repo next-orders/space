@@ -6,7 +6,7 @@
 
     <NuxtLink
       :to="`/catalog/${category?.slug}`"
-      class="px-5 py-3 flex flex-row gap-2 items-center text-base font-normal cursor-pointer rounded-2xl bg-zinc-200 active:scale-95 hover:bg-zinc-300 lg:hover:scale-95 lg:active:scale-90 duration-200"
+      class="px-5 py-3 flex flex-row gap-2 items-center text-base font-normal cursor-pointer rounded-2xl bg-gray-200 active:scale-95 hover:bg-gray-300 lg:hover:scale-95 lg:active:scale-90 duration-200"
     >
       Открыть категорию <Icon :name="icons.arrowRight" />
     </NuxtLink>

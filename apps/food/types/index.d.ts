@@ -45,7 +45,11 @@ declare global {
     createdAt: Date
     updatedAt: Date
     productId: string
+    weightUnit: WeightUnit
+    weightValue: number
   }
+
+  type WeightUnit = 'G' | 'KG' | 'ML' | 'L' | 'OZ' | 'LB'
 }
 
 export {}
