@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="link"
-    class="text-base font-normal flex flex-row items-center gap-4 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-zinc-200 data-[active=true]:font-medium active:scale-95 lg:hover:bg-zinc-100 lg:hover:scale-95 lg:active:scale-90 duration-200 group"
+    class="text-base font-normal flex flex-row items-center gap-4 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-gray-200 data-[active=true]:font-medium active:scale-95 lg:hover:bg-gray-100 lg:hover:scale-95 lg:active:scale-90 duration-200 group"
     :data-active="route.path === link"
   >
     <img

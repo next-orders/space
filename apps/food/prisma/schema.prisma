@@ -64,11 +64,13 @@ model Product {
 }
 
 model ProductVariant {
-  id        String   @id
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @map("updated_at")
-  productId String   @map("product_id")
-  product   Product  @relation(fields: [productId], references: [id])
+  id          String   @id
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @map("updated_at")
+  weightUnit  String   @default("G") @map("weight_unit")
+  weightValue Float    @map("weight_value")
+  productId   String   @map("product_id")
+  product     Product  @relation(fields: [productId], references: [id])
 
   @@map("product_variant")
 }
