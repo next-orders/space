@@ -26,6 +26,12 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
+          env:
+            - name: NUXT_CHANNEL_ID
+              valueFrom:
+                secretKeyRef:
+                  name: food.env
+                  key: NUXT_CHANNEL_ID
           resources:
             limits:
               cpu: 250m

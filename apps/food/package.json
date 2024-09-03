@@ -3,15 +3,18 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "build": "prisma generate && nuxt build",
+    "dev": "prisma generate && nuxt dev",
     "preview": "nuxt preview",
     "clean": "rm -rf dist",
     "clean:modules": "rm -rf .turbo .nuxt node_modules",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "typecheck": "nuxt typecheck",
+    "typecheck": "prisma generate && nuxt typecheck",
     "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.19.1"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.1",
@@ -26,6 +29,7 @@
     "@vueuse/core": "^11.0.3",
     "@vueuse/nuxt": "^11.0.3",
     "nuxt": "^3.13.0",
+    "prisma": "^5.19.1",
     "tailwindcss": "^3.4.10",
     "vue-tsc": "^2.1.4"
   }

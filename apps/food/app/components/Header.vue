@@ -1,0 +1,57 @@
+<template>
+  <header class="z-20 h-16 bg-white fixed top-0 left-0 right-0">
+    <div class="z-10 w-full h-full px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-zinc-100">
+      <div class="mr-2 md:mr-0 flex justify-center items-center justify-items-center md:hidden h-full lg:hover:scale-110 transition duration-200">
+        <button
+          aria-label="Close Navigation"
+          :data-active="isNavbarOpened"
+          class="hidden data-[active=true]:block"
+          @click="isNavbarOpened = !isNavbarOpened"
+        >
+          <Icon :name="icons.close" class="w-8 h-8" />
+        </button>
+        <button
+          aria-label="Open Navigation"
+          :data-active="!isNavbarOpened"
+          class="hidden data-[active=true]:block"
+          @click="isNavbarOpened = !isNavbarOpened"
+        >
+          <Icon :name="icons.menu" class="w-8 h-8" />
+        </button>
+      </div>
+
+      <div class="relative mr-auto group">
+        <div class="flex flex-row gap-1 items-center">
+          <Icon :name="icons.search" class="w-8 h-8" />
+          <input
+            type="text"
+            value=""
+            onChange="{handleSearchChange}"
+            placeholder="Найти блюдо..."
+            class="px-2 py-2 w-32 md:w-56 group-focus:bg-zinc-400 rounded-xl"
+          >
+        </div>
+
+        <!-- <SearchBlock locale="{locale}" menu="{menu}" /> -->
+      </div>
+
+      <div v-if="!isCartEmpty" class="block xl:hidden font-medium">
+        <button
+          onClick="{toggleCartDrawer}"
+          class="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center bg-primary rounded-xl cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
+        >
+          <span class="font-medium">Корзина</span>
+          <div class="rounded-full bg-white w-6 h-6 text-center">
+            0
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script setup lang="ts">
+const { isNavbarOpened } = useApp()
+const { icons } = useAppConfig()
+const isCartEmpty = false
+</script>

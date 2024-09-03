@@ -1,7 +1,7 @@
 export default defineAppConfig({
   ui: {
-    primary: 'blue',
-    gray: 'slate',
+    primary: 'green',
+    gray: 'zinc',
   },
   icons: {
     colorMode: {
@@ -9,5 +9,9 @@ export default defineAppConfig({
       dark: 'lucide:moon',
       light: 'lucide:sun',
     },
+    close: 'lucide:x',
+    menu: 'lucide:menu',
+    search: 'lucide:search',
+    link: 'lucide:link',
   },
 })
