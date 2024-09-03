@@ -20,7 +20,8 @@
         "Vue.volar",
         "ms-azuretools.vscode-docker",
         "Codeium.codeium",
-        "Vercel.turbo-vsc"
+        "Vercel.turbo-vsc",
+        "Prisma.prisma"
       ]
     }
   }

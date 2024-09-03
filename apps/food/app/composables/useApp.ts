@@ -1,17 +1,17 @@
 function _useApp() {
   const route = useRoute()
 
-  const isMobileMenuOpened = ref(false)
+  const isNavbarOpened = ref(false)
 
   watch(
     () => route.fullPath,
     () => {
-      isMobileMenuOpened.value = false
+      isNavbarOpened.value = false
     },
   )
 
   return {
-    isMobileMenuOpened,
+    isNavbarOpened,
   }
 }
 

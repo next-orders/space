@@ -16,17 +16,12 @@ export default defineNuxtConfig({
   ],
   colorMode: {
     classSuffix: '',
-    preference: 'dark',
+    preference: 'light',
     fallback: 'light',
   },
   fonts: {
     provider: 'google',
     families: [
-      {
-        name: 'Noto Serif',
-        provider: 'google',
-        weights: [300, 400, 500, 600, 700, 800, 900],
-      },
       {
         name: 'Noto Sans',
         provider: 'google',
@@ -35,6 +30,9 @@ export default defineNuxtConfig({
     ],
   },
   css: ['~/assets/css/styles.css'],
+  runtimeConfig: {
+    channelId: '', // NUXT_CHANNEL_ID
+  },
   i18n: {
     locales: [
       { code: 'ru', name: 'Русский', file: 'ru-RU.json' },
