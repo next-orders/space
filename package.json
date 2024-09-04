@@ -45,7 +45,7 @@
     "changelogen": "^0.5.5",
     "dotenv-cli": "^7.4.2",
     "husky": "^9.1.5",
-    "lint-staged": "^15.2.9",
+    "lint-staged": "^15.2.10",
     "turbo": "^2.1.1"
   },
   "lint-staged": {
