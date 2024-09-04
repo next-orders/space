@@ -6,7 +6,10 @@ declare global {
     slug: string
     name: string
     description: string | null
+    currencyCode: CurrencyCode
   }
+
+  type CurrencyCode = 'USD' | 'EUR' | 'RUB'
 
   interface Menu {
     id: string
@@ -47,11 +50,38 @@ declare global {
     productId: string
     weightUnit: WeightUnit
     weightValue: number
+    gross: number
+    net: number | null
   }
 
   type WeightUnit = 'G' | 'KG' | 'ML' | 'L' | 'OZ' | 'LB'
 
+  interface Checkout {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    deliveryMethod: CheckoutDeliveryMethod
+    shippingPrice: number
+    totalPrice: number
+    discount: number | null
+    channelId: string
+  }
+
   type CheckoutDeliveryMethod = 'DELIVERY' | 'WAREHOUSE'
+
+  interface CheckoutLine {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    checkoutId: string
+    productVariantId: string
+    quantity: number
+    unitPrice: number
+    undiscountedUnitPrice: number
+    totalPrice: number
+    undiscountedTotalPrice: number
+    isGift: boolean
+  }
 }
 
 export {}

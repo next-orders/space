@@ -21,7 +21,9 @@
         </div>
 
         <CartEmpty v-if="isEmptyCart" />
-        <!-- {items} -->
+        <div v-else>
+          <CartLine v-for="line in checkout?.lines" :key="line.id" :line-id="line.id" />
+        </div>
       </div>
     </div>
 
@@ -50,8 +52,7 @@
             Хорошо, далее
           </div>
           <div class="font-medium text-lg tracking-tight">
-            {checkout?.totalPrice}
-            <span class="pl-1 text-base">₽</span>
+            {{ checkout?.totalPrice }} <span class="text-base">₽</span>
           </div>
         </NuxtLink>
       </div>
@@ -61,5 +62,6 @@
 
 <script setup lang="ts">
 const { icons } = useAppConfig()
-const isEmptyCart = true
+const checkout = await useCheckout()
+const isEmptyCart = !checkout
 </script>
