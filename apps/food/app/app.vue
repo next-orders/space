@@ -16,7 +16,7 @@
       />
       )} -->
 
-      <!-- <CartDrawer channel="{channel}" checkout="{checkout}" /> -->
+      <CartDrawer />
       <Footer />
     </main>
 

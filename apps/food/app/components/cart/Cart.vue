@@ -10,7 +10,7 @@
           <button
             aria-label="Close"
             class="block xl:hidden rounded-xl lg:hover:scale-90 hover:bg-gray-100 duration-200"
-            @click="() => {}"
+            @click="isCartDrawerOpened = !isCartDrawerOpened"
           >
             <Icon :name="icons.close" class="w-8 h-8" />
           </button>
@@ -61,6 +61,7 @@
 </template>
 
 <script setup lang="ts">
+const { isCartDrawerOpened } = useApp()
 const { icons } = useAppConfig()
 const checkout = await useCheckout()
 const isEmptyCart = !checkout

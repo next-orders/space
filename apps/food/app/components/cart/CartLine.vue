@@ -44,5 +44,5 @@ const product = computed(() => line.value?.variant?.product)
 
 const productUrl = computed(() => `/catalog/${product.value?.category?.slug}/${product.value?.slug}`)
 const productImageUrl = '/burger-1.jpg'
-const price = getLocalizedPrice(650)
+const price = getLocalizedPrice(line.value?.variant?.gross)
 </script>
