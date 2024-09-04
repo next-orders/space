@@ -36,7 +36,7 @@
 
       <div v-if="!isCartEmpty" class="block xl:hidden font-medium">
         <button
-          class="w-full px-4 py-3 flex flex-row gap-2 justify-between items-center bg-primary rounded-xl cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
+          class="button-gradient w-full px-4 py-3 flex flex-row gap-2 justify-between items-center bg-primary rounded-xl cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
           @click="() => {}"
         >
           <span class="font-medium">Корзина</span>

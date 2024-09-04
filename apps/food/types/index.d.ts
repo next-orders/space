@@ -50,6 +50,8 @@ declare global {
   }
 
   type WeightUnit = 'G' | 'KG' | 'ML' | 'L' | 'OZ' | 'LB'
+
+  type CheckoutDeliveryMethod = 'DELIVERY' | 'WAREHOUSE'
 }
 
 export {}

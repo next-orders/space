@@ -18,11 +18,7 @@
         </div>
 
         <div class="mb-8">
-          <!-- <DeliveryInfoBlock
-            locale="{locale}"
-            method="{checkout?.deliveryMethod" ?? 'DELIVERY'}
-            currency-code="{currencyCode}"
-          /> -->
+          <DeliveryInfoBlock />
 
           <button
             v-if="!!checkout"

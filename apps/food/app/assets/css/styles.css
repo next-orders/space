@@ -9,3 +9,8 @@
 body {
   @apply antialiased font-sans text-foreground bg-background;
 }
+
+.button-gradient {
+  background-color: #86efac;
+  background-image: linear-gradient(to bottom right, #fef3c7, #86efac);
+}
