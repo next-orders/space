@@ -10,7 +10,7 @@
           <button
             aria-label="Close"
             class="block xl:hidden rounded-xl lg:hover:scale-90 hover:bg-gray-100 duration-200"
-            @click="() => {}"
+            @click="isCartDrawerOpened = !isCartDrawerOpened"
           >
             <Icon :name="icons.close" class="w-8 h-8" />
           </button>
@@ -21,7 +21,9 @@
         </div>
 
         <CartEmpty v-if="isEmptyCart" />
-        <!-- {items} -->
+        <div v-else>
+          <CartLine v-for="line in checkout?.lines" :key="line.id" :line-id="line.id" />
+        </div>
       </div>
     </div>
 
@@ -50,8 +52,7 @@
             Хорошо, далее
           </div>
           <div class="font-medium text-lg tracking-tight">
-            {checkout?.totalPrice}
-            <span class="pl-1 text-base">₽</span>
+            {{ checkout?.totalPrice }} <span class="text-base">₽</span>
           </div>
         </NuxtLink>
       </div>
@@ -60,6 +61,8 @@
 </template>
 
 <script setup lang="ts">
+const { isCartDrawerOpened } = useApp()
 const { icons } = useAppConfig()
-const isEmptyCart = true
+const checkout = await useCheckout()
+const isEmptyCart = !checkout
 </script>

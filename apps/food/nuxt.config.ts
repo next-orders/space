@@ -32,6 +32,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/styles.css'],
   runtimeConfig: {
     channelId: '', // NUXT_CHANNEL_ID
+    public: {
+      checkoutCookieName: 'nextorders-checkout-id', // NUXT_PUBLIC_CHECKOUT_COOKIE_NAME
+    },
   },
   i18n: {
     locales: [

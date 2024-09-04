@@ -8,14 +8,16 @@ datasource db {
 }
 
 model Channel {
-  id          String    @id
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @default(now()) @map("updated_at")
-  slug        String
-  name        String
-  description String?
-  menus       Menu[]
-  products    Product[]
+  id           String     @id
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @default(now()) @map("updated_at")
+  slug         String
+  name         String
+  description  String?
+  currencyCode String     @map("currency_code")
+  menus        Menu[]
+  products     Product[]
+  checkouts    Checkout[]
 
   @@map("channel")
 }
@@ -64,13 +66,48 @@ model Product {
 }
 
 model ProductVariant {
-  id          String   @id
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @default(now()) @map("updated_at")
-  weightUnit  String   @default("G") @map("weight_unit")
-  weightValue Float    @map("weight_value")
-  productId   String   @map("product_id")
-  product     Product  @relation(fields: [productId], references: [id])
+  id            String         @id
+  createdAt     DateTime       @default(now()) @map("created_at")
+  updatedAt     DateTime       @default(now()) @map("updated_at")
+  weightUnit    String         @default("G") @map("weight_unit")
+  weightValue   Float          @map("weight_value")
+  gross         Float
+  net           Float?
+  productId     String         @map("product_id")
+  product       Product        @relation(fields: [productId], references: [id])
+  checkoutLines CheckoutLine[]
 
   @@map("product_variant")
+}
+
+model Checkout {
+  id             String         @id
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime       @default(now()) @map("updated_at")
+  deliveryMethod String         @map("delivery_method")
+  totalPrice     Float          @default(0) @map("total_price")
+  discount       Float?
+  channelId      String         @map("channel_id")
+  channel        Channel        @relation(fields: [channelId], references: [id])
+  lines          CheckoutLine[]
+
+  @@map("checkout")
+}
+
+model CheckoutLine {
+  id                     String         @id
+  createdAt              DateTime       @default(now()) @map("created_at")
+  updatedAt              DateTime       @default(now()) @map("updated_at")
+  quantity               Int            @default(1)
+  unitPrice              Float          @default(0) @map("unit_price")
+  undiscountedUnitPrice  Float          @default(0) @map("undiscounted_unit_price")
+  totalPrice             Float          @default(0) @map("total_price")
+  undiscountedTotalPrice Float          @default(0) @map("undiscounted_total_price")
+  isGift                 Boolean        @default(false) @map("is_gift")
+  checkoutId             String         @map("checkout_id")
+  checkout               Checkout       @relation(fields: [checkoutId], references: [id])
+  productVariantId       String         @map("product_variant_id")
+  variant                ProductVariant @relation(fields: [productVariantId], references: [id])
+
+  @@map("checkout_line")
 }

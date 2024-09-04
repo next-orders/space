@@ -17,6 +17,7 @@ export default defineAppConfig({
     heart: 'lucide:heart',
     arrowRight: 'lucide:chevron-right',
     plus: 'lucide:plus',
+    minus: 'lucide:minus',
     clock: 'lucide:clock',
     discount: 'lucide:percent',
     delivery: 'lucide:truck',
