@@ -38,7 +38,7 @@ importers:
     devDependencies:
       '@iconify-json/lucide':
         specifier: ^1.2.1
-        version: 1.2.1
+        version: 1.2.2
       '@iconify-json/simple-icons':
         specifier: ^1.2.1
         version: 1.2.1
@@ -89,7 +89,7 @@ importers:
     devDependencies:
       '@iconify-json/lucide':
         specifier: ^1.2.1
-        version: 1.2.1
+        version: 1.2.2
       '@iconify-json/pixelarticons':
         specifier: ^1.2.0
         version: 1.2.0
@@ -1091,8 +1091,8 @@ packages:
   '@iconify-json/heroicons@1.2.0':
     resolution: {integrity: sha512-EmvGN0L9EUJCmQ82rkLGZ4tkz0YGQfZV7ugKT6UvHni/bxNitQrD0gLj6NJj2W9zsSoXyNHyCX236+EJmO4pmA==}
 
-  '@iconify-json/lucide@1.2.1':
-    resolution: {integrity: sha512-papXuksFsPmrfQTfUKH09N9XX2dsKSp5cdMYolV2hqP/JLL5yzsBGmn1P4eCqB1FwU+oTyh44zFS410yP530fQ==}
+  '@iconify-json/lucide@1.2.2':
+    resolution: {integrity: sha512-pXZ2GvRYW3G3JCnkM6grBhzok5UM9DaCKzUcyHJnBZb+ECxq77VNWJiXdjxrui0LpkwKtnm7hLkmRMVoAn8qNw==}
 
   '@iconify-json/pixelarticons@1.2.0':
     resolution: {integrity: sha512-rCEJ3uO59VqdDTmiK8idfxxtApn1lHN/PM8ORc5q8HkQMGBH9V/d7DjOzJLpEESzfu/gv8v64WhCtyYnu5m9Hw==}
@@ -6448,7 +6448,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/lucide@1.2.1':
+  '@iconify-json/lucide@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
