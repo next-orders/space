@@ -28,7 +28,7 @@
       </div>
     </NuxtLink>
 
-    <!-- <Counter count="{quantity}" line-id="{id}" /> -->
+    <CartLineCounter />
   </div>
 </template>
 
