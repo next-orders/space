@@ -26,7 +26,7 @@
     "@nuxt/ui": "^2.18.4",
     "@nuxtjs/device": "^3.2.2",
     "@nuxtjs/i18n": "^8.5.1",
-    "@types/node": "^22.5.2",
+    "@types/node": "*",
     "@vueuse/core": "^11.0.3",
     "@vueuse/nuxt": "^11.0.3",
     "nuxt": "^3.13.0",
