@@ -12,10 +12,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - food-demo.nextorders.ru
-      secretName: food-demo.nextorders.ru
+        - demo.nextorders.ru
+      secretName: demo.nextorders.ru
   rules:
-    - host: food-demo.nextorders.ru
+    - host: demo.nextorders.ru
       http:
         paths:
           - pathType: Prefix

@@ -14,10 +14,10 @@ jobs:
       matrix:
         include:
           - url: "https://nextorders.ru"
-            environment: "website-production"
+            environment: "Production Website"
             deployment: "website-deployment"
-          - url: "https://food-demo.nextorders.ru"
-            environment: "food-production"
+          - url: "https://demo.nextorders.ru"
+            environment: "Production Demo Food"
             deployment: "food-deployment"
     runs-on: ubuntu-latest
     permissions:
