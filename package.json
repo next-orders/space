@@ -26,10 +26,11 @@
   },
   "homepage": "https://nextorders.ru",
   "scripts": {
-    "release": "pnpm run check && pnpm run test && pnpm run lint && pnpm run build && changelogen --release --push",
+    "release": "pnpm lint && pnpm typecheck && pnpm build && changelogen --release --push",
     "build": "turbo build",
     "dev": "dotenv -- turbo dev --parallel",
     "dev:website": "dotenv -- pnpm --filter @next-orders/website dev",
+    "dev:food": "dotenv -- pnpm --filter @next-orders/food dev",
     "lint": "turbo lint --",
     "lint:fix": "turbo lint:fix",
     "clean": "turbo clean",
@@ -40,10 +41,11 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
+    "@types/node": "^22.5.3",
     "changelogen": "^0.5.5",
     "dotenv-cli": "^7.4.2",
     "husky": "^9.1.5",
-    "lint-staged": "^15.2.9",
+    "lint-staged": "^15.2.10",
     "turbo": "^2.1.1"
   },
   "lint-staged": {

@@ -1,4 +1,4 @@
-ARG NODE=node:20.17.0-alpine
+ARG NODE=node:22.8.0-alpine
 
 ################# Base builder ##############
 

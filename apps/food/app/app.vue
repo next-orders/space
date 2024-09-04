@@ -19,5 +19,11 @@
       <!-- <CartDrawer channel="{channel}" checkout="{checkout}" /> -->
       <Footer />
     </main>
+
+    <aside class="hidden w-0 xl:block xl:w-80 fixed right-0 bottom-0 top-16">
+      <div class="pr-4 py-4 h-full bg-gray-100">
+        <Cart />
+      </div>
+    </aside>
   </div>
 </template>
