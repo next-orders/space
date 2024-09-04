@@ -26,7 +26,7 @@
   },
   "homepage": "https://nextorders.ru",
   "scripts": {
-    "release": "pnpm run check && pnpm run test && pnpm run lint && pnpm run build && changelogen --release --push",
+    "release": "pnpm lint && pnpm typecheck && pnpm build && changelogen --release --push",
     "build": "turbo build",
     "dev": "dotenv -- turbo dev --parallel",
     "dev:website": "dotenv -- pnpm --filter @next-orders/website dev",
