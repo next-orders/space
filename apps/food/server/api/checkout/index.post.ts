@@ -1,7 +1,6 @@
 import { createId } from '@paralleldrive/cuid2'
 
 export default defineEventHandler(async (event) => {
-  const { public: { checkoutCookieName } } = useRuntimeConfig()
   const body = await readBody(event)
 
   if (!body.productVariantId) {
@@ -12,19 +11,26 @@ export default defineEventHandler(async (event) => {
   }
 
   // Check if checkout exists
-  let checkoutId = getCookie(event, checkoutCookieName)
+  let checkoutId = ''
 
-  if (!checkoutId) {
+  const { checkout } = await getUserSession(event)
+  if (!checkout) {
     // Create new checkout
-    checkoutId = 'mktjetoq700msdhiihujo2bz'
+    const staticCheckoutId = 'mktjetoq700msdhiihujo2bz'
 
-    setCookie(event, checkoutCookieName, checkoutId, {
-      maxAge: 60 * 60 * 24,
-      httpOnly: true,
+    // Update user session
+    await setUserSession(event, {
+      checkout: {
+        id: staticCheckoutId,
+      },
     })
+
+    checkoutId = staticCheckoutId
+  } else {
+    checkoutId = checkout.id
   }
 
-  const checkout = await prisma.checkout.findFirst({
+  const checkoutInDB = await prisma.checkout.findFirst({
     where: {
       id: checkoutId,
     },
@@ -32,12 +38,18 @@ export default defineEventHandler(async (event) => {
       lines: true,
     },
   })
+  if (!checkoutInDB?.id) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'No checkout',
+    })
+  }
 
   // Add +1 or create new line
-  const line = checkout?.lines.find((line) => line.productVariantId === body.productVariantId)
+  const line = checkoutInDB?.lines.find((line) => line.productVariantId === body.productVariantId)
   if (!line) {
     // Limit
-    if (checkout?.lines && checkout.lines.length >= 20) {
+    if (checkoutInDB?.lines && checkoutInDB.lines.length >= 20) {
       throw createError({
         statusCode: 400,
         statusMessage: 'Limit reached',

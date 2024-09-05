@@ -1,11 +1,15 @@
 declare module '#auth-utils' {
   interface User {
     id: string
-    checkoutId?: string
+  }
+
+  interface Checkout {
+    id: string
   }
 
   interface UserSession {
     user: User
+    checkout?: Checkout
   }
 }
 
