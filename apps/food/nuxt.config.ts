@@ -32,9 +32,6 @@ export default defineNuxtConfig({
   css: ['~/assets/css/styles.css'],
   runtimeConfig: {
     channelId: '', // NUXT_CHANNEL_ID
-    public: {
-      checkoutCookieName: 'nextorders-checkout-id', // NUXT_PUBLIC_CHECKOUT_COOKIE_NAME
-    },
   },
   i18n: {
     locales: [
@@ -55,6 +52,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/ui',
     '@nuxt/fonts',
+    'nuxt-auth-utils',
   ],
   compatibilityDate: '2024-08-18',
 })

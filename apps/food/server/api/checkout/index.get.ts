@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  const { public: { checkoutCookieName }, channelId } = useRuntimeConfig()
+  const { channelId } = useRuntimeConfig()
   if (!channelId) {
     throw createError({
       statusCode: 400,
@@ -7,8 +7,8 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const checkoutId = getCookie(event, checkoutCookieName)
-  if (!checkoutId) {
+  const { checkout } = await getUserSession(event)
+  if (!checkout?.id) {
     throw createError({
       statusCode: 404,
       statusMessage: 'No checkout',
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
   }
 
   return prisma.checkout.findFirst({
-    where: { id: checkoutId },
+    where: { id: checkout.id },
     include: {
       lines: {
         include: {

@@ -64,5 +64,5 @@
 const { isCartDrawerOpened } = useApp()
 const { icons } = useAppConfig()
 const checkout = await useCheckout()
-const isEmptyCart = !checkout
+const isEmptyCart = !checkout.value || checkout.value?.lines?.length === 0
 </script>
