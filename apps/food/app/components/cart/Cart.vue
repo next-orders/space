@@ -17,10 +17,10 @@
         </div>
 
         <div class="mt-2 mb-4">
-          <!-- <CartDeliveryMethodToggle channel="{channel}" checkout="{checkout}" /> -->
+          <CartDeliveryMethodSwitch />
         </div>
 
-        <CartEmpty v-if="isEmptyCart" />
+        <CartEmpty v-if="isEmpty" />
         <div v-else>
           <CartLine v-for="line in checkout?.lines" :key="line.id" :line-id="line.id" />
         </div>
@@ -30,7 +30,7 @@
     <div class="absolute bottom-0 left-0 right-0 rounded-2xl bg-gray-50">
       <button
         class="relative my-4 mx-4 flex flex-row gap-3 flex-wrap items-center active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
-        @click="() => {}"
+        @click="isDeliveryInfoModalOpened = !isDeliveryInfoModalOpened"
       >
         <Icon :name="icons.info" class="w-8 h-8 text-gray-300" />
 
@@ -43,7 +43,7 @@
         </div>
       </button>
 
-      <div v-if="!isEmptyCart" class="my-4 mx-4">
+      <div v-if="!isEmpty" class="my-4 mx-4">
         <NuxtLink
           to="/checkout"
           class="button-gradient w-full px-4 py-4 flex flex-row gap-2 flex-wrap justify-between items-center rounded-xl cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
@@ -61,8 +61,7 @@
 </template>
 
 <script setup lang="ts">
-const { isCartDrawerOpened } = useApp()
+const { isCartDrawerOpened, isDeliveryInfoModalOpened } = useApp()
 const { icons } = useAppConfig()
-const checkout = await useCheckout()
-const isEmptyCart = !checkout.value || checkout.value?.lines?.length === 0
+const { checkout, isEmpty } = await useCheckout()
 </script>

@@ -22,5 +22,6 @@ export default defineAppConfig({
     discount: 'lucide:percent',
     delivery: 'lucide:truck',
     info: 'lucide:info',
+    bike: 'lucide:bike',
   },
 })

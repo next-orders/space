@@ -3,19 +3,19 @@
     <button
       aria-label="Minus"
       class="flex flex-row items-center px-1 py-1 rounded-xl lg:hover:scale-90 lg:hover:bg-gray-200 duration-200"
-      @click="() => {}"
+      @click="changeLineQuantity(lineId, 'decrement')"
     >
       <Icon :name="icons.minus" class="w-5 h-5" />
     </button>
 
     <div class="text-base">
-      {{ count }}
+      {{ line?.quantity }}
     </div>
 
     <button
       aria-label="Plus"
       class="flex flex-row items-center px-1 py-1 rounded-xl lg:hover:scale-90 lg:hover:bg-gray-200 duration-200"
-      @click="() => {}"
+      @click="changeLineQuantity(lineId, 'increment')"
     >
       <Icon :name="icons.plus" class="w-5 h-5" />
     </button>
@@ -23,6 +23,11 @@
 </template>
 
 <script setup lang="ts">
+const { lineId } = defineProps<{
+  lineId: string
+}>()
+
 const { icons } = useAppConfig()
-const count = 1
+const { checkout, changeLineQuantity } = await useCheckout()
+const line = computed(() => checkout.value?.lines?.find((l) => l.id === lineId))
 </script>

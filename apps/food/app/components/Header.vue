@@ -34,7 +34,7 @@
         <!-- <SearchBlock locale="{locale}" menu="{menu}" /> -->
       </div>
 
-      <div v-if="!isCartEmpty" class="block xl:hidden font-medium">
+      <div v-if="!isEmpty" class="block xl:hidden font-medium">
         <button
           class="button-gradient w-full px-4 py-3 flex flex-row gap-2 justify-between items-center bg-primary rounded-xl cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
           @click="isCartDrawerOpened = !isCartDrawerOpened"
@@ -52,6 +52,5 @@
 <script setup lang="ts">
 const { isNavbarOpened, isCartDrawerOpened } = useApp()
 const { icons } = useAppConfig()
-const checkout = await useCheckout()
-const isCartEmpty = !checkout.value || checkout.value?.lines?.length === 0
+const { checkout, isEmpty } = await useCheckout()
 </script>

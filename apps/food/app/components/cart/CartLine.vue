@@ -28,7 +28,7 @@
       </div>
     </NuxtLink>
 
-    <CartLineCounter />
+    <CartLineCounter :line-id="lineId" />
   </div>
 </template>
 
@@ -37,7 +37,7 @@ const { lineId } = defineProps<{
   lineId: string
 }>()
 
-const { data: checkout } = await useFetch('/api/checkout')
+const { checkout } = await useCheckout()
 const line = computed(() => checkout.value?.lines?.find((l) => l.id === lineId))
 const variant = computed(() => line.value?.variant)
 const product = computed(() => line.value?.variant?.product)
