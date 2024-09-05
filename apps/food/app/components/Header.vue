@@ -5,18 +5,18 @@
         <button
           aria-label="Close Navigation"
           :data-active="isNavbarOpened"
-          class="hidden data-[active=true]:block"
+          class="hidden data-[active=true]:flex items-center"
           @click="isNavbarOpened = !isNavbarOpened"
         >
-          <Icon :name="icons.close" class="w-8 h-8" />
+          <Icon :name="icons.close" class="w-10 h-10" />
         </button>
         <button
           aria-label="Open Navigation"
           :data-active="!isNavbarOpened"
-          class="hidden data-[active=true]:block"
+          class="hidden data-[active=true]:flex items-center"
           @click="isNavbarOpened = !isNavbarOpened"
         >
-          <Icon :name="icons.menu" class="w-8 h-8" />
+          <Icon :name="icons.menu" class="w-10 h-10" />
         </button>
       </div>
 

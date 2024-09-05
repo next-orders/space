@@ -23,5 +23,7 @@ export default defineAppConfig({
     delivery: 'lucide:truck',
     info: 'lucide:info',
     bike: 'lucide:bike',
+    undo: 'lucide:undo-2',
+    basket: 'lucide:shopping-basket',
   },
 })
