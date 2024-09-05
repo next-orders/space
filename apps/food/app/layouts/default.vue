@@ -7,14 +7,7 @@
       <slot />
     </div>
 
-    <!-- {channel && checkout && (
-      <DeliveryInfoModal
-        checkout="{checkout}"
-        channel="{channel}"
-        locale="{locale}"
-      />
-      )} -->
-
+    <DeliveryInfoModal />
     <CartDrawer />
     <Footer />
   </main>

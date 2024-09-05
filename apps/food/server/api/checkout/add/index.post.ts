@@ -1,4 +1,5 @@
 import { createId } from '@paralleldrive/cuid2'
+import { updateCheckout } from '~~/server/utils/checkout'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -73,39 +74,9 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  // Update checkout
   await updateCheckout(checkoutId)
 
   return {
     ok: true,
   }
 })
-
-async function updateCheckout(id: string) {
-  const checkout = await prisma.checkout.findFirst({
-    where: { id },
-    include: {
-      lines: {
-        include: {
-          variant: true,
-        },
-      },
-    },
-  })
-
-  if (!checkout) {
-    return
-  }
-
-  const totalPrice = checkout.lines.reduce((acc, line) => {
-    return acc + line.quantity * line.variant.gross
-  }, 0)
-
-  return prisma.checkout.update({
-    where: { id: checkout.id },
-    data: {
-      updatedAt: new Date(),
-      totalPrice,
-    },
-  })
-}

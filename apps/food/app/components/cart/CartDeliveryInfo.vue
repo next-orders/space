@@ -5,22 +5,19 @@
     </div>
     <span class="text-gray-300">/</span>
     <div class="text-sm">
-      <div v-if="checkout.deliveryMethod === 'WAREHOUSE'">
+      <div v-if="checkout?.deliveryMethod === 'WAREHOUSE'">
         Скидка 10 <span class="text-xs">%</span>
       </div>
 
-      <div v-if="checkout.deliveryMethod === 'DELIVERY'">
-        Доставка {{ checkout.shippingPrice }} <span class="text-xs">₽</span>
+      <div v-if="checkout?.deliveryMethod === 'DELIVERY'">
+        Доставка {{ checkout?.shippingPrice }} <span class="text-xs">₽</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const checkout = {
-  deliveryMethod: 'DELIVERY',
-  shippingPrice: 100,
-}
+const { checkout } = await useCheckout()
 
-const avg = checkout.deliveryMethod === 'DELIVERY' ? '45–60' : '15–20'
+const avg = computed(() => checkout.value?.deliveryMethod === 'DELIVERY' ? '45–60' : '15–20')
 </script>
