@@ -37,6 +37,11 @@ spec:
                 secretKeyRef:
                   name: food.env
                   key: NUXT_CHANNEL_ID
+            - name: NUXT_SESSION_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: food.env
+                  key: NUXT_SESSION_PASSWORD
           resources:
             limits:
               cpu: 250m

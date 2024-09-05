@@ -55,6 +55,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/ui',
     '@nuxt/fonts',
+    'nuxt-auth-utils',
   ],
   compatibilityDate: '2024-08-18',
 })
