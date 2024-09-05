@@ -6,6 +6,7 @@ export default defineEventHandler(async (event) => {
     where: { slug, channelId },
     include: {
       variants: true,
+      category: true,
     },
   })
 })

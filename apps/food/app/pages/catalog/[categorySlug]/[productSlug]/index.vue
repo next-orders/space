@@ -1,4 +1,5 @@
 <template>
+  <Breadcrumbs :breadcrumbs="breadcrumbs" />
   {{ slug }}
   {{ product }}
 
@@ -15,4 +16,13 @@ const slug = route.params.productSlug
 
 const { addProduct } = await useCheckout()
 const { data: product } = await useFetch(`/api/product/slug/${slug}`)
+
+const breadcrumbs = [
+  { title: 'Главная', href: '/' },
+  {
+    title: product.value?.category?.name ?? '',
+    href: `/catalog/${product.value?.category?.slug}`,
+  },
+  { title: product.value?.name ?? '', href: '#' },
+]
 </script>

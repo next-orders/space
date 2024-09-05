@@ -1,5 +1,5 @@
 <template>
-  <div class="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
+  <div v-if="checkout" class="relative bg-white rounded-2xl px-4 py-4 h-full flex flex-col justify-between">
     <div class="h-screen overflow-y-auto">
       <div class="mb-48">
         <div class="mb-4 flex flex-row justify-between items-center">
