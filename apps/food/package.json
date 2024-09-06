@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
-    "@prisma/client": "^5.19.1"
+    "@prisma/client": "^5.19.1",
+    "libphonenumber-js": "^1.11.7"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.2",

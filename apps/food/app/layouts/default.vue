@@ -3,6 +3,7 @@
   <Navigation />
 
   <main class="relative w-auto bg-gray-100 md:pl-72 xl:pr-80 top-16">
+    <MaintenanceMessage v-if="channelData?.channel?.isActive === false" />
     <div class="px-4 pb-10 pt-4">
       <slot />
     </div>
@@ -18,3 +19,7 @@
     </div>
   </aside>
 </template>
+
+<script setup lang="ts">
+const channelData = await useChannel()
+</script>

@@ -17,7 +17,7 @@
     <div class="w-full lg:w-auto mx-auto md:mx-0">
       <button
         class="px-5 py-3 w-full flex flex-row gap-2 justify-center items-center text-base font-normal cursor-pointer rounded-2xl bg-gray-200 active:scale-95 hover:bg-gray-300 lg:hover:scale-95 lg:active:scale-90 duration-200"
-        @click="router.back()"
+        @click="back()"
       >
         <Icon :name="icons.undo" size="20" /> Вернуться
       </button>
@@ -26,10 +26,10 @@
 </template>
 
 <script setup lang="ts">
-const { breadcrumbs: links } = defineProps<{
-  breadcrumbs: { title: string, href: string }[]
+const { links } = defineProps<{
+  links: { title: string, href: string }[]
 }>()
 
 const { icons } = useAppConfig()
-const router = useRouter()
+const { back } = useRouter()
 </script>

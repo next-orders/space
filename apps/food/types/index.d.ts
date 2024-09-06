@@ -7,6 +7,7 @@ declare global {
     name: string
     description: string | null
     currencyCode: CurrencyCode
+    isActive: boolean
   }
 
   type CurrencyCode = 'USD' | 'EUR' | 'RUB'
@@ -29,6 +30,17 @@ declare global {
     name: string
     menuId: string
   }
+
+  type MenuCategoryIcon =
+    | 'DEFAULT'
+    | 'BURGER'
+    | 'PIZZA'
+    | 'ROLLS'
+    | 'SUSHI'
+    | 'WOK'
+    | 'CAKE'
+    | 'LASAGNA'
+    | 'DRINK'
 
   interface Product {
     id: string

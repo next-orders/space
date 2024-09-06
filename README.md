@@ -15,11 +15,39 @@ I'm currently working on first version of the website. Next year there will be a
 
 Let's see what happens. Give the project a star ⭐. Offer your ideas and make commits.
 
+## 🍣 Customer and Seller Features (WIP)
+
+- 📱 100% adaptive layout
+- 🤹 Multi-page structure with priority on fast page loading and SEO
+- 🛒 The cart is always in sight on desktop
+- 🚚 Possibility to choose delivery or pickup
+- 🔍 Quick search in the product catalog
+- 🏷️ The client can use a promotional code
+- 📈 The best offers and promotions are shown in the desired section
+- 🏁 Quick order, without forced registration on the site
+
+## 🥪 Tech Features (WIP)
+
+- Website has its own backend, where API data does not break out
+- Most of the code is rendered on the server: less load on the client
+
 ## 🥒 Structure
 
-- [Website](https://github.com/next-orders/space/tree/main/apps/storefront-v1): First version of storefront, where client can order delicious food.
-- [Main API and SDK](https://github.com/next-orders/space/tree/main/apps/api): All business entities in one spot. Other parts can access data here.
-- [Command Center](https://github.com/next-orders/space/tree/main/apps/command-center): Headless CMS designed to build and manage storefronts.
+- [Food e-commerce](https://github.com/next-orders/space/tree/main/apps/food): Storefront and Command Center. Client can order delicious food.
+- [NextOrders Website](https://github.com/next-orders/space/tree/main/apps/website): Documentation and SaaS
+
+## ☕ How to deploy
+
+You can use latest Docker Image:
+
+```shell
+docker pull ghcr.io/next-orders/food:latest
+
+# or use the specific version
+docker pull ghcr.io/next-orders/food:v0.2.0
+```
+
+Check **.env.example** for more info about required config variables.
 
 ## 🍿 How to develop
 

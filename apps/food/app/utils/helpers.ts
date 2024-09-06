@@ -1,3 +1,16 @@
+export function getCurrencySign(code: CurrencyCode | null | undefined) {
+  switch (code) {
+    case 'RUB':
+      return '₽'
+    case 'USD':
+      return '$'
+    case 'EUR':
+      return '€'
+    default:
+      return ''
+  }
+}
+
 export function getWeightLocalizedUnit(unit: WeightUnit | undefined): string {
   switch (unit) {
     case 'G':

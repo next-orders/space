@@ -1,5 +1,5 @@
 <template>
-  <Breadcrumbs :breadcrumbs="breadcrumbs" />
+  <Breadcrumbs :links="breadcrumbs" />
 
   <h1 class="text-3xl font-medium">
     {{ category?.name }}
