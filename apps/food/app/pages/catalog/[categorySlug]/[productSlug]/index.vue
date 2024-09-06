@@ -28,16 +28,14 @@
             {{ getLocalizedPrice(productVariant?.gross) }} <span class="text-xl">₽</span>
           </div>
 
+          <CartLineCounter v-if="inCart" :line-id="inCart.id" />
           <button
+            v-else
             class="button-gradient px-5 py-3 flex flex-row gap-2 text-base font-normal cursor-pointer rounded-2xl active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
             @click="addProduct(productVariant?.id ?? '')"
           >
             <Icon :name="icons.basket" size="24" /> Добавить в корзину
           </button>
-        </div>
-
-        <div v-if="inCart" class="mt-2 text-gray-500">
-          В корзине!
         </div>
       </div>
     </div>
@@ -107,8 +105,7 @@ useHead({
 const productVariant = computed(() => product.value?.variants[0])
 
 const inCart = computed(() => {
-  const line = checkout.value?.lines?.find((l) => l.variant.id === productVariant.value?.id)
-  return line
+  return checkout.value?.lines?.find((l) => l.variant.id === productVariant.value?.id)
 })
 
 const breadcrumbs = [
