@@ -33,7 +33,7 @@
             Каталог
           </p>
 
-          <LinkButton
+          <NavigationButton
             v-for="category in channelData?.categories"
             :key="category.id"
             :link="`/catalog/${category.slug}`"

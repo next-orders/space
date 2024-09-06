@@ -1,5 +1,5 @@
 <template>
-  <Breadcrumbs :breadcrumbs="breadcrumbs" />
+  <Breadcrumbs :links="breadcrumbs" />
 
   <div class="bg-white px-5 py-5 rounded-2xl">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-0 gap-y-4 sm:gap-4">

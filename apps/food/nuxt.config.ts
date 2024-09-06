@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     port: 4200,
   },
   components: [
-    { path: '~/components/ui', prefix: 'U', pathPrefix: false },
     '~/components',
   ],
   colorMode: {
