@@ -1,6 +1,7 @@
 declare module '#auth-utils' {
   interface User {
     id: string
+    isStaff: boolean
   }
 
   interface Checkout {

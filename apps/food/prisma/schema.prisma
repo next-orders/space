@@ -19,6 +19,7 @@ model Channel {
   menus        Menu[]
   products     Product[]
   checkouts    Checkout[]
+  users        User[]
 
   @@map("channel")
 }
@@ -112,4 +113,43 @@ model CheckoutLine {
   variant                ProductVariant @relation(fields: [productVariantId], references: [id])
 
   @@map("checkout_line")
+}
+
+model User {
+  id          String            @id
+  createdAt   DateTime          @default(now()) @map("created_at")
+  updatedAt   DateTime          @default(now()) @map("updated_at")
+  isActive    Boolean           @default(true) @map("is_active")
+  isConfirmed Boolean           @default(false) @map("is_confirmed")
+  isStaff     Boolean           @default(false) @map("is_staff")
+  email       String?
+  channelId   String            @map("channel_id")
+  channel     Channel           @relation(fields: [channelId], references: [id])
+  permissions UserPermission[]
+  credentials UserCredentials[]
+
+  @@map("user")
+}
+
+model UserPermission {
+  id        String   @id
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  code      String
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("user_permission")
+}
+
+model UserCredentials {
+  id           String   @id
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @default(now()) @map("updated_at")
+  login        String   @unique
+  passwordHash String   @map("password_hash")
+  userId       String   @map("user_id")
+  user         User     @relation(fields: [userId], references: [id])
+
+  @@map("user_credentials")
 }

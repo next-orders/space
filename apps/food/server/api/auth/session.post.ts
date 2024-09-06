@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
   try {
     const user = {
       id: createId(),
+      isStaff: false,
     }
     await setUserSession(event, { user })
 
