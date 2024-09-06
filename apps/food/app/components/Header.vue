@@ -24,14 +24,14 @@
         <div class="flex flex-row gap-1 items-center">
           <Icon :name="icons.search" class="w-8 h-8" />
           <input
+            v-model="searchQuery"
             type="text"
-            value=""
             placeholder="Найти блюдо..."
-            class="px-2 py-2 w-32 md:w-56 group-focus:bg-gray-400 rounded-xl"
+            class="px-2 py-2 w-32 md:w-56 group-focus:bg-gray-400 outline-none rounded-xl"
           >
         </div>
 
-        <!-- <SearchBlock locale="{locale}" menu="{menu}" /> -->
+        <SearchBlock />
       </div>
 
       <div v-if="!isEmpty" class="block xl:hidden font-medium">
@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-const { isNavbarOpened, isCartDrawerOpened } = useApp()
+const { isNavbarOpened, isCartDrawerOpened, searchQuery } = useApp()
 const { icons } = useAppConfig()
 const { checkout, isEmpty } = await useCheckout()
 </script>

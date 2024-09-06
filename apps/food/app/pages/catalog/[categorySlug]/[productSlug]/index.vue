@@ -94,6 +94,11 @@ const slug = route.params.productSlug
 const { icons } = useAppConfig()
 const { addProduct, checkout } = await useCheckout()
 const { data: product } = await useFetch(`/api/product/slug/${slug}`)
+
+useHead({
+  title: product.value?.name,
+})
+
 const productVariant = computed(() => product.value?.variants[0])
 
 const inCart = computed(() => {

@@ -9,6 +9,6 @@ export default defineEventHandler(async () => {
 
   return prisma.product.findMany({
     where: { channelId: channelId.toString() },
-    include: { variants: true },
+    include: { variants: true, category: true },
   })
 })
