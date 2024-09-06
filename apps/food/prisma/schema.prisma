@@ -15,6 +15,7 @@ model Channel {
   name         String
   description  String?
   currencyCode String     @map("currency_code")
+  isActive     Boolean    @default(true) @map("is_active")
   menus        Menu[]
   products     Product[]
   checkouts    Checkout[]

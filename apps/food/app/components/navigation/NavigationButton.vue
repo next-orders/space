@@ -2,10 +2,10 @@
   <NuxtLink
     :to="link"
     class="text-base font-normal flex flex-row items-center gap-4 w-full h-12 px-3 rounded-2xl data-[active=true]:bg-gray-200 data-[active=true]:font-medium active:scale-95 lg:hover:bg-gray-100 lg:hover:scale-95 lg:active:scale-90 duration-200 group"
-    :data-active="route.path === link"
+    :data-active="path === link"
   >
     <img
-      :src="iconUrl"
+      :src="getIconUrl('BURGER')"
       alt=""
       width="32"
       height="32"
@@ -21,6 +21,9 @@ defineProps<{
   label: string
 }>()
 
-const route = useRoute()
-const iconUrl = '/food-icon/BURGER.png'
+const { path } = useRoute()
+
+function getIconUrl(icon: MenuCategoryIcon | null) {
+  return icon ? `/food-icon/${icon}.png` : '/food-icon/DEFAULT.png'
+}
 </script>

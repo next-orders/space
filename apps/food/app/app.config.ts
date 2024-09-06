@@ -25,5 +25,6 @@ export default defineAppConfig({
     bike: 'lucide:bike',
     undo: 'lucide:undo-2',
     basket: 'lucide:shopping-basket',
+    maintenance: 'lucide:traffic-cone',
   },
 })
