@@ -88,12 +88,17 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
-const slug = route.params.productSlug
+definePageMeta({
+  validate: async ({ params }) => {
+    const { error } = await useFetch(`/api/product/slug/${params.productSlug}`)
+    return error.value === undefined
+  },
+})
 
+const { params } = useRoute()
 const { icons } = useAppConfig()
 const { addProduct, checkout } = await useCheckout()
-const { data: product } = await useFetch(`/api/product/slug/${slug}`)
+const { data: product } = await useFetch(`/api/product/slug/${params.productSlug}`)
 
 useHead({
   title: product.value?.name,
