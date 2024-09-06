@@ -1,5 +1,11 @@
 <template>
   <UContainer class="max-w-screen-md">
+    <div class="mt-12 mb-8 text-center">
+      <h1 class="text-3xl">
+        Басня? Быль? Так сказать, история.
+      </h1>
+    </div>
+
     <div class="flex items-center justify-center group">
       <img src="/mike/idle.png" alt="" class="h-40 w-40 group-hover:-translate-x-8 duration-200">
       <img src="/jake/idle.png" alt="" class="h-40 w-40 scale-x-[-1] group-hover:translate-x-8 duration-200">

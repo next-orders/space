@@ -10,8 +10,10 @@
 </template>
 
 <script setup lang="ts">
+const channelData = await useChannel()
+
 useHead({
-  title: 'Онлайн-заказ еды',
+  title: channelData.value?.channel?.name,
   meta: [
     {
       name: 'description',
@@ -19,6 +21,4 @@ useHead({
     },
   ],
 })
-
-const channelData = await useChannel()
 </script>

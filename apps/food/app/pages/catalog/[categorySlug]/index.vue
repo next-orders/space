@@ -24,6 +24,10 @@ const slug = params.categorySlug
 
 const { data: category } = await useFetch(`/api/category/slug/${slug}`)
 
+useHead({
+  title: category.value?.name,
+})
+
 const breadcrumbs = [
   { title: 'Главная', href: '/' },
   {

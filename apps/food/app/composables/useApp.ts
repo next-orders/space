@@ -4,6 +4,7 @@ function _useApp() {
   const isNavbarOpened = ref(false)
   const isCartDrawerOpened = ref(false)
   const isDeliveryInfoModalOpened = ref(false)
+  const searchQuery = ref('')
 
   watch(
     () => route.fullPath,
@@ -11,6 +12,7 @@ function _useApp() {
       isNavbarOpened.value = false
       isCartDrawerOpened.value = false
       isDeliveryInfoModalOpened.value = false
+      searchQuery.value = ''
     },
   )
 
@@ -18,6 +20,7 @@ function _useApp() {
     isNavbarOpened,
     isCartDrawerOpened,
     isDeliveryInfoModalOpened,
+    searchQuery,
   }
 }
 

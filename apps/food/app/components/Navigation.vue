@@ -8,12 +8,12 @@
         <div class="mb-8">
           <NuxtLink
             href="/"
-            class="font-medium text-xl"
+            class="font-medium text-xl text-primary"
           >
-            Вкус на бегу
+            {{ channelData?.channel?.name }}
           </NuxtLink>
           <div class="mt-1 text-sm leading-tight">
-            Здесь можно заказать еду
+            {{ channelData?.channel?.description }}
           </div>
         </div>
 

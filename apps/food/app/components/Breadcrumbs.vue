@@ -5,7 +5,7 @@
         <li v-for="link in links" :key="link.title" class="relative max-w-[20rem] after:content-['/'] after:px-1 after:text-lg after:text-gray-300 last:after:content-['']">
           <NuxtLink
             :to="link.href"
-            class="px-3 py-2 inline-block leading-tight rounded-xl active:scale-95 lg:hover:bg-zinc-200 lg:hover:scale-95 lg:active:scale-90 duration-200 bg-gray-50 data-[active=true]:bg-gray-50"
+            class="px-3 py-2 inline-block leading-tight rounded-xl active:scale-95 lg:hover:bg-gray-200 lg:hover:scale-95 lg:active:scale-90 duration-200 bg-gray-50 data-[active=true]:bg-gray-50"
             :data-active="link.href === '#'"
           >
             {{ link.title }}
