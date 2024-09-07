@@ -1,11 +1,11 @@
-import type {
-  CountryCode } from 'libphonenumber-js'
 import {
   AsYouType,
   formatIncompletePhoneNumber,
   isValidPhoneNumber,
   parsePhoneNumber,
 } from 'libphonenumber-js'
+import type {
+  CountryCode } from 'libphonenumber-js'
 
 export function getPhoneNumberFormatter(countryCode: CountryCode) {
   return new AsYouType(countryCode)

@@ -94,6 +94,36 @@ declare global {
     undiscountedTotalPrice: number
     isGift: boolean
   }
+
+  interface User {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    email: string | null
+    isActive: boolean
+    isConfirmed: boolean
+    isStaff: boolean
+    channelId: string
+  }
+
+  interface UserPermission {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    code: PermissionCode
+    userId: string
+  }
+
+  type PermissionCode = 'MASTER' | 'MANAGE_PRODUCTS' | 'MANAGE_ORDERS' | 'MANAGE_CHECKOUTS'
+
+  interface UserCredentials {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    login: string
+    passwordHash: string
+    userId: string
+  }
 }
 
 export {}

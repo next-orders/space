@@ -16,6 +16,7 @@
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
     "@prisma/client": "^5.19.1",
+    "bcrypt": "^5.1.1",
     "libphonenumber-js": "^1.11.7"
   },
   "devDependencies": {
@@ -27,14 +28,15 @@
     "@nuxt/kit": "^3.13.1",
     "@nuxt/ui": "^2.18.4",
     "@nuxtjs/device": "^3.2.2",
-    "@nuxtjs/i18n": "^8.5.1",
+    "@nuxtjs/i18n": "^8.5.2",
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "*",
     "@vueuse/core": "^11.0.3",
     "@vueuse/nuxt": "^11.0.3",
     "nuxt": "^3.13.1",
-    "nuxt-auth-utils": "^0.3.6",
+    "nuxt-auth-utils": "^0.3.7",
     "prisma": "^5.19.1",
     "tailwindcss": "^3.4.10",
-    "vue-tsc": "^2.1.4"
+    "vue-tsc": "^2.1.6"
   }
 }
