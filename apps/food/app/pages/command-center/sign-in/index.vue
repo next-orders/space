@@ -21,7 +21,7 @@
               placeholder="Логин"
               required
               value=""
-              class="peer block w-full rounded-2xl border border-zinc-200 py-3 px-4 text-base outline-2 outline-offset-1 outline-zinc-500 placeholder:text-zinc-400"
+              class="peer block w-full rounded-2xl border border-gray-200 py-3 px-4 text-base outline-2 outline-offset-1 outline-gray-500 placeholder:text-gray-400"
             >
           </div>
 
@@ -32,7 +32,7 @@
               placeholder="Пароль"
               required
               value=""
-              class="peer block w-full rounded-2xl border border-zinc-200 py-3 px-4 text-base outline-2 outline-offset-1 outline-zinc-500 placeholder:text-zinc-400"
+              class="peer block w-full rounded-2xl border border-gray-200 py-3 px-4 text-base outline-2 outline-offset-1 outline-gray-500 placeholder:text-gray-400"
             >
           </div>
         </div>
@@ -41,7 +41,7 @@
           <button
             type="submit"
             :disabled="false"
-            class="px-5 py-3 flex flex-row gap-2 justify-center items-center text-base font-medium cursor-pointer bg-zinc-100 hover:bg-zinc-200 hover:scale-95 duration-200 rounded-2xl disabled:animate-pulse"
+            class="px-5 py-3 flex flex-row gap-2 justify-center items-center text-base font-medium cursor-pointer bg-gray-100 hover:bg-gray-200 hover:scale-95 duration-200 rounded-2xl disabled:animate-pulse"
           >
             Войти <Icon :name="icons.arrowRight" size="22" />
           </button>
