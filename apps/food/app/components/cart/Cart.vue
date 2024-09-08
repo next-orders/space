@@ -4,7 +4,7 @@
       <div class="mb-48">
         <div class="mb-4 flex flex-row justify-between items-center">
           <p class="text-2xl font-medium">
-            Корзина
+            {{ $t('app.cart.title') }}
           </p>
 
           <button
