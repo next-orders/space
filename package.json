@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/next-orders/space/issues"
   },
-  "homepage": "https://nextorders.ru",
+  "homepage": "https://nextorders.space",
   "scripts": {
     "release": "pnpm lint && pnpm typecheck && pnpm build && changelogen --release --push",
     "build": "turbo build",
