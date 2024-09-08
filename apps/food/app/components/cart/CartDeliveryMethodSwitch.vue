@@ -5,14 +5,14 @@
       :class="{ 'button-gradient': checkout?.deliveryMethod === 'DELIVERY' }"
       @click="update({ deliveryMethod: 'DELIVERY' })"
     >
-      Доставка
+      {{ $t('app.cart.delivery') }}
     </button>
     <button
       class="w-full px-2 py-2 font-normal rounded-2xl active:scale-95 lg:hover:bg-gray-100 lg:hover:scale-95 lg:active:scale-90 duration-200"
       :class="{ 'button-gradient': checkout?.deliveryMethod === 'WAREHOUSE' }"
       @click="update({ deliveryMethod: 'WAREHOUSE' })"
     >
-      Самовывоз
+      {{ $t('app.cart.pickup') }}
     </button>
   </div>
 </template>
