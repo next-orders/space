@@ -26,5 +26,12 @@ export default defineAppConfig({
     undo: 'lucide:undo-2',
     basket: 'lucide:shopping-basket',
     maintenance: 'lucide:traffic-cone',
+    dashboard: 'lucide:layout-dashboard',
+    image: 'lucide:image',
+    box: 'lucide:box',
+    users: 'lucide:users',
+    list: 'lucide:layout-list',
+    checkouts: 'lucide:copy-check',
+    options: 'lucide:cog',
   },
 })

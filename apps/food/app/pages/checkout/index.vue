@@ -65,8 +65,6 @@
 </template>
 
 <script setup lang="ts">
-import CheckoutDeliveryForm from '~/components/checkout/CheckoutDeliveryForm.vue'
-
 definePageMeta({
   layout: 'checkout',
 })

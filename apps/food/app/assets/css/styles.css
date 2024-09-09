@@ -14,3 +14,8 @@ body {
   background-color: #86efac;
   background-image: linear-gradient(to bottom right, #fef3c7, #86efac);
 }
+
+.button-gradient-command-center {
+  background-color: #60a5fa;
+  background-image: linear-gradient(to bottom right, #dbeafe, #a5b4fc);
+}

@@ -3,7 +3,9 @@
   <Navigation />
 
   <main class="relative w-auto bg-gray-100 md:pl-72 xl:pr-80 top-16">
+    <CommandCenterStaffBar v-if="user?.isStaff" />
     <MaintenanceMessage v-if="channelData?.channel?.isActive === false" />
+
     <div class="px-4 pb-10 pt-4">
       <slot />
     </div>
@@ -22,4 +24,5 @@
 
 <script setup lang="ts">
 const channelData = await useChannel()
+const { user } = useUserSession()
 </script>

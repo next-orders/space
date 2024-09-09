@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
       where: { id: credentials.userId },
     })
     if (!user) {
-      throw createError({ statusCode: 401, statusMessage: 'Wrong login or password' })
+      throw createError({ statusCode: 401, statusMessage: 'No user found' })
     }
 
     await setUserSession(event, {
