@@ -2,10 +2,10 @@
   <ClientOnly>
     <button
       :aria-label="ariaLabel"
-      class="w-12 h-12 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-600 flex justify-center items-center"
+      class="w-12 h-12 rounded-2xl bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center"
       @click="isDark = !isDark"
     >
-      <Icon :name="isDark ? icons.colorMode.dark : icons.colorMode.light" class="w-6 h-6" />
+      <Icon :name="isDark ? icons.colorMode.dark : icons.colorMode.light" class="w-6 h-6 opacity-40" />
     </button>
 
     <template #fallback>

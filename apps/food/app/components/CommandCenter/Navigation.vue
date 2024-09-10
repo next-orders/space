@@ -16,8 +16,9 @@
         </div>
 
         <div class="flex flex-col gap-2">
-          <div>
+          <div class="flex flex-row gap-2">
             <ColorModeToggle />
+            <LanguageSwitch />
           </div>
 
           <div class="mb-8 px-2 py-3 bg-gray-100 dark:bg-gray-600 rounded-2xl flex flex-row gap-2 items-center">
@@ -49,7 +50,7 @@ const { clear, fetch: refreshSession } = useUserSession()
 const { isNavbarOpened } = useCommandCenter()
 const { icons } = useAppConfig()
 const { t } = useI18n()
-const menu = [
+const menu = computed(() => [
   {
     label: t('center.menu.dashboard'),
     link: '/command-center',
@@ -75,7 +76,7 @@ const menu = [
     link: '/command-center/system',
     icon: icons.options,
   },
-]
+])
 
 const userAvatar = '/burger-1.jpg'
 
