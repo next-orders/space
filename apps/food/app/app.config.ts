@@ -33,5 +33,6 @@ export default defineAppConfig({
     list: 'lucide:layout-list',
     checkouts: 'lucide:copy-check',
     options: 'lucide:cog',
+    globe: 'lucide:globe',
   },
 })
