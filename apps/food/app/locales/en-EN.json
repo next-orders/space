@@ -1,8 +1,8 @@
 {
   "name": "English",
-  "shortName": "Eng",
+  "short-name": "Eng",
   "common": {
-    "timeAgo": {
+    "time-ago": {
       "just-now": "just now",
       "ago": "{0} ago",
       "in": "in {0}",
@@ -21,10 +21,8 @@
       "hour": "hour | hours",
       "minute": "minute | minutes",
       "second": "second | seconds"
-    }
-  },
-  "app": {
-    "colorMode": {
+    },
+    "color-mode": {
       "title": "Theme",
       "select": "Select your theme",
       "system": "System",
@@ -36,10 +34,36 @@
         "dark": "Switch to Dark Mode"
       }
     },
+    "sign-in": "Sign in",
+    "sign-out": "Sign out",
+    "login": "Login",
+    "password": "Password",
+    "footer": {
+      "copyright-part-one": "Created with ❤️",
+      "copyright-part-two": "on the NextOrders platform"
+    }
+  },
+  "app": {
     "cart": {
       "title": "Cart",
       "delivery": "Delivery",
       "pickup": "Pickup"
     }
+  },
+  "center": {
+    "title": "Command Center",
+    "welcome-message": "We've been waiting for you!",
+    "to-website": "To Website",
+    "search-label": "Find anything",
+    "menu": {
+      "dashboard": "Control Panel",
+      "menu": "Menu",
+      "checkouts": "Checkouts",
+      "clients": "Clients",
+      "settings": "Settings"
+    }
+  },
+  "error": {
+    "invalid-credentials": "Invalid credentials"
   }
 }

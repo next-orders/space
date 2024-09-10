@@ -1,8 +1,8 @@
 {
   "name": "Русский",
-  "shortName": "Рус",
+  "short-name": "Рус",
   "common": {
-    "timeAgo": {
+    "time-ago": {
       "just-now": "только что",
       "ago": "{0} назад",
       "in": "через {0}",
@@ -21,10 +21,8 @@
       "hour": "часов | час | часа | часов",
       "minute": "минут | минуту | минуты | минут",
       "second": "секунд | секунду | секунды | секунд"
-    }
-  },
-  "app": {
-    "colorMode": {
+    },
+    "color-mode": {
       "title": "Тема",
       "select": "Выберите тему интерфейса",
       "system": "Системная",
@@ -36,10 +34,36 @@
         "dark": "Переключиться на темный режим"
       }
     },
+    "sign-in": "Войти",
+    "sign-out": "Выйти",
+    "login": "Логин",
+    "password": "Пароль",
+    "footer": {
+      "copyright-part-one": "Создано с ❤️",
+      "copyright-part-two": "на платформе NextOrders"
+    }
+  },
+  "app": {
     "cart": {
       "title": "Корзина",
       "delivery": "Доставка",
       "pickup": "Самовывоз"
     }
+  },
+  "center": {
+    "title": "Командный центр",
+    "welcome-message": "Мы вас заждались!",
+    "to-website": "К веб-сайту",
+    "search-label": "Найти что-нибудь",
+    "menu": {
+      "dashboard": "Панель управления",
+      "menu": "Меню",
+      "checkouts": "Заявки",
+      "clients": "Клиенты",
+      "settings": "Настройки"
+    }
+  },
+  "error": {
+    "invalid-credentials": "Неверные данные"
   }
 }
