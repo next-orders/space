@@ -78,7 +78,7 @@ const menu = computed(() => [
   },
 ])
 
-const userAvatar = '/burger-1.jpg'
+const userAvatar = '/api/avatar/admin.svg'
 
 async function signOut() {
   await clear()
