@@ -6,13 +6,13 @@
 
     <NuxtLink
       :to="`/catalog/${category?.slug}`"
-      class="px-5 py-3 flex flex-row gap-2 items-center text-base font-normal cursor-pointer rounded-2xl bg-gray-200 active:scale-95 hover:bg-gray-300 lg:hover:scale-95 lg:active:scale-90 duration-200"
+      class="px-5 py-3 flex flex-row gap-2 items-center text-base font-normal cursor-pointer rounded-2xl bg-gray-200 dark:bg-gray-700 active:scale-95 hover:bg-gray-300 lg:hover:scale-95 lg:active:scale-90 duration-200"
     >
-      Открыть категорию <Icon :name="icons.arrowRight" />
+      {{ $t('app.open-category') }} <Icon :name="icons.arrowRight" />
     </NuxtLink>
   </div>
   <div
-    class="mt-4 mb-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-2"
+    class="mt-4 mb-12 max-w-7xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-2"
   >
     <ProductCard v-for="product in products" :key="product.id" :product-id="product.id" />
   </div>

@@ -38,17 +38,52 @@
     "sign-out": "Выйти",
     "login": "Логин",
     "password": "Пароль",
+    "return": "Вернуться",
+    "ok": "ОК",
+    "more-information": "Больше информации",
+    "home": "Главная",
+    "website": "Веб-сайт",
+    "description": "Описание",
     "footer": {
       "copyright-part-one": "Создано с ❤️",
       "copyright-part-two": "на платформе NextOrders"
+    },
+    "abbreviation": {
+      "min": "мин",
+      "kg": "кг",
+      "g": "г"
     }
   },
   "app": {
     "cart": {
       "title": "Корзина",
       "delivery": "Доставка",
-      "pickup": "Самовывоз"
-    }
+      "delivery-details": "Детали доставки",
+      "pickup": "Самовывоз",
+      "pickup-details": "Детали самовывоза",
+      "next-label": "Хорошо, далее",
+      "conditions": "Подробные условия",
+      "discount": "Скидка",
+      "empty-label": "Ваша корзина пуста",
+      "free-from": "бесплатно от",
+      "today-until": "сегодня до",
+      "prepare-for": "Приготовить к",
+      "deliver-by": "Доставить к",
+      "now": "Сейчас",
+      "add": "Добавить",
+      "add-to-cart": "Добавить в корзину"
+    },
+    "search": {
+      "placeholder": "Найти блюдо...",
+      "nothing-found": "Ничего не найдено",
+      "most-often": "Находят чаще всего"
+    },
+    "show-details-label": "показать детали",
+    "catalog": "Каталог",
+    "open-category": "Открыть категорию",
+    "minimum-order-value": "Минимальная стоимость заказа",
+    "maximum-order-weight": "Максимальный вес заказа",
+    "maintenance-message": "Веб-сайт находится на техническом обслуживании. Заказы приостановлены."
   },
   "center": {
     "title": "Командный центр",
@@ -60,6 +95,7 @@
       "menu": "Меню",
       "checkouts": "Заявки",
       "clients": "Клиенты",
+      "client-page": "Страница клиента",
       "settings": "Настройки"
     }
   },

@@ -25,15 +25,6 @@
         <input type="text" :placeholder="$t('center.search-label')" class="bg-transparent">
       </div>
     </div>
-
-    <div class="hidden md:flex flex-row gap-4 items-center">
-      <NuxtLink
-        to="/"
-        class="px-5 py-3 w-full flex flex-row gap-2 justify-center items-center text-base font-normal cursor-pointer rounded-2xl bg-gray-200 dark:bg-gray-500 active:scale-95 hover:bg-gray-300 lg:hover:scale-95 lg:active:scale-90 duration-200"
-      >
-        <Icon :name="icons.undo" size="20" /> {{ $t('center.to-website') }}
-      </NuxtLink>
-    </div>
   </div>
 </template>
 

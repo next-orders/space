@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="productUrl"
-    class="bg-white rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer active:scale-95 lg:active:scale-90 lg:hover:scale-95 duration-200"
+    class="bg-white dark:bg-gray-600 rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer active:scale-95 lg:active:scale-90 lg:hover:scale-95 duration-200"
   >
     <div class="flex flex-col justify-between h-full">
       <div>
@@ -21,15 +21,15 @@
         <p class="font-normal leading-tight line-clamp-2">
           {{ product?.name }}
         </p>
-        <div class="mt-2 font-light text-gray-500">
+        <div class="mt-2 font-light text-gray-500 dark:text-white">
           {{ weightValue }}{{ weightUnitLocalized }}
         </div>
       </div>
 
-      <div class="flex flex-row gap-2 items-center justify-center mt-2 w-full h-12 bg-gray-100 rounded-xl">
+      <div class="flex flex-row gap-2 items-center justify-center mt-2 w-full h-12 bg-gray-100 dark:bg-gray-700 rounded-xl">
         <Icon :name="icons.plus" class="w-5 h-5" />
         <div class="text-center text-base font-normal">
-          Добавить
+          {{ $t('app.cart.add') }}
         </div>
       </div>
     </div>

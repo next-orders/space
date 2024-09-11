@@ -1,7 +1,7 @@
 <template>
   <Breadcrumbs :links="breadcrumbs" />
 
-  <div class="bg-white px-5 py-5 rounded-2xl">
+  <div class="bg-white dark:bg-gray-600 px-5 py-5 rounded-2xl">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-0 gap-y-4 sm:gap-4">
       <div class="col-span-1 relative w-full aspect-square">
         <img
@@ -34,7 +34,7 @@
             class="button-gradient px-5 py-3 flex flex-row gap-2 text-base font-normal cursor-pointer rounded-2xl active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
             @click="addProduct(productVariant?.id ?? '')"
           >
-            <Icon :name="icons.basket" size="24" /> Добавить в корзину
+            <Icon :name="icons.basket" size="24" /> {{ $t('app.cart.add-to-cart') }}
           </button>
         </div>
       </div>
@@ -43,7 +43,7 @@
     <div class="mt-6 flex flex-col xl:flex-row justify-between gap-4">
       <div v-if="product?.description">
         <div class="mb-1 font-medium text-gray-400">
-          Описание
+          {{ $t('common.description') }}
         </div>
         <div class="leading-snug">
           {{ product.description }}
@@ -93,6 +93,7 @@ definePageMeta({
   },
 })
 
+const { t } = useI18n()
 const { params } = useRoute()
 const { icons } = useAppConfig()
 const { addProduct, checkout } = await useCheckout()
@@ -108,14 +109,14 @@ const inCart = computed(() => {
   return checkout.value?.lines?.find((l) => l.variant.id === productVariant.value?.id)
 })
 
-const breadcrumbs = [
-  { title: 'Главная', href: '/' },
+const breadcrumbs = computed(() => [
+  { title: t('common.home'), href: '/' },
   {
     title: product.value?.category?.name ?? '',
     href: `/catalog/${product.value?.category?.slug}`,
   },
   { title: product.value?.name ?? '', href: '#' },
-]
+])
 
 const productImageUrl = '/burger-1.jpg'
 

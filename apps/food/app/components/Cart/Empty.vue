@@ -8,7 +8,7 @@
       class="mx-auto mb-2 opacity-60 grayscale"
     >
     <div class="text-lg text-center font-normal text-gray-500">
-      Ваша корзина пуста
+      {{ $t('app.cart.empty-label') }}
     </div>
   </div>
 </template>

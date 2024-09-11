@@ -1,6 +1,6 @@
 <template>
-  <header class="z-20 h-16 bg-white fixed top-0 left-0 right-0">
-    <div class="z-10 w-full h-full px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-gray-100">
+  <header class="z-20 h-16 bg-white dark:bg-gray-600 fixed top-0 left-0 right-0">
+    <div class="z-10 w-full h-full px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-gray-100 dark:border-gray-500">
       <div class="mr-2 md:mr-0 flex justify-center items-center justify-items-center md:hidden h-full lg:hover:scale-110 transition duration-200">
         <button
           aria-label="Close Navigation"
@@ -26,24 +26,28 @@
           <input
             v-model="searchQuery"
             type="text"
-            placeholder="Найти блюдо..."
-            class="px-2 py-2 w-32 md:w-56 group-focus:bg-gray-400 outline-none rounded-xl"
+            :placeholder="$t('app.search.placeholder')"
+            class="px-2 py-2 w-32 md:w-56 bg-transparent group-focus:bg-gray-400 outline-none rounded-xl"
           >
         </div>
 
         <SearchBlock />
       </div>
 
-      <div v-if="!isEmpty" class="block xl:hidden font-medium">
-        <button
-          class="button-gradient w-full px-4 py-3 flex flex-row gap-2 justify-between items-center bg-primary rounded-xl cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
-          @click="isCartDrawerOpened = !isCartDrawerOpened"
-        >
-          <span class="font-medium">Корзина</span>
-          <div class="rounded-full bg-white w-6 h-6 text-center">
-            {{ checkout?.lines?.length }}
-          </div>
-        </button>
+      <div class="flex gap-2">
+        <ColorModeToggle />
+
+        <div v-if="!isEmpty" class="block xl:hidden font-medium">
+          <button
+            class="button-gradient w-full px-4 py-3 flex flex-row gap-2 justify-between items-center bg-primary rounded-xl cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
+            @click="isCartDrawerOpened = !isCartDrawerOpened"
+          >
+            <span class="font-medium">{{ $t('app.cart.title') }}</span>
+            <div class="rounded-full bg-white w-6 h-6 text-center">
+              {{ checkout?.lines?.length }}
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </header>

@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <button class="py-2 px-4 h-12 flex flex-row items-center gap-1 font-semibold duration-200 rounded-2xl bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500" @click="isOpened = !isOpened">
+    <button class="py-2 px-4 h-12 flex flex-row items-center gap-2 duration-200 rounded-2xl bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500" @click="isOpened = !isOpened">
       <Icon :name="icons.globe" class="w-6 h-6 opacity-40" />
       <span>{{ $t('short-name') }}</span>
     </button>
