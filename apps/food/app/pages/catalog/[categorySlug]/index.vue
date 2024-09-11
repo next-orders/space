@@ -19,6 +19,7 @@ definePageMeta({
   },
 })
 
+const { t } = useI18n()
 const { params } = useRoute()
 const slug = params.categorySlug
 
@@ -29,7 +30,7 @@ useHead({
 })
 
 const breadcrumbs = [
-  { title: 'Главная', href: '/' },
+  { title: t('common.home'), href: '/' },
   {
     title: category.value?.name ?? '',
     href: '#',

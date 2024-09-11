@@ -12,12 +12,12 @@
         </NuxtLink>
       </div>
       <div v-else class="text-gray-500">
-        Ничего не найдено
+        {{ $t('app.search.nothing-found') }}
       </div>
     </div>
     <div v-else class="flex flex-col gap-2">
       <div class="font-medium">
-        Находят чаще всего:
+        {{ $t('app.search.most-often') }}:
       </div>
 
       <div v-if="topResults?.length" class="flex flex-col gap-2">

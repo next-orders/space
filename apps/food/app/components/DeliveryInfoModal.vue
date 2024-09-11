@@ -10,35 +10,35 @@
   >
     <div class="mt-16 px-8 py-8 bg-white rounded-2xl">
       <div class="mb-2 text-2xl font-medium">
-        {{ checkout?.deliveryMethod === 'DELIVERY' ? 'Детали доставки' : 'Детали самовывоза' }}
+        {{ checkout?.deliveryMethod === 'DELIVERY' ? $t('app.cart.delivery-details') : $t('app.cart.pickup-details') }}
       </div>
 
       <div v-if="checkout?.deliveryMethod === 'WAREHOUSE'">
         <div class="flex flex-row justify-between">
           <div class="flex flex-row gap-2 items-center">
             <Icon :name="icons.discount" />
-            Скидка
+            {{ $t('app.cart.discount') }}
           </div>
-          <div>10 %</div>
+          <div>{{ discount }} %</div>
         </div>
 
         <div class="mt-8 mb-2 text-xl font-medium">
-          Приготовить к
+          {{ $t('app.cart.prepare-for') }}
         </div>
 
         <div class="flex flex-row justify-between">
           <div class="flex flex-row gap-2 items-center">
             <Icon :name="icons.clock" />
-            Сейчас: 15-20 мин
+            {{ $t('app.cart.now') }}: 15-20 {{ $t('common.abbreviation.min') }}
           </div>
         </div>
 
         <div class="mt-8 mb-2 text-xl font-medium">
-          Больше информации
+          {{ $t('common.more-information') }}
         </div>
 
         <div class="mb-2 flex flex-row justify-between">
-          <div>Минимальная стоимость заказа</div>
+          <div>{{ $t('app.minimum-order-value') }}</div>
           <div>
             1000 <span class="text-sm">₽</span>
           </div>
@@ -57,30 +57,30 @@
         </div>
 
         <div class="mt-8 mb-2 text-xl font-medium">
-          Доставить к
+          {{ $t('app.cart.deliver-by') }}
         </div>
 
         <div class="flex flex-row justify-between">
           <div class="flex flex-row gap-2 items-center">
             <Icon :name="icons.clock" />
-            Сейчас: 45-60 мин
+            {{ $t('app.cart.now') }}: 45-60 {{ $t('common.abbreviation.min') }}
           </div>
         </div>
 
         <div class="mt-8 mb-2 text-xl font-medium">
-          Больше информации
+          {{ $t('common.more-information') }}
         </div>
 
         <div class="mb-2 flex flex-row justify-between">
-          <div>Минимальная стоимость заказа</div>
+          <div>{{ $t('app.minimum-order-value') }}</div>
           <div>
             1000 <span class="text-sm">₽</span>
           </div>
         </div>
 
         <div class="mb-2 flex flex-row justify-between">
-          <div>Максимальный вес заказа</div>
-          <div>20 кг</div>
+          <div>{{ $t('app.maximum-order-weight') }}</div>
+          <div>20 {{ $t('common.abbreviation.kg') }}</div>
         </div>
       </div>
 
@@ -88,7 +88,7 @@
         class="mt-4 px-5 py-3 w-full text-center text-base font-medium cursor-pointer rounded-2xl bg-gray-200 active:scale-95 lg:hover:bg-gray-300 lg:hover:scale-95 lg:active:scale-90 duration-200"
         @click="isDeliveryInfoModalOpened = false"
       >
-        OK
+        {{ $t('common.ok') }}
       </button>
     </div>
   </div>
@@ -98,4 +98,6 @@
 const { icons } = useAppConfig()
 const { isDeliveryInfoModalOpened } = useApp()
 const { checkout } = await useCheckout()
+
+const discount = 10
 </script>

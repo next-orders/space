@@ -38,17 +38,51 @@
     "sign-out": "Sign out",
     "login": "Login",
     "password": "Password",
+    "return": "Return",
+    "ok": "OK",
+    "more-information": "More information",
+    "home": "Home",
+    "description": "Description",
     "footer": {
       "copyright-part-one": "Created with ❤️",
       "copyright-part-two": "on the NextOrders platform"
+    },
+    "abbreviation": {
+      "min": "min",
+      "kg": "kg",
+      "g": "g"
     }
   },
   "app": {
     "cart": {
       "title": "Cart",
       "delivery": "Delivery",
-      "pickup": "Pickup"
-    }
+      "delivery-details": "Delivery details",
+      "pickup": "Pickup",
+      "pickup-details": "Pickup details",
+      "next-label": "Okay, next",
+      "conditions": "Detailed conditions",
+      "discount": "Discount",
+      "empty-label": "Your cart is empty",
+      "free-from": "free from",
+      "today-until": "today until",
+      "prepare-for": "Prepare for",
+      "deliver-by": "Deliver by",
+      "now": "Now",
+      "add": "Add",
+      "add-to-cart": "Add to cart"
+    },
+    "search": {
+      "placeholder": "Find a dish...",
+      "nothing-found": "Nothing found",
+      "most-often": "Found most often"
+    },
+    "show-details-label": "show details",
+    "catalog": "Catalog",
+    "open-category": "Open category",
+    "minimum-order-value": "Minimum order value",
+    "maximum-order-weight": "Maximum order weight",
+    "maintenance-message": "The website is under maintenance. Orders are on hold."
   },
   "center": {
     "title": "Command Center",

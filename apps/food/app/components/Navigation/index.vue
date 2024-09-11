@@ -3,7 +3,7 @@
     class="z-10 w-0 hidden md:block md:w-72 fixed top-16 data-[active=true]:w-full data-[active=true]:block md:data-[active=true]:w-72"
     :data-active="isNavbarOpened"
   >
-    <div class="w-full bg-gray-50 px-4 pt-4 border-r border-gray-100">
+    <div class="w-full bg-gray-50 dark:bg-gray-700 px-4 pt-4 border-r border-gray-100 dark:border-gray-500">
       <div class="h-screen overflow-y-auto">
         <div class="mb-8">
           <NuxtLink
@@ -24,13 +24,13 @@
             class="flex flex-row gap-2 items-center active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
             @click="isDeliveryInfoModalOpened = !isDeliveryInfoModalOpened"
           >
-            <Icon :name="icons.link" /> показать детали
+            <Icon :name="icons.link" /> {{ $t('app.show-details-label') }}
           </button>
         </div>
 
         <div class="mb-32">
           <p class="font-medium text-lg">
-            Каталог
+            {{ $t('app.catalog') }}
           </p>
 
           <NavigationButton
