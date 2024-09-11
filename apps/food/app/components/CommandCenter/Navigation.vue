@@ -58,17 +58,17 @@ const menu = computed(() => [
   },
   {
     label: t('center.menu.menu'),
-    link: '/',
+    link: '/command-center/menu',
     icon: icons.list,
   },
   {
     label: t('center.menu.checkouts'),
-    link: '/',
+    link: '/command-center/checkout',
     icon: icons.checkouts,
   },
   {
     label: t('center.menu.clients'),
-    link: '/',
+    link: '/command-center/client',
     icon: icons.users,
   },
   {

@@ -109,14 +109,14 @@ const inCart = computed(() => {
   return checkout.value?.lines?.find((l) => l.variant.id === productVariant.value?.id)
 })
 
-const breadcrumbs = [
+const breadcrumbs = computed(() => [
   { title: t('common.home'), href: '/' },
   {
     title: product.value?.category?.name ?? '',
     href: `/catalog/${product.value?.category?.slug}`,
   },
   { title: product.value?.name ?? '', href: '#' },
-]
+])
 
 const productImageUrl = '/burger-1.jpg'
 
