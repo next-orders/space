@@ -19,26 +19,26 @@
     "@paralleldrive/cuid2": "^2.2.2",
     "@prisma/client": "^5.19.1",
     "bcrypt": "^5.1.1",
-    "libphonenumber-js": "^1.11.7"
+    "libphonenumber-js": "^1.11.8"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.2",
-    "@iconify-json/simple-icons": "^1.2.1",
+    "@iconify-json/lucide": "^1.2.3",
+    "@iconify-json/simple-icons": "^1.2.2",
     "@next-orders/eslint": "workspace:*",
-    "@nuxt/devtools": "^1.4.1",
-    "@nuxt/fonts": "^0.7.2",
+    "@nuxt/devtools": "^1.4.2",
+    "@nuxt/fonts": "^0.8.0",
     "@nuxt/kit": "^3.13.1",
     "@nuxt/ui": "^2.18.4",
     "@nuxtjs/device": "^3.2.2",
-    "@nuxtjs/i18n": "^8.5.2",
+    "@nuxtjs/i18n": "^8.5.3",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "*",
     "@vueuse/core": "^11.0.3",
     "@vueuse/nuxt": "^11.0.3",
     "nuxt": "^3.13.1",
-    "nuxt-auth-utils": "^0.3.7",
+    "nuxt-auth-utils": "^0.3.8",
     "prisma": "^5.19.1",
-    "tailwindcss": "^3.4.10",
+    "tailwindcss": "^3.4.11",
     "vue-tsc": "^2.1.6"
   }
 }
