@@ -7,7 +7,7 @@
   // "features": {},
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "npm i -g pnpm@9.9.0 turbo@latest && pnpm i",
+  "postCreateCommand": "npm i -g pnpm@latest turbo@latest && pnpm i",
 
   // Configure tool-specific properties.
   "customizations": {

@@ -1,10 +1,10 @@
 {
   "name": "@next-orders/space",
   "version": "0.2.0",
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.10.0",
   "engines": {
     "node": ">=20.17.0",
-    "pnpm": ">=9.9.0"
+    "pnpm": ">=9.10.0"
   },
   "description": "Modern e-commerce self-hosted platform: clients will be happy to order delicious food!",
   "keywords": [
@@ -39,12 +39,12 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.4.1",
-    "@commitlint/config-conventional": "^19.4.1",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@types/node": "^22.5.4",
     "changelogen": "^0.5.5",
     "dotenv-cli": "^7.4.2",
-    "husky": "^9.1.5",
+    "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "turbo": "^2.1.1"
   },
