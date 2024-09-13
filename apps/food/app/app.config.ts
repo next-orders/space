@@ -1,8 +1,4 @@
 export default defineAppConfig({
-  ui: {
-    primary: 'green',
-    gray: 'zinc',
-  },
   icons: {
     colorMode: {
       system: 'lucide:device-laptop',

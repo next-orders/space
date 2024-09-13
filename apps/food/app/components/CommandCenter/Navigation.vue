@@ -3,7 +3,7 @@
     :data-active="isNavbarOpened"
     class="z-10 w-0 invisible 2xl:visible 2xl:w-72 fixed top-16 data-[active=true]:w-full data-[active=true]:visible md:data-[active=true]:w-72"
   >
-    <div class="w-full bg-gray-50 dark:bg-gray-700 px-4 pt-4 border-r border-gray-100 dark:border-gray-500">
+    <div class="w-full bg-neutral-50 dark:bg-neutral-700 px-4 pt-4 border-r border-neutral-100 dark:border-neutral-500">
       <div class="h-[calc(100vh-64px)] overflow-y-auto flex flex-col justify-between">
         <div class="mb-32">
           <div class="flex flex-row items-center pb-2">
@@ -21,7 +21,7 @@
             <LanguageSwitch />
           </div>
 
-          <div class="mb-8 px-2 py-3 bg-gray-100 dark:bg-gray-600 rounded-2xl flex flex-row gap-2 items-center">
+          <div class="mb-8 px-2 py-3 bg-neutral-100 dark:bg-neutral-600 rounded-2xl flex flex-row gap-2 items-center">
             <img
               :src="userAvatar"
               width="40"

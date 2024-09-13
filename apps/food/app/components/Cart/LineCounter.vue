@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-row justify-between items-center bg-gray-100 dark:bg-gray-700 w-20 min-w-[5.5rem] rounded-2xl px-1 py-2">
+  <div class="flex flex-row justify-between items-center bg-neutral-100 dark:bg-neutral-700 w-20 min-w-[5.5rem] rounded-2xl px-1 py-2">
     <button
       aria-label="Minus"
-      class="flex flex-row items-center px-1 py-1 rounded-xl lg:hover:scale-90 lg:hover:bg-gray-200 dark:lg:hover:bg-gray-800 duration-200"
+      class="flex flex-row items-center px-1 py-1 rounded-xl lg:hover:scale-90 lg:hover:bg-neutral-200 dark:lg:hover:bg-neutral-800 duration-200"
       @click="changeLineQuantity(lineId, 'decrement')"
     >
       <Icon :name="icons.minus" class="w-5 h-5" />
@@ -14,7 +14,7 @@
 
     <button
       aria-label="Plus"
-      class="flex flex-row items-center px-1 py-1 rounded-xl lg:hover:scale-90 lg:hover:bg-gray-200 dark:lg:hover:bg-gray-800 duration-200"
+      class="flex flex-row items-center px-1 py-1 rounded-xl lg:hover:scale-90 lg:hover:bg-neutral-200 dark:lg:hover:bg-neutral-800 duration-200"
       @click="changeLineQuantity(lineId, 'increment')"
     >
       <Icon :name="icons.plus" class="w-5 h-5" />

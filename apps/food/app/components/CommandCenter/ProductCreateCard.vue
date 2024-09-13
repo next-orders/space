@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-gray-50 dark:bg-gray-500 rounded-2xl h-auto min-h-60 w-auto max-w-[22rem] p-3 cursor-pointer active:scale-95 lg:active:scale-90 lg:hover:scale-95 duration-200"
+    class="bg-neutral-50 dark:bg-neutral-500 rounded-2xl h-auto min-h-60 w-auto max-w-[22rem] p-3 cursor-pointer active:scale-95 lg:active:scale-90 lg:hover:scale-95 duration-200"
   >
     <div class="flex flex-col justify-center items-center h-full text-center">
       <img

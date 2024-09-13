@@ -1,6 +1,6 @@
 <template>
   <button
-    class="z-40 fixed left-0 right-0 -top-20 -bottom-20 appearance-none bg-gray-700/50 opacity-0 data-[active=true]:opacity-100 translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
+    class="z-40 fixed left-0 right-0 -top-20 -bottom-20 appearance-none bg-neutral-700/50 opacity-0 data-[active=true]:opacity-100 translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
     :data-active="isDeliveryInfoModalOpened"
     @click="isDeliveryInfoModalOpened = false"
   />
@@ -84,12 +84,9 @@
         </div>
       </div>
 
-      <button
-        class="mt-4 px-5 py-3 w-full text-center text-base font-medium cursor-pointer rounded-2xl bg-gray-200 active:scale-95 lg:hover:bg-gray-300 lg:hover:scale-95 lg:active:scale-90 duration-200"
-        @click="isDeliveryInfoModalOpened = false"
-      >
+      <Button variant="secondary" class="mt-4" @click="isDeliveryInfoModalOpened = false">
         {{ $t('common.ok') }}
-      </button>
+      </Button>
     </div>
   </div>
 </template>

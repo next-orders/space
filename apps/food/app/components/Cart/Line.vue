@@ -20,7 +20,7 @@
             <div class="text-sm font-medium tracking-tight">
               {{ price }} <span class="text-xs">₽</span>
             </div>
-            <div class="text-sm text-gray-500 dark:text-white font-light">
+            <div class="text-sm text-neutral-500 dark:text-white font-light">
               {{ variant?.weightValue }}{{ getWeightLocalizedUnit(variant?.weightUnit as WeightUnit) }}
             </div>
           </div>

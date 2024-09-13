@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="`/command-center/product/${productId}`"
-    class="bg-gray-50 dark:bg-gray-500 rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer active:scale-95 lg:active:scale-90 lg:hover:scale-95 duration-200"
+    class="bg-neutral-50 dark:bg-neutral-500 rounded-2xl h-auto w-auto max-w-[22rem] p-3 cursor-pointer active:scale-95 lg:active:scale-90 lg:hover:scale-95 duration-200"
   >
     <div class="flex flex-col justify-between h-full">
       <div class="relative w-full aspect-square">
@@ -21,7 +21,7 @@
 
         <div class="mt-4">
           <div v-for="variant in product?.variants" :key="variant.id" class="flex justify-between">
-            <p class="text-gray-500 dark:text-white">
+            <p class="text-neutral-500 dark:text-white">
               {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit as WeightUnit) }}
             </p>
             <p class="font-medium">

@@ -17,7 +17,7 @@
             {{ line?.variant?.product?.name }}
           </div>
           <div class="mt-1 flex flex-row gap-2 flex-nowrap">
-            <div class="text-sm text-gray-500 font-light">
+            <div class="text-sm text-neutral-500 font-light">
               {{ variant?.weightValue }}{{ getWeightLocalizedUnit(variant?.weightUnit as WeightUnit) }}
             </div>
           </div>

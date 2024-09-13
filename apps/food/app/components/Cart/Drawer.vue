@@ -1,6 +1,6 @@
 <template>
   <button
-    class="z-30 fixed left-0 right-0 -top-20 -bottom-20 appearance-none bg-gray-700/50 opacity-0 data-[active=true]:opacity-100 translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
+    class="z-30 fixed left-0 right-0 -top-20 -bottom-20 appearance-none bg-neutral-700/50 opacity-0 data-[active=true]:opacity-100 translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
     :data-active="isCartDrawerOpened"
     @click="isCartDrawerOpened = !isCartDrawerOpened"
   />

@@ -44,7 +44,7 @@ You can use latest Docker Image:
 docker pull ghcr.io/next-orders/food:latest
 
 # or use the specific version
-docker pull ghcr.io/next-orders/food:v0.2.0
+docker pull ghcr.io/next-orders/food:v0.3.0
 ```
 
 Check **.env.example** for more info about required config variables.
@@ -60,6 +60,7 @@ Make a fork. Or clone this repo and use standard commands:
 ```shell
 git clone https://github.com/next-orders/food
 pnpm i
+pnpm dev:food
 ```
 
 ## 🍰 License

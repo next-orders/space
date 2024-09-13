@@ -1,7 +1,7 @@
 <template>
   <Breadcrumbs :links="breadcrumbs" />
 
-  <div class="bg-white dark:bg-gray-600 px-5 py-5 rounded-2xl">
+  <div class="bg-white dark:bg-neutral-600 px-5 py-5 rounded-2xl">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-0 gap-y-4 sm:gap-4">
       <div class="col-span-1 relative w-full aspect-square">
         <img
@@ -18,7 +18,7 @@
         <h1 class="text-xl md:text-2xl lg:text-3xl font-medium">
           {{ product?.name }}
         </h1>
-        <div class="mt-1 font-normal text-gray-400">
+        <div class="mt-1 font-normal text-neutral-400">
           {{ productVariant?.weightValue }}
           {{ getWeightLocalizedUnit('G') }}
         </div>
@@ -42,7 +42,7 @@
 
     <div class="mt-6 flex flex-col xl:flex-row justify-between gap-4">
       <div v-if="product?.description">
-        <div class="mb-1 font-medium text-gray-400">
+        <div class="mb-1 font-medium text-neutral-400">
           {{ $t('common.description') }}
         </div>
         <div class="leading-snug">
@@ -51,10 +51,10 @@
       </div>
 
       <div v-if="isNutritionShown">
-        <div class="mb-1 font-medium text-gray-400">
+        <div class="mb-1 font-medium text-neutral-400">
           На 100 грамм
         </div>
-        <div class="mt-2 px-4 py-4 w-fit flex flex-row gap-4 bg-gray-100 rounded-2xl">
+        <div class="mt-2 px-4 py-4 w-fit flex flex-row gap-4 bg-neutral-100 rounded-2xl">
           <div>
             <div class="font-medium">
               {{ per100gEnergy }}

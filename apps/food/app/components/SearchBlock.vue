@@ -6,12 +6,12 @@
           v-for="product in showResults"
           :key="product.id"
           :to="`/catalog/${product.category.slug}/${product.slug}`"
-          class="px-4 py-4 rounded-xl bg-gray-50 hover:bg-gray-100 text-base cursor-pointer"
+          class="px-4 py-4 rounded-xl bg-neutral-50 hover:bg-neutral-100 text-base cursor-pointer"
         >
           {{ product.name }}
         </NuxtLink>
       </div>
-      <div v-else class="text-gray-500">
+      <div v-else class="text-neutral-500">
         {{ $t('app.search.nothing-found') }}
       </div>
     </div>
@@ -25,7 +25,7 @@
           v-for="product in topResults"
           :key="product.id"
           :to="`/catalog/${product.category.slug}/${product.slug}`"
-          class="px-4 py-4 rounded-xl bg-gray-50 hover:bg-gray-100 text-base cursor-pointer"
+          class="px-4 py-4 rounded-xl bg-neutral-50 hover:bg-neutral-100 text-base cursor-pointer"
         >
           {{ product.name }}
         </NuxtLink>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-50 rounded-2xl h-auto w-auto px-4 py-2 cursor-pointer hover:scale-95 duration-200 group">
+  <div class="bg-neutral-50 rounded-2xl h-auto min-h-60 w-auto px-4 py-2 cursor-pointer hover:scale-95 duration-200 group">
     <div class="flex flex-col justify-center items-center h-full text-center">
       <img
         src="~/assets/img/green-notebook.png"
@@ -14,6 +14,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-</script>
