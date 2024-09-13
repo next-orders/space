@@ -41,7 +41,7 @@
           </div>
 
           <div class="mt-4 mb-6">
-            <div class="text-base text-gray-500">
+            <div class="text-base text-neutral-500">
               Есть промо код?
             </div>
           </div>

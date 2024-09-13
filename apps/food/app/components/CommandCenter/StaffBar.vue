@@ -1,6 +1,6 @@
 <template>
   <div class="relative px-4 pt-4 pb-2">
-    <div class="bg-white dark:bg-gray-600 p-4 flex justify-between items-center rounded-2xl">
+    <div class="bg-white dark:bg-neutral-600 p-4 flex justify-between items-center rounded-2xl">
       <p class="grow text-lg">
         Привет, админ!
       </p>

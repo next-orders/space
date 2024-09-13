@@ -6,7 +6,7 @@
   </h1>
 
   <div v-for="category in menu?.categories" :key="category.id" class="mb-8">
-    <h2 class="text-xl pb-2 mb-4 border-b border-gray-100">
+    <h2 class="text-xl pb-2 mb-4 border-b border-neutral-100">
       {{ category.name }}
     </h2>
 
@@ -19,7 +19,8 @@
 
   <CommandCenterModal :title="$t('center.create.product')">
     <form>
-      <input v-model="categoryId" type="text" placeholder="CategoryId">
+      <Input label="Название" />
+      <Input label="Описание" />
     </form>
   </CommandCenterModal>
 </template>

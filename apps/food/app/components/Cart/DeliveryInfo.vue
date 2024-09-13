@@ -3,7 +3,7 @@
     <div class="text-sm">
       {{ avg }} {{ $t('common.abbreviation.min') }}
     </div>
-    <span class="text-gray-300">/</span>
+    <span class="text-neutral-300">/</span>
     <div class="text-sm">
       <div v-if="checkout?.deliveryMethod === 'WAREHOUSE'">
         {{ $t('app.cart.discount') }} {{ discount }} <span class="text-xs">%</span>

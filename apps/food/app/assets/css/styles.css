@@ -1,14 +1,6 @@
-:root {
-  --ui-background: 255 255 255;
-}
-
-.dark {
-  --ui-background: var(--color-gray-950);
-}
-
-body {
-  @apply antialiased font-sans text-foreground bg-background;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .button-gradient {
   background-color: #86efac;

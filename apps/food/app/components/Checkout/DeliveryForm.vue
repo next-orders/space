@@ -4,7 +4,7 @@
       Условия доставки
     </h2>
 
-    <div class="px-4 py-2 bg-gray-100 rounded-2xl inline-block">
+    <div class="px-4 py-2 bg-neutral-100 rounded-2xl inline-block">
       <div class="font-medium">
         Доставка
       </div>
@@ -24,7 +24,7 @@
           name="phone"
           value=""
           placeholder="Ваш телефон"
-          class="px-4 py-3 mb-2 w-full border border-gray-200 rounded-2xl outline-2 outline-offset-1 outline-gray-500 placeholder:text-gray-400 data-[valid=true]:outline-teal-400"
+          class="px-4 py-3 mb-2 w-full border border-neutral-200 rounded-2xl outline-2 outline-offset-1 outline-neutral-500 placeholder:text-neutral-400 data-[valid=true]:outline-teal-400"
           data-valid="{isValidPhone}"
         >
 
@@ -32,7 +32,7 @@
           type="text"
           name="name"
           placeholder="Ваше имя"
-          class="px-4 py-3 mb-2 w-full border border-gray-200 rounded-2xl"
+          class="px-4 py-3 mb-2 w-full border border-neutral-200 rounded-2xl"
         >
       </div>
     </div>
@@ -45,7 +45,7 @@
         type="text"
         name="street"
         placeholder="Улица и дом"
-        class="px-4 py-3 mb-2 w-full border border-gray-200 rounded-2xl"
+        class="px-4 py-3 mb-2 w-full border border-neutral-200 rounded-2xl"
       >
 
       <div class="mb-2 grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -53,28 +53,28 @@
           type="text"
           name="apartment"
           placeholder="Кв./офис"
-          class="px-4 py-3 border border-gray-200 rounded-2xl"
+          class="px-4 py-3 border border-neutral-200 rounded-2xl"
         >
 
         <input
           type="text"
           name="doorphone"
           placeholder="Домофон"
-          class="px-4 py-3 border border-gray-200 rounded-2xl"
+          class="px-4 py-3 border border-neutral-200 rounded-2xl"
         >
 
         <input
           type="text"
           name="entrance"
           placeholder="Подъезд"
-          class="px-4 py-3 border border-gray-200 rounded-2xl"
+          class="px-4 py-3 border border-neutral-200 rounded-2xl"
         >
 
         <input
           type="text"
           name="floor"
           placeholder="Этаж"
-          class="px-4 py-3 border border-gray-200 rounded-2xl"
+          class="px-4 py-3 border border-neutral-200 rounded-2xl"
         >
       </div>
 
@@ -82,7 +82,7 @@
         type="text"
         name="comment"
         placeholder="Комментарий"
-        class="px-4 py-3 mb-2 w-full border border-gray-200 rounded-2xl"
+        class="px-4 py-3 mb-2 w-full border border-neutral-200 rounded-2xl"
       >
     </div>
 

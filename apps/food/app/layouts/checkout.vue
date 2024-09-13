@@ -3,7 +3,7 @@
     <CheckoutHeader />
   </header>
 
-  <main class="relative top-16 bg-gray-100">
+  <main class="relative top-16 bg-neutral-100">
     <div class="px-2 md:px-4 pb-10 mx-auto max-w-5xl">
       <slot />
     </div>

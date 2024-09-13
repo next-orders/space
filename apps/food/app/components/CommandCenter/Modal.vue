@@ -1,6 +1,6 @@
 <template>
   <div
-    class="z-40 fixed left-0 right-0 -top-20 -bottom-20 bg-gray-700/50 opacity-0 data-[active=true]:opacity-100 data-[active=true]:backdrop-blur-sm translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
+    class="z-40 fixed left-0 right-0 -top-20 -bottom-20 bg-neutral-700/50 opacity-0 data-[active=true]:opacity-100 data-[active=true]:backdrop-blur-sm translate-x-full data-[active=true]:-translate-x-0 transition-opacity"
     :data-active="isModalOpened"
     @click="isModalOpened = false"
   />
@@ -16,7 +16,7 @@
 
         <button
           aria-label="Close"
-          class="flex items-center rounded-xl hover:scale-90 hover:bg-gray-100 duration-200"
+          class="flex items-center rounded-xl hover:scale-90 hover:bg-neutral-100 duration-200"
           @click="isModalOpened = false"
         >
           <Icon :name="icons.close" class="w-8 h-8" />

@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="`/command-center/client/${id}`">
-    <div class="bg-gray-50 rounded-2xl h-auto w-auto p-3 cursor-pointer hover:scale-95 duration-200 group">
+    <div class="bg-neutral-50 rounded-2xl h-auto w-auto p-3 cursor-pointer hover:scale-95 duration-200 group">
       <div class="relative">
         <img
           :src="clientAvatarURL"

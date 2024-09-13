@@ -10,14 +10,6 @@ export default defineNuxtConfig({
     host: '0.0.0.0',
     port: 4200,
   },
-  components: [
-    '~/components',
-  ],
-  colorMode: {
-    classSuffix: '',
-    preference: 'light',
-    fallback: 'light',
-  },
   fonts: {
     provider: 'google',
     families: [
@@ -52,9 +44,11 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/device',
     '@nuxtjs/i18n',
-    '@nuxt/ui',
     '@nuxt/fonts',
     'nuxt-auth-utils',
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
+    '@nuxt/icon',
   ],
   compatibilityDate: '2024-08-18',
 })

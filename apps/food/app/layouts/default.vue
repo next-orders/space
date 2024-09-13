@@ -2,7 +2,7 @@
   <Header />
   <Navigation />
 
-  <main class="relative w-auto bg-gray-100 dark:bg-gray-800 md:pl-72 xl:pr-80 top-16">
+  <main class="relative w-auto bg-neutral-100 dark:bg-neutral-800 md:pl-72 xl:pr-80 top-16">
     <CommandCenterStaffBar v-if="user?.isStaff" />
     <MaintenanceMessage v-if="channelData?.channel?.isActive === false" />
 

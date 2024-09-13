@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="`/command-center/menu/${menuId}`">
-    <div class="bg-gray-50 rounded-2xl h-auto w-auto px-4 py-2 cursor-pointer hover:scale-95 duration-200 group">
+    <div class="bg-neutral-50 rounded-2xl h-auto min-h-60 w-auto px-4 py-2 cursor-pointer hover:scale-95 duration-200 group">
       <h3 class="text-lg font-semibold">
         {{ menu?.name }}
       </h3>
