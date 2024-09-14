@@ -84,9 +84,9 @@
         </div>
       </div>
 
-      <Button variant="secondary" class="mt-4" @click="isDeliveryInfoModalOpened = false">
+      <UiButton variant="secondary" class="mt-4" @click="isDeliveryInfoModalOpened = false">
         {{ $t('common.ok') }}
-      </Button>
+      </UiButton>
     </div>
   </div>
 </template>

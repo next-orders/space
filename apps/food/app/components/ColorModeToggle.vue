@@ -1,8 +1,8 @@
 <template>
   <ClientOnly>
-    <Button variant="secondary" :aria-label="ariaLabel" class="flex justify-center items-center" @click="isDark = !isDark">
+    <UiButton variant="secondary" :aria-label="ariaLabel" class="flex justify-center items-center" @click="isDark = !isDark">
       <Icon :name="isDark ? icons.colorMode.dark : icons.colorMode.light" class="w-6 h-6 opacity-40" />
-    </Button>
+    </UiButton>
 
     <template #fallback>
       <div class="w-8 h-8" />

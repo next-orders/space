@@ -19,8 +19,19 @@
 
   <CommandCenterModal :title="$t('center.create.product')">
     <form>
-      <Input label="Название" />
-      <Input label="Описание" />
+      <div class="mb-2 flex flex-col w-full gap-2">
+        <UiLabel for="name">
+          Название
+        </UiLabel>
+        <UiInput id="name" />
+      </div>
+
+      <div class="mb-2 flex flex-col w-full gap-2">
+        <UiLabel for="description">
+          Описание
+        </UiLabel>
+        <UiInput id="description" />
+      </div>
     </form>
   </CommandCenterModal>
 </template>
