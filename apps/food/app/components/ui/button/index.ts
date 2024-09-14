@@ -1,17 +1,8 @@
-<template>
-  <button
-    :class="cn(buttonVariants({ variant, size }), $attrs.class ?? '')"
-  >
-    <slot />
-  </button>
-</template>
+import { cva, type VariantProps } from 'class-variance-authority'
 
-<script setup lang="ts">
-import { cva } from 'class-variance-authority'
+export { default as Button } from './Button.vue'
 
-defineProps<Props>()
-
-const buttonVariants = cva(
+export const buttonVariants = cva(
   'w-full rounded-2xl text-base font-medium ring-offset-background active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
@@ -40,8 +31,4 @@ const buttonVariants = cva(
   },
 )
 
-interface Props {
-  variant?: NonNullable<Parameters<typeof buttonVariants>[0]>['variant']
-  size?: NonNullable<Parameters<typeof buttonVariants>[0]>['size']
-}
-</script>
+export type ButtonVariants = VariantProps<typeof buttonVariants>

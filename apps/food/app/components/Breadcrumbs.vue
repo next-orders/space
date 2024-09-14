@@ -15,11 +15,11 @@
     </nav>
 
     <div class="w-full lg:w-auto mx-auto md:mx-0">
-      <Button variant="secondary" @click="back()">
+      <UiButton variant="secondary" @click="back()">
         <div class="flex flex-row gap-2 justify-center items-center">
           <Icon :name="icons.undo" size="20" /> {{ $t('common.return') }}
         </div>
-      </Button>
+      </UiButton>
     </div>
   </div>
 </template>

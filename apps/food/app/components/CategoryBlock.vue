@@ -5,11 +5,11 @@
     </h2>
 
     <NuxtLink :to="`/catalog/${category?.slug}`">
-      <Button variant="secondary">
+      <UiButton variant="secondary">
         <div class="flex flex-row gap-2 items-center">
           {{ $t('app.open-category') }} <Icon :name="icons.arrowRight" />
         </div>
-      </Button>
+      </UiButton>
     </NuxtLink>
   </div>
   <div

@@ -10,6 +10,10 @@ export default defineNuxtConfig({
     host: '0.0.0.0',
     port: 4200,
   },
+  shadcn: {
+    prefix: 'Ui',
+    componentDir: './app/components/ui',
+  },
   fonts: {
     provider: 'google',
     families: [
