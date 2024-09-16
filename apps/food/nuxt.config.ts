@@ -5,6 +5,11 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
+  vite: {
+    optimizeDeps: {
+      exclude: ['vee-validate'],
+    },
+  },
   devtools: { enabled: true },
   devServer: {
     host: '0.0.0.0',

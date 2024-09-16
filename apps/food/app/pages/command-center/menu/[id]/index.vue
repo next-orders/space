@@ -18,25 +18,45 @@
   </div>
 
   <CommandCenterModal :title="$t('center.create.product')">
-    <form>
-      <div class="mb-2 flex flex-col w-full gap-2">
-        <UiLabel for="name">
-          Название
-        </UiLabel>
-        <UiInput id="name" />
-      </div>
+    <form @submit="onSubmit">
+      <UiFormField v-slot="{ componentField }" name="name">
+        <UiFormItem>
+          <UiFormLabel>Название</UiFormLabel>
+          <UiFormControl>
+            <UiInput v-bind="componentField" />
+          </UiFormControl>
+          <UiFormDescription>
+            Укажите название для нового продукта.
+          </UiFormDescription>
+          <UiFormMessage />
+        </UiFormItem>
+      </UiFormField>
 
-      <div class="mb-2 flex flex-col w-full gap-2">
-        <UiLabel for="description">
-          Описание
-        </UiLabel>
-        <UiInput id="description" />
-      </div>
+      <UiFormField v-slot="{ componentField }" name="description">
+        <UiFormItem>
+          <UiFormLabel>Описание</UiFormLabel>
+          <UiFormControl>
+            <UiInput v-bind="componentField" />
+          </UiFormControl>
+          <UiFormDescription>
+            Укажите продающее описание.
+          </UiFormDescription>
+          <UiFormMessage />
+        </UiFormItem>
+      </UiFormField>
+
+      <UiButton type="submit" variant="secondary" class="mt-4">
+        Добавить
+      </UiButton>
     </form>
   </CommandCenterModal>
 </template>
 
 <script setup lang="ts">
+import { toTypedSchema } from '@vee-validate/zod'
+import { useForm } from 'vee-validate'
+import * as z from 'zod'
+
 definePageMeta({
   layout: 'command-center',
   middleware: ['staff'],
@@ -62,4 +82,17 @@ const dataChannel = await useChannel()
 const menu = computed(() => dataChannel.value?.menus?.find((menu) => menu.id === params.id))
 
 const categoryId = ref()
+
+const formSchema = toTypedSchema(z.object({
+  name: z.string().min(2).max(50),
+  description: z.string().min(0).max(250),
+}))
+
+const { handleSubmit } = useForm({
+  validationSchema: formSchema,
+})
+
+const onSubmit = handleSubmit((_values) => {
+  //
+})
 </script>
