@@ -6,7 +6,7 @@
     </button>
 
     <div v-if="isOpened" class="dropdown-menu">
-      <button v-for="chooseLocale in locales" :key="chooseLocale" @click="() => handleLocaleSwitch(chooseLocale.code)">
+      <button v-for="chooseLocale in locales" :key="chooseLocale.code" @click="() => handleLocaleSwitch(chooseLocale.code)">
         {{ chooseLocale.name }}
       </button>
     </div>

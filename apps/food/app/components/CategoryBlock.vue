@@ -5,7 +5,7 @@
     </h2>
 
     <NuxtLink :to="`/catalog/${category?.slug}`">
-      <UiButton variant="secondary">
+      <UiButton variant="secondary" class="bg-neutral-200">
         <div class="flex flex-row gap-2 items-center">
           {{ $t('app.open-category') }} <Icon :name="icons.arrowRight" />
         </div>

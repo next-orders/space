@@ -46,7 +46,7 @@
             <button
               :disabled="status === 'pending'"
               class="px-5 py-3 flex flex-row gap-2 justify-center items-center text-base font-medium cursor-pointer bg-neutral-200 hover:bg-neutral-300 hover:scale-95 duration-200 rounded-2xl disabled:animate-pulse"
-              @click="sighIn"
+              @click="sighIn()"
             >
               {{ $t('common.sign-in') }} <Icon :name="icons.arrowRight" size="22" />
             </button>
