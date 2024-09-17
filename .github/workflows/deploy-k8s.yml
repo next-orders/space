@@ -36,7 +36,7 @@ jobs:
           environment: ${{ matrix.environment }}
 
       - name: Connect to k8s cluster and restart deployment
-        uses: actions-hub/kubectl@v1.31.0
+        uses: actions-hub/kubectl@v1.31.1
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
