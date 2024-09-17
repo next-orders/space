@@ -13,10 +13,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - url: "https://nextorders.ru"
+          - url: "https://nextorders.space"
             environment: "Production Website"
             deployment: "website-deployment"
-          - url: "https://demo.nextorders.ru"
+          - url: "https://demo.nextorders.space"
             environment: "Production Demo Food"
             deployment: "food-deployment"
     runs-on: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
           environment: ${{ matrix.environment }}
 
       - name: Connect to k8s cluster and restart deployment
-        uses: actions-hub/kubectl@v1.31.0
+        uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:

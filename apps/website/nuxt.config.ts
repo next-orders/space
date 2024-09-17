@@ -63,7 +63,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-auth-utils',
     '@nuxtjs/device',
-    'nuxt-time',
     '@nuxtjs/i18n',
     '@nuxt/ui',
     '@nuxt/fonts',
