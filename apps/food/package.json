@@ -14,8 +14,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@dicebear/collection": "^9.2.1",
-    "@dicebear/core": "^9.2.1",
+    "@dicebear/collection": "^9.2.2",
+    "@dicebear/core": "^9.2.2",
     "@paralleldrive/cuid2": "^2.2.2",
     "@prisma/client": "^5.19.1",
     "@vee-validate/zod": "^4.13.2",
@@ -29,26 +29,26 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.3",
-    "@iconify-json/simple-icons": "^1.2.2",
+    "@iconify-json/lucide": "^1.2.4",
+    "@iconify-json/simple-icons": "^1.2.3",
     "@next-orders/eslint": "workspace:*",
     "@nuxt/devtools": "^1.4.2",
     "@nuxt/fonts": "^0.8.0",
     "@nuxt/icon": "^1.5.1",
-    "@nuxt/kit": "^3.13.1",
+    "@nuxt/kit": "^3.13.2",
     "@nuxtjs/device": "^3.2.2",
     "@nuxtjs/i18n": "^8.5.3",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "*",
-    "@vueuse/core": "^11.0.3",
-    "@vueuse/nuxt": "^11.0.3",
-    "nuxt": "^3.13.1",
+    "@vueuse/core": "^11.1.0",
+    "@vueuse/nuxt": "^11.1.0",
+    "nuxt": "^3.13.2",
     "nuxt-auth-utils": "^0.3.8",
     "prisma": "^5.19.1",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss": "^3.4.11",
+    "tailwindcss": "^3.4.12",
     "vue-tsc": "^2.1.6"
   }
 }

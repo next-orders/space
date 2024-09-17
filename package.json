@@ -41,12 +41,12 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@types/node": "^22.5.4",
+    "@types/node": "^22.5.5",
     "changelogen": "^0.5.5",
     "dotenv-cli": "^7.4.2",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "turbo": "^2.1.1"
+    "turbo": "^2.1.2"
   },
   "lint-staged": {
     "*.ts": "pnpm run lint"

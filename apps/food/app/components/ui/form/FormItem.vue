@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn('space-y-2', props.class)">
+  <div :class="cn('space-y-1', props.class)">
     <slot />
   </div>
 </template>
