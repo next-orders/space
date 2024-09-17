@@ -17,31 +17,31 @@
     </div>
   </div>
 
-  <CommandCenterModal :title="$t('center.create.product')">
-    <form @submit="onSubmit">
+  <CommandCenterModal :title="$t('center.create.product')" :on-close="handleReset">
+    <form class="space-y-3" @submit="onSubmit">
+      <UiFormField v-model="categoryId" hidden name="categoryId" />
+
       <UiFormField v-slot="{ componentField }" name="name">
         <UiFormItem>
-          <UiFormLabel>Название</UiFormLabel>
+          <div>
+            <UiFormLabel>Название</UiFormLabel>
+            <UiFormMessage />
+          </div>
           <UiFormControl>
             <UiInput v-bind="componentField" />
           </UiFormControl>
-          <UiFormDescription>
-            Укажите название для нового продукта.
-          </UiFormDescription>
-          <UiFormMessage />
         </UiFormItem>
       </UiFormField>
 
       <UiFormField v-slot="{ componentField }" name="description">
         <UiFormItem>
-          <UiFormLabel>Описание</UiFormLabel>
+          <div>
+            <UiFormLabel>Описание</UiFormLabel>
+            <UiFormMessage />
+          </div>
           <UiFormControl>
             <UiInput v-bind="componentField" />
           </UiFormControl>
-          <UiFormDescription>
-            Укажите продающее описание.
-          </UiFormDescription>
-          <UiFormMessage />
         </UiFormItem>
       </UiFormField>
 
@@ -84,15 +84,28 @@ const menu = computed(() => dataChannel.value?.menus?.find((menu) => menu.id ===
 const categoryId = ref()
 
 const formSchema = toTypedSchema(z.object({
+  categoryId: z.string(),
   name: z.string().min(2).max(50),
-  description: z.string().min(0).max(250),
+  description: z.string().min(0).max(250).optional(),
 }))
 
-const { handleSubmit } = useForm({
+const { handleSubmit, handleReset } = useForm({
   validationSchema: formSchema,
 })
 
-const onSubmit = handleSubmit((_values) => {
-  //
+const onSubmit = handleSubmit(async (values, { resetForm }) => {
+  const { data, error } = await useFetch('/api/product', {
+    method: 'POST',
+    body: values,
+  })
+
+  if (error.value) {
+    console.error(error.value)
+  }
+
+  if (data.value) {
+    isModalOpened.value = false
+    resetForm()
+  }
 })
 </script>
