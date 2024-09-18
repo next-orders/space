@@ -10,10 +10,10 @@
             href="/"
             class="font-medium text-xl text-primary"
           >
-            {{ channelData?.channel?.name }}
+            {{ channel?.name }}
           </NuxtLink>
           <div class="mt-1 text-sm leading-tight">
-            {{ channelData?.channel?.description }}
+            {{ channel?.description }}
           </div>
         </div>
 
@@ -34,7 +34,7 @@
           </p>
 
           <NavigationButton
-            v-for="category in channelData?.categories"
+            v-for="category in categories"
             :key="category.id"
             :link="`/catalog/${category.slug}`"
             :label="category.name"
@@ -48,6 +48,6 @@
 <script setup lang="ts">
 const { isNavbarOpened, isDeliveryInfoModalOpened } = useApp()
 const { icons } = useAppConfig()
-const channelData = await useChannel()
+const { channel, categories } = await useChannel()
 const { checkout } = await useCheckout()
 </script>

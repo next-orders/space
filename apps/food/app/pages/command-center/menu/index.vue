@@ -2,7 +2,7 @@
   <UiBreadcrumb :links="breadcrumbs" />
 
   <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-2">
-    <CommandCenterMenuCard v-for="menu in dataChannel?.menus" :key="menu.id" :menu-id="menu.id" />
+    <CommandCenterMenuCard v-for="menu in menus" :key="menu.id" :menu-id="menu.id" />
 
     <CommandCenterMenuCreateCard @click="isModalOpened = true" />
   </div>
@@ -47,5 +47,5 @@ const breadcrumbs = computed(() => [
   },
 ])
 
-const dataChannel = await useChannel()
+const { menus } = await useChannel()
 </script>

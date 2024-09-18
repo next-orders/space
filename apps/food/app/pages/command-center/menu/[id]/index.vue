@@ -78,8 +78,8 @@ const breadcrumbs = computed(() => [
   },
 ])
 
-const dataChannel = await useChannel()
-const menu = computed(() => dataChannel.value?.menus?.find((menu) => menu.id === params.id))
+const { menus, refresh: refreshChannelData } = await useChannel()
+const menu = computed(() => menus.value?.find((menu) => menu.id === params.id))
 
 const categoryId = ref()
 
@@ -102,6 +102,7 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
   if (data.value) {
     isModalOpened.value = false
     resetForm()
+    await refreshChannelData()
   }
 })
 </script>

@@ -19,7 +19,6 @@ const { menuId } = defineProps<{
   menuId: string
 }>()
 
-const dataChannel = await useChannel()
-
-const menu = computed(() => dataChannel.value?.menus?.find((menu) => menu.id === menuId))
+const { menus } = await useChannel()
+const menu = computed(() => menus.value?.find((menu) => menu.id === menuId))
 </script>

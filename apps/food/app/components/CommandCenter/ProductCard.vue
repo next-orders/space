@@ -38,7 +38,7 @@ const { productId } = defineProps<{
   productId: string
 }>()
 
-const channelData = await useChannel()
-const product = channelData.value?.products.find(({ id }) => id === productId)
+const { products } = await useProduct()
+const product = computed(() => products.value?.find(({ id }) => id === productId))
 const productImageUrl = '/burger-1.jpg'
 </script>
