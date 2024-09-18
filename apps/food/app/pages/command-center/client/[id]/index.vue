@@ -1,5 +1,5 @@
 <template>
-  <Breadcrumbs :links="breadcrumbs" />
+  <UiBreadcrumb :links="breadcrumbs" />
 
   Client page
 </template>

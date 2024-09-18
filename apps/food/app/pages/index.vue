@@ -1,19 +1,19 @@
 <template>
   <h1 class="mb-2 text-3xl font-medium">
-    {{ channelData?.channel?.name }}
+    {{ channel?.name }}
   </h1>
   <div class="mb-6">
-    {{ channelData?.channel?.description }}
+    {{ channel?.description }}
   </div>
 
-  <CategoryBlock v-for="category in channelData?.categories" :key="category.id" :category-id="category.id" />
+  <CategoryBlock v-for="category in categories" :key="category.id" :category-id="category.id" />
 </template>
 
 <script setup lang="ts">
-const channelData = await useChannel()
+const { channel, categories } = await useChannel()
 
 useHead({
-  title: channelData.value?.channel?.name,
+  title: channel.value?.name,
   meta: [
     {
       name: 'description',

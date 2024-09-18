@@ -1,5 +1,5 @@
 <template>
-  <Breadcrumbs :links="breadcrumbs" />
+  <UiBreadcrumb :links="breadcrumbs" />
 
   <h1 class="text-2xl font-semibold mb-4">
     {{ menu?.name }}
@@ -54,8 +54,9 @@
 
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
+import { productCreateSchema } from '~~/server/core/services/product'
 import { useForm } from 'vee-validate'
-import * as z from 'zod'
+import { useToast } from '~/components/ui/toast'
 
 definePageMeta({
   layout: 'command-center',
@@ -65,6 +66,7 @@ definePageMeta({
 const { isModalOpened } = useCommandCenter()
 const { params } = useRoute()
 const { t } = useI18n()
+const { toast } = useToast()
 
 const breadcrumbs = computed(() => [
   { title: t('common.website'), href: '/' },
@@ -78,26 +80,25 @@ const breadcrumbs = computed(() => [
   },
 ])
 
-const dataChannel = await useChannel()
-const menu = computed(() => dataChannel.value?.menus?.find((menu) => menu.id === params.id))
+const { menus, refresh: refreshChannelData } = await useChannel()
+const menu = computed(() => menus.value?.find((menu) => menu.id === params.id))
 
 const categoryId = ref()
 
-const formSchema = toTypedSchema(z.object({
-  categoryId: z.string(),
-  name: z.string().min(2).max(50),
-  description: z.string().min(0).max(250).optional(),
-}))
+const formSchema = toTypedSchema(productCreateSchema)
 
 const { handleSubmit, handleReset } = useForm({
   validationSchema: formSchema,
 })
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
-  const { data, error } = await useFetch('/api/product', {
-    method: 'POST',
-    body: values,
-  })
+  const { data, error } = await useAsyncData(
+    'create-product',
+    () => $fetch('/api/product', {
+      method: 'POST',
+      body: values,
+    }),
+  )
 
   if (error.value) {
     console.error(error.value)
@@ -106,6 +107,8 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
   if (data.value) {
     isModalOpened.value = false
     resetForm()
+    await refreshChannelData()
+    toast({ title: 'Продукт создан!', description: 'Сейчас обновим данные.' })
   }
 })
 </script>

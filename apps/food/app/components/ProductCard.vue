@@ -42,15 +42,16 @@ const { productId } = defineProps<{
 }>()
 
 const { icons } = useAppConfig()
-const channelData = await useChannel()
-const product = channelData.value?.products.find(({ id }) => id === productId)
+const { categories } = await useChannel()
+const { products } = await useProduct()
+const product = computed(() => products.value?.find(({ id }) => id === productId))
 
-const weightValue = product?.variants[0]?.weightValue
-const weightUnitLocalized = getWeightLocalizedUnit(product?.variants[0]?.weightUnit as WeightUnit)
+const weightValue = product.value?.variants[0]?.weightValue
+const weightUnitLocalized = getWeightLocalizedUnit(product.value?.variants[0]?.weightUnit as WeightUnit)
 
 const price = getLocalizedPrice(650)
 const productImageUrl = '/burger-1.jpg'
 
-const categorySlug = channelData.value?.categories.find(({ id }) => id === product?.categoryId)?.slug
-const productUrl = `/catalog/${categorySlug}/${product?.slug}`
+const categorySlug = categories.value.find(({ id }) => id === product.value?.categoryId)?.slug
+const productUrl = `/catalog/${categorySlug}/${product.value?.slug}`
 </script>

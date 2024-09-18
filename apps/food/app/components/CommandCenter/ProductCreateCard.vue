@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="bg-neutral-50 dark:bg-neutral-500 rounded-2xl h-auto min-h-60 w-auto max-w-[22rem] p-3 cursor-pointer active:scale-95 lg:active:scale-90 lg:hover:scale-95 duration-200"
-  >
+  <UiActiveCard>
     <div class="flex flex-col justify-center items-center h-full text-center">
       <img
         src="~/assets/img/green-notebook.png"
@@ -14,5 +12,5 @@
         {{ $t('center.create.product') }}
       </h2>
     </div>
-  </div>
+  </UiActiveCard>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="`/command-center/client/${id}`">
-    <div class="bg-neutral-50 rounded-2xl h-auto w-auto p-3 cursor-pointer hover:scale-95 duration-200 group">
+    <UiActiveCard>
       <div class="relative">
         <img
           :src="clientAvatarURL"
@@ -14,7 +14,7 @@
       <div class="mt-2 text-base font-medium leading-tight text-center">
         {{ firstName }}
       </div>
-    </div>
+    </UiActiveCard>
   </NuxtLink>
 </template>
 

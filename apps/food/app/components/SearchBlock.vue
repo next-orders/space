@@ -36,10 +36,10 @@
 
 <script setup lang="ts">
 const { searchQuery } = useApp()
-const channelData = await useChannel()
+const { products } = await useProduct()
 
 const topResults = computed(() => {
-  return channelData.value?.products.slice(0, 5)
+  return products.value?.slice(0, 5)
 })
 
 const showResults = computed(() => {
@@ -48,6 +48,6 @@ const showResults = computed(() => {
 })
 
 function findProductsByQuery(query: string) {
-  return channelData.value?.products.filter((product) => product.name.toLowerCase().includes(query.toLowerCase()))
+  return products.value?.filter((product) => product.name.toLowerCase().includes(query.toLowerCase()))
 }
 </script>

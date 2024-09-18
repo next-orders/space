@@ -1,3 +1,5 @@
+import { updateCheckout } from '~~/server/core/services/checkout'
+
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
 

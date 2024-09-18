@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="`/command-center/menu/${menuId}`">
-    <div class="bg-neutral-50 rounded-2xl h-auto min-h-60 w-auto px-4 py-2 cursor-pointer hover:scale-95 duration-200 group">
+    <UiActiveCard class="min-h-60">
       <h3 class="text-lg font-semibold">
         {{ menu?.name }}
       </h3>
@@ -10,7 +10,7 @@
           {{ category.name }} ({{ category.products?.length }})
         </li>
       </ul>
-    </div>
+    </UiActiveCard>
   </NuxtLink>
 </template>
 
@@ -19,7 +19,6 @@ const { menuId } = defineProps<{
   menuId: string
 }>()
 
-const dataChannel = await useChannel()
-
-const menu = computed(() => dataChannel.value?.menus?.find((menu) => menu.id === menuId))
+const { menus } = await useChannel()
+const menu = computed(() => menus.value?.find((menu) => menu.id === menuId))
 </script>

@@ -199,3 +199,19 @@ export function generateHSL() {
 
   return [backgroundColor1, backgroundColor2]
 }
+
+export function addBackground(svg: string) {
+  // Dynamic Background
+  const [backgroundColor1, backgroundColor2] = generateHSL()
+
+  const gradient = `
+    <linearGradient id="linear-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop stop-color="${backgroundColor1}" />
+      <stop offset="1" stop-color="${backgroundColor2}"/>
+    </linearGradient>
+    <rect xmlns="http://www.w3.org/2000/svg" fill="url(#linear-gradient)" width="704" height="704" x="0" y="0"/>`
+
+  const svgWithBackground = svg.replace(/<g transform/, `${gradient} $&`)
+
+  return clearSvg(svgWithBackground)
+}

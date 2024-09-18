@@ -1,19 +1,17 @@
 import { compare } from 'bcrypt'
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event)
-  if (!body?.login || !body?.password) {
-    throw createError({ statusCode: 400, statusMessage: 'Missing login or password' })
-  }
-
-  const logger = useLogger('api:auth:sign-in')
-
-  const { user } = await getUserSession(event)
-  if (user?.isStaff) {
-    return sendRedirect(event, '/command-center')
-  }
-
   try {
+    const body = await readBody(event)
+    if (!body?.login || !body?.password) {
+      throw createError({ statusCode: 400, statusMessage: 'Missing login or password' })
+    }
+
+    const { user: userInSession } = await getUserSession(event)
+    if (userInSession?.isStaff) {
+      return sendRedirect(event, '/command-center')
+    }
+
     const credentials = await prisma.userCredentials.findFirst({
       where: { login: body.login },
     })
@@ -28,6 +26,9 @@ export default defineEventHandler(async (event) => {
 
     const user = await prisma.user.findFirst({
       where: { id: credentials.userId },
+      include: {
+        permissions: true,
+      },
     })
     if (!user) {
       throw createError({ statusCode: 401, statusMessage: 'No user found' })
@@ -37,12 +38,12 @@ export default defineEventHandler(async (event) => {
       user: {
         id: user.id,
         isStaff: user.isStaff,
+        permissions: user.permissions.map((permission) => permission.code) as PermissionCode[],
       },
     })
 
     return { ok: true }
-  } catch (e) {
-    logger.error(e)
-    throw createError({ statusCode: 401 })
+  } catch (error) {
+    throw errorResolver(error)
   }
 })

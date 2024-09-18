@@ -1,31 +1,30 @@
 import { createId } from '@paralleldrive/cuid2'
+import { productCreateSchema } from '~~/server/core/services/product'
 
 export default defineEventHandler(async (event) => {
-  const { channelId } = useRuntimeConfig()
-  const body = await readBody(event)
+  try {
+    const { channelId } = useRuntimeConfig()
+    const body = await readBody(event)
 
-  if (!body.name || !body.categoryId) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Missing data',
+    const data = productCreateSchema.parse(body)
+    const id = createId()
+
+    const product = await prisma.product.create({
+      data: {
+        id,
+        slug: id,
+        name: data.name,
+        description: data.description,
+        categoryId: data.categoryId,
+        channelId,
+      },
     })
-  }
 
-  const id = createId()
-
-  const product = await prisma.product.create({
-    data: {
-      id,
-      slug: id,
-      name: body.name,
-      description: body.description,
-      categoryId: body.categoryId,
-      channelId,
-    },
-  })
-
-  return {
-    ok: true,
-    result: product,
+    return {
+      ok: true,
+      result: product,
+    }
+  } catch (error) {
+    throw errorResolver(error)
   }
 })
