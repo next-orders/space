@@ -56,6 +56,7 @@
 import { toTypedSchema } from '@vee-validate/zod'
 import { productCreateSchema } from '~~/server/core/services/product'
 import { useForm } from 'vee-validate'
+import { useToast } from '~/components/ui/toast'
 
 definePageMeta({
   layout: 'command-center',
@@ -65,6 +66,7 @@ definePageMeta({
 const { isModalOpened } = useCommandCenter()
 const { params } = useRoute()
 const { t } = useI18n()
+const { toast } = useToast()
 
 const breadcrumbs = computed(() => [
   { title: t('common.website'), href: '/' },
@@ -90,10 +92,13 @@ const { handleSubmit, handleReset } = useForm({
 })
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
-  const { data, error } = await useFetch('/api/product', {
-    method: 'POST',
-    body: values,
-  })
+  const { data, error } = await useAsyncData(
+    'create-product',
+    () => $fetch('/api/product', {
+      method: 'POST',
+      body: values,
+    }),
+  )
 
   if (error.value) {
     console.error(error.value)
@@ -103,6 +108,7 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
     isModalOpened.value = false
     resetForm()
     await refreshChannelData()
+    toast({ title: 'Продукт создан!', description: 'Сейчас обновим данные.' })
   }
 })
 </script>

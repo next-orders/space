@@ -9,13 +9,6 @@ export default defineEventHandler(async (event) => {
     const data = productCreateSchema.parse(body)
     const id = createId()
 
-    // if (!body.name || !body.categoryId) {
-    //   throw createError({
-    //     statusCode: 400,
-    //     statusMessage: 'Missing data',
-    //   })
-    // }
-
     const product = await prisma.product.create({
       data: {
         id,

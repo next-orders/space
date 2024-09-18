@@ -1,23 +1,22 @@
 import { createId } from '@paralleldrive/cuid2'
 
 export default defineEventHandler(async (event) => {
-  const logger = useLogger('api:auth:session')
-
-  const { user } = await getUserSession(event)
-  if (user?.id) {
-    return { ok: true }
-  }
-
   try {
-    const user = {
-      id: createId(),
-      isStaff: false,
+    const { user } = await getUserSession(event)
+    if (user?.id) {
+      return { ok: true }
     }
-    await setUserSession(event, { user })
+
+    await setUserSession(event, {
+      user: {
+        id: createId(),
+        isStaff: false,
+        permissions: [],
+      },
+    })
 
     return { ok: true }
-  } catch (e) {
-    logger.error(e)
-    throw createError({ statusCode: 401 })
+  } catch (error) {
+    throw errorResolver(error)
   }
 })

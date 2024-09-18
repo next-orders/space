@@ -2,6 +2,7 @@ declare module '#auth-utils' {
   interface User {
     id: string
     isStaff: boolean
+    permissions: PermissionCode[]
   }
 
   interface Checkout {
