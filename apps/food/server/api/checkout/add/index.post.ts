@@ -1,5 +1,5 @@
 import { createId } from '@paralleldrive/cuid2'
-import { updateCheckout } from '~~/server/utils/checkout'
+import { updateCheckout } from '~~/server/core/services/checkout'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)

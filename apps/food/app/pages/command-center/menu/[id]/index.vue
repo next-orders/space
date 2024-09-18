@@ -1,5 +1,5 @@
 <template>
-  <Breadcrumbs :links="breadcrumbs" />
+  <UiBreadcrumb :links="breadcrumbs" />
 
   <h1 class="text-2xl font-semibold mb-4">
     {{ menu?.name }}
@@ -54,8 +54,8 @@
 
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
+import { productCreateSchema } from '~~/server/core/services/product'
 import { useForm } from 'vee-validate'
-import * as z from 'zod'
 
 definePageMeta({
   layout: 'command-center',
@@ -83,11 +83,7 @@ const menu = computed(() => dataChannel.value?.menus?.find((menu) => menu.id ===
 
 const categoryId = ref()
 
-const formSchema = toTypedSchema(z.object({
-  categoryId: z.string(),
-  name: z.string().min(2).max(50),
-  description: z.string().min(0).max(250).optional(),
-}))
+const formSchema = toTypedSchema(productCreateSchema)
 
 const { handleSubmit, handleReset } = useForm({
   validationSchema: formSchema,

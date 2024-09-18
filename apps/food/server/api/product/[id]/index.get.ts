@@ -1,10 +1,22 @@
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, 'id')
+  try {
+    const id = getRouterParam(event, 'id')
 
-  return prisma.product.findFirst({
-    where: { id },
-    include: {
-      variants: true,
-    },
-  })
+    const product = await prisma.product.findFirst({
+      where: { id },
+      include: {
+        variants: true,
+      },
+    })
+    if (!product) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Product not found',
+      })
+    }
+
+    return product
+  } catch (error) {
+    throw errorResolver(error)
+  }
 })

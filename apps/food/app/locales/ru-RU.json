@@ -42,6 +42,7 @@
     "ok": "ОК",
     "more-information": "Больше информации",
     "home": "Главная",
+    "to-home": "На главную",
     "website": "Веб-сайт",
     "description": "Описание",
     "footer": {
@@ -107,6 +108,7 @@
     }
   },
   "error": {
+    "title": "Ошибка",
     "invalid-credentials": "Неверные данные"
   }
 }

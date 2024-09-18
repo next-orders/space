@@ -1,4 +1,4 @@
-import { updateCheckout } from '~~/server/utils/checkout'
+import { updateCheckout } from '~~/server/core/services/checkout'
 
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id')

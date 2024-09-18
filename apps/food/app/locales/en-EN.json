@@ -42,6 +42,7 @@
     "ok": "OK",
     "more-information": "More information",
     "home": "Home",
+    "to-home": "To Home",
     "website": "Website",
     "description": "Description",
     "footer": {
@@ -107,6 +108,7 @@
     }
   },
   "error": {
+    "title": "Error",
     "invalid-credentials": "Invalid credentials"
   }
 }
