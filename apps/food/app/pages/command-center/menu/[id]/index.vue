@@ -6,7 +6,7 @@
       {{ menu?.name }}
     </h1>
 
-    <UiButton class="w-full md:w-fit">
+    <UiButton class="w-full md:w-fit" @click="isCreateMenuCategoryOpened = true">
       Добавить категорию
     </UiButton>
   </div>
@@ -19,7 +19,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-2">
       <CommandCenterProductCard v-for="product in category.products" :key="product.id" :product-id="product.id" />
 
-      <CommandCenterProductCreateCard @click="() => { isModalOpened = true; categoryId = category.id }" />
+      <CommandCenterProductCreateCard @click="async() => { categoryId = category.id; await nextTick(); isCreateProductOpened = true }" />
     </div>
   </div>
 
@@ -39,9 +39,13 @@
     </p>
   </div>
 
-  <FormCreateProduct>
-    <UiFormField v-model="categoryId" hidden name="categoryId" />
-  </FormCreateProduct>
+  <CommandCenterModal :title="$t('center.create.product')" :is-opened="isCreateProductOpened" @close="() => isCreateProductOpened = false">
+    <FormCreateProduct :category-id="categoryId" :is-opened="isCreateProductOpened" @success="() => isCreateProductOpened = false" />
+  </CommandCenterModal>
+
+  <CommandCenterModal :title="$t('center.create.menu-category')" :is-opened="isCreateMenuCategoryOpened" @close="() => isCreateMenuCategoryOpened = false">
+    <FormCreateMenuCategory :menu-id="menu?.id ?? ''" :is-opened="isCreateMenuCategoryOpened" @success="() => isCreateMenuCategoryOpened = false" />
+  </CommandCenterModal>
 </template>
 
 <script setup lang="ts">
@@ -50,7 +54,9 @@ definePageMeta({
   middleware: ['staff'],
 })
 
-const { isModalOpened } = useCommandCenter()
+const isCreateProductOpened = ref(false)
+const isCreateMenuCategoryOpened = ref(false)
+
 const { params } = useRoute()
 const { t } = useI18n()
 
@@ -69,5 +75,5 @@ const breadcrumbs = computed(() => [
 const { menus } = await useChannel()
 const menu = computed(() => menus.value?.find((menu) => menu.id === params.id))
 
-const categoryId = ref()
+const categoryId = ref('')
 </script>

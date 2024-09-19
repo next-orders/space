@@ -23,7 +23,9 @@
     </p>
   </div>
 
-  <FormCreateMenu />
+  <CommandCenterModal :title="$t('center.create.menu')" :is-opened="isModalOpened" @close="() => isModalOpened = false">
+    <FormCreateMenu :is-opened="isModalOpened" @success="() => isModalOpened = false" />
+  </CommandCenterModal>
 </template>
 
 <script setup lang="ts">
@@ -32,7 +34,7 @@ definePageMeta({
   middleware: ['staff'],
 })
 
-const { isModalOpened } = useCommandCenter()
+const isModalOpened = ref(false)
 const { t } = useI18n()
 
 const breadcrumbs = computed(() => [
