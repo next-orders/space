@@ -103,6 +103,7 @@
       "product-page": "Product Page"
     },
     "create": {
+      "title": "Create",
       "product": "Create new Product",
       "menu": "Create new Menu"
     }

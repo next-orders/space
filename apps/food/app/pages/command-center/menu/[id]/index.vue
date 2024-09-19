@@ -1,12 +1,18 @@
 <template>
   <UiBreadcrumb :links="breadcrumbs" />
 
-  <h1 class="text-2xl font-semibold mb-4">
-    {{ menu?.name }}
-  </h1>
+  <div class="mb-4 flex flex-col md:flex-row justify-between md:items-center gap-2">
+    <h1 class="text-2xl md:text-3xl font-semibold">
+      {{ menu?.name }}
+    </h1>
+
+    <UiButton class="w-full md:w-fit">
+      Добавить категорию
+    </UiButton>
+  </div>
 
   <div v-for="category in menu?.categories" :key="category.id" class="mb-8">
-    <h2 class="text-xl pb-2 mb-4 border-b border-neutral-100">
+    <h2 class="mb-4 text-2xl lg:text-xl pb-2 border-b border-neutral-100">
       {{ category.name }}
     </h2>
 
@@ -17,47 +23,28 @@
     </div>
   </div>
 
-  <CommandCenterModal :title="$t('center.create.product')" :on-close="handleReset">
-    <form class="space-y-3" @submit="onSubmit">
-      <UiFormField v-model="categoryId" hidden name="categoryId" />
+  <div class="mt-32 text-center max-w-xl mx-auto">
+    <img
+      src="~/assets/img/recipe-book.png"
+      width="64"
+      height="64"
+      alt=""
+      class="mx-auto mb-4 w-16 h-16"
+    >
+    <h2 class="mb-4 text-lg font-semibold">
+      Здесь происходит работа с конкретным меню
+    </h2>
+    <p class="text-center">
+      Можно добавлять новые категории и продукты.
+    </p>
+  </div>
 
-      <UiFormField v-slot="{ componentField }" name="name">
-        <UiFormItem>
-          <div>
-            <UiFormLabel>Название</UiFormLabel>
-            <UiFormMessage />
-          </div>
-          <UiFormControl>
-            <UiInput v-bind="componentField" />
-          </UiFormControl>
-        </UiFormItem>
-      </UiFormField>
-
-      <UiFormField v-slot="{ componentField }" name="description">
-        <UiFormItem>
-          <div>
-            <UiFormLabel>Описание</UiFormLabel>
-            <UiFormMessage />
-          </div>
-          <UiFormControl>
-            <UiInput v-bind="componentField" />
-          </UiFormControl>
-        </UiFormItem>
-      </UiFormField>
-
-      <UiButton type="submit" variant="secondary" class="mt-4">
-        Добавить
-      </UiButton>
-    </form>
-  </CommandCenterModal>
+  <FormCreateProduct>
+    <UiFormField v-model="categoryId" hidden name="categoryId" />
+  </FormCreateProduct>
 </template>
 
 <script setup lang="ts">
-import { toTypedSchema } from '@vee-validate/zod'
-import { productCreateSchema } from '~~/server/core/services/product'
-import { useForm } from 'vee-validate'
-import { useToast } from '~/components/ui/toast'
-
 definePageMeta({
   layout: 'command-center',
   middleware: ['staff'],
@@ -66,7 +53,6 @@ definePageMeta({
 const { isModalOpened } = useCommandCenter()
 const { params } = useRoute()
 const { t } = useI18n()
-const { toast } = useToast()
 
 const breadcrumbs = computed(() => [
   { title: t('common.website'), href: '/' },
@@ -80,35 +66,8 @@ const breadcrumbs = computed(() => [
   },
 ])
 
-const { menus, refresh: refreshChannelData } = await useChannel()
+const { menus } = await useChannel()
 const menu = computed(() => menus.value?.find((menu) => menu.id === params.id))
 
 const categoryId = ref()
-
-const formSchema = toTypedSchema(productCreateSchema)
-
-const { handleSubmit, handleReset } = useForm({
-  validationSchema: formSchema,
-})
-
-const onSubmit = handleSubmit(async (values, { resetForm }) => {
-  const { data, error } = await useAsyncData(
-    'create-product',
-    () => $fetch('/api/product', {
-      method: 'POST',
-      body: values,
-    }),
-  )
-
-  if (error.value) {
-    console.error(error.value)
-  }
-
-  if (data.value) {
-    isModalOpened.value = false
-    resetForm()
-    await refreshChannelData()
-    toast({ title: 'Продукт создан!', description: 'Сейчас обновим данные.' })
-  }
-})
 </script>
