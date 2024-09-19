@@ -114,7 +114,7 @@ declare global {
     userId: string
   }
 
-  type PermissionCode = 'MASTER' | 'MANAGE_PRODUCTS' | 'MANAGE_ORDERS' | 'MANAGE_CHECKOUTS'
+  type PermissionCode = 'MASTER' | 'MANAGE_OPTIONS' | 'MANAGE_MENUS' | 'MANAGE_PRODUCTS' | 'MANAGE_CHECKOUTS' | 'MANAGE_CLIENTS'
 
   interface UserCredentials {
     id: string

@@ -30,5 +30,6 @@ export default defineAppConfig({
     checkouts: 'lucide:copy-check',
     options: 'lucide:cog',
     globe: 'lucide:globe',
+    book: 'lucide:book-open-text',
   },
 })

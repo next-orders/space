@@ -10,7 +10,7 @@ export default defineNuxtConfig({
       exclude: ['vee-validate'],
     },
   },
-  devtools: { enabled: true },
+  devtools: { enabled: true, componentInspector: false },
   devServer: {
     host: '0.0.0.0',
     port: 4200,

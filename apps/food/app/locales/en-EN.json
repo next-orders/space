@@ -103,8 +103,10 @@
       "product-page": "Product Page"
     },
     "create": {
+      "title": "Create",
       "product": "Create new Product",
-      "menu": "Create new Menu"
+      "menu": "Create new Menu",
+      "menu-category": "Create new Menu Category"
     }
   },
   "error": {
