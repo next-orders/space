@@ -53,6 +53,9 @@
       "min": "min",
       "kg": "kg",
       "g": "g"
+    },
+    "nutrition": {
+      "value-title": "Nutritional value per 100 g"
     }
   },
   "app": {
