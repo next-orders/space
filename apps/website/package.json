@@ -20,14 +20,14 @@
     "@nuxt/devtools": "^1.4.2",
     "@nuxt/fonts": "^0.8.0",
     "@nuxt/kit": "^3.13.2",
-    "@nuxt/ui": "^2.18.4",
-    "@nuxtjs/device": "^3.2.2",
-    "@nuxtjs/i18n": "^8.5.3",
+    "@nuxt/ui": "^2.18.5",
+    "@nuxtjs/device": "^3.2.4",
+    "@nuxtjs/i18n": "^8.5.4",
     "@types/node": "*",
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
     "nuxt": "^3.13.2",
-    "nuxt-auth-utils": "^0.3.8",
+    "nuxt-auth-utils": "^0.3.9",
     "tailwindcss": "^3.4.12",
     "vue-tsc": "^2.1.6"
   }
