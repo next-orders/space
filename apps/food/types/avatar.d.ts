@@ -155,6 +155,13 @@ declare global {
    | 'sunglasses'
    | 'sunglasses2'
 
+ interface AvatarParams {
+   gender?: Gender
+   emotion?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | number
+   clothing?: 'amber' | 'green' | 'blue' | 'teal' | 'pink' | 'violet'
+ }
+
+ type Gender = 'MALE' | 'FEMALE' | 'UNKNOWN'
 }
 
 export {}
