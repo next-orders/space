@@ -31,5 +31,7 @@ export default defineAppConfig({
     options: 'lucide:cog',
     globe: 'lucide:globe',
     book: 'lucide:book-open-text',
+    gallery: 'lucide:gallery-horizontal-end',
+    galleryItem: 'lucide:gallery-horizontal',
   },
 })
