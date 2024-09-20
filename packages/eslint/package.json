@@ -13,6 +13,6 @@
     "lint:fix": "eslint --fix ."
   },
   "dependencies": {
-    "@antfu/eslint-config": "^3.6.2"
+    "@antfu/eslint-config": "^3.7.0"
   }
 }
