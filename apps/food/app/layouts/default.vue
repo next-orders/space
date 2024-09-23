@@ -7,7 +7,9 @@
     <MaintenanceMessage v-if="channel?.isActive === false" />
 
     <div class="px-4 pb-10 pt-4">
-      <slot />
+      <NuxtErrorBoundary>
+        <slot />
+      </NuxtErrorBoundary>
     </div>
 
     <DeliveryInfoModal />

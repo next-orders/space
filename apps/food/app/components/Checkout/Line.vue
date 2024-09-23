@@ -30,7 +30,7 @@
     </div>
 
     <div class="min-w-[3rem] ml-0 md:ml-4 text-base md:text-lg text-right tracking-tight">
-      {{ price }} <span class="text-xs">₽</span>
+      {{ price }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
     </div>
   </div>
 </template>
@@ -40,6 +40,7 @@ const { lineId } = defineProps<{
   lineId: string
 }>()
 
+const { channel } = await useChannel()
 const { checkout } = await useCheckout()
 const line = computed(() => checkout.value?.lines?.find((l) => l.id === lineId))
 const variant = computed(() => line.value?.variant)

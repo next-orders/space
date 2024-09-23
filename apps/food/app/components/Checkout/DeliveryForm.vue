@@ -9,7 +9,7 @@
         Доставка
       </div>
       <div>
-        100 <span class="text-xs">₽</span>
+        100 <span class="text-xs">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
       </div>
     </div>
 
@@ -99,4 +99,5 @@
 
 <script setup lang="ts">
 const { icons } = useAppConfig()
+const { channel } = await useChannel()
 </script>

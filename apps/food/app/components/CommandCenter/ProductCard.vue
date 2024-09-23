@@ -23,7 +23,7 @@
                 {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit as WeightUnit) }}
               </p>
               <p class="font-medium">
-                {{ getLocalizedPrice(variant.gross) }}<span class="pl-1 text-xs">₽</span>
+                {{ getLocalizedPrice(variant.gross) }}<span class="pl-1 text-xs">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
               </p>
             </div>
           </div>
@@ -38,6 +38,7 @@ const { productId } = defineProps<{
   productId: string
 }>()
 
+const { channel } = await useChannel()
 const { products } = await useProduct()
 const product = computed(() => products.value?.find(({ id }) => id === productId))
 const productImageUrl = '/burger-1.jpg'

@@ -16,7 +16,7 @@
         </div>
 
         <div class="mt-2 text-xl font-medium">
-          {{ price }}<span class="pl-1 text-lg">₽</span>
+          {{ price }}<span class="pl-1 text-lg">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
         </div>
         <p class="font-normal leading-tight line-clamp-2">
           {{ product?.name }}
@@ -42,7 +42,7 @@ const { productId } = defineProps<{
 }>()
 
 const { icons } = useAppConfig()
-const { categories } = await useChannel()
+const { channel, categories } = await useChannel()
 const { products } = await useProduct()
 const product = computed(() => products.value?.find(({ id }) => id === productId))
 

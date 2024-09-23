@@ -16,7 +16,7 @@
     <div v-if="checkout?.deliveryMethod === 'DELIVERY'" class="flex flex-row gap-2 items-center">
       <Icon :name="icons.delivery" />
       <div class="lowercase">
-        {{ $t('app.cart.free-from') }} {{ freeFrom }} <span class="text-sm">₽</span>
+        {{ $t('app.cart.free-from') }} {{ freeFrom }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
       </div>
     </div>
   </div>
@@ -24,8 +24,9 @@
 
 <script setup lang="ts">
 const { icons } = useAppConfig()
-const { checkout } = await useCheckout()
 const { t } = useI18n()
+const { channel } = await useChannel()
+const { checkout } = await useCheckout()
 
 const title = computed(() => checkout.value?.deliveryMethod === 'DELIVERY' ? t('app.cart.delivery') : t('app.cart.pickup'))
 const todayUntil = computed(() => checkout.value?.deliveryMethod === 'DELIVERY' ? '22:00' : '23:00')

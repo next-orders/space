@@ -10,13 +10,14 @@
       </div>
 
       <div v-if="checkout?.deliveryMethod === 'DELIVERY'">
-        {{ $t('app.cart.delivery') }} {{ checkout?.shippingPrice }} <span class="text-xs">₽</span>
+        {{ $t('app.cart.delivery') }} {{ checkout?.shippingPrice }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+const { channel } = await useChannel()
 const { checkout } = await useCheckout()
 
 const avg = computed(() => checkout.value?.deliveryMethod === 'DELIVERY' ? '45–60' : '15–20')
