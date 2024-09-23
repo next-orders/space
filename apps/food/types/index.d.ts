@@ -64,6 +64,10 @@ declare global {
     weightValue: number
     gross: number
     net: number | null
+    calories: number | null
+    protein: number | null
+    fat: number | null
+    carbohydrate: number | null
   }
 
   type WeightUnit = 'G' | 'KG' | 'ML' | 'L' | 'OZ' | 'LB'

@@ -16,7 +16,7 @@
         </div>
 
         <div class="mt-2 text-xl font-medium">
-          {{ price }}<span class="pl-1 text-lg">₽</span>
+          {{ price }}<span class="pl-1 text-lg">{{ getCurrencySign(channel?.currencyCode) }}</span>
         </div>
         <p class="font-normal leading-tight line-clamp-2">
           {{ product?.name }}
@@ -42,12 +42,12 @@ const { productId } = defineProps<{
 }>()
 
 const { icons } = useAppConfig()
-const { categories } = await useChannel()
+const { channel, categories } = await useChannel()
 const { products } = await useProduct()
 const product = computed(() => products.value?.find(({ id }) => id === productId))
 
 const weightValue = product.value?.variants[0]?.weightValue
-const weightUnitLocalized = getWeightLocalizedUnit(product.value?.variants[0]?.weightUnit as WeightUnit)
+const weightUnitLocalized = getWeightLocalizedUnit(product.value?.variants[0]?.weightUnit)
 
 const price = getLocalizedPrice(650)
 const productImageUrl = '/burger-1.jpg'

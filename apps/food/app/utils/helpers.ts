@@ -1,5 +1,5 @@
-export function getCurrencySign(code: CurrencyCode | null | undefined) {
-  switch (code) {
+export function getCurrencySign<CurrencyLiteral = string & object>(code?: CurrencyCode | CurrencyLiteral): string {
+  switch (code as CurrencyCode) {
     case 'RUB':
       return '₽'
     case 'USD':
@@ -11,8 +11,8 @@ export function getCurrencySign(code: CurrencyCode | null | undefined) {
   }
 }
 
-export function getWeightLocalizedUnit(unit: WeightUnit | undefined): string {
-  switch (unit) {
+export function getWeightLocalizedUnit<WeightUnitLiteral = string & object>(unit?: WeightUnit | WeightUnitLiteral): string {
+  switch (unit as WeightUnit) {
     case 'G':
       return 'г'
     case 'KG':
@@ -30,7 +30,7 @@ export function getWeightLocalizedUnit(unit: WeightUnit | undefined): string {
   }
 }
 
-export function getLocalizedPrice(value: number | null | undefined): string {
+export function getLocalizedPrice(value?: number): string {
   if (!value) {
     return ''
   }

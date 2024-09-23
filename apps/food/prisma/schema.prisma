@@ -75,6 +75,10 @@ model ProductVariant {
   weightValue   Float          @map("weight_value")
   gross         Float
   net           Float?
+  calories      Float?
+  carbohydrate  Float?
+  fat           Float?
+  protein       Float?
   productId     String         @map("product_id")
   product       Product        @relation(fields: [productId], references: [id])
   checkoutLines CheckoutLine[]

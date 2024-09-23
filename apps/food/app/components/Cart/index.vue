@@ -51,7 +51,7 @@
                 {{ $t('app.cart.next-label') }}
               </div>
               <div class="font-medium text-lg tracking-tight">
-                {{ checkout?.totalPrice }} <span class="text-base">₽</span>
+                {{ checkout?.totalPrice }} <span class="text-base">{{ getCurrencySign(channel?.currencyCode) }}</span>
               </div>
             </div>
           </UiButton>
@@ -64,5 +64,6 @@
 <script setup lang="ts">
 const { isCartDrawerOpened, isDeliveryInfoModalOpened } = useApp()
 const { icons } = useAppConfig()
+const { channel } = await useChannel()
 const { checkout, isEmpty } = await useCheckout()
 </script>

@@ -19,13 +19,12 @@
           {{ product?.name }}
         </h1>
         <div class="mt-1 font-normal text-neutral-400">
-          {{ productVariant?.weightValue }}
-          {{ getWeightLocalizedUnit('G') }}
+          {{ productVariant?.weightValue }}{{ getWeightLocalizedUnit('G') }}
         </div>
 
         <div class="mt-4 flex flex-row gap-6 items-center">
           <div class="text-2xl font-medium tracking-tight">
-            {{ getLocalizedPrice(productVariant?.gross) }} <span class="text-xl">₽</span>
+            {{ getLocalizedPrice(productVariant?.gross) }} <span class="text-xl">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
 
           <CartLineCounter v-if="inCart" :line-id="inCart.id" />
@@ -86,18 +85,19 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  validate: async ({ params }) => {
-    const { error } = await useFetch(`/api/product/slug/${params.productSlug}`)
-    return error.value === undefined
-  },
-})
-
 const { t } = useI18n()
 const { params } = useRoute()
 const { icons } = useAppConfig()
+const { channel } = await useChannel()
 const { addProduct, checkout } = await useCheckout()
-const { data: product } = await useFetch(`/api/product/slug/${params.productSlug}`)
+
+const { data: product, error } = await useFetch(`/api/product/slug/${params.productSlug}`)
+if (error.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Product not found',
+  })
+}
 
 useHead({
   title: product.value?.name,

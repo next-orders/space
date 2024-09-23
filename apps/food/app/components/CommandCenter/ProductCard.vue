@@ -20,10 +20,10 @@
           <div class="mt-4">
             <div v-for="variant in product?.variants" :key="variant.id" class="flex justify-between">
               <p class="text-neutral-500 dark:text-white">
-                {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit as WeightUnit) }}
+                {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit) }}
               </p>
               <p class="font-medium">
-                {{ getLocalizedPrice(variant.gross) }}<span class="pl-1 text-xs">₽</span>
+                {{ getLocalizedPrice(variant.gross) }}<span class="pl-1 text-xs">{{ getCurrencySign(channel?.currencyCode) }}</span>
               </p>
             </div>
           </div>
@@ -38,6 +38,7 @@ const { productId } = defineProps<{
   productId: string
 }>()
 
+const { channel } = await useChannel()
 const { products } = await useProduct()
 const product = computed(() => products.value?.find(({ id }) => id === productId))
 const productImageUrl = '/burger-1.jpg'

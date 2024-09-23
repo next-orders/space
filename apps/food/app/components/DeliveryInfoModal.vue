@@ -40,7 +40,7 @@
         <div class="mb-2 flex flex-row justify-between">
           <div>{{ $t('app.minimum-order-value') }}</div>
           <div>
-            1000 <span class="text-sm">₽</span>
+            1000 <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
             Курьерская оплата
           </div>
           <div>
-            {{ checkout?.shippingPrice }} <span class="text-sm">₽</span>
+            {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>
 
@@ -74,7 +74,7 @@
         <div class="mb-2 flex flex-row justify-between">
           <div>{{ $t('app.minimum-order-value') }}</div>
           <div>
-            1000 <span class="text-sm">₽</span>
+            1000 <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>
 
@@ -94,6 +94,7 @@
 <script setup lang="ts">
 const { icons } = useAppConfig()
 const { isDeliveryInfoModalOpened } = useApp()
+const { channel } = await useChannel()
 const { checkout } = await useCheckout()
 
 const discount = 10

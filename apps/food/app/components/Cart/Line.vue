@@ -18,10 +18,10 @@
           </p>
           <div class="mt-1 flex flex-row gap-2 flex-nowrap">
             <div class="text-sm font-medium tracking-tight">
-              {{ price }} <span class="text-xs">₽</span>
+              {{ price }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode) }}</span>
             </div>
             <div class="text-sm text-neutral-500 dark:text-white font-light">
-              {{ variant?.weightValue }}{{ getWeightLocalizedUnit(variant?.weightUnit as WeightUnit) }}
+              {{ variant?.weightValue }}{{ getWeightLocalizedUnit(variant?.weightUnit) }}
             </div>
           </div>
         </div>
@@ -37,6 +37,7 @@ const { lineId } = defineProps<{
   lineId: string
 }>()
 
+const { channel } = await useChannel()
 const { checkout } = await useCheckout()
 const line = computed(() => checkout.value?.lines?.find((l) => l.id === lineId))
 const variant = computed(() => line.value?.variant)
