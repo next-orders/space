@@ -30,13 +30,13 @@
           <div class="mb-2 flex flex-row justify-between text-lg">
             <div>Стоимость товаров</div>
             <div class="tracking-tight">
-              {{ checkout?.totalPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+              {{ checkout?.totalPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
             </div>
           </div>
           <div class="mb-2 flex flex-row justify-between text-lg">
             <div>Стоимость доставки</div>
             <div class="tracking-tight">
-              {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+              {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
             </div>
           </div>
 
@@ -56,7 +56,7 @@
           </NuxtLink>
 
           <div class="font-medium text-right text-xl min-w-[5rem] tracking-tight">
-            {{ checkout?.totalPrice }} <span class="text-base">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+            {{ checkout?.totalPrice }} <span class="text-base">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>
       </div>

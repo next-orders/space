@@ -18,7 +18,7 @@
           </div>
           <div class="mt-1 flex flex-row gap-2 flex-nowrap">
             <div class="text-sm text-neutral-500 font-light">
-              {{ variant?.weightValue }}{{ getWeightLocalizedUnit(variant?.weightUnit as WeightUnit) }}
+              {{ variant?.weightValue }}{{ getWeightLocalizedUnit(variant?.weightUnit) }}
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="min-w-[3rem] ml-0 md:ml-4 text-base md:text-lg text-right tracking-tight">
-      {{ price }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+      {{ price }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode) }}</span>
     </div>
   </div>
 </template>

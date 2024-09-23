@@ -24,7 +24,7 @@
 
         <div class="mt-4 flex flex-row gap-6 items-center">
           <div class="text-2xl font-medium tracking-tight">
-            {{ getLocalizedPrice(productVariant?.gross) }} <span class="text-xl">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+            {{ getLocalizedPrice(productVariant?.gross) }} <span class="text-xl">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
 
           <CartLineCounter v-if="inCart" :line-id="inCart.id" />

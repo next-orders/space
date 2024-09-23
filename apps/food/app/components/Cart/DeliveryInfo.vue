@@ -10,7 +10,7 @@
       </div>
 
       <div v-if="checkout?.deliveryMethod === 'DELIVERY'">
-        {{ $t('app.cart.delivery') }} {{ checkout?.shippingPrice }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+        {{ $t('app.cart.delivery') }} {{ checkout?.shippingPrice }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode) }}</span>
       </div>
     </div>
   </div>

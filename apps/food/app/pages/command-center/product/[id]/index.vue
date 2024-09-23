@@ -56,10 +56,10 @@
           <Icon :name="icons.galleryItem" class="w-10 h-10 px-2 py-2 opacity-15" />
           <div>
             <div class="text-sm text-neutral-500">
-              {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit as WeightUnit) }}
+              {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit) }}
             </div>
             <div class="text-xl font-medium">
-              {{ variant.gross }} {{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}
+              {{ variant.gross }} {{ getCurrencySign(channel?.currencyCode) }}
             </div>
           </div>
         </div>

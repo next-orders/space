@@ -9,7 +9,7 @@
         Доставка
       </div>
       <div>
-        100 <span class="text-xs">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+        100 <span class="text-xs">{{ getCurrencySign(channel?.currencyCode) }}</span>
       </div>
     </div>
 

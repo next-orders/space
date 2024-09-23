@@ -40,7 +40,7 @@
         <div class="mb-2 flex flex-row justify-between">
           <div>{{ $t('app.minimum-order-value') }}</div>
           <div>
-            1000 <span class="text-sm">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+            1000 <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
             Курьерская оплата
           </div>
           <div>
-            {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+            {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>
 
@@ -74,7 +74,7 @@
         <div class="mb-2 flex flex-row justify-between">
           <div>{{ $t('app.minimum-order-value') }}</div>
           <div>
-            1000 <span class="text-sm">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+            1000 <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>
 

@@ -16,7 +16,7 @@
     <div v-if="checkout?.deliveryMethod === 'DELIVERY'" class="flex flex-row gap-2 items-center">
       <Icon :name="icons.delivery" />
       <div class="lowercase">
-        {{ $t('app.cart.free-from') }} {{ freeFrom }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+        {{ $t('app.cart.free-from') }} {{ freeFrom }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
       </div>
     </div>
   </div>

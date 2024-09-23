@@ -51,7 +51,7 @@
                 {{ $t('app.cart.next-label') }}
               </div>
               <div class="font-medium text-lg tracking-tight">
-                {{ checkout?.totalPrice }} <span class="text-base">{{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}</span>
+                {{ checkout?.totalPrice }} <span class="text-base">{{ getCurrencySign(channel?.currencyCode) }}</span>
               </div>
             </div>
           </UiButton>
