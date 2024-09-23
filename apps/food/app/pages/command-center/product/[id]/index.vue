@@ -51,16 +51,31 @@
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2">
-      <UiActiveCard v-for="variant in product?.variants" :key="variant.id">
+      <UiActiveCard v-for="variant in product?.variants" :key="variant.id" class="space-y-2">
         <div class="flex flex-row gap-4 justify-center items-center">
           <Icon :name="icons.galleryItem" class="w-10 h-10 px-2 py-2 opacity-15" />
           <div>
             <div class="text-sm text-neutral-500">
-              {{ variant.weightValue }}{{ variant.weightUnit }}
+              {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit as WeightUnit) }}
             </div>
             <div class="text-xl font-medium">
-              {{ variant.gross }} ₽
+              {{ variant.gross }} {{ getCurrencySign(channel?.currencyCode as CurrencyCode) }}
             </div>
+          </div>
+        </div>
+
+        <div v-if="variant.calories" class="flex flex-row gap-2 justify-center text-neutral-500">
+          <div v-if="variant.calories">
+            {{ variant.calories }} {{ $t('common.abbreviation.kcal') }}
+          </div>
+          <div v-if="variant.protein">
+            {{ variant.protein }} {{ $t('common.abbreviation.g') }}
+          </div>
+          <div v-if="variant.fat">
+            {{ variant.fat }} {{ $t('common.abbreviation.g') }}
+          </div>
+          <div v-if="variant.carbohydrate">
+            {{ variant.carbohydrate }} {{ $t('common.abbreviation.g') }}
           </div>
         </div>
       </UiActiveCard>
@@ -98,6 +113,7 @@ const { icons } = useAppConfig()
 const { params } = useRoute()
 const { t } = useI18n()
 
+const { channel } = await useChannel()
 const { products } = await useProduct()
 const product = computed(() => products.value?.find((p) => p.id === params.id))
 
