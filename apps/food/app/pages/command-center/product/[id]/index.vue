@@ -90,13 +90,17 @@
             class="w-10 h-10"
           >
 
-          <div class="text-lg leading-tight">
+          <div class="text-lg leading-tight" @click="isCreateProductVariantOpened = true">
             Добавить
           </div>
         </div>
       </UiActiveCard>
     </div>
   </div>
+
+  <CommandCenterModal :title="$t('center.create.product-variant')" :is-opened="isCreateProductVariantOpened" @close="() => isCreateProductVariantOpened = false">
+    <FormCreateProductVariant :product-id="product?.id ?? ''" :is-opened="isCreateProductVariantOpened" @success="() => isCreateProductVariantOpened = false" />
+  </CommandCenterModal>
 </template>
 
 <script setup lang="ts">
@@ -108,6 +112,8 @@ definePageMeta({
     return error.value === undefined
   },
 })
+
+const isCreateProductVariantOpened = ref(false)
 
 const { icons } = useAppConfig()
 const { params } = useRoute()

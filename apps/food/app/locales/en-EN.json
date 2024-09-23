@@ -112,6 +112,7 @@
     "create": {
       "title": "Create",
       "product": "Create new Product",
+      "product-variant": "Create new Product Variant",
       "menu": "Create new Menu",
       "menu-category": "Create new Menu Category"
     }
