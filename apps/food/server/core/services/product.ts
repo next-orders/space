@@ -8,6 +8,7 @@ export const productCreateSchema = z.object({
 
 export const productVariantCreateSchema = z.object({
   productId: z.string(),
+  name: z.string().min(2).max(50),
   weightValue: z.number(),
   weightUnit: z.enum(['G', 'KG', 'ML', 'L', 'LB', 'OZ']),
   gross: z.number().default(0),

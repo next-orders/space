@@ -60,6 +60,7 @@ declare global {
     createdAt: Date
     updatedAt: Date
     productId: string
+    name: string
     weightUnit: WeightUnit
     weightValue: number
     gross: number

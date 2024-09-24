@@ -58,6 +58,15 @@
       "l": "l",
       "pcs": "pcs"
     },
+    "weight-unit": {
+      "g": "Gram",
+      "kg": "Kilogram",
+      "ml": "Milliliter",
+      "l": "Liter",
+      "pcs": "Piece",
+      "oz": "Ounce",
+      "lb": "Pound"
+    },
     "nutrition": {
       "value-title": "Nutritional value per 100 g"
     }

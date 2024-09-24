@@ -10,6 +10,7 @@ export default defineEventHandler(async (event) => {
       data: {
         id: createId(),
         productId: data.productId,
+        name: data.name,
         weightValue: data.weightValue,
         weightUnit: data.weightUnit,
         gross: data.gross,
