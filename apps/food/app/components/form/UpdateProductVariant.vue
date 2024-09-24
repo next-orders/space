@@ -1,7 +1,5 @@
 <template>
   <form class="space-y-3" @submit="onSubmit">
-    <UiFormField :key="productId" :value="productId" hidden name="productId" />
-
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>
         <div>
@@ -9,7 +7,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput v-bind="componentField" placeholder="25 см, 6 шт, на традиционном тесте, и т.п." />
+          <UiInput :key="productVariant?.name" :default-value="productVariant?.name" v-bind="componentField" placeholder="25 см, 6 шт, на традиционном тесте, и т.п." />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -21,7 +19,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput v-bind="componentField" type="number" step="any" placeholder="0.00" />
+          <UiInput :key="productVariant?.gross" :default-value="productVariant?.gross" v-bind="componentField" type="number" step="any" placeholder="0.00" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -34,7 +32,7 @@
             <UiFormMessage />
           </div>
           <UiFormControl>
-            <UiInput v-bind="componentField" type="number" step="any" />
+            <UiInput :key="productVariant?.weightValue" :default-value="productVariant?.weightValue" v-bind="componentField" type="number" step="any" />
           </UiFormControl>
         </UiFormItem>
       </UiFormField>
@@ -45,7 +43,7 @@
             <UiFormLabel>Ед. измерения</UiFormLabel>
             <UiFormMessage />
           </div>
-          <UiSelect v-bind="componentField">
+          <UiSelect v-bind="componentField" :key="productVariant?.weightUnit" :default-value="productVariant?.weightUnit">
             <UiFormControl>
               <UiSelectTrigger>
                 <UiSelectValue placeholder="Выберите" />
@@ -77,7 +75,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput v-bind="componentField" type="number" step="any" />
+              <UiInput :key="productVariant?.calories" :default-value="productVariant?.calories" v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -89,7 +87,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput v-bind="componentField" type="number" step="any" />
+              <UiInput :key="productVariant?.protein" :default-value="productVariant?.protein" v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -101,7 +99,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput v-bind="componentField" type="number" step="any" />
+              <UiInput :key="productVariant?.fat" :default-value="productVariant?.fat" v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -113,7 +111,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput v-bind="componentField" type="number" step="any" />
+              <UiInput :key="productVariant?.carbohydrate" :default-value="productVariant?.carbohydrate" v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -121,20 +119,21 @@
     </div>
 
     <UiButton type="submit" variant="secondary" class="mt-4">
-      {{ $t('center.create.title') }}
+      {{ $t('center.update.title') }}
     </UiButton>
   </form>
 </template>
 
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
-import { productVariantCreateSchema } from '~~/server/core/services/product'
+import { productVariantUpdateSchema } from '~~/server/core/services/product'
 import { useForm } from 'vee-validate'
 import { useToast } from '~/components/ui/toast'
 
-const { isOpened, productId } = defineProps<{
+const { isOpened, productVariantId, productVariant } = defineProps<{
   isOpened: boolean
-  productId: string
+  productVariantId: string
+  productVariant: any
 }>()
 
 const emit = defineEmits(['success'])
@@ -144,7 +143,7 @@ const { toast } = useToast()
 const { channel, refresh: refreshChannelData } = await useChannel()
 const { refresh: refreshProducts } = await useProduct()
 
-const formSchema = toTypedSchema(productVariantCreateSchema)
+const formSchema = toTypedSchema(productVariantUpdateSchema)
 
 const { handleSubmit, handleReset } = useForm({
   validationSchema: formSchema,
@@ -159,9 +158,9 @@ watch(
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
   const { data, error } = await useAsyncData(
-    'create-product-variant',
-    () => $fetch('/api/product/variant', {
-      method: 'POST',
+    'update-product-variant',
+    () => $fetch(`/api/product/variant/${productVariantId}`, {
+      method: 'PATCH',
       body: values,
     }),
   )
@@ -175,7 +174,7 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
     await refreshChannelData()
     await refreshProducts()
     emit('success')
-    toast({ title: 'Вариация создана!', description: 'Сейчас обновим данные.' })
+    toast({ title: 'Вариация обновлена!', description: 'Сейчас обновим данные.' })
     resetForm()
   }
 })

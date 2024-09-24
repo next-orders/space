@@ -1,15 +1,14 @@
-import { createId } from '@paralleldrive/cuid2'
-import { productVariantCreateSchema } from '~~/server/core/services/product'
+import { productVariantUpdateSchema } from '~~/server/core/services/product'
 
 export default defineEventHandler(async (event) => {
   try {
+    const id = getRouterParam(event, 'id')
     const body = await readBody(event)
-    const data = productVariantCreateSchema.parse(body)
+    const data = productVariantUpdateSchema.parse(body)
 
-    const variant = await prisma.productVariant.create({
+    const variant = await prisma.productVariant.update({
+      where: { id },
       data: {
-        id: createId(),
-        productId: data.productId,
         name: data.name,
         weightValue: data.weightValue,
         weightUnit: data.weightUnit,

@@ -58,6 +58,15 @@
       "l": "l",
       "pcs": "pcs"
     },
+    "weight-unit": {
+      "g": "Gram",
+      "kg": "Kilogram",
+      "ml": "Milliliter",
+      "l": "Liter",
+      "pcs": "Piece",
+      "oz": "Ounce",
+      "lb": "Pound"
+    },
     "nutrition": {
       "value-title": "Nutritional value per 100 g"
     }
@@ -115,6 +124,10 @@
       "product-variant": "Create new Product Variant",
       "menu": "Create new Menu",
       "menu-category": "Create new Menu Category"
+    },
+    "update": {
+      "title": "Update",
+      "product-variant": "Update Product Variant"
     }
   },
   "error": {

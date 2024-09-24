@@ -50,37 +50,42 @@
       </h2>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2">
-      <UiActiveCard v-for="variant in product?.variants" :key="variant.id" class="space-y-2">
-        <div class="flex flex-row gap-4 justify-center items-center">
-          <Icon :name="icons.galleryItem" class="w-10 h-10 px-2 py-2 opacity-15" />
-          <div>
-            <div class="text-sm text-neutral-500">
-              {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit) }}
-            </div>
-            <div class="text-xl font-medium">
-              {{ variant.gross }} {{ getCurrencySign(channel?.currencyCode) }}
-            </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
+      <UiActiveCard v-for="variant in product?.variants" :key="variant.id" class="space-y-3 flex flex-col justify-between" @click="() => { productVariant = variant; productVariantId = variant.id; isUpdateProductVariantOpened = true }">
+        <div class="flex flex-row flex-nowrap gap-2">
+          <Icon :name="icons.galleryItem" class="w-6 h-6 opacity-15 flex-none" />
+
+          <div class="text-md font-medium leading-tight grow-0">
+            {{ variant.name }}
           </div>
         </div>
 
-        <div v-if="variant.calories" class="flex flex-row gap-2 justify-center text-neutral-500">
+        <div class="py-3 flex flex-row flex-nowrap gap-6 items-center justify-center bg-white rounded-xl">
+          <div class="text-lg font-medium">
+            {{ variant.gross }} {{ getCurrencySign(channel?.currencyCode) }}
+          </div>
+          <div class="text-md text-neutral-500">
+            {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit) }}
+          </div>
+        </div>
+
+        <div v-if="variant.calories" class="flex flex-row gap-3 justify-center text-neutral-500">
           <div v-if="variant.calories">
-            {{ variant.calories }} {{ $t('common.abbreviation.kcal') }}
+            {{ variant.calories }}{{ $t('common.abbreviation.kcal') }}
           </div>
           <div v-if="variant.protein">
-            {{ variant.protein }} {{ $t('common.abbreviation.g') }}
+            {{ variant.protein }}{{ $t('common.abbreviation.g') }}
           </div>
           <div v-if="variant.fat">
-            {{ variant.fat }} {{ $t('common.abbreviation.g') }}
+            {{ variant.fat }}{{ $t('common.abbreviation.g') }}
           </div>
           <div v-if="variant.carbohydrate">
-            {{ variant.carbohydrate }} {{ $t('common.abbreviation.g') }}
+            {{ variant.carbohydrate }}{{ $t('common.abbreviation.g') }}
           </div>
         </div>
       </UiActiveCard>
 
-      <UiActiveCard>
+      <UiActiveCard @click="isCreateProductVariantOpened = true">
         <div class="h-full flex flex-row gap-3 justify-center items-center">
           <img
             src="~/assets/img/green-notebook.png"
@@ -90,7 +95,7 @@
             class="w-10 h-10"
           >
 
-          <div class="text-lg leading-tight" @click="isCreateProductVariantOpened = true">
+          <div class="text-lg leading-tight">
             Добавить
           </div>
         </div>
@@ -100,6 +105,10 @@
 
   <CommandCenterModal :title="$t('center.create.product-variant')" :is-opened="isCreateProductVariantOpened" @close="() => isCreateProductVariantOpened = false">
     <FormCreateProductVariant :product-id="product?.id ?? ''" :is-opened="isCreateProductVariantOpened" @success="() => isCreateProductVariantOpened = false" />
+  </CommandCenterModal>
+
+  <CommandCenterModal :title="$t('center.update.product-variant')" :is-opened="isUpdateProductVariantOpened" @close="() => isUpdateProductVariantOpened = false">
+    <FormUpdateProductVariant :product-variant-id="productVariantId ?? ''" :product-variant="productVariant" :is-opened="isUpdateProductVariantOpened" @success="() => isUpdateProductVariantOpened = false" />
   </CommandCenterModal>
 </template>
 
@@ -114,6 +123,7 @@ definePageMeta({
 })
 
 const isCreateProductVariantOpened = ref(false)
+const isUpdateProductVariantOpened = ref(false)
 
 const { icons } = useAppConfig()
 const { params } = useRoute()
@@ -131,5 +141,7 @@ const breadcrumbs = computed(() => [
   },
 ])
 
+const productVariantId = ref('')
+const productVariant = ref()
 const productImageUrl = '/burger-1.jpg'
 </script>

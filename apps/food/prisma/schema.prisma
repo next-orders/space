@@ -71,6 +71,7 @@ model ProductVariant {
   id            String         @id
   createdAt     DateTime       @default(now()) @map("created_at")
   updatedAt     DateTime       @default(now()) @map("updated_at")
+  name          String
   weightUnit    String         @default("G") @map("weight_unit")
   weightValue   Float          @map("weight_value")
   gross         Float
