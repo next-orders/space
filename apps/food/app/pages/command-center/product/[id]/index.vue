@@ -51,7 +51,7 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
-      <UiActiveCard v-for="variant in product?.variants" :key="variant.id" class="space-y-3 flex flex-col justify-between">
+      <UiActiveCard v-for="variant in product?.variants" :key="variant.id" class="space-y-3 flex flex-col justify-between" @click="() => { productVariant = variant; productVariantId = variant.id; isUpdateProductVariantOpened = true }">
         <div class="flex flex-row flex-nowrap gap-2">
           <Icon :name="icons.galleryItem" class="w-6 h-6 opacity-15 flex-none" />
 
@@ -106,6 +106,10 @@
   <CommandCenterModal :title="$t('center.create.product-variant')" :is-opened="isCreateProductVariantOpened" @close="() => isCreateProductVariantOpened = false">
     <FormCreateProductVariant :product-id="product?.id ?? ''" :is-opened="isCreateProductVariantOpened" @success="() => isCreateProductVariantOpened = false" />
   </CommandCenterModal>
+
+  <CommandCenterModal :title="$t('center.update.product-variant')" :is-opened="isUpdateProductVariantOpened" @close="() => isUpdateProductVariantOpened = false">
+    <FormUpdateProductVariant :product-variant-id="productVariantId ?? ''" :product-variant="productVariant" :is-opened="isUpdateProductVariantOpened" @success="() => isUpdateProductVariantOpened = false" />
+  </CommandCenterModal>
 </template>
 
 <script setup lang="ts">
@@ -119,6 +123,7 @@ definePageMeta({
 })
 
 const isCreateProductVariantOpened = ref(false)
+const isUpdateProductVariantOpened = ref(false)
 
 const { icons } = useAppConfig()
 const { params } = useRoute()
@@ -136,5 +141,7 @@ const breadcrumbs = computed(() => [
   },
 ])
 
+const productVariantId = ref('')
+const productVariant = ref()
 const productImageUrl = '/burger-1.jpg'
 </script>

@@ -124,6 +124,10 @@
       "product-variant": "Create new Product Variant",
       "menu": "Create new Menu",
       "menu-category": "Create new Menu Category"
+    },
+    "update": {
+      "title": "Update",
+      "product-variant": "Update Product Variant"
     }
   },
   "error": {

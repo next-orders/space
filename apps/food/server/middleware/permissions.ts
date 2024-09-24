@@ -14,6 +14,11 @@ export default defineEventHandler(async (event) => {
       permissions: ['MANAGE_PRODUCTS', 'MASTER'],
     },
     {
+      route: '/api/product/variant',
+      method: 'PATCH',
+      permissions: ['MANAGE_PRODUCTS', 'MASTER'],
+    },
+    {
       route: '/api/menu',
       method: 'POST',
       permissions: ['MANAGE_MENUS', 'MASTER'],
@@ -26,7 +31,7 @@ export default defineEventHandler(async (event) => {
   ]
 
   for (const route of routesWithRequiredPermissions) {
-    if (event.path === route.route && event.method === route.method) {
+    if (event.path.startsWith(route.route) && event.method === route.method) {
       if (!route.permissions.some((permission) => permissions.includes(permission as PermissionCode))) {
         throw errorResolver(createError({ statusCode: 403, statusMessage: 'Not allowed' }))
       }
