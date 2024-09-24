@@ -1,4 +1,4 @@
-ARG NODE=node:22.8.0-alpine
+ARG NODE=node:22.9.0-alpine
 
 ################# Base builder ##############
 
@@ -10,8 +10,8 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
 COPY . .
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-RUN pnpm build --filter @next-orders/food
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile \
+  && pnpm build --filter @next-orders/food
 
 ################# App ##############
 

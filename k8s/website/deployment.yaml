@@ -16,6 +16,7 @@ spec:
       labels:
         app: website
     spec:
+      automountServiceAccountToken: false
       securityContext:
         runAsUser: 1001
       imagePullSecrets:
@@ -36,9 +37,11 @@ spec:
             limits:
               cpu: 250m
               memory: 256Mi
+              ephemeral-storage: 1Gi
             requests:
               cpu: 10m
               memory: 64Mi
+              ephemeral-storage: 512Mi
           livenessProbe:
             httpGet:
               port: 3000
