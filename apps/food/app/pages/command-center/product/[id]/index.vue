@@ -14,7 +14,7 @@
     <div class="flex flex-col md:flex-row gap-4">
       <div class="px-4 py-4 bg-neutral-50 rounded-2xl">
         <div class="flex items-center space-x-2">
-          <UiSwitch id="product-switch" />
+          <UiSwitch id="product-switch" :default-checked="product?.isAvailableForPurchase" @update:checked="() => {}" />
           <UiLabel for="product-switch">
             Активен
           </UiLabel>
