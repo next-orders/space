@@ -1,5 +1,5 @@
 <template>
-  <ToastDescription :class="cn('text-md opacity-90', props.class)" v-bind="delegatedProps">
+  <ToastDescription :class="cn('opacity-90', props.class)" v-bind="delegatedProps">
     <slot />
   </ToastDescription>
 </template>

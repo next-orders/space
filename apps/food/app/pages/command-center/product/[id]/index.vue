@@ -51,25 +51,21 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
-      <UiActiveCard v-for="variant in product?.variants" :key="variant.id" class="space-y-3 flex flex-col justify-between" @click="() => { productVariant = variant; productVariantId = variant.id; isUpdateProductVariantOpened = true }">
-        <div class="flex flex-row flex-nowrap gap-2">
-          <Icon :name="icons.galleryItem" class="w-6 h-6 opacity-15 flex-none" />
-
-          <div class="text-md font-medium leading-tight grow-0">
-            {{ variant.name }}
-          </div>
+      <UiActiveCard v-for="variant in product?.variants" :key="variant.id" class="space-y-2 flex flex-col justify-between" @click="() => { productVariant = variant; productVariantId = variant.id; isUpdateProductVariantOpened = true }">
+        <div class="text-lg md:text-base font-medium md:leading-tight text-center">
+          {{ variant.name }}
         </div>
 
-        <div class="py-3 flex flex-row flex-nowrap gap-6 items-center justify-center bg-white rounded-xl">
-          <div class="text-lg font-medium">
+        <div class="flex flex-row flex-nowrap gap-6 items-center justify-center">
+          <div class="text-neutral-500">
             {{ variant.gross }} {{ getCurrencySign(channel?.currencyCode) }}
           </div>
-          <div class="text-md text-neutral-500">
+          <div class="text-neutral-500">
             {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit) }}
           </div>
         </div>
 
-        <div v-if="variant.calories" class="flex flex-row gap-3 justify-center text-neutral-500">
+        <div v-if="variant.calories" class="flex flex-row gap-3 justify-center text-neutral-500 text-sm">
           <div v-if="variant.calories">
             {{ variant.calories }}{{ $t('common.abbreviation.kcal') }}
           </div>
@@ -109,6 +105,7 @@
 
   <CommandCenterModal :title="$t('center.update.product-variant')" :is-opened="isUpdateProductVariantOpened" @close="() => isUpdateProductVariantOpened = false">
     <FormUpdateProductVariant :product-variant-id="productVariantId ?? ''" :product-variant="productVariant" :is-opened="isUpdateProductVariantOpened" @success="() => isUpdateProductVariantOpened = false" />
+    <FormDeleteProductVariant :product-variant-id="productVariantId ?? ''" :is-opened="isUpdateProductVariantOpened" @success="() => isUpdateProductVariantOpened = false" />
   </CommandCenterModal>
 </template>
 
