@@ -6,6 +6,12 @@ export const productCreateSchema = z.object({
   description: z.string().min(0).max(250).optional().default(''),
 })
 
+export const productUpdateSchema = z.object({
+  name: z.string().min(2).max(50).optional(),
+  description: z.string().min(0).max(250).optional(),
+  slug: z.string().min(2).max(50).optional(),
+})
+
 export const productVariantCreateSchema = z.object({
   productId: z.string(),
   name: z.string().min(2).max(50),

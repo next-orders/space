@@ -7,17 +7,23 @@
         {{ product?.name }}
       </h1>
       <p class="text-neutral-500">
-        /{{ product?.slug }}
+        /{{ product?.category.slug }}/{{ product?.slug }}
       </p>
     </div>
 
-    <div class="px-4 py-4 bg-neutral-50 rounded-2xl">
-      <div class="flex items-center space-x-2">
-        <UiSwitch id="product-switch" />
-        <UiLabel for="product-switch">
-          Активен
-        </UiLabel>
+    <div class="flex flex-col md:flex-row gap-4">
+      <div class="px-4 py-4 bg-neutral-50 rounded-2xl">
+        <div class="flex items-center space-x-2">
+          <UiSwitch id="product-switch" />
+          <UiLabel for="product-switch">
+            Активен
+          </UiLabel>
+        </div>
       </div>
+
+      <UiButton @click="isUpdateProductOpened = true">
+        {{ $t('center.edit.title') }}
+      </UiButton>
     </div>
   </div>
 
@@ -52,7 +58,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
       <UiActiveCard v-for="variant in product?.variants" :key="variant.id" class="space-y-2 flex flex-col justify-between" @click="() => { productVariant = variant; productVariantId = variant.id; isUpdateProductVariantOpened = true }">
-        <div class="text-lg md:text-base font-medium md:leading-tight text-center">
+        <div class="text-lg font-medium md:leading-tight text-center">
           {{ variant.name }}
         </div>
 
@@ -99,6 +105,10 @@
     </div>
   </div>
 
+  <CommandCenterModal :title="$t('center.update.product')" :is-opened="isUpdateProductOpened" @close="() => isUpdateProductOpened = false">
+    <FormUpdateProduct :product="product" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
+  </CommandCenterModal>
+
   <CommandCenterModal :title="$t('center.create.product-variant')" :is-opened="isCreateProductVariantOpened" @close="() => isCreateProductVariantOpened = false">
     <FormCreateProductVariant :product-id="product?.id ?? ''" :is-opened="isCreateProductVariantOpened" @success="() => isCreateProductVariantOpened = false" />
   </CommandCenterModal>
@@ -119,6 +129,7 @@ definePageMeta({
   },
 })
 
+const isUpdateProductOpened = ref(false)
 const isCreateProductVariantOpened = ref(false)
 const isUpdateProductVariantOpened = ref(false)
 
@@ -132,6 +143,10 @@ const product = computed(() => products.value?.find((p) => p.id === params.id))
 
 const breadcrumbs = computed(() => [
   { title: t('common.website'), href: '/' },
+  {
+    title: t('center.menu.menu-page'),
+    href: `/command-center/menu/${product.value?.category.menuId}`,
+  },
   {
     title: t('center.menu.product-page'),
     href: '#',

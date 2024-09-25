@@ -127,11 +127,15 @@
     },
     "update": {
       "title": "Update",
+      "product": "Update Product",
       "product-variant": "Update Product Variant"
     },
     "delete": {
       "title": "Delete",
       "product-variant": "Delete Product Variant"
+    },
+    "edit": {
+      "title": "Редактировать"
     }
   },
   "error": {

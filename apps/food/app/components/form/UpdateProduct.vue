@@ -1,7 +1,5 @@
 <template>
   <form class="space-y-3" @submit="onSubmit">
-    <UiFormField :key="useId()" :value="categoryId" hidden name="categoryId" />
-
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>
         <div>
@@ -9,7 +7,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput v-bind="componentField" />
+          <UiInput :key="useId()" :default-value="product?.name" v-bind="componentField" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -21,34 +19,47 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput v-bind="componentField" />
+          <UiInput :key="useId()" :default-value="product?.description" v-bind="componentField" />
+        </UiFormControl>
+      </UiFormItem>
+    </UiFormField>
+
+    <UiFormField v-slot="{ componentField }" name="slug">
+      <UiFormItem>
+        <div>
+          <UiFormLabel>Часть URL</UiFormLabel>
+          <UiFormMessage />
+        </div>
+        <UiFormControl>
+          <UiInput :key="useId()" :default-value="product?.slug" v-bind="componentField" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
 
     <UiButton type="submit" variant="secondary" class="mt-4">
-      {{ $t('center.create.title') }}
+      {{ $t('center.update.title') }}
     </UiButton>
   </form>
 </template>
 
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
-import { productCreateSchema } from '~~/server/core/services/product'
+import { productUpdateSchema } from '~~/server/core/services/product'
 import { useForm } from 'vee-validate'
 import { useToast } from '~/components/ui/toast'
 
-const { isOpened, categoryId } = defineProps<{
+const { isOpened, product } = defineProps<{
   isOpened: boolean
-  categoryId: string
+  product: any
 }>()
 
 const emit = defineEmits(['success'])
 
 const { toast } = useToast()
 const { refresh: refreshChannelData } = await useChannel()
+const { refresh: refreshProducts } = await useProduct()
 
-const formSchema = toTypedSchema(productCreateSchema)
+const formSchema = toTypedSchema(productUpdateSchema)
 
 const { handleSubmit, handleReset } = useForm({
   validationSchema: formSchema,
@@ -63,9 +74,9 @@ watch(
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
   const { data, error } = await useAsyncData(
-    'create-product',
-    () => $fetch('/api/product', {
-      method: 'POST',
+    'update-product',
+    () => $fetch(`/api/product/${product.id}`, {
+      method: 'PATCH',
       body: values,
     }),
   )
@@ -76,10 +87,11 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
   }
 
   if (data.value) {
-    resetForm()
     await refreshChannelData()
+    await refreshProducts()
     emit('success')
-    toast({ title: 'Продукт создан!', description: 'Сейчас обновим данные.' })
+    toast({ title: 'Продукт обновлен!', description: 'Сейчас обновим данные.' })
+    resetForm()
   }
 })
 </script>
