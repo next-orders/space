@@ -1,6 +1,6 @@
 <template>
   <form class="space-y-3" @submit="onSubmit">
-    <UiFormField :key="productId" :value="productId" hidden name="productId" />
+    <UiFormField :key="useId()" :value="productId" hidden name="productId" />
 
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>

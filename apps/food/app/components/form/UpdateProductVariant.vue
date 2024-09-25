@@ -7,7 +7,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput :key="productVariant?.name" :default-value="productVariant?.name" v-bind="componentField" placeholder="25 см, 6 шт, на традиционном тесте, и т.п." />
+          <UiInput :key="useId()" :default-value="productVariant?.name" v-bind="componentField" placeholder="25 см, 6 шт, на традиционном тесте, и т.п." />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -19,7 +19,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput :key="productVariant?.gross" :default-value="productVariant?.gross" v-bind="componentField" type="number" step="any" placeholder="0.00" />
+          <UiInput :key="useId()" :default-value="productVariant?.gross" v-bind="componentField" type="number" step="any" placeholder="0.00" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -32,7 +32,7 @@
             <UiFormMessage />
           </div>
           <UiFormControl>
-            <UiInput :key="productVariant?.weightValue" :default-value="productVariant?.weightValue" v-bind="componentField" type="number" step="any" />
+            <UiInput :key="useId()" :default-value="productVariant?.weightValue" v-bind="componentField" type="number" step="any" />
           </UiFormControl>
         </UiFormItem>
       </UiFormField>
@@ -43,7 +43,7 @@
             <UiFormLabel>Ед. измерения</UiFormLabel>
             <UiFormMessage />
           </div>
-          <UiSelect v-bind="componentField" :key="productVariant?.weightUnit" :default-value="productVariant?.weightUnit">
+          <UiSelect v-bind="componentField" :key="useId()" :default-value="productVariant?.weightUnit">
             <UiFormControl>
               <UiSelectTrigger>
                 <UiSelectValue placeholder="Выберите" />
@@ -75,7 +75,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput :key="productVariant?.calories" :default-value="productVariant?.calories" v-bind="componentField" type="number" step="any" />
+              <UiInput :key="useId()" :default-value="productVariant?.calories" v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -87,7 +87,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput :key="productVariant?.protein" :default-value="productVariant?.protein" v-bind="componentField" type="number" step="any" />
+              <UiInput :key="useId()" :default-value="productVariant?.protein" v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -99,7 +99,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput :key="productVariant?.fat" :default-value="productVariant?.fat" v-bind="componentField" type="number" step="any" />
+              <UiInput :key="useId()" :default-value="productVariant?.fat" v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -111,7 +111,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput :key="productVariant?.carbohydrate" :default-value="productVariant?.carbohydrate" v-bind="componentField" type="number" step="any" />
+              <UiInput :key="useId()" :default-value="productVariant?.carbohydrate" v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>

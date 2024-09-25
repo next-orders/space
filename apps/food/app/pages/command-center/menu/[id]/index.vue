@@ -19,7 +19,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-2">
       <CommandCenterProductCard v-for="product in category.products" :key="product.id" :product-id="product.id" />
 
-      <CommandCenterProductCreateCard @click="async() => { categoryId = category.id; await nextTick(); isCreateProductOpened = true }" />
+      <CommandCenterProductCreateCard @click="() => { categoryId = category.id; isCreateProductOpened = true }" />
     </div>
   </div>
 

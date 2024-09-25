@@ -2,9 +2,10 @@
   <SelectTrigger
     v-bind="forwardedProps"
     :class="cn(
-      'flex h-12 w-full items-center justify-between rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-md ring-offset-white placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:truncate text-start dark:border-neutral-800 dark:bg-neutral-950 dark:ring-offset-neutral-950 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-300',
+      'flex h-12 w-full items-center justify-between rounded-2xl border border-neutral-200 bg-white px-4 py-2 ring-offset-white placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:truncate text-start dark:border-neutral-800 dark:bg-neutral-950 dark:ring-offset-neutral-950 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-300',
       props.class,
     )"
+    data-allow-mismatch
   >
     <slot />
     <SelectIcon as-child>
