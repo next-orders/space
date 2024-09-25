@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <Navigation />
+  <NavigationMain />
 
   <main class="relative w-auto bg-neutral-100 dark:bg-neutral-800 md:pl-72 xl:pr-80 top-16">
     <CommandCenterStaffBar v-if="user?.isStaff" />
