@@ -11,7 +11,7 @@ RUN corepack enable
 
 COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile \
-  && pnpm build --filter @next-orders/food
+&& pnpm build --filter @next-orders/food
 
 ################# App ##############
 

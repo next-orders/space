@@ -58,7 +58,7 @@ You can develop in isolated container with prepared options:
 Make a fork. Or clone this repo and use standard commands:
 
 ```shell
-git clone https://github.com/next-orders/food
+git clone https://github.com/next-orders/space
 pnpm i
 pnpm dev:food
 ```
