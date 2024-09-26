@@ -10,6 +10,7 @@ export const productUpdateSchema = z.object({
   name: z.string().min(2).max(50).optional(),
   description: z.string().min(0).max(250).optional(),
   slug: z.string().min(2).max(50).optional(),
+  isAvailableForPurchase: z.boolean().optional(),
 })
 
 export const productVariantCreateSchema = z.object({

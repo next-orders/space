@@ -107,6 +107,10 @@
     "welcome-message": "We've been waiting for you!",
     "to-website": "To Website",
     "search-label": "Find anything",
+    "product": {
+      "available-for-purchase": "Available for purchase",
+      "not-available-for-purchase": "Not available for purchase"
+    },
     "menu": {
       "dashboard": "Control Panel",
       "menu": "Menu",
@@ -135,7 +139,7 @@
       "product-variant": "Delete Product Variant"
     },
     "edit": {
-      "title": "Редактировать"
+      "title": "Edit"
     }
   },
   "error": {

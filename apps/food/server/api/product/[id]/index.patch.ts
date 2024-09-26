@@ -12,6 +12,7 @@ export default defineEventHandler(async (event) => {
         name: data.name,
         description: data.description,
         slug: data.slug,
+        isAvailableForPurchase: data.isAvailableForPurchase,
       },
     })
 
