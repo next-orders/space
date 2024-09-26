@@ -107,6 +107,10 @@
     "welcome-message": "Мы вас заждались!",
     "to-website": "К веб-сайту",
     "search-label": "Найти что-нибудь",
+    "product": {
+      "available-for-purchase": "Доступен для покупки",
+      "not-available-for-purchase": "Недоступен для покупки"
+    },
     "menu": {
       "dashboard": "Панель управления",
       "menu": "Меню",

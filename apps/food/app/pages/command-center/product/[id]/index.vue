@@ -6,22 +6,15 @@
       <h1 class="mb-1 text-2xl md:text-3xl font-semibold">
         {{ product?.name }}
       </h1>
-      <p class="text-neutral-500">
+      <p class="text-neutral-500 break-words">
         /{{ product?.category.slug }}/{{ product?.slug }}
       </p>
     </div>
 
     <div class="flex flex-col md:flex-row gap-4">
-      <div class="px-4 py-4 bg-neutral-50 rounded-2xl">
-        <div class="flex items-center space-x-2">
-          <UiSwitch id="product-switch" :default-checked="product?.isAvailableForPurchase" @update:checked="() => {}" />
-          <UiLabel for="product-switch">
-            Активен
-          </UiLabel>
-        </div>
-      </div>
+      <FormUpdateProductAvailability :product-id="product?.id ?? ''" :is-available-for-purchase="product?.isAvailableForPurchase ?? false" />
 
-      <UiButton @click="isUpdateProductOpened = true">
+      <UiButton class="min-w-48" click="isUpdateProductOpened = true">
         {{ $t('center.edit.title') }}
       </UiButton>
     </div>
@@ -106,7 +99,7 @@
   </div>
 
   <CommandCenterModal :title="$t('center.update.product')" :is-opened="isUpdateProductOpened" @close="() => isUpdateProductOpened = false">
-    <FormUpdateProduct :product="product" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
+    <FormUpdateProduct :product-id="product?.id ?? ''" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
   </CommandCenterModal>
 
   <CommandCenterModal :title="$t('center.create.product-variant')" :is-opened="isCreateProductVariantOpened" @close="() => isCreateProductVariantOpened = false">

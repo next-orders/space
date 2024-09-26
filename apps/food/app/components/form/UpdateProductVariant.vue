@@ -7,7 +7,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput :key="useId()" :default-value="productVariant?.name" v-bind="componentField" placeholder="25 см, 6 шт, на традиционном тесте, и т.п." />
+          <UiInput v-bind="componentField" placeholder="25 см, 6 шт, на традиционном тесте, и т.п." />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -19,7 +19,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput :key="useId()" :default-value="productVariant?.gross" v-bind="componentField" type="number" step="any" placeholder="0.00" />
+          <UiInput v-bind="componentField" type="number" step="any" placeholder="0.00" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -32,7 +32,7 @@
             <UiFormMessage />
           </div>
           <UiFormControl>
-            <UiInput :key="useId()" :default-value="productVariant?.weightValue" v-bind="componentField" type="number" step="any" />
+            <UiInput v-bind="componentField" type="number" step="any" />
           </UiFormControl>
         </UiFormItem>
       </UiFormField>
@@ -43,7 +43,7 @@
             <UiFormLabel>Ед. измерения</UiFormLabel>
             <UiFormMessage />
           </div>
-          <UiSelect v-bind="componentField" :key="useId()" :default-value="productVariant?.weightUnit">
+          <UiSelect v-bind="componentField">
             <UiFormControl>
               <UiSelectTrigger>
                 <UiSelectValue placeholder="Выберите" />
@@ -75,7 +75,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput :key="useId()" :default-value="productVariant?.calories" v-bind="componentField" type="number" step="any" />
+              <UiInput v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -87,7 +87,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput :key="useId()" :default-value="productVariant?.protein" v-bind="componentField" type="number" step="any" />
+              <UiInput v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -99,7 +99,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput :key="useId()" :default-value="productVariant?.fat" v-bind="componentField" type="number" step="any" />
+              <UiInput v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -111,7 +111,7 @@
               <UiFormMessage />
             </div>
             <UiFormControl>
-              <UiInput :key="useId()" :default-value="productVariant?.carbohydrate" v-bind="componentField" type="number" step="any" />
+              <UiInput v-bind="componentField" type="number" step="any" />
             </UiFormControl>
           </UiFormItem>
         </UiFormField>
@@ -145,7 +145,7 @@ const { refresh: refreshProducts } = await useProduct()
 
 const formSchema = toTypedSchema(productVariantUpdateSchema)
 
-const { handleSubmit, handleReset } = useForm({
+const { handleSubmit, handleReset, setValues } = useForm({
   validationSchema: formSchema,
 })
 
@@ -153,6 +153,16 @@ watch(
   () => isOpened,
   () => {
     handleReset()
+    setValues({
+      name: productVariant?.name,
+      gross: productVariant?.gross,
+      weightValue: productVariant?.weightValue,
+      weightUnit: productVariant?.weightUnit,
+      calories: productVariant?.calories,
+      protein: productVariant?.protein,
+      fat: productVariant?.fat,
+      carbohydrate: productVariant?.carbohydrate,
+    })
   },
 )
 
