@@ -1,7 +1,5 @@
 <template>
   <form class="space-y-3" @submit="onSubmit">
-    <UiFormField :key="useId()" :value="categoryId" hidden name="categoryId" />
-
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>
         <div>
@@ -50,7 +48,7 @@ const { refresh: refreshChannelData } = await useChannel()
 
 const formSchema = toTypedSchema(productCreateSchema)
 
-const { handleSubmit, handleReset } = useForm({
+const { handleSubmit, handleReset, setFieldValue } = useForm({
   validationSchema: formSchema,
 })
 
@@ -58,6 +56,7 @@ watch(
   () => isOpened,
   () => {
     handleReset()
+    setFieldValue('categoryId', categoryId)
   },
 )
 

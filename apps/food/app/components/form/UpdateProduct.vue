@@ -7,7 +7,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput :key="useId()" :default-value="product?.name" v-bind="componentField" />
+          <UiInput v-bind="componentField" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -19,7 +19,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput :key="useId()" :default-value="product?.description" v-bind="componentField" />
+          <UiInput v-bind="componentField" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -31,7 +31,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput :key="useId()" :default-value="product?.slug" v-bind="componentField" />
+          <UiInput v-bind="componentField" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -48,12 +48,14 @@ import { productUpdateSchema } from '~~/server/core/services/product'
 import { useForm } from 'vee-validate'
 import { useToast } from '~/components/ui/toast'
 
-const { isOpened, product } = defineProps<{
+const { isOpened, productId } = defineProps<{
   isOpened: boolean
-  product: any
+  productId: string
 }>()
 
 const emit = defineEmits(['success'])
+const { products } = await useProduct()
+const product = computed(() => products.value?.find((p) => p.id === productId))
 
 const { toast } = useToast()
 const { refresh: refreshChannelData } = await useChannel()
@@ -61,7 +63,7 @@ const { refresh: refreshProducts } = await useProduct()
 
 const formSchema = toTypedSchema(productUpdateSchema)
 
-const { handleSubmit, handleReset } = useForm({
+const { handleSubmit, handleReset, setValues } = useForm({
   validationSchema: formSchema,
 })
 
@@ -69,13 +71,18 @@ watch(
   () => isOpened,
   () => {
     handleReset()
+    setValues({
+      name: product.value?.name,
+      description: product.value?.description,
+      slug: product.value?.slug,
+    })
   },
 )
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
   const { data, error } = await useAsyncData(
     'update-product',
-    () => $fetch(`/api/product/${product.id}`, {
+    () => $fetch(`/api/product/${product.value?.id}`, {
       method: 'PATCH',
       body: values,
     }),

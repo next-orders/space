@@ -106,7 +106,7 @@
   </div>
 
   <CommandCenterModal :title="$t('center.update.product')" :is-opened="isUpdateProductOpened" @close="() => isUpdateProductOpened = false">
-    <FormUpdateProduct :product="product" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
+    <FormUpdateProduct :product-id="product?.id ?? ''" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
   </CommandCenterModal>
 
   <CommandCenterModal :title="$t('center.create.product-variant')" :is-opened="isCreateProductVariantOpened" @close="() => isCreateProductVariantOpened = false">

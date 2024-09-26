@@ -30,5 +30,5 @@
 
 <script setup lang="ts">
 const { icons } = useAppConfig()
-const { isNavbarOpened } = useCommandCenter()
+const { isNavbarOpened } = useApp()
 </script>

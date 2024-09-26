@@ -1,7 +1,5 @@
 <template>
   <form class="space-y-3" @submit="onSubmit">
-    <UiFormField :key="useId()" :value="productId" hidden name="productId" />
-
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>
         <div>
@@ -146,7 +144,7 @@ const { refresh: refreshProducts } = await useProduct()
 
 const formSchema = toTypedSchema(productVariantCreateSchema)
 
-const { handleSubmit, handleReset } = useForm({
+const { handleSubmit, handleReset, setFieldValue } = useForm({
   validationSchema: formSchema,
 })
 
@@ -154,6 +152,7 @@ watch(
   () => isOpened,
   () => {
     handleReset()
+    setFieldValue('productId', productId)
   },
 )
 
