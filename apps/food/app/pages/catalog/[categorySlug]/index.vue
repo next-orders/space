@@ -1,5 +1,5 @@
 <template>
-  <UiBreadcrumb :links="breadcrumbs" />
+  <UiBreadcrumb :links="breadcrumbs" :is-dark-background="true" />
 
   <h1 class="text-3xl font-medium">
     {{ category?.name }}

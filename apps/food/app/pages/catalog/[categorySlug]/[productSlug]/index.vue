@@ -1,5 +1,5 @@
 <template>
-  <UiBreadcrumb :links="breadcrumbs" />
+  <UiBreadcrumb :links="breadcrumbs" :is-dark-background="true" />
 
   <div class="bg-white dark:bg-neutral-600 px-5 py-5 rounded-2xl">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-0 gap-y-4 sm:gap-4">

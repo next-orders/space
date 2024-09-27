@@ -16,7 +16,7 @@
     </nav>
 
     <div class="w-full lg:w-auto mx-auto md:mx-0">
-      <UiButton variant="secondary" class="bg-neutral-200" @click="back()">
+      <UiButton variant="secondary" :class="{ 'bg-neutral-200': isDarkBackground }" @click="back()">
         <div class="flex flex-row gap-2 justify-center items-center">
           <Icon :name="icons.undo" size="20" /> {{ $t('common.return') }}
         </div>
@@ -28,6 +28,7 @@
 <script setup lang="ts">
 const { links } = defineProps<{
   links: { title: string, href: string }[]
+  isDarkBackground?: boolean
 }>()
 
 const { icons } = useAppConfig()

@@ -19,7 +19,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput v-bind="componentField" />
+          <UiTextarea v-bind="componentField" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
