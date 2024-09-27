@@ -14,6 +14,11 @@ export default defineEventHandler(async (event) => {
       permissions: ['MANAGE_PRODUCTS', 'MASTER'],
     },
     {
+      route: '/api/product',
+      method: 'DELETE',
+      permissions: ['MANAGE_PRODUCTS', 'MASTER'],
+    },
+    {
       route: '/api/product/variant',
       method: 'POST',
       permissions: ['MANAGE_PRODUCTS', 'MASTER'],

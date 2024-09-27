@@ -100,6 +100,7 @@
 
   <CommandCenterModal :title="$t('center.update.product')" :is-opened="isUpdateProductOpened" @close="() => isUpdateProductOpened = false">
     <FormUpdateProduct :product-id="product?.id ?? ''" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
+    <FormDeleteProduct :product-id="product?.id ?? ''" :redirect-to="menuPageUrl" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
   </CommandCenterModal>
 
   <CommandCenterModal :title="$t('center.create.product-variant')" :is-opened="isCreateProductVariantOpened" @close="() => isCreateProductVariantOpened = false">
@@ -133,12 +134,13 @@ const { t } = useI18n()
 const { channel } = await useChannel()
 const { products } = await useProduct()
 const product = computed(() => products.value?.find((p) => p.id === params.id))
+const menuPageUrl = `/command-center/menu/${product.value?.category.menuId}`
 
 const breadcrumbs = computed(() => [
   { title: t('common.website'), href: '/' },
   {
     title: t('center.menu.menu-page'),
-    href: `/command-center/menu/${product.value?.category.menuId}`,
+    href: menuPageUrl,
   },
   {
     title: t('center.menu.product-page'),
