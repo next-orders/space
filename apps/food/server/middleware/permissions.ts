@@ -14,6 +14,11 @@ export default defineEventHandler(async (event) => {
       permissions: ['MANAGE_PRODUCTS', 'MASTER'],
     },
     {
+      route: '/api/product',
+      method: 'DELETE',
+      permissions: ['MANAGE_PRODUCTS', 'MASTER'],
+    },
+    {
       route: '/api/product/variant',
       method: 'POST',
       permissions: ['MANAGE_PRODUCTS', 'MASTER'],
@@ -34,8 +39,18 @@ export default defineEventHandler(async (event) => {
       permissions: ['MANAGE_MENUS', 'MASTER'],
     },
     {
+      route: '/api/menu',
+      method: 'PATCH',
+      permissions: ['MANAGE_MENUS', 'MASTER'],
+    },
+    {
       route: '/api/category',
       method: 'POST',
+      permissions: ['MANAGE_MENUS', 'MASTER'],
+    },
+    {
+      route: '/api/category',
+      method: 'PATCH',
       permissions: ['MANAGE_MENUS', 'MASTER'],
     },
   ]

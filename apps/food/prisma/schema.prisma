@@ -30,6 +30,7 @@ model Menu {
   updatedAt  DateTime       @default(now()) @map("updated_at")
   slug       String
   name       String
+  isActive   Boolean        @default(false) @map("is_active")
   channelId  String         @map("channel_id")
   channel    Channel        @relation(fields: [channelId], references: [id])
   categories MenuCategory[]

@@ -6,6 +6,7 @@ export default defineAppConfig({
       light: 'lucide:sun',
     },
     close: 'lucide:x',
+    edit: 'lucide:pencil',
     menu: 'lucide:menu',
     search: 'lucide:search',
     link: 'lucide:link',
@@ -36,5 +37,6 @@ export default defineAppConfig({
     book: 'lucide:book-open-text',
     gallery: 'lucide:gallery-horizontal-end',
     galleryItem: 'lucide:gallery-horizontal',
+    monitorCheck: 'lucide:monitor-check',
   },
 })

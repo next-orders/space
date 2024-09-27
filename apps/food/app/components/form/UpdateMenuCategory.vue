@@ -12,43 +12,35 @@
       </UiFormItem>
     </UiFormField>
 
-    <UiFormField v-slot="{ componentField }" name="description">
-      <UiFormItem>
-        <div>
-          <UiFormLabel>Описание</UiFormLabel>
-          <UiFormMessage />
-        </div>
-        <UiFormControl>
-          <UiTextarea v-bind="componentField" />
-        </UiFormControl>
-      </UiFormItem>
-    </UiFormField>
-
     <UiButton type="submit" variant="secondary" class="mt-4">
-      {{ $t('center.create.title') }}
+      {{ $t('center.update.title') }}
     </UiButton>
   </form>
 </template>
 
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
-import { productCreateSchema } from '~~/server/core/services/product'
+import { menuCategoryUpdateSchema } from '~~/server/core/services/menu'
 import { useForm } from 'vee-validate'
 import { useToast } from '~/components/ui/toast'
 
-const { isOpened, categoryId } = defineProps<{
+const { isOpened, menuId, categoryId } = defineProps<{
   isOpened: boolean
+  menuId: string
   categoryId: string
 }>()
 
 const emit = defineEmits(['success'])
 
 const { toast } = useToast()
-const { refresh: refreshChannelData } = await useChannel()
+const { menus, refresh: refreshChannelData } = await useChannel()
 
-const formSchema = toTypedSchema(productCreateSchema)
+const menu = computed(() => menus.value?.find((menu) => menu.id === menuId))
+const category = computed(() => menu.value?.categories?.find((category) => category.id === categoryId))
 
-const { handleSubmit, handleReset, setFieldValue } = useForm({
+const formSchema = toTypedSchema(menuCategoryUpdateSchema)
+
+const { handleSubmit, handleReset, setValues } = useForm({
   validationSchema: formSchema,
 })
 
@@ -56,15 +48,17 @@ watch(
   () => isOpened,
   () => {
     handleReset()
-    setFieldValue('categoryId', categoryId)
+    setValues({
+      name: category.value?.name,
+    })
   },
 )
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
   const { data, error } = await useAsyncData(
-    'create-product',
-    () => $fetch('/api/product', {
-      method: 'POST',
+    'update-menu-category',
+    () => $fetch(`/api/category/${category.value?.id}`, {
+      method: 'PATCH',
       body: values,
     }),
   )
@@ -78,7 +72,7 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
     resetForm()
     await refreshChannelData()
     emit('success')
-    toast({ title: 'Продукт создан!', description: 'Сейчас обновим данные.' })
+    toast({ title: 'Категория обновлена!', description: 'Сейчас обновим данные.' })
   }
 })
 </script>

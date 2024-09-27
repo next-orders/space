@@ -120,7 +120,9 @@
       "client-page": "Client Page",
       "settings": "Settings",
       "product": "Products",
-      "product-page": "Product Page"
+      "product-page": "Product Page",
+      "is-active": "Is active, displayed on website",
+      "is-not-active": "Is not active, not displayed on website"
     },
     "create": {
       "title": "Create",
@@ -132,7 +134,8 @@
     "update": {
       "title": "Update",
       "product": "Update Product",
-      "product-variant": "Update Product Variant"
+      "product-variant": "Update Product Variant",
+      "menu-category": "Update Menu Category"
     },
     "delete": {
       "title": "Delete",

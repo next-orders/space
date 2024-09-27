@@ -5,7 +5,7 @@
 
   <CommandCenterNavigation />
 
-  <main class="min-h-dvh relative w-auto bg-white dark:bg-neutral-600 top-16 2xl:pl-72">
+  <main class="min-h-dvh relative w-auto bg-white dark:bg-neutral-600 top-16 lg:pl-72">
     <div class="min-h-[75vh] px-4 pb-10 pt-4">
       <slot />
     </div>

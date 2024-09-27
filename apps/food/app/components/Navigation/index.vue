@@ -1,7 +1,7 @@
 <template>
   <nav
     :data-active="isNavbarOpened"
-    class="z-10 w-0 h-[calc(100dvh-64px)] invisible 2xl:visible 2xl:w-72 fixed top-16 data-[active=true]:w-full data-[active=true]:visible md:data-[active=true]:w-72"
+    class="z-10 w-0 h-[calc(100dvh-64px)] invisible lg:visible lg:w-72 fixed top-16 data-[active=true]:w-full data-[active=true]:visible lg:data-[active=true]:w-72"
   >
     <div class="w-full h-full bg-neutral-50 dark:bg-neutral-700 px-4 pt-4 border-r border-neutral-100 dark:border-neutral-500">
       <div class="h-full overflow-y-auto flex flex-col justify-between">
