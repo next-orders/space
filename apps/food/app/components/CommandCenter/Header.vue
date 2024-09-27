@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-neutral-100 dark:border-neutral-500">
-    <div class="mr-2 2xl:hidden flex justify-center items-center justify-items-center h-full hover:scale-110 transition duration-200">
+    <div class="mr-2 lg:hidden flex justify-center items-center justify-items-center h-full hover:scale-110 transition duration-200">
       <button
         aria-label="Close Navigation"
         :data-active="isNavbarOpened"

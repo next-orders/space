@@ -120,7 +120,9 @@
       "client-page": "Client Page",
       "settings": "Settings",
       "product": "Products",
-      "product-page": "Product Page"
+      "product-page": "Product Page",
+      "is-active": "Is active, displayed on website",
+      "is-not-active": "Is not active, not displayed on website"
     },
     "create": {
       "title": "Create",

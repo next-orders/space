@@ -1,6 +1,6 @@
 <template>
   <div class="mb-6 flex flex-row justify-between items-center">
-    <nav class="hidden lg:block">
+    <nav class="hidden md:block">
       <ol class="flex flex-row flex-wrap gap-y-2 items-center">
         <li v-for="link in links" :key="link.title" class="relative max-w-[20rem] after:content-['/'] after:px-1 after:text-lg after:text-neutral-300 dark:after:text-neutral-600 last:after:content-['']">
           <NuxtLink
@@ -15,7 +15,7 @@
       </ol>
     </nav>
 
-    <div class="w-full lg:w-auto mx-auto md:mx-0">
+    <div class="w-full md:w-auto mx-auto md:mx-0">
       <UiButton variant="secondary" :class="{ 'bg-neutral-200': isDarkBackground }" @click="back()">
         <div class="flex flex-row gap-2 justify-center items-center">
           <Icon :name="icons.undo" size="20" /> {{ $t('common.return') }}

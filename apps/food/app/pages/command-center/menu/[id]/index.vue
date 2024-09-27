@@ -6,9 +6,13 @@
       {{ menu?.name }}
     </h1>
 
-    <UiButton class="w-full md:w-fit" @click="isCreateMenuCategoryOpened = true">
-      Добавить категорию
-    </UiButton>
+    <div class="flex flex-col md:flex-row gap-4">
+      <FormUpdateMenuActivity :menu-id="menu?.id ?? ''" :is-active="menu?.isActive ?? false" />
+
+      <UiButton class="w-full md:w-fit" @click="isCreateMenuCategoryOpened = true">
+        Добавить категорию
+      </UiButton>
+    </div>
   </div>
 
   <div v-for="category in menu?.categories" :key="category.id" class="mb-8">

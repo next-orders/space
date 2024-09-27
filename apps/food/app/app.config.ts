@@ -37,5 +37,6 @@ export default defineAppConfig({
     book: 'lucide:book-open-text',
     gallery: 'lucide:gallery-horizontal-end',
     galleryItem: 'lucide:gallery-horizontal',
+    monitorCheck: 'lucide:monitor-check',
   },
 })

@@ -16,6 +16,7 @@ declare global {
     id: string
     createdAt: Date
     updatedAt: Date
+    isActive: boolean
     slug: string
     name: string
     channelId: string
