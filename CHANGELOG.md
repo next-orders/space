@@ -1,7 +1,7 @@
 # Changelog
 
 
-## v0.2.1
+## v0.3.0
 
 
 ### 🚀 Enhancements
