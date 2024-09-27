@@ -14,7 +14,7 @@
     <div class="flex flex-col md:flex-row gap-4">
       <FormUpdateProductAvailability :product-id="product?.id ?? ''" :is-available-for-purchase="product?.isAvailableForPurchase ?? false" />
 
-      <UiButton class="min-w-48" click="isUpdateProductOpened = true">
+      <UiButton class="min-w-48" @click="isUpdateProductOpened = true">
         {{ $t('center.edit.title') }}
       </UiButton>
     </div>
