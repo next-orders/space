@@ -12,9 +12,12 @@
   </div>
 
   <div v-for="category in menu?.categories" :key="category.id" class="mb-8">
-    <h2 class="mb-4 text-2xl lg:text-xl pb-2 border-b border-neutral-100">
-      {{ category.name }}
-    </h2>
+    <div class="mb-4 pb-2 border-b border-neutral-100 flex flex-row gap-3 items-center">
+      <h2 class="text-2xl lg:text-xl">
+        {{ category.name }}
+      </h2>
+      <Icon :name="icons.edit" class="w-5 h-5 text-neutral-500 cursor-pointer" @click="() => { categoryId = category.id; isUpdateMenuCategoryOpened = true }" />
+    </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-2">
       <CommandCenterProductCard v-for="product in category.products" :key="product.id" :product-id="product.id" />
@@ -46,6 +49,10 @@
   <CommandCenterModal :title="$t('center.create.menu-category')" :is-opened="isCreateMenuCategoryOpened" @close="() => isCreateMenuCategoryOpened = false">
     <FormCreateMenuCategory :menu-id="menu?.id ?? ''" :is-opened="isCreateMenuCategoryOpened" @success="() => isCreateMenuCategoryOpened = false" />
   </CommandCenterModal>
+
+  <CommandCenterModal :title="$t('center.update.menu-category')" :is-opened="isUpdateMenuCategoryOpened" @close="() => isUpdateMenuCategoryOpened = false">
+    <FormUpdateMenuCategory :menu-id="menu?.id ?? ''" :category-id="categoryId" :is-opened="isUpdateMenuCategoryOpened" @success="() => isUpdateMenuCategoryOpened = false" />
+  </CommandCenterModal>
 </template>
 
 <script setup lang="ts">
@@ -56,9 +63,11 @@ definePageMeta({
 
 const isCreateProductOpened = ref(false)
 const isCreateMenuCategoryOpened = ref(false)
+const isUpdateMenuCategoryOpened = ref(false)
 
 const { params } = useRoute()
 const { t } = useI18n()
+const { icons } = useAppConfig()
 
 const breadcrumbs = computed(() => [
   { title: t('common.website'), href: '/' },

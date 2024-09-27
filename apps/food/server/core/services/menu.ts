@@ -8,3 +8,7 @@ export const menuCategoryCreateSchema = z.object({
   name: z.string().min(2).max(50),
   menuId: z.string(),
 })
+
+export const menuCategoryUpdateSchema = z.object({
+  name: z.string().min(2).max(50),
+})

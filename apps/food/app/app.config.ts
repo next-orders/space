@@ -6,6 +6,7 @@ export default defineAppConfig({
       light: 'lucide:sun',
     },
     close: 'lucide:x',
+    edit: 'lucide:pencil',
     menu: 'lucide:menu',
     search: 'lucide:search',
     link: 'lucide:link',
