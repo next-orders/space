@@ -49,7 +49,7 @@ const product = computed(() => products.value?.find(({ id }) => id === productId
 const weightValue = product.value?.variants[0]?.weightValue
 const weightUnitLocalized = getWeightLocalizedUnit(product.value?.variants[0]?.weightUnit)
 
-const price = getLocalizedPrice(650)
+const price = getLocalizedPrice(product.value?.variants[0]?.gross)
 const productImageUrl = '/burger-1.jpg'
 
 const categorySlug = categories.value.find(({ id }) => id === product.value?.categoryId)?.slug

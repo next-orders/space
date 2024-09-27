@@ -38,12 +38,10 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 
 ## ☕ How to deploy
 
-You can use latest Docker Image:
+You can use Docker Image:
 
 ```shell
-docker pull ghcr.io/next-orders/food:latest
-
-# or use the specific version
+# use the specific version
 docker pull ghcr.io/next-orders/food:v0.3.0
 ```
 

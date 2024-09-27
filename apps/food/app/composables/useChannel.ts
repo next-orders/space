@@ -4,7 +4,7 @@ export async function useChannel() {
   })
 
   const menus = computed(() => data.value?.menus || [])
-  const activeMenu = computed(() => menus.value[0] || null)
+  const activeMenu = computed(() => menus.value?.find((menu) => menu.isActive) || null)
   const categories = computed(() => activeMenu.value?.categories || [])
 
   return { channel: data, menus, activeMenu, categories, refresh }
