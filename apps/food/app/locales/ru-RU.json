@@ -68,7 +68,12 @@
       "lb": "Фунт"
     },
     "nutrition": {
-      "value-title": "Пищевая ценность на 100 г"
+      "value-title": "Пищевая ценность на 100г",
+      "calories": "Калории",
+      "kcal": "Ккал",
+      "protein": "Белки",
+      "fat": "Жиры",
+      "carbohydrate": "Углеводы"
     }
   },
   "app": {

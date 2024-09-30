@@ -68,7 +68,12 @@
       "lb": "Pound"
     },
     "nutrition": {
-      "value-title": "Nutritional value per 100 g"
+      "value-title": "Nutritional value per 100g",
+      "calories": "Calories",
+      "kcal": "Kcal",
+      "protein": "Protein",
+      "fat": "Fat",
+      "carbohydrate": "Carbs"
     }
   },
   "app": {

@@ -19,7 +19,7 @@
           {{ product?.name }}
         </h1>
         <div class="mt-1 font-normal text-neutral-400">
-          {{ productVariant?.weightValue }}{{ getWeightLocalizedUnit('G') }}
+          {{ productVariant?.weightValue }}{{ getWeightLocalizedUnit(productVariant?.weightUnit) }}
         </div>
 
         <div class="mt-4 flex flex-row gap-6 items-center">
@@ -56,27 +56,35 @@
         <div class="mt-2 px-4 py-4 w-fit flex flex-row gap-4 bg-neutral-100 rounded-2xl">
           <div>
             <div class="font-medium">
-              {{ per100gEnergy }}
+              {{ productVariant?.calories }}
             </div>
-            <div>ккал</div>
+            <div class="lowercase">
+              {{ $t('common.nutrition.kcal') }}
+            </div>
           </div>
           <div>
             <div class="font-medium">
-              {{ per100gProtein }} г
+              {{ productVariant?.protein }}{{ $t('common.abbreviation.g') }}
             </div>
-            <div>белки</div>
+            <div class="lowercase">
+              {{ $t('common.nutrition.protein') }}
+            </div>
           </div>
           <div>
             <div class="font-medium">
-              {{ per100gFat }} г
+              {{ productVariant?.fat }}{{ $t('common.abbreviation.g') }}
             </div>
-            <div>жиры</div>
+            <div class="lowercase">
+              {{ $t('common.nutrition.fat') }}
+            </div>
           </div>
           <div>
             <div class="font-medium">
-              {{ per100gCarbohydrate }} г
+              {{ productVariant?.carbohydrate }}{{ $t('common.abbreviation.g') }}
             </div>
-            <div>углеводы</div>
+            <div class="lowercase">
+              {{ $t('common.nutrition.carbohydrate') }}
+            </div>
           </div>
         </div>
       </div>
@@ -104,6 +112,7 @@ useHead({
 })
 
 const productVariant = computed(() => product.value?.variants[0])
+const isNutritionShown = computed(() => productVariant.value?.calories && productVariant.value?.protein && productVariant.value?.fat && productVariant.value?.carbohydrate)
 
 const inCart = computed(() => {
   return checkout.value?.lines?.find((l) => l.variant.id === productVariant.value?.id)
@@ -119,10 +128,4 @@ const breadcrumbs = computed(() => [
 ])
 
 const productImageUrl = '/burger-1.jpg'
-
-const per100gEnergy = 612
-const per100gProtein = 21.9
-const per100gCarbohydrate = 45.8
-const per100gFat = 29.6
-const isNutritionShown = true
 </script>
