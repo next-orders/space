@@ -1,8 +1,14 @@
 <template>
   <NuxtLink :to="`/command-center/product/${productId}`">
-    <UiActiveCard>
+    <UiActiveCard :class="{ 'opacity-75': isWarning }">
       <div class="flex flex-col justify-between h-full">
         <div class="relative w-full aspect-square">
+          <div class="z-10 absolute top-1 left-1">
+            <div v-if="isWarning" class="px-2 py-1 bg-white rounded-xl">
+              <Icon :name="icons.alert" class="w-8 h-8 text-amber-500" />
+            </div>
+          </div>
+
           <img
             :src="productImageUrl"
             alt=""
@@ -38,8 +44,10 @@ const { productId } = defineProps<{
   productId: string
 }>()
 
+const { icons } = useAppConfig()
 const { channel } = await useChannel()
 const { products } = await useProduct()
 const product = computed(() => products.value?.find(({ id }) => id === productId))
 const productImageUrl = '/burger-1.jpg'
+const isWarning = computed(() => product.value?.variants.length === 0 || !product.value?.isAvailableForPurchase)
 </script>

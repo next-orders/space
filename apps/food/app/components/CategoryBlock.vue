@@ -15,7 +15,7 @@
   <div
     class="mt-4 mb-12 max-w-7xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-2"
   >
-    <ProductCard v-for="product in products" :key="product.id" :product-id="product.id" />
+    <ProductCard v-for="product in categoryProducts" :key="product.id" :product-id="product.id" />
   </div>
 </template>
 
@@ -27,5 +27,5 @@ const { categoryId } = defineProps<{
 const { icons } = useAppConfig()
 const { categories } = await useChannel()
 const category = computed(() => categories.value.find(({ id }) => id === categoryId))
-const products = category.value?.products.splice(0, 6)
+const categoryProducts = computed(() => category.value?.products.filter((p) => p.variants.length > 0).splice(0, 6))
 </script>
