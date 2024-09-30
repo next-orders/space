@@ -6,11 +6,11 @@
     {{ channel?.description }}
   </div>
 
-  <CategoryBlock v-for="category in categories" :key="category.id" :category-id="category.id" />
+  <CategoryBlock v-for="category in categoriesWithProducts" :key="category.id" :category-id="category.id" />
 </template>
 
 <script setup lang="ts">
-const { channel, categories } = await useChannel()
+const { channel, categoriesWithProducts } = await useChannel()
 
 useHead({
   title: channel.value?.name,

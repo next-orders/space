@@ -12,18 +12,16 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  validate: async ({ params }) => {
-    const { error } = await useFetch(`/api/category/slug/${params.categorySlug}`)
-    return error.value === undefined
-  },
-})
-
 const { t } = useI18n()
 const { params } = useRoute()
-const slug = params.categorySlug
 
-const { data: category } = await useFetch(`/api/category/slug/${slug}`)
+const { data: category, error } = await useFetch(`/api/category/slug/${params.categorySlug}`)
+if (error.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Category not found',
+  })
+}
 
 useHead({
   title: category.value?.name,

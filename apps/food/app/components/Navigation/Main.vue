@@ -30,7 +30,7 @@
         </p>
 
         <NavigationButton
-          v-for="category in categories"
+          v-for="category in categoriesWithProducts"
           :key="category.id"
           :link="`/catalog/${category.slug}`"
           :label="category.name"
@@ -49,6 +49,6 @@
 <script setup lang="ts">
 const { isDeliveryInfoModalOpened } = useApp()
 const { icons } = useAppConfig()
-const { channel, categories } = await useChannel()
+const { channel, categoriesWithProducts } = await useChannel()
 const { checkout } = await useCheckout()
 </script>

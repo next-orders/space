@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
   const slug = getRouterParam(event, 'slug')
 
   const activeMenu = await prisma.menu.findFirst({
-    where: { channelId },
+    where: { channelId, isActive: true },
     include: {
       categories: {
         where: { slug },
@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
   if (!activeMenu) {
     throw createError({
       statusCode: 404,
-      statusMessage: 'No menu',
+      statusMessage: 'No active menu',
     })
   }
 
