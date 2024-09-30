@@ -22,6 +22,7 @@ export default defineAppConfig({
     discount: 'lucide:percent',
     delivery: 'lucide:truck',
     info: 'lucide:info',
+    alert: 'lucide:triangle-alert',
     bike: 'lucide:bike',
     undo: 'lucide:undo-2',
     basket: 'lucide:shopping-basket',
