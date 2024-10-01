@@ -1,19 +1,10 @@
 {
-  "name": "Next Orders Space",
+  "name": "NextOrders Space",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
   "workspaceFolder": "/workspaces/next-orders/${localWorkspaceFolderBasename}",
-
-  // Features to add to the dev container. More info: https://containers.dev/features.
-  // "features": {},
-
-  // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "npm i -g pnpm@latest turbo@latest && pnpm i",
-
-  // Configure tool-specific properties.
   "customizations": {
-    // Configure properties specific to VS Code.
     "vscode": {
-      // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
         "bradlc.vscode-tailwindcss",
         "dbaeumer.vscode-eslint",
