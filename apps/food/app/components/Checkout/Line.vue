@@ -2,14 +2,15 @@
   <div class="mb-4 flex flex-row gap-2 items-center justify-between">
     <NuxtLink :to="productUrl">
       <div class="max-w-[16rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200 group">
-        <div class="relative w-12 h-12 md:w-16 md:h-16 aspect-square">
-          <img
+        <div class="relative w-12 h-12 md:w-14 md:h-14 aspect-square">
+          <NuxtPicture
             :src="productImageUrl"
+            :img-attrs="{ class: 'rounded-xl w-full' }"
             alt=""
-            fill
-            sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
-            class="rounded-xl object-cover object-center"
-          >
+            sizes="56px"
+            placeholder
+            loading="lazy"
+          />
         </div>
 
         <div>
@@ -47,6 +48,6 @@ const variant = computed(() => line.value?.variant)
 const product = computed(() => line.value?.variant?.product)
 
 const productUrl = computed(() => `/catalog/${product.value?.category?.slug}/${product.value?.slug}`)
-const productImageUrl = '/burger-1.jpg'
+const productImageUrl = '/burger-2.jpg'
 const price = getLocalizedPrice(line.value?.variant?.gross)
 </script>

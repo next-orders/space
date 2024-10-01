@@ -4,14 +4,13 @@
   <div class="bg-white dark:bg-neutral-600 px-5 py-5 rounded-2xl">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-0 gap-y-4 sm:gap-4">
       <div class="col-span-1 relative w-full aspect-square">
-        <img
+        <NuxtPicture
           :src="productImageUrl"
-          alt=""
-          priority
-          fill
-          sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
-          class="rounded-xl object-cover object-center"
-        >
+          :alt="product?.name"
+          :img-attrs="{ class: 'rounded-xl' }"
+          sizes="420px"
+          placeholder
+        />
       </div>
 
       <div class="col-span-2">
@@ -127,5 +126,5 @@ const breadcrumbs = computed(() => [
   { title: product.value?.name ?? '', href: '#' },
 ])
 
-const productImageUrl = '/burger-1.jpg'
+const productImageUrl = '/burger-2.jpg'
 </script>
