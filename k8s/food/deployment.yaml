@@ -50,7 +50,7 @@ spec:
               ephemeral-storage: 2Gi
             requests:
               cpu: 10m
-              memory: 64Mi
+              memory: 128Mi
               ephemeral-storage: 1Gi
           livenessProbe:
             httpGet:
