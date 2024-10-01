@@ -6,13 +6,14 @@
     <div class="flex flex-col justify-between h-full">
       <div>
         <div class="relative w-full aspect-square">
-          <img
+          <NuxtPicture
             :src="productImageUrl"
-            alt=""
-            fill
-            sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
-            class="rounded-xl object-cover object-center"
-          >
+            :alt="product?.name"
+            :img-attrs="{ class: 'rounded-xl w-full' }"
+            sizes="290px"
+            placeholder
+            loading="lazy"
+          />
         </div>
 
         <div class="mt-2 text-xl font-medium">
@@ -50,7 +51,7 @@ const weightValue = product.value?.variants[0]?.weightValue
 const weightUnitLocalized = getWeightLocalizedUnit(product.value?.variants[0]?.weightUnit)
 
 const price = getLocalizedPrice(product.value?.variants[0]?.gross)
-const productImageUrl = '/burger-1.jpg'
+const productImageUrl = '/burger-2.jpg'
 
 const categorySlug = categories.value.find(({ id }) => id === product.value?.categoryId)?.slug
 const productUrl = `/catalog/${categorySlug}/${product.value?.slug}`

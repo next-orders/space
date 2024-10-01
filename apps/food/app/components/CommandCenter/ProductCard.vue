@@ -9,13 +9,14 @@
             </div>
           </div>
 
-          <img
+          <NuxtPicture
             :src="productImageUrl"
-            alt=""
-            fill
-            sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
-            class="rounded-xl object-cover object-center"
-          >
+            :alt="product?.name"
+            :img-attrs="{ class: 'rounded-xl w-full' }"
+            sizes="290px"
+            placeholder
+            loading="lazy"
+          />
         </div>
 
         <div class="h-full flex flex-col justify-between">
@@ -48,6 +49,6 @@ const { icons } = useAppConfig()
 const { channel } = await useChannel()
 const { products } = await useProduct()
 const product = computed(() => products.value?.find(({ id }) => id === productId))
-const productImageUrl = '/burger-1.jpg'
+const productImageUrl = '/burger-2.jpg'
 const isWarning = computed(() => product.value?.variants.length === 0 || !product.value?.isAvailableForPurchase)
 </script>

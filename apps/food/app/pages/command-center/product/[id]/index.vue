@@ -22,13 +22,13 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl">
     <div class="relative w-full aspect-square">
-      <img
+      <NuxtPicture
         :src="productImageUrl"
-        alt=""
-        fill
-        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
-        class="rounded-xl object-cover object-center"
-      >
+        :alt="product?.name"
+        :img-attrs="{ class: 'rounded-xl w-full' }"
+        sizes="420px"
+        placeholder
+      />
     </div>
 
     <div class="md:col-span-2">
@@ -150,5 +150,5 @@ const breadcrumbs = computed(() => [
 
 const productVariantId = ref('')
 const productVariant = ref()
-const productImageUrl = '/burger-1.jpg'
+const productImageUrl = '/burger-2.jpg'
 </script>

@@ -36,6 +36,9 @@ export default defineNuxtConfig({
       projectUrl: 'https://github.com/next-orders/space',
     },
   },
+  image: {
+    quality: 75,
+  },
   i18n: {
     locales: [
       { code: 'ru', name: 'Русский', file: 'ru-RU.json' },
@@ -58,6 +61,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
     '@nuxt/icon',
+    '@nuxt/image',
   ],
   compatibilityDate: '2024-08-18',
 })
