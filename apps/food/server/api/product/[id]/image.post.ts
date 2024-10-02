@@ -61,10 +61,23 @@ export default defineEventHandler(async (event) => {
     }
 
     await prisma.media.create({
-      data: {
-        id: mediaId,
-      },
+      data: { id: mediaId },
     })
+
+    const product = await prisma.product.findFirst({
+      where: { id },
+    })
+    if (product?.mediaId) {
+      // Remove old images
+      for (const size of IMAGE_SIZES) {
+        await useStorage('fileSystem').removeItem(`${product?.mediaId}/${size}.jpg`)
+        await useStorage('fileSystem').removeItem(`${product?.mediaId}/${size}.webp`)
+      }
+
+      await prisma.media.delete({
+        where: { id: product.mediaId },
+      })
+    }
 
     await prisma.product.update({
       where: { id },
