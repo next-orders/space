@@ -24,6 +24,14 @@ model Channel {
   @@map("channel")
 }
 
+model Media {
+  id        String   @id
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+
+  @@map("media")
+}
+
 model Menu {
   id         String         @id
   createdAt  DateTime       @default(now()) @map("created_at")
@@ -63,6 +71,7 @@ model Product {
   channel                Channel          @relation(fields: [channelId], references: [id])
   categoryId             String           @map("category_id")
   category               MenuCategory     @relation(fields: [categoryId], references: [id])
+  mediaId                String?          @map("media_id")
   variants               ProductVariant[]
 
   @@map("product")

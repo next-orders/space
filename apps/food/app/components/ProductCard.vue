@@ -6,18 +6,11 @@
     <div class="flex flex-col justify-between h-full">
       <div>
         <div class="relative w-full aspect-square">
-          <NuxtPicture
-            :src="productImageUrl"
-            :alt="product?.name"
-            :img-attrs="{ class: 'rounded-xl w-full' }"
-            sizes="290px"
-            placeholder
-            loading="lazy"
-          />
+          <ProductImage :id="product?.mediaId" />
         </div>
 
         <div class="mt-2 text-xl font-medium">
-          {{ price }}<span class="pl-1 text-lg">{{ getCurrencySign(channel?.currencyCode) }}</span>
+          {{ getLocalizedPrice(product?.variants[0]?.gross) }}<span class="pl-1 text-lg">{{ getCurrencySign(channel?.currencyCode) }}</span>
         </div>
         <p class="font-normal leading-tight line-clamp-2">
           {{ product?.name }}
@@ -49,9 +42,6 @@ const product = computed(() => products.value?.find(({ id }) => id === productId
 
 const weightValue = product.value?.variants[0]?.weightValue
 const weightUnitLocalized = getWeightLocalizedUnit(product.value?.variants[0]?.weightUnit)
-
-const price = getLocalizedPrice(product.value?.variants[0]?.gross)
-const productImageUrl = '/burger-2.jpg'
 
 const categorySlug = categories.value.find(({ id }) => id === product.value?.categoryId)?.slug
 const productUrl = `/catalog/${categorySlug}/${product.value?.slug}`

@@ -139,6 +139,7 @@
     "update": {
       "title": "Update",
       "product": "Update Product",
+      "product-photo": "Update Product photo",
       "product-variant": "Update Product Variant",
       "menu-category": "Update Menu Category"
     },
@@ -148,6 +149,9 @@
     },
     "edit": {
       "title": "Edit"
+    },
+    "upload": {
+      "title": "Upload"
     }
   },
   "error": {

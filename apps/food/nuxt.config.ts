@@ -9,6 +9,11 @@ export default defineNuxtConfig({
     optimizeDeps: {
       exclude: ['vee-validate'],
     },
+    build: {
+      rollupOptions: {
+        external: ['sharp'],
+      },
+    },
   },
   devtools: { enabled: true, componentInspector: false },
   devServer: {
@@ -36,9 +41,6 @@ export default defineNuxtConfig({
       projectUrl: 'https://github.com/next-orders/space',
     },
   },
-  image: {
-    quality: 75,
-  },
   i18n: {
     locales: [
       { code: 'ru', name: 'Русский', file: 'ru-RU.json' },
@@ -52,6 +54,17 @@ export default defineNuxtConfig({
       alwaysRedirect: true,
     },
   },
+  routeRules: {
+    '/api/file/*': { prerender: false },
+  },
+  nitro: {
+    storage: {
+      fileSystem: {
+        driver: 'fs',
+        base: './.storage',
+      },
+    },
+  },
   modules: [
     '@vueuse/nuxt',
     '@nuxtjs/device',
@@ -61,7 +74,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
     '@nuxt/icon',
-    '@nuxt/image',
   ],
   compatibilityDate: '2024-08-18',
 })

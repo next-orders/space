@@ -7,6 +7,7 @@ export default defineAppConfig({
     },
     close: 'lucide:x',
     edit: 'lucide:pencil',
+    editImage: 'lucide:image-down',
     menu: 'lucide:menu',
     search: 'lucide:search',
     link: 'lucide:link',
