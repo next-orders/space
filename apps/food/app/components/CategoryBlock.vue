@@ -27,5 +27,5 @@ const { categoryId } = defineProps<{
 const { icons } = useAppConfig()
 const { categories } = await useChannel()
 const category = computed(() => categories.value.find(({ id }) => id === categoryId))
-const categoryProducts = computed(() => category.value?.products.filter((p) => p.variants.length > 0).splice(0, 6))
+const categoryProducts = computed(() => category.value?.products.filter((p) => p.variants.length > 0).splice(0, 8))
 </script>
