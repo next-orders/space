@@ -61,7 +61,7 @@ export default defineNuxtConfig({
     storage: {
       fileSystem: {
         driver: 'fs',
-        base: '.storage',
+        base: '/.storage',
       },
     },
   },
