@@ -21,6 +21,10 @@ spec:
         runAsUser: 1001
       imagePullSecrets:
         - name: ghcr-login-secret
+      volumes:
+        - name: food-persistent-storage
+          persistentVolumeClaim:
+            claimName: food-pv-claim
       containers:
         - name: food
           image: ghcr.io/next-orders/food:nightly
@@ -43,6 +47,9 @@ spec:
                 secretKeyRef:
                   name: food.env
                   key: NUXT_SESSION_PASSWORD
+          volumeMounts:
+            - name: food-persistent-storage
+              mountPath: "/app/.storage"
           resources:
             limits:
               cpu: 250m
@@ -50,7 +57,7 @@ spec:
               ephemeral-storage: 2Gi
             requests:
               cpu: 10m
-              memory: 64Mi
+              memory: 128Mi
               ephemeral-storage: 1Gi
           livenessProbe:
             httpGet:

@@ -12,6 +12,12 @@ declare global {
 
   type CurrencyCode = 'USD' | 'EUR' | 'RUB'
 
+  interface Media {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+  }
+
   interface Menu {
     id: string
     createdAt: Date
@@ -53,6 +59,7 @@ declare global {
     isAvailableForPurchase: boolean
     channelId: string
     categoryId: string
+    mediaId: string | null
     variants: ProductVariant[]
   }
 

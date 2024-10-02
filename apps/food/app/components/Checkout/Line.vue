@@ -3,14 +3,7 @@
     <NuxtLink :to="productUrl">
       <div class="max-w-[16rem] flex flex-row gap-2 flex-nowrap items-center cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200 group">
         <div class="relative w-12 h-12 md:w-14 md:h-14 aspect-square">
-          <NuxtPicture
-            :src="productImageUrl"
-            :img-attrs="{ class: 'rounded-xl w-full' }"
-            alt=""
-            sizes="56px"
-            placeholder
-            loading="lazy"
-          />
+          <ProductImage :id="line?.variant?.product?.mediaId" />
         </div>
 
         <div>
@@ -31,7 +24,7 @@
     </div>
 
     <div class="min-w-[3rem] ml-0 md:ml-4 text-base md:text-lg text-right tracking-tight">
-      {{ price }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode) }}</span>
+      {{ getLocalizedPrice(line?.variant?.gross) }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode) }}</span>
     </div>
   </div>
 </template>
@@ -46,8 +39,5 @@ const { checkout } = await useCheckout()
 const line = computed(() => checkout.value?.lines?.find((l) => l.id === lineId))
 const variant = computed(() => line.value?.variant)
 const product = computed(() => line.value?.variant?.product)
-
 const productUrl = computed(() => `/catalog/${product.value?.category?.slug}/${product.value?.slug}`)
-const productImageUrl = '/burger-2.jpg'
-const price = getLocalizedPrice(line.value?.variant?.gross)
 </script>

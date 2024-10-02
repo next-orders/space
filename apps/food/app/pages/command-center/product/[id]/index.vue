@@ -22,13 +22,11 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl">
     <div class="relative w-full aspect-square">
-      <NuxtPicture
-        :src="productImageUrl"
-        :alt="product?.name"
-        :img-attrs="{ class: 'rounded-xl w-full' }"
-        sizes="420px"
-        placeholder
-      />
+      <ProductImage :id="product?.mediaId" :lazy="false" />
+
+      <UiButton variant="secondary" class="absolute flex justify-center items-center w-18 top-2 left-2" @click="isUploadProductImageOpened = true">
+        <Icon :name="icons.editImage" class="w-6 h-6" />
+      </UiButton>
     </div>
 
     <div class="md:col-span-2">
@@ -98,6 +96,10 @@
     </div>
   </div>
 
+  <CommandCenterModal :title="$t('center.update.product-photo')" :is-opened="isUploadProductImageOpened" @close="() => isUploadProductImageOpened = false">
+    <FormUploadProductImage :product-id="product?.id ?? ''" :is-opened="isUploadProductImageOpened" @success="() => isUploadProductImageOpened = false" />
+  </CommandCenterModal>
+
   <CommandCenterModal :title="$t('center.update.product')" :is-opened="isUpdateProductOpened" @close="() => isUpdateProductOpened = false">
     <FormUpdateProduct :product-id="product?.id ?? ''" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
     <FormDeleteProduct :product-id="product?.id ?? ''" :redirect-to="menuPageUrl" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
@@ -123,6 +125,7 @@ definePageMeta({
   },
 })
 
+const isUploadProductImageOpened = ref(false)
 const isUpdateProductOpened = ref(false)
 const isCreateProductVariantOpened = ref(false)
 const isUpdateProductVariantOpened = ref(false)
@@ -150,5 +153,4 @@ const breadcrumbs = computed(() => [
 
 const productVariantId = ref('')
 const productVariant = ref()
-const productImageUrl = '/burger-2.jpg'
 </script>
