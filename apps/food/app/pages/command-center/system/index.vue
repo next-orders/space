@@ -23,6 +23,10 @@
       </div>
     </UiActiveCard>
   </div>
+
+  <CommandCenterModal :title="$t('center.create.warehouse')" :is-opened="isCreateWarehouseOpened" @close="() => isCreateWarehouseOpened = false">
+    <FormCreateWarehouse :is-opened="isCreateWarehouseOpened" @success="() => isCreateWarehouseOpened = false" />
+  </CommandCenterModal>
 </template>
 
 <script setup lang="ts">

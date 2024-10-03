@@ -137,7 +137,8 @@
       "product": "Create new Product",
       "product-variant": "Create new Product Variant",
       "menu": "Create new Menu",
-      "menu-category": "Create new Menu Category"
+      "menu-category": "Create new Menu Category",
+      "warehouse": "Create new Warehouse"
     },
     "update": {
       "title": "Update",
