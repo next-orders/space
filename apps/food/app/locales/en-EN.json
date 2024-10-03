@@ -121,7 +121,7 @@
     },
     "menu": {
       "dashboard": "Control Panel",
-      "menu": "Menu",
+      "title": "Menu",
       "menu-page": "Menu Page",
       "checkouts": "Checkouts",
       "clients": "Clients",
@@ -137,14 +137,16 @@
       "product": "Create new Product",
       "product-variant": "Create new Product Variant",
       "menu": "Create new Menu",
-      "menu-category": "Create new Menu Category"
+      "menu-category": "Create new Menu Category",
+      "warehouse": "Create new Warehouse"
     },
     "update": {
       "title": "Update",
       "product": "Update Product",
       "product-photo": "Update Product photo",
       "product-variant": "Update Product Variant",
-      "menu-category": "Update Menu Category"
+      "menu-category": "Update Menu Category",
+      "warehouse": "Update Warehouse"
     },
     "delete": {
       "title": "Delete",

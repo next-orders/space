@@ -76,7 +76,7 @@ const { icons } = useAppConfig()
 const breadcrumbs = computed(() => [
   { title: t('common.website'), href: '/' },
   {
-    title: t('center.menu.menu'),
+    title: t('center.menu.title'),
     href: '/command-center/menu',
   },
   {

@@ -1,6 +1,12 @@
 <template>
   <UiBreadcrumb :links="breadcrumbs" />
 
+  <div class="mb-4 flex flex-col md:flex-row justify-between md:items-center gap-2">
+    <h1 class="text-2xl md:text-3xl font-semibold">
+      {{ t('center.menu.title') }}
+    </h1>
+  </div>
+
   <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-2">
     <CommandCenterMenuCard v-for="menu in menus" :key="menu.id" :menu-id="menu.id" />
 
@@ -40,7 +46,7 @@ const { t } = useI18n()
 const breadcrumbs = computed(() => [
   { title: t('common.website'), href: '/' },
   {
-    title: t('center.menu.menu'),
+    title: t('center.menu.title'),
     href: '#',
   },
 ])

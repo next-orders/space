@@ -49,7 +49,7 @@ const menu = computed(() => [
     icon: icons.dashboard,
   },
   {
-    label: t('center.menu.menu'),
+    label: t('center.menu.title'),
     link: '/command-center/menu',
     icon: icons.list,
   },

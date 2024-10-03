@@ -128,7 +128,7 @@ declare global {
     userId: string
   }
 
-  type PermissionCode = 'MASTER' | 'MANAGE_OPTIONS' | 'MANAGE_MENUS' | 'MANAGE_PRODUCTS' | 'MANAGE_CHECKOUTS' | 'MANAGE_CLIENTS'
+  type PermissionCode = 'MASTER' | 'MANAGE_OPTIONS' | 'MANAGE_MENUS' | 'MANAGE_PRODUCTS' | 'MANAGE_CHECKOUTS' | 'MANAGE_CLIENTS' | 'MANAGE_WAREHOUSES'
 
   interface UserCredentials {
     id: string
@@ -137,6 +137,15 @@ declare global {
     login: string
     passwordHash: string
     userId: string
+  }
+
+  interface Warehouse {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    name: string
+    address: string
+    channelId: string
   }
 }
 

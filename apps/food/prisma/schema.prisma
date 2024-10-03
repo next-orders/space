@@ -8,18 +8,19 @@ datasource db {
 }
 
 model Channel {
-  id           String     @id
-  createdAt    DateTime   @default(now()) @map("created_at")
-  updatedAt    DateTime   @default(now()) @map("updated_at")
+  id           String      @id
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @default(now()) @map("updated_at")
   slug         String
   name         String
   description  String?
-  currencyCode String     @map("currency_code")
-  isActive     Boolean    @default(true) @map("is_active")
+  currencyCode String      @map("currency_code")
+  isActive     Boolean     @default(true) @map("is_active")
   menus        Menu[]
   products     Product[]
   checkouts    Checkout[]
   users        User[]
+  warehouses   Warehouse[]
 
   @@map("channel")
 }
@@ -168,4 +169,16 @@ model UserCredentials {
   user         User     @relation(fields: [userId], references: [id])
 
   @@map("user_credentials")
+}
+
+model Warehouse {
+  id        String   @id
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  name      String
+  address   String
+  channelId String   @map("channel_id")
+  channel   Channel  @relation(fields: [channelId], references: [id])
+
+  @@map("warehouse")
 }
