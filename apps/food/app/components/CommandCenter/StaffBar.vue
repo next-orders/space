@@ -2,14 +2,18 @@
   <div class="relative px-4 pt-4 pb-2">
     <div class="bg-white dark:bg-neutral-600 p-4 flex justify-between items-center rounded-2xl">
       <p class="grow text-lg">
-        Привет, Админ!
+        {{ $t('common.hello') }}, {{ user?.name ?? $t('common.colleague') }}!
       </p>
 
       <NuxtLink to="/command-center">
         <UiButton>
-          Продолжить работу
+          {{ $t('common.continue-working') }}
         </UiButton>
       </NuxtLink>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const { user } = useUserSession()
+</script>

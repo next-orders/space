@@ -43,13 +43,8 @@ watch(
 
 const onSubmit = handleSubmit(async (_, { resetForm }) => {
   const { data, error } = await useAsyncData(
-    'update-menu',
-    () => $fetch(`/api/menu/${menuId}`, {
-      method: 'PATCH',
-      body: {
-        isActive: !isActive,
-      },
-    }),
+    'update-menu-activity',
+    () => $fetch(`/api/menu/${menuId}/activity`, { method: 'POST' }),
   )
 
   if (error.value) {
