@@ -138,6 +138,15 @@ declare global {
     passwordHash: string
     userId: string
   }
+
+  interface Warehouse {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    name: string
+    address: string
+    channelId: string
+  }
 }
 
 export {}

@@ -121,7 +121,7 @@
     },
     "menu": {
       "dashboard": "Control Panel",
-      "menu": "Menu",
+      "title": "Menu",
       "menu-page": "Menu Page",
       "checkouts": "Checkouts",
       "clients": "Clients",
