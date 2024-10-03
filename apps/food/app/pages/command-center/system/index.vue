@@ -14,7 +14,7 @@
   </div>
 
   <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-2">
-    <UiActiveCard v-for="warehouse in channel?.warehouses" :key="warehouse.id">
+    <UiActiveCard v-for="warehouse in channel?.warehouses" :key="warehouse.id" @click="() => { warehouseId = warehouse.id; isUpdateWarehouseOpened = true }">
       <div class="text-xl font-semibold">
         {{ warehouse.name }}
       </div>
@@ -26,6 +26,10 @@
 
   <CommandCenterModal :title="$t('center.create.warehouse')" :is-opened="isCreateWarehouseOpened" @close="() => isCreateWarehouseOpened = false">
     <FormCreateWarehouse :is-opened="isCreateWarehouseOpened" @success="() => isCreateWarehouseOpened = false" />
+  </CommandCenterModal>
+
+  <CommandCenterModal :title="$t('center.update.warehouse')" :is-opened="isUpdateWarehouseOpened" @close="() => isUpdateWarehouseOpened = false">
+    <FormUpdateWarehouse :warehouse-id="warehouseId" :is-opened="isUpdateWarehouseOpened" @success="() => isUpdateWarehouseOpened = false" />
   </CommandCenterModal>
 </template>
 
@@ -46,5 +50,7 @@ const breadcrumbs = computed(() => [
   },
 ])
 
+const warehouseId = ref('')
 const isCreateWarehouseOpened = ref(false)
+const isUpdateWarehouseOpened = ref(false)
 </script>

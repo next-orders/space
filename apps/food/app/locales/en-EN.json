@@ -145,7 +145,8 @@
       "product": "Update Product",
       "product-photo": "Update Product photo",
       "product-variant": "Update Product Variant",
-      "menu-category": "Update Menu Category"
+      "menu-category": "Update Menu Category",
+      "warehouse": "Update Warehouse"
     },
     "delete": {
       "title": "Delete",

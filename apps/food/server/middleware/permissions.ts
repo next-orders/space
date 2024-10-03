@@ -58,6 +58,11 @@ export default defineEventHandler(async (event) => {
       method: 'POST',
       permissions: ['MANAGE_WAREHOUSES', 'MASTER'],
     },
+    {
+      route: '/api/warehouse',
+      method: 'PATCH',
+      permissions: ['MANAGE_WAREHOUSES', 'MASTER'],
+    },
   ]
 
   for (const route of routesWithRequiredPermissions) {
