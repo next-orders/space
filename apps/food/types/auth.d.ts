@@ -2,6 +2,7 @@ declare module '#auth-utils' {
   interface User {
     id: string
     isStaff: boolean
+    name: string | null
     permissions: PermissionCode[]
   }
 

@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
       user: {
         id: createId(),
         isStaff: false,
+        name: null,
         permissions: [],
       },
     })

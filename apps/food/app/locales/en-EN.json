@@ -34,6 +34,9 @@
         "dark": "Switch to Dark Mode"
       }
     },
+    "colleague": "Colleague",
+    "continue-working": "Continue working",
+    "hello": "Hello",
     "sign-in": "Sign in",
     "sign-out": "Sign out",
     "login": "Login",

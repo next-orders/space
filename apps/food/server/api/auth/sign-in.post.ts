@@ -38,6 +38,7 @@ export default defineEventHandler(async (event) => {
       user: {
         id: user.id,
         isStaff: user.isStaff,
+        name: user.name,
         permissions: user.permissions.map((permission) => permission.code) as PermissionCode[],
       },
     })

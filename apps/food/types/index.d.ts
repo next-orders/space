@@ -112,6 +112,7 @@ declare global {
     id: string
     createdAt: Date
     updatedAt: Date
+    name: string | null
     email: string | null
     isActive: boolean
     isConfirmed: boolean

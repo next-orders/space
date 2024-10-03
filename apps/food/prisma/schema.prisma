@@ -137,6 +137,7 @@ model User {
   isActive    Boolean           @default(true) @map("is_active")
   isConfirmed Boolean           @default(false) @map("is_confirmed")
   isStaff     Boolean           @default(false) @map("is_staff")
+  name        String?
   email       String?
   channelId   String            @map("channel_id")
   channel     Channel           @relation(fields: [channelId], references: [id])

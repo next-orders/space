@@ -27,7 +27,7 @@
         >
         <div>
           <p class="font-semibold text-lg">
-            Админ
+            {{ user?.name ?? $t('common.colleague') }}
           </p>
           <button @click="signOut">
             {{ $t('common.sign-out') }}
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-const { clear, fetch: refreshSession } = useUserSession()
+const { user, clear, fetch: refreshSession } = useUserSession()
 const { icons } = useAppConfig()
 const { t } = useI18n()
 const menu = computed(() => [

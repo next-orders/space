@@ -1,4 +1,6 @@
 <template>
+  <MaintenanceMessage v-if="channel?.isActive === false || !activeMenu" />
+
   <h1 class="mb-2 text-3xl font-medium">
     {{ channel?.name }}
   </h1>
@@ -10,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-const { channel, categoriesWithProducts } = await useChannel()
+const { channel, categoriesWithProducts, activeMenu } = await useChannel()
 
 useHead({
   title: channel.value?.name,
