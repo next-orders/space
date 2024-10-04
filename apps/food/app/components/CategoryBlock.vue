@@ -15,13 +15,14 @@
   <div
     class="mt-4 mb-12 max-w-7xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-2"
   >
-    <ProductCard v-for="product in categoryProducts" :key="product.id" :product-id="product.id" />
+    <ProductCard v-for="product in categoryProducts" :key="product.id" :product-id="product.id" :lazy="!isFirst" />
   </div>
 </template>
 
 <script setup lang="ts">
 const { categoryId } = defineProps<{
   categoryId: string
+  isFirst?: boolean
 }>()
 
 const { icons } = useAppConfig()
