@@ -1,5 +1,5 @@
 <template>
-  <div class="relative px-4 pt-4 pb-2">
+  <div class="relative px-4 pt-4 pb-2 max-w-7xl">
     <div class="bg-white dark:bg-neutral-600 p-4 flex justify-between items-center rounded-2xl">
       <p class="grow text-lg">
         {{ $t('common.hello') }}, {{ user?.name ?? $t('common.colleague') }}!
