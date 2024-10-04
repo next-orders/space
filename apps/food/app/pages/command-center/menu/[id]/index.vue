@@ -10,7 +10,7 @@
       <FormUpdateMenuActivity :menu-id="menu?.id ?? ''" :is-active="menu?.isActive ?? false" />
 
       <UiButton class="w-full md:w-fit" @click="isCreateMenuCategoryOpened = true">
-        Добавить категорию
+        {{ t('center.add.menu-category') }}
       </UiButton>
     </div>
   </div>
@@ -25,7 +25,6 @@
 
     <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-2">
       <CommandCenterProductCard v-for="product in category.products" :key="product.id" :product-id="product.id" />
-
       <CommandCenterProductCreateCard @click="() => { categoryId = category.id; isCreateProductOpened = true }" />
     </div>
   </div>

@@ -54,6 +54,11 @@ const menu = computed(() => [
     icon: icons.list,
   },
   {
+    label: t('center.menu.warehouses'),
+    link: '/command-center/warehouse',
+    icon: icons.mapPinWarehouse,
+  },
+  {
     label: t('center.menu.checkouts'),
     link: '/command-center/checkout',
     icon: icons.checkouts,

@@ -19,8 +19,6 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         runAsUser: 1001
-      imagePullSecrets:
-        - name: ghcr-login-secret
       volumes:
         - name: food-persistent-storage
           persistentVolumeClaim:

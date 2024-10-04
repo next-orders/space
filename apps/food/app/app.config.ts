@@ -40,5 +40,7 @@ export default defineAppConfig({
     gallery: 'lucide:gallery-horizontal-end',
     galleryItem: 'lucide:gallery-horizontal',
     monitorCheck: 'lucide:monitor-check',
+    house: 'lucide:house',
+    mapPinWarehouse: 'lucide:map-pin-house',
   },
 })
