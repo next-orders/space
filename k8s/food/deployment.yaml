@@ -61,8 +61,9 @@ spec:
             httpGet:
               port: 3000
               path: "/api/health"
-            initialDelaySeconds: 20
-            periodSeconds: 30
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 10
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: false
