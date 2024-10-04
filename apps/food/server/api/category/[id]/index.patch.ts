@@ -10,6 +10,7 @@ export default defineEventHandler(async (event) => {
       where: { id },
       data: {
         name: data.name,
+        slug: data.slug,
       },
     })
 

@@ -16,4 +16,5 @@ export const menuCategoryCreateSchema = z.object({
 
 export const menuCategoryUpdateSchema = z.object({
   name: z.string().min(2).max(50).optional(),
+  slug: z.string().min(2).max(50).optional(),
 })
