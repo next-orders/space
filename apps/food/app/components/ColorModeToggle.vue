@@ -5,7 +5,7 @@
     </UiButton>
 
     <template #fallback>
-      <div class="w-8 h-8" />
+      <div class="w-full h-8" />
     </template>
   </ClientOnly>
 </template>

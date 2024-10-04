@@ -1,6 +1,12 @@
 export async function useChannel() {
+  const nuxtApp = useNuxtApp()
+
   const { data, refresh } = await useFetch('/api/channel', {
     key: 'channel',
+    watch: false,
+    getCachedData(key) {
+      return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+    },
   })
 
   const menus = computed(() => data.value?.menus || [])

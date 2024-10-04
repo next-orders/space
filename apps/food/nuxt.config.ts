@@ -15,7 +15,10 @@ export default defineNuxtConfig({
       },
     },
   },
-  devtools: { enabled: true, componentInspector: false },
+  devtools: {
+    enabled: true,
+    componentInspector: false,
+  },
   devServer: {
     host: '0.0.0.0',
     port: 4200,

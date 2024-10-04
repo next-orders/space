@@ -127,6 +127,7 @@
       "clients": "Clients",
       "client-page": "Client Page",
       "settings": "Settings",
+      "warehouses": "Warehouses",
       "product": "Products",
       "product-page": "Product Page",
       "is-active": "Is active, displayed on website",
@@ -139,6 +140,9 @@
       "menu": "Create new Menu",
       "menu-category": "Create new Menu Category",
       "warehouse": "Create new Warehouse"
+    },
+    "add": {
+      "menu-category": "Add Category"
     },
     "update": {
       "title": "Update",

@@ -7,9 +7,8 @@
     </h1>
   </div>
 
-  <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-2">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
     <CommandCenterMenuCard v-for="menu in menus" :key="menu.id" :menu-id="menu.id" />
-
     <CommandCenterMenuCreateCard @click="isModalOpened = true" />
   </div>
 
