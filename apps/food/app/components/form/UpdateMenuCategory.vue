@@ -12,6 +12,18 @@
       </UiFormItem>
     </UiFormField>
 
+    <UiFormField v-slot="{ componentField }" name="slug">
+      <UiFormItem>
+        <div>
+          <UiFormLabel>Часть URL</UiFormLabel>
+          <UiFormMessage />
+        </div>
+        <UiFormControl>
+          <UiInput v-bind="componentField" />
+        </UiFormControl>
+      </UiFormItem>
+    </UiFormField>
+
     <UiButton type="submit" variant="secondary" class="mt-4">
       {{ $t('center.update.title') }}
     </UiButton>
@@ -50,6 +62,7 @@ watch(
     handleReset()
     setValues({
       name: category.value?.name,
+      slug: category.value?.slug,
     })
   },
 )

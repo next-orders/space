@@ -2,6 +2,12 @@
   "name": "@next-orders/space",
   "version": "0.3.0",
   "packageManager": "pnpm@9.11.0",
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": ["linux", "darwin", "current"],
+      "cpu": ["x64", "arm64"]
+    }
+  },
   "engines": {
     "node": ">=20.17.0",
     "pnpm": ">=9.11.0"
