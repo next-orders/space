@@ -1,9 +1,9 @@
 <template>
   <div class="relative">
-    <button class="py-2 px-4 h-12 flex flex-row items-center gap-2 duration-200 rounded-2xl bg-neutral-100 dark:bg-neutral-600 hover:bg-neutral-200 dark:hover:bg-neutral-500" @click="isOpened = !isOpened">
+    <UiButton variant="secondary" class="flex justify-center items-center gap-2" @click="isOpened = !isOpened">
       <Icon :name="icons.globe" class="w-6 h-6 opacity-40" />
       <span>{{ $t('short-name') }}</span>
-    </button>
+    </UiButton>
 
     <div v-if="isOpened" class="dropdown-menu">
       <button v-for="chooseLocale in locales" :key="chooseLocale.code" @click="() => handleLocaleSwitch(chooseLocale.code)">

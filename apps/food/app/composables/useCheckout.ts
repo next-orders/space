@@ -1,6 +1,12 @@
 export async function useCheckout() {
+  const nuxtApp = useNuxtApp()
+
   const { data, refresh } = await useFetch('/api/checkout', {
     key: 'checkout',
+    watch: false,
+    getCachedData(key) {
+      return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+    },
   })
 
   const isEmpty = computed(() => !data.value || data.value?.lines?.length === 0)

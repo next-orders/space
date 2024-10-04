@@ -13,7 +13,7 @@ export const buttonVariants = cva(
         outline:
           'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         secondary:
-          'bg-neutral-100 dark:bg-neutral-600 hover:bg-neutral-200/60 dark:hover:bg-neutral-600/60',
+          'bg-neutral-100 dark:bg-neutral-600 border border-neutral-200 dark:border-neutral-500 hover:bg-neutral-200/60 dark:hover:bg-neutral-600/60',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
       },
