@@ -5,6 +5,7 @@
   "scripts": {
     "build": "prisma generate && nuxt build",
     "dev": "prisma generate && nuxt dev",
+    "dev:db": "prisma generate && pnpm exec prisma studio",
     "preview": "nuxt preview",
     "clean": "rm -rf dist",
     "clean:modules": "rm -rf .turbo .nuxt node_modules",
