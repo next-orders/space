@@ -45,14 +45,10 @@
 
       <div v-if="!isEmpty" class="my-4 mx-4">
         <NuxtLink to="/checkout">
-          <UiButton class="py-4">
-            <div class="rounded-xl flex flex-row gap-2 flex-wrap justify-between items-center">
-              <div class="font-normal">
-                {{ $t('app.cart.next-label') }}
-              </div>
-              <div class="font-medium text-lg tracking-tight">
-                {{ getLocalizedPrice(checkout?.totalPrice) }} <span class="text-base">{{ getCurrencySign(channel?.currencyCode) }}</span>
-              </div>
+          <UiButton class="py-4 flex flex-row gap-2 flex-wrap justify-between items-center">
+            <p>{{ $t('app.cart.next-label') }}</p>
+            <div class="text-lg tracking-tight">
+              {{ getLocalizedPrice(checkout?.totalPrice) }} <span class="text-base">{{ getCurrencySign(channel?.currencyCode) }}</span>
             </div>
           </UiButton>
         </NuxtLink>

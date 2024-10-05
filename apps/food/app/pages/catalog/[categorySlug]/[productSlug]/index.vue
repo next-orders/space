@@ -21,13 +21,9 @@
           </div>
 
           <CartLineCounter v-if="inCart" :line-id="inCart.id" />
-          <button
-            v-else
-            class="button-gradient px-5 py-3 flex flex-row gap-2 text-base font-normal cursor-pointer rounded-2xl active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
-            @click="addProduct(productVariant?.id ?? '')"
-          >
+          <UiButton v-else class="w-fit flex flex-row gap-2 items-center" @click="addProduct(productVariant?.id ?? '')">
             <Icon :name="icons.basket" size="24" /> {{ $t('app.cart.add-to-cart') }}
-          </button>
+          </UiButton>
         </div>
       </div>
     </div>
