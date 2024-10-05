@@ -54,3 +54,4 @@ testem.log
 .nuxt
 .nitro
 .cache
+.storage

@@ -6,7 +6,7 @@ const IMAGE_SIZES = [120, 300, 600, 800]
 
 export default defineEventHandler(async (event) => {
   try {
-    const { storageProductsDirectory } = useAppConfig()
+    const { storageProductsDirectory } = useRuntimeConfig()
     const id = getRouterParam(event, 'id')
 
     const files = await readMultipartFormData(event)
