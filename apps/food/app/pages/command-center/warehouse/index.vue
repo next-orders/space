@@ -7,7 +7,7 @@
     </h1>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-2">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
     <CommandCenterWarehouseCard v-for="warehouse in channel?.warehouses" :key="warehouse.id" :warehouse-id="warehouse.id" @click="() => { warehouseId = warehouse.id; isUpdateWarehouseOpened = true }" />
     <CommandCenterWarehouseCreateCard @click="isCreateWarehouseOpened = true" />
   </div>
