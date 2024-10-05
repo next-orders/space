@@ -1,5 +1,6 @@
 export default defineEventHandler(async (event) => {
   try {
+    const { storageProductsDirectory } = useAppConfig()
     const productId = getRouterParam(event, 'productId')
     const name = getRouterParam(event, 'name')
     if (!productId || !name) {
@@ -9,7 +10,7 @@ export default defineEventHandler(async (event) => {
       })
     }
 
-    const itemName = `${productId}/${name}`
+    const itemName = `${storageProductsDirectory}/${productId}/${name}`
 
     const file = await useStorage('fileSystem').hasItem(itemName)
     if (!file) {

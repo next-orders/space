@@ -118,7 +118,7 @@
       </div>
     </div>
 
-    <UiButton type="submit" variant="secondary" class="mt-4">
+    <UiButton type="submit" variant="secondary">
       {{ $t('center.create.title') }}
     </UiButton>
   </form>

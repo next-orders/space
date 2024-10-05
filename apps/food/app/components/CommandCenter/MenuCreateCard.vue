@@ -1,6 +1,6 @@
 <template>
   <UiActiveCard>
-    <div class="flex flex-col justify-center items-center h-full text-center">
+    <div class="flex flex-col justify-center items-center h-full min-h-36 text-center">
       <img
         src="~/assets/img/green-notebook.png"
         width="64"

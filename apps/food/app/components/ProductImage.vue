@@ -3,6 +3,8 @@
     <source type="image/webp" :sizes="sizes" :srcset="srcset">
     <img alt="" :loading="lazy ? 'lazy' : 'eager'" class="rounded-xl w-full" :src="`/api/file/${id}/300.jpg`" :sizes="sizes" :srcset="srcset">
   </picture>
+
+  <img v-else alt="" class="w-full opacity-20" src="~/assets/img/no-image.png">
 </template>
 
 <script setup lang="ts">

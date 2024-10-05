@@ -34,18 +34,16 @@
         <SearchBlock />
       </div>
 
-      <div class="flex gap-2">
-        <div v-if="!isEmpty" class="block xl:hidden font-medium">
-          <button
-            class="button-gradient w-full px-4 py-3 flex flex-row gap-2 justify-between items-center bg-primary rounded-xl cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
-            @click="isCartDrawerOpened = !isCartDrawerOpened"
-          >
-            <span class="font-medium">{{ $t('app.cart.title') }}</span>
-            <div class="rounded-full bg-white w-6 h-6 text-center">
-              {{ checkout?.lines?.length }}
-            </div>
-          </button>
-        </div>
+      <div v-if="!isEmpty" class="block xl:hidden">
+        <UiButton
+          class="px-4 flex flex-row gap-2 items-center"
+          @click="isCartDrawerOpened = !isCartDrawerOpened"
+        >
+          <p>{{ $t('app.cart.title') }}</p>
+          <div class="rounded-full bg-white w-6 h-6 text-center">
+            {{ checkout?.lines?.length }}
+          </div>
+        </UiButton>
       </div>
     </div>
   </header>

@@ -1,6 +1,6 @@
 <template>
-  <form class="space-y-3" @submit="onSubmit">
-    <UiButton type="submit" variant="destructive" class="mt-4">
+  <form class="mt-3" @submit="onSubmit">
+    <UiButton type="submit" variant="destructive">
       {{ $t('center.delete.title') }}
     </UiButton>
   </form>

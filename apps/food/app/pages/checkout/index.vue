@@ -48,14 +48,13 @@
         </div>
 
         <div class="flex flex-row flex-nowrap gap-4 items-center">
-          <NuxtLink
-            to="#"
-            class="button-gradient w-full px-4 py-4 text-lg font-normal text-center rounded-xl cursor-pointer active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
-          >
-            Создать заказ
+          <NuxtLink to="#" class="grow">
+            <UiButton class="w-full px-4 py-4 text-lg text-center">
+              Создать заказ
+            </UiButton>
           </NuxtLink>
 
-          <div class="font-medium text-right text-xl min-w-[5rem] tracking-tight">
+          <div class="font-medium text-right text-2xl min-w-[5rem] tracking-tight">
             {{ checkout?.totalPrice }} <span class="text-base">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>

@@ -6,6 +6,7 @@ const IMAGE_SIZES = [120, 300, 600, 800]
 
 export default defineEventHandler(async (event) => {
   try {
+    const { storageProductsDirectory } = useAppConfig()
     const id = getRouterParam(event, 'id')
 
     const files = await readMultipartFormData(event)
@@ -48,7 +49,7 @@ export default defineEventHandler(async (event) => {
         .toFormat('jpg', { quality: 75 })
         .toBuffer()
         .then((data) => {
-          useStorage('fileSystem').setItemRaw(`${mediaId}/${size}.jpg`, data)
+          useStorage('fileSystem').setItemRaw(`${storageProductsDirectory}/${mediaId}/${size}.jpg`, data)
         })
 
       await sharp(file.data.buffer)
@@ -56,7 +57,7 @@ export default defineEventHandler(async (event) => {
         .toFormat('webp', { quality: 75 })
         .toBuffer()
         .then((data) => {
-          useStorage('fileSystem').setItemRaw(`${mediaId}/${size}.webp`, data)
+          useStorage('fileSystem').setItemRaw(`${storageProductsDirectory}/${mediaId}/${size}.webp`, data)
         })
     }
 
@@ -70,8 +71,8 @@ export default defineEventHandler(async (event) => {
     if (product?.mediaId) {
       // Remove old images
       for (const size of IMAGE_SIZES) {
-        await useStorage('fileSystem').removeItem(`${product?.mediaId}/${size}.jpg`)
-        await useStorage('fileSystem').removeItem(`${product?.mediaId}/${size}.webp`)
+        await useStorage('fileSystem').removeItem(`${storageProductsDirectory}/${product?.mediaId}/${size}.jpg`)
+        await useStorage('fileSystem').removeItem(`${storageProductsDirectory}/${product?.mediaId}/${size}.webp`)
       }
 
       await prisma.media.delete({

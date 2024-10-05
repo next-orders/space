@@ -7,14 +7,10 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'button-gradient text-neutral-950 dark:text-neutral-950 hover:button-gradient/90',
-        destructive:
-          'bg-amber-200 hover:bg-amber-200/90',
-        outline:
-          'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
-        secondary:
-          'bg-neutral-100 dark:bg-neutral-600 border border-neutral-200 dark:border-neutral-500 hover:bg-neutral-200/60 dark:hover:bg-neutral-600/60',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
+        default: 'bg-gradient-to-br hover:bg-gradient-to-r from-lime-100 to-emerald-200 font-medium text-neutral-950 dark:text-neutral-950',
+        destructive: 'bg-amber-200 hover:bg-amber-200/90',
+        secondary: 'bg-neutral-100 dark:bg-neutral-600 border border-neutral-200 dark:border-neutral-500 hover:bg-neutral-200/60 dark:hover:bg-neutral-600/60',
+        ghost: 'hover:bg-neutral-100 dark:hover:bg-neutral-600',
         link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {

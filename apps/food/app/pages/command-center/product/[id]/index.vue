@@ -47,7 +47,7 @@
       </h2>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
+    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
       <UiActiveCard v-for="variant in product?.variants" :key="variant.id" class="space-y-2 flex flex-col justify-between" @click="() => { productVariant = variant; productVariantId = variant.id; isUpdateProductVariantOpened = true }">
         <div class="text-lg font-medium md:leading-tight text-center">
           {{ variant.name }}
