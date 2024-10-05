@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
   try {
-    const { storageProductsDirectory } = useAppConfig()
+    const { storageProductsDirectory } = useRuntimeConfig()
     const productId = getRouterParam(event, 'productId')
     const name = getRouterParam(event, 'name')
     if (!productId || !name) {

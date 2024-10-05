@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "typecheck": "prisma generate && nuxt typecheck",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "db:init": "pnpm exec prisma migrate dev --name init"
   },
   "dependencies": {
     "@dicebear/collection": "^9.2.2",
