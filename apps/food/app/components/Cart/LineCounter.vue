@@ -28,6 +28,6 @@ const { lineId } = defineProps<{
 }>()
 
 const { icons } = useAppConfig()
-const { checkout, changeLineQuantity } = await useCheckout()
+const { checkout, changeLineQuantity } = useCheckout()
 const line = computed(() => checkout.value?.lines?.find((l) => l.id === lineId))
 </script>

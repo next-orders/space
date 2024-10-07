@@ -18,8 +18,7 @@
 
 <script setup lang="ts">
 const { channel } = await useChannel()
-const { checkout } = await useCheckout()
-
+const { checkout } = useCheckout()
 const avg = computed(() => checkout.value?.deliveryMethod === 'DELIVERY' ? '45–60' : '15–20')
 const discount = 10
 </script>

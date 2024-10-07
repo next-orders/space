@@ -1,10 +1,10 @@
 export async function useChannel() {
+  const key = 'channel'
   const nuxtApp = useNuxtApp()
 
   const { data, refresh } = await useFetch('/api/channel', {
-    key: 'channel',
-    watch: false,
-    getCachedData(key) {
+    key,
+    getCachedData() {
       return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
     },
   })

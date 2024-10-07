@@ -69,5 +69,5 @@ definePageMeta({
 })
 
 const { channel } = await useChannel()
-const { checkout } = await useCheckout()
+const { checkout } = useCheckout()
 </script>

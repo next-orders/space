@@ -42,5 +42,6 @@ export default defineAppConfig({
     monitorCheck: 'lucide:monitor-check',
     house: 'lucide:house',
     mapPinWarehouse: 'lucide:map-pin-house',
+    loader: 'lucide:loader-pinwheel',
   },
 })

@@ -5,15 +5,15 @@
   "scripts": {
     "build": "prisma generate && nuxt build",
     "dev": "prisma generate && nuxt dev",
-    "dev:db": "prisma generate && pnpm exec prisma studio",
     "preview": "nuxt preview",
+    "db:edit": "prisma generate && pnpm exec prisma studio",
+    "db:init": "pnpm exec prisma migrate dev --name init",
     "clean": "rm -rf dist",
     "clean:modules": "rm -rf .turbo .nuxt node_modules",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "typecheck": "prisma generate && nuxt typecheck",
-    "postinstall": "nuxt prepare",
-    "db:init": "pnpm exec prisma migrate dev --name init"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@dicebear/collection": "^9.2.2",

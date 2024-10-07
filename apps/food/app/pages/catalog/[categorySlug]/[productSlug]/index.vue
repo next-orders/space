@@ -86,7 +86,7 @@ const { t } = useI18n()
 const { params } = useRoute()
 const { icons } = useAppConfig()
 const { channel } = await useChannel()
-const { addProduct, checkout } = await useCheckout()
+const { addProduct, checkout } = useCheckout()
 
 const { data: product, error } = await useFetch(`/api/product/slug/${params.productSlug}`)
 if (error.value) {

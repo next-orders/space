@@ -95,7 +95,7 @@
 const { icons } = useAppConfig()
 const { isDeliveryInfoModalOpened } = useApp()
 const { channel } = await useChannel()
-const { checkout } = await useCheckout()
+const { checkout } = useCheckout()
 
 const discount = 10
 </script>

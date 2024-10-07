@@ -32,7 +32,7 @@ const { lineId } = defineProps<{
 }>()
 
 const { channel } = await useChannel()
-const { checkout } = await useCheckout()
+const { checkout } = useCheckout()
 const line = computed(() => checkout.value?.lines?.find((l) => l.id === lineId))
 const variant = computed(() => line.value?.variant)
 const product = computed(() => line.value?.variant?.product)
