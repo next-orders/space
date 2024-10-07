@@ -59,6 +59,8 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
+    '/': { swr: true },
+    '/catalog/*': { swr: true },
     '/api/file/*': { prerender: false },
   },
   nitro: {

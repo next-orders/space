@@ -34,23 +34,12 @@
         <SearchBlock />
       </div>
 
-      <div v-if="!isEmpty" class="block xl:hidden">
-        <UiButton
-          class="px-4 flex flex-row gap-2 items-center"
-          @click="isCartDrawerOpened = !isCartDrawerOpened"
-        >
-          <p>{{ $t('app.cart.title') }}</p>
-          <div class="rounded-full bg-white w-6 h-6 text-center">
-            {{ checkout?.lines?.length }}
-          </div>
-        </UiButton>
-      </div>
+      <CartButton />
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-const { isNavbarOpened, isCartDrawerOpened, searchQuery } = useApp()
+const { isNavbarOpened, searchQuery } = useApp()
 const { icons } = useAppConfig()
-const { checkout, isEmpty } = await useCheckout()
 </script>

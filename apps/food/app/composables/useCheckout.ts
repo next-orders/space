@@ -1,12 +1,7 @@
-export async function useCheckout() {
-  const nuxtApp = useNuxtApp()
-
-  const { data, refresh } = await useFetch('/api/checkout', {
-    key: 'checkout',
+function _useCheckout() {
+  const { data, refresh } = useFetch('/api/checkout', {
+    server: false,
     watch: false,
-    getCachedData(key) {
-      return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
-    },
   })
 
   const isEmpty = computed(() => !data.value || data.value?.lines?.length === 0)
@@ -16,9 +11,7 @@ export async function useCheckout() {
       '/api/checkout/add',
       {
         method: 'POST',
-        body: {
-          productVariantId,
-        },
+        body: { productVariantId },
       },
     )
 
@@ -30,9 +23,7 @@ export async function useCheckout() {
       '/api/checkout',
       {
         method: 'PATCH',
-        body: {
-          checkout,
-        },
+        body: { checkout },
       },
     )
 
@@ -44,9 +35,7 @@ export async function useCheckout() {
       `/api/checkout/line/${id}`,
       {
         method: 'POST',
-        body: {
-          method,
-        },
+        body: { method },
       },
     )
 
@@ -55,3 +44,5 @@ export async function useCheckout() {
 
   return { checkout: data, isEmpty, addProduct, update, changeLineQuantity }
 }
+
+export const useCheckout = createSharedComposable(_useCheckout)

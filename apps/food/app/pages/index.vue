@@ -1,4 +1,5 @@
 <template>
+  <CommandCenterStaffBar v-if="user?.isStaff" />
   <MaintenanceMessage v-if="channel?.isActive === false || !activeMenu" />
 
   <h1 class="mb-2 text-3xl font-medium">
@@ -12,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+const { user } = useUserSession()
 const { channel, categoriesWithProducts, activeMenu } = await useChannel()
 
 useHead({

@@ -25,9 +25,9 @@
 <script setup lang="ts">
 const { icons } = useAppConfig()
 const { t } = useI18n()
-const { channel } = await useChannel()
-const { checkout } = await useCheckout()
 
+const { channel } = await useChannel()
+const { checkout } = useCheckout()
 const title = computed(() => checkout.value?.deliveryMethod === 'DELIVERY' ? t('app.cart.delivery') : t('app.cart.pickup'))
 const todayUntil = computed(() => checkout.value?.deliveryMethod === 'DELIVERY' ? '22:00' : '23:00')
 

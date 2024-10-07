@@ -50,5 +50,5 @@
 const { isDeliveryInfoModalOpened } = useApp()
 const { icons } = useAppConfig()
 const { channel, categoriesWithProducts } = await useChannel()
-const { checkout } = await useCheckout()
+const { checkout } = useCheckout()
 </script>
