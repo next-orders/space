@@ -1,5 +1,5 @@
 <template>
-  <CommandCenterStaffBar v-if="user?.isStaff" />
+  <CommandCenterStaffBar v-if="user?.isStaff" class="mb-4" />
   <MaintenanceMessage v-if="channel?.isActive === false || !activeMenu" />
 
   <h1 class="mb-2 text-3xl font-medium">
