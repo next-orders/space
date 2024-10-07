@@ -9,7 +9,7 @@
             </div>
           </div>
 
-          <ProductImage :id="product?.mediaId" />
+          <ProductImage :id="product?.mediaId" size="sm" />
         </div>
 
         <div class="h-full flex flex-col justify-between">

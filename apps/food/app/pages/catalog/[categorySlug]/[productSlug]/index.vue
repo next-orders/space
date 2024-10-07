@@ -4,7 +4,7 @@
   <div class="bg-white dark:bg-neutral-600 px-5 py-5 rounded-2xl">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-0 gap-y-4 sm:gap-4">
       <div class="col-span-1 relative w-full aspect-square">
-        <ProductImage :id="product?.mediaId" :lazy="false" />
+        <ProductImage :id="product?.mediaId" :lazy="false" size="md" />
       </div>
 
       <div class="col-span-2">
