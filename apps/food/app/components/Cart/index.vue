@@ -59,7 +59,7 @@
 
     <template #fallback>
       <div class="relative h-full w-full flex flex-col justify-center items-center">
-        <Icon :name="icons.loader" class="w-16 h-16 opacity-10 animate-spin" />
+        <Icon :name="icons.loader" class="w-16 h-16 text-neutral-300 animate-pulse" />
       </div>
     </template>
   </ClientOnly>

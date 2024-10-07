@@ -6,7 +6,7 @@
     <div class="flex flex-col justify-between h-full">
       <div>
         <div class="relative w-full aspect-square">
-          <ProductImage :id="product?.mediaId" :lazy="lazy" />
+          <ProductImage :id="product?.mediaId" :lazy="lazy" size="sm" />
         </div>
 
         <div class="mt-2 text-xl font-medium">

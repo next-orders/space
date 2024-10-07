@@ -22,7 +22,7 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl">
     <div class="relative w-full aspect-square">
-      <ProductImage :id="product?.mediaId" :lazy="false" />
+      <ProductImage :id="product?.mediaId" :lazy="false" size="md" />
 
       <UiButton variant="secondary" class="absolute flex justify-center items-center w-18 top-2 left-2" @click="isUploadProductImageOpened = true">
         <Icon :name="icons.editImage" class="w-6 h-6" />

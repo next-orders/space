@@ -23,7 +23,7 @@
       <Icon :name="icons.edit" class="w-5 h-5 text-neutral-500 cursor-pointer" @click="() => { categoryId = category.id; isUpdateMenuCategoryOpened = true }" />
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7 gap-4">
       <CommandCenterProductCard v-for="product in category.products" :key="product.id" :product-id="product.id" />
       <CommandCenterProductCreateCard @click="() => { categoryId = category.id; isCreateProductOpened = true }" />
     </div>
