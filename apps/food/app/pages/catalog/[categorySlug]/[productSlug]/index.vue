@@ -12,16 +12,25 @@
           {{ product?.name }}
         </h1>
         <div class="mt-1 font-normal text-neutral-400">
-          {{ productVariant?.weightValue }}{{ getWeightLocalizedUnit(productVariant?.weightUnit) }}
+          {{ weightValue }}{{ weightUnit }}
+        </div>
+
+        <div v-if="!withSingleVariant" class="mt-4 mb-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+          <UiButton v-for="variant in product?.variants" :key="variant.id" variant="secondary" class="w-full flex flex-row flex-wrap gap-2 justify-start items-center" @click="variantId = variant.id">
+            <Icon :name="variant.id === selectedVariant?.id ? icons.bookmarkCheck : icons.bookmark" class="w-6 h-6 text-neutral-300" :class="{ 'w-7 h-7 !text-emerald-500': variant.id === selectedVariant?.id }" />
+            <p class="font-medium text-lg leading-tight break-all">
+              {{ variant.name }}
+            </p>
+          </UiButton>
         </div>
 
         <div class="mt-4 flex flex-row gap-6 items-center">
           <div class="text-2xl font-medium tracking-tight">
-            {{ getLocalizedPrice(productVariant?.gross) }} <span class="text-xl">{{ getCurrencySign(channel?.currencyCode) }}</span>
+            {{ price }} <span class="text-xl">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
 
           <CartLineCounter v-if="inCart" :line-id="inCart.id" />
-          <UiButton v-else class="w-fit flex flex-row gap-2 items-center" @click="addProduct(productVariant?.id ?? '')">
+          <UiButton v-else class="w-fit flex flex-row gap-2 items-center" @click="addProduct(variantId ?? '')">
             <Icon :name="icons.basket" size="24" /> {{ $t('app.cart.add-to-cart') }}
           </UiButton>
         </div>
@@ -45,7 +54,7 @@
         <div class="mt-2 px-4 py-4 w-fit flex flex-row gap-4 bg-neutral-100 rounded-2xl">
           <div>
             <div class="font-medium">
-              {{ productVariant?.calories }}
+              {{ selectedVariant?.calories }}
             </div>
             <div class="lowercase">
               {{ $t('common.nutrition.kcal') }}
@@ -53,7 +62,7 @@
           </div>
           <div>
             <div class="font-medium">
-              {{ productVariant?.protein }}{{ $t('common.abbreviation.g') }}
+              {{ selectedVariant?.protein }}{{ $t('common.abbreviation.g') }}
             </div>
             <div class="lowercase">
               {{ $t('common.nutrition.protein') }}
@@ -61,7 +70,7 @@
           </div>
           <div>
             <div class="font-medium">
-              {{ productVariant?.fat }}{{ $t('common.abbreviation.g') }}
+              {{ selectedVariant?.fat }}{{ $t('common.abbreviation.g') }}
             </div>
             <div class="lowercase">
               {{ $t('common.nutrition.fat') }}
@@ -69,7 +78,7 @@
           </div>
           <div>
             <div class="font-medium">
-              {{ productVariant?.carbohydrate }}{{ $t('common.abbreviation.g') }}
+              {{ selectedVariant?.carbohydrate }}{{ $t('common.abbreviation.g') }}
             </div>
             <div class="lowercase">
               {{ $t('common.nutrition.carbohydrate') }}
@@ -100,11 +109,18 @@ useHead({
   title: product.value?.name,
 })
 
-const productVariant = computed(() => product.value?.variants[0])
-const isNutritionShown = computed(() => productVariant.value?.calories && productVariant.value?.protein && productVariant.value?.fat && productVariant.value?.carbohydrate)
+const variantId = ref(product.value?.variants[0]?.id)
+const withSingleVariant = computed(() => product.value?.variants.length === 1)
+const selectedVariant = computed(() => product.value?.variants.find(({ id }) => id === variantId.value))
+
+const price = computed(() => getLocalizedPrice(selectedVariant.value?.gross))
+const weightValue = computed(() => selectedVariant.value?.weightValue)
+const weightUnit = computed(() => getWeightLocalizedUnit(selectedVariant.value?.weightUnit))
+
+const isNutritionShown = computed(() => selectedVariant.value?.calories && selectedVariant.value?.protein && selectedVariant.value?.fat && selectedVariant.value?.carbohydrate)
 
 const inCart = computed(() => {
-  return checkout.value?.lines?.find((l) => l.variant.id === productVariant.value?.id)
+  return checkout.value?.lines?.find((l) => l.variant.id === selectedVariant.value?.id)
 })
 
 const breadcrumbs = computed(() => [

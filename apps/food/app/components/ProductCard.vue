@@ -10,13 +10,16 @@
         </div>
 
         <div class="mt-2 text-xl font-medium">
-          {{ getLocalizedPrice(product?.variants[0]?.gross) }}<span class="pl-1 text-lg">{{ getCurrencySign(channel?.currencyCode) }}</span>
+          <span v-if="!withSingleVariant" class="pr-1">{{ $t('app.cart.from') }}</span>
+          <span>{{ price }}</span>
+          <span class="pl-1 text-lg">{{ getCurrencySign(channel?.currencyCode) }}</span>
         </div>
         <p class="font-normal leading-tight line-clamp-2">
           {{ product?.name }}
         </p>
         <div class="mt-2 font-light text-neutral-500 dark:text-white">
-          {{ weightValue }}{{ weightUnitLocalized }}
+          <span v-if="!withSingleVariant" class="pr-1">{{ $t('app.cart.from') }}</span>
+          <span>{{ weightValue }}{{ weightUnit }}</span>
         </div>
       </div>
 
@@ -41,8 +44,12 @@ const { channel, categories } = await useChannel()
 const { products } = await useProduct()
 const product = computed(() => products.value?.find(({ id }) => id === productId))
 
-const weightValue = product.value?.variants[0]?.weightValue
-const weightUnitLocalized = getWeightLocalizedUnit(product.value?.variants[0]?.weightUnit)
+const withSingleVariant = computed(() => product.value?.variants.length === 1)
+const smallestVariant = computed(() => withSingleVariant.value ? product.value?.variants[0] : product.value?.variants.reduce((prev, curr) => (prev.gross < curr.gross ? prev : curr)))
+
+const price = computed(() => getLocalizedPrice(smallestVariant.value?.gross))
+const weightValue = computed(() => smallestVariant.value?.weightValue)
+const weightUnit = computed(() => getWeightLocalizedUnit(smallestVariant.value?.weightUnit))
 
 const categorySlug = categories.value.find(({ id }) => id === product.value?.categoryId)?.slug
 const productUrl = `/catalog/${categorySlug}/${product.value?.slug}`

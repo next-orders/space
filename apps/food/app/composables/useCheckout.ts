@@ -7,39 +7,51 @@ function _useCheckout() {
   const isEmpty = computed(() => !data.value || data.value?.lines?.length === 0)
 
   const addProduct = async (productVariantId: string) => {
-    await $fetch(
-      '/api/checkout/add',
-      {
-        method: 'POST',
-        body: { productVariantId },
-      },
-    )
+    try {
+      await $fetch(
+        '/api/checkout/add',
+        {
+          method: 'POST',
+          body: { productVariantId },
+        },
+      )
 
-    await refresh()
+      await refresh()
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const update = async (checkout: Partial<Checkout>) => {
-    await $fetch(
-      '/api/checkout',
-      {
-        method: 'PATCH',
-        body: { checkout },
-      },
-    )
+    try {
+      await $fetch(
+        '/api/checkout',
+        {
+          method: 'PATCH',
+          body: { checkout },
+        },
+      )
 
-    await refresh()
+      await refresh()
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const changeLineQuantity = async (id: string, method: 'increment' | 'decrement') => {
-    await $fetch(
-      `/api/checkout/line/${id}`,
-      {
-        method: 'POST',
-        body: { method },
-      },
-    )
+    try {
+      await $fetch(
+        `/api/checkout/line/${id}`,
+        {
+          method: 'POST',
+          body: { method },
+        },
+      )
 
-    await refresh()
+      await refresh()
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return { checkout: data, isEmpty, addProduct, update, changeLineQuantity }
