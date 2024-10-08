@@ -14,6 +14,7 @@ model Channel {
   slug         String
   name         String
   description  String?
+  countryCode  String      @map("country_code")
   currencyCode String      @map("currency_code")
   isActive     Boolean     @default(true) @map("is_active")
   menus        Menu[]

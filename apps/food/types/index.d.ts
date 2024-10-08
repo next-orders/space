@@ -7,10 +7,13 @@ declare global {
     name: string
     description: string | null
     currencyCode: CurrencyCode
+    countryCode: CountryCode
     isActive: boolean
   }
 
   type CurrencyCode = 'USD' | 'EUR' | 'RUB'
+
+  type CountryCode = 'RU' | 'US' | 'GB' | 'GR' | 'GE' | 'UA' | 'BY' | 'KZ'
 
   interface Media {
     id: string
