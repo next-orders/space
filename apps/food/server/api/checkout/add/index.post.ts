@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
   const line = checkoutInDB?.lines.find((line) => line.productVariantId === body.productVariantId)
   if (!line) {
     // Limit
-    if (checkoutInDB?.lines && checkoutInDB.lines.length >= 20) {
+    if (checkoutInDB?.lines?.length >= 20) {
       throw createError({
         statusCode: 400,
         statusMessage: 'Limit reached',
@@ -67,6 +67,14 @@ export default defineEventHandler(async (event) => {
       },
     })
   } else {
+    // Limit
+    if (line.quantity >= 99) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Limit reached',
+      })
+    }
+
     // Add +1
     await prisma.checkoutLine.update({
       where: { id: line.id },

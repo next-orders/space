@@ -7,13 +7,16 @@
         </div>
 
         <div>
-          <div class="font-base text-sm leading-tight line-clamp-2">
+          <div class="font-medium leading-tight line-clamp-2">
             {{ line?.variant?.product?.name }}
           </div>
-          <div class="mt-1 flex flex-row gap-2 flex-nowrap">
-            <div class="text-sm text-neutral-500 font-light">
+          <div class="mt-1 flex flex-row gap-2 flex-nowrap items-center">
+            <p class="text-sm text-neutral-500 leading-tight">
+              {{ variant?.name }}
+            </p>
+            <p class="text-sm text-neutral-500">
               {{ variant?.weightValue }}{{ getWeightLocalizedUnit(variant?.weightUnit) }}
-            </div>
+            </p>
           </div>
         </div>
       </div>
