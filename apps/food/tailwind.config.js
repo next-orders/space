@@ -21,7 +21,7 @@ module.exports = {
     },
     extend: {
       screens: {
-        'xs': '375px',
+        xs: '375px',
       },
       fontFamily: {
         sans: ['Noto Sans', ...defaultTheme.fontFamily.sans],
