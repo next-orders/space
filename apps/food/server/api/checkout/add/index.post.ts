@@ -67,14 +67,6 @@ export default defineEventHandler(async (event) => {
       },
     })
   } else {
-    // Limit
-    if (line.quantity >= 99) {
-      throw createError({
-        statusCode: 400,
-        statusMessage: 'Limit reached',
-      })
-    }
-
     // Add +1
     await prisma.checkoutLine.update({
       where: { id: line.id },
