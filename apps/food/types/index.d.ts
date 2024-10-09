@@ -7,10 +7,23 @@ declare global {
     name: string
     description: string | null
     currencyCode: CurrencyCode
+    countryCode: CountryCode
     isActive: boolean
   }
 
   type CurrencyCode = 'USD' | 'EUR' | 'RUB'
+
+  type CountryCode = 'RU' | 'US' | 'GB' | 'GR' | 'GE' | 'UA' | 'BY' | 'KZ'
+
+  interface PaymentMethod {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    name: string
+    type: PaymentMethodType
+  }
+
+  type PaymentMethodType = 'CASH' | 'CARD' | 'CUSTOM'
 
   interface Media {
     id: string
@@ -86,9 +99,13 @@ declare global {
     createdAt: Date
     updatedAt: Date
     deliveryMethod: CheckoutDeliveryMethod
+    paymentMethodId: string
     shippingPrice: number
     totalPrice: number
     discount: number | null
+    note: string | null
+    warehouseId: string | null
+    addressId: string | null
     channelId: string
   }
 
@@ -146,6 +163,18 @@ declare global {
     name: string
     address: string
     channelId: string
+  }
+
+  interface Address {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    street: string
+    flat: string | null
+    doorphone: string | null
+    entrance: string | null
+    floor: string | null
+    note: string | null
   }
 }
 
