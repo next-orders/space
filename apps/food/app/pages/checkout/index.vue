@@ -13,36 +13,60 @@
         </h2>
 
         <CheckoutLine v-for="line in checkout?.lines" :key="line.id" :line-id="line.id" />
+
+        <div class="mt-4">
+          <UiLabel for="note">
+            Комментарий для кухни
+          </UiLabel>
+          <UiTextarea
+            id="note"
+            name="note"
+            placeholder="Пожелания к заказу"
+          />
+        </div>
       </div>
     </div>
 
     <div class="col-span-full md:col-span-5 h-fit sticky top-20">
-      <div class="mb-6 px-4 py-5 md:px-6 md:py-6 bg-white rounded-3xl">
-        <h3 class="mb-16 text-lg md:text-xl font-medium">
-          Метод оплаты
-        </h3>
+      <div class="mb-6 px-4 py-5 md:px-6 md:py-6 bg-white rounded-3xl space-y-5">
+        <div>
+          <h3 class="mb-2 text-lg md:text-xl font-medium">
+            Метод оплаты
+          </h3>
 
-        <h3 class="mb-2 text-lg md:text-xl font-medium">
-          Итого
-        </h3>
-
-        <div class="mb-4">
-          <div class="mb-2 flex flex-row justify-between text-lg">
-            <div>Стоимость товаров</div>
-            <div class="tracking-tight">
-              {{ checkout?.totalPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
-            </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <UiButton v-for="payment in availablePayments" :key="payment.type" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="selectedPayment = payment.type">
+              <Icon :name="payment.type === selectedPayment ? icons.bookmarkCheck : icons.bookmark" class="w-6 h-6 text-neutral-300" :class="{ 'w-7 h-7 !text-emerald-500': payment.type === selectedPayment }" />
+              <p class="font-medium text-lg leading-tight break-all">
+                {{ payment.type }}
+              </p>
+            </UiButton>
           </div>
-          <div class="mb-2 flex flex-row justify-between text-lg">
-            <div>Стоимость доставки</div>
-            <div class="tracking-tight">
-              {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
-            </div>
-          </div>
+        </div>
 
-          <div class="mt-4 mb-6">
-            <div class="text-base text-neutral-500">
-              Есть промо код?
+        <div>
+          <h3 class="mb-2 text-lg md:text-xl font-medium">
+            Итого
+          </h3>
+
+          <div>
+            <div class="mb-2 flex flex-row justify-between text-lg">
+              <div>Стоимость товаров</div>
+              <div class="tracking-tight">
+                {{ checkout?.totalPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
+              </div>
+            </div>
+            <div class="mb-2 flex flex-row justify-between text-lg">
+              <div>Стоимость доставки</div>
+              <div class="tracking-tight">
+                {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <div class="text-base text-neutral-500">
+                Есть промо код?
+              </div>
             </div>
           </div>
         </div>
@@ -68,6 +92,18 @@ definePageMeta({
   layout: 'checkout',
 })
 
+const { icons } = useAppConfig()
 const { channel } = await useChannel()
 const { checkout } = useCheckout()
+
+const selectedPayment = ref('')
+
+const availablePayments = [
+  {
+    type: 'CASH',
+  },
+  {
+    type: 'CARD',
+  },
+]
 </script>

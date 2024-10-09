@@ -8,22 +8,35 @@ datasource db {
 }
 
 model Channel {
-  id           String      @id
-  createdAt    DateTime    @default(now()) @map("created_at")
-  updatedAt    DateTime    @default(now()) @map("updated_at")
-  slug         String
-  name         String
-  description  String?
-  countryCode  String      @map("country_code")
-  currencyCode String      @map("currency_code")
-  isActive     Boolean     @default(true) @map("is_active")
-  menus        Menu[]
-  products     Product[]
-  checkouts    Checkout[]
-  users        User[]
-  warehouses   Warehouse[]
+  id             String          @id
+  createdAt      DateTime        @default(now()) @map("created_at")
+  updatedAt      DateTime        @default(now()) @map("updated_at")
+  slug           String
+  name           String
+  description    String?
+  countryCode    String          @map("country_code")
+  currencyCode   String          @map("currency_code")
+  isActive       Boolean         @default(true) @map("is_active")
+  paymentMethods PaymentMethod[]
+  warehouses     Warehouse[]
+  menus          Menu[]
+  products       Product[]
+  checkouts      Checkout[]
+  users          User[]
 
   @@map("channel")
+}
+
+model PaymentMethod {
+  id        String   @id
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  name      String
+  type      String
+  channelId String   @map("channel_id")
+  channel   Channel  @relation(fields: [channelId], references: [id])
+
+  @@map("payment_method")
 }
 
 model Media {
@@ -100,16 +113,20 @@ model ProductVariant {
 }
 
 model Checkout {
-  id             String         @id
-  createdAt      DateTime       @default(now()) @map("created_at")
-  updatedAt      DateTime       @default(now()) @map("updated_at")
-  deliveryMethod String         @map("delivery_method")
-  shippingPrice  Float          @default(0) @map("shipping_price")
-  totalPrice     Float          @default(0) @map("total_price")
-  discount       Float?
-  channelId      String         @map("channel_id")
-  channel        Channel        @relation(fields: [channelId], references: [id])
-  lines          CheckoutLine[]
+  id              String         @id
+  createdAt       DateTime       @default(now()) @map("created_at")
+  updatedAt       DateTime       @default(now()) @map("updated_at")
+  deliveryMethod  String         @map("delivery_method")
+  paymentMethodId String         @map("payment_method_id")
+  shippingPrice   Float          @default(0) @map("shipping_price")
+  totalPrice      Float          @default(0) @map("total_price")
+  discount        Float?
+  warehouseId     String?        @map("warehouse_id")
+  addressId       String?        @map("address_id")
+  note            String?
+  channelId       String         @map("channel_id")
+  channel         Channel        @relation(fields: [channelId], references: [id])
+  lines           CheckoutLine[]
 
   @@map("checkout")
 }
@@ -182,4 +199,18 @@ model Warehouse {
   channel   Channel  @relation(fields: [channelId], references: [id])
 
   @@map("warehouse")
+}
+
+model Address {
+  id        String   @id
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  street    String
+  flat      String?
+  doorphone String?
+  entrance  String?
+  floor     String?
+  note      String?
+
+  @@map("address")
 }

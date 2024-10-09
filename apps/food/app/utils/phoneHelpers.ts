@@ -1,5 +1,3 @@
-import type {
-  CountryCode } from 'libphonenumber-js'
 import {
   AsYouType,
   formatIncompletePhoneNumber,
@@ -33,7 +31,6 @@ export function formatPhoneNumber(value: string, countryCode: CountryCode) {
   return value
 }
 
-export function checkPhoneNumberValidity(value: string,
-  countryCode: CountryCode) {
+export function checkPhoneNumberValidity(value: string, countryCode: CountryCode) {
   return isValidPhoneNumber(value, countryCode)
 }
