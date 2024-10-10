@@ -27,7 +27,7 @@
     </div>
 
     <div class="min-w-[3rem] ml-0 md:ml-4 text-base md:text-lg text-right tracking-tight">
-      {{ getLocalizedPrice(line?.variant?.gross) }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode) }}</span>
+      {{ totalAmount }} <span class="text-xs">{{ getCurrencySign(channel?.currencyCode) }}</span>
     </div>
   </div>
 </template>
@@ -40,6 +40,7 @@ const { lineId } = defineProps<{
 const { channel } = await useChannel()
 const { checkout } = useCheckout()
 const line = computed(() => checkout.value?.lines?.find((l) => l.id === lineId))
+const totalAmount = computed(() => line.value ? getLocalizedPrice(line.value.variant?.gross * line.value.quantity) : 0)
 const variant = computed(() => line.value?.variant)
 const product = computed(() => line.value?.variant?.product)
 const productUrl = computed(() => `/catalog/${product.value?.category?.slug}/${product.value?.slug}`)

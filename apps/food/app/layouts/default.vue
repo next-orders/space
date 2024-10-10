@@ -3,7 +3,7 @@
   <NavigationMain />
 
   <main class="relative w-auto bg-neutral-100 dark:bg-neutral-800 lg:pl-72 xl:pr-80 top-16">
-    <div class="px-4 pb-10 pt-4 max-w-7xl">
+    <div class="px-2 md:px-4 pb-10 pt-4 max-w-7xl">
       <NuxtErrorBoundary>
         <slot />
       </NuxtErrorBoundary>

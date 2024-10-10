@@ -3,11 +3,11 @@
     Оформление заказа
   </h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-    <div class="col-span-full md:col-span-7">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+    <div class="col-span-full md:col-span-7 space-y-6">
       <CheckoutDeliveryForm />
 
-      <div class="mb-6 px-4 py-5 md:px-6 md:py-6 bg-white rounded-3xl">
+      <div class="p-3 md:p-6 bg-white rounded-3xl">
         <h2 class="mb-4 text-xl md:text-2xl font-medium">
           Вы заказываете
         </h2>
@@ -28,17 +28,17 @@
     </div>
 
     <div class="col-span-full md:col-span-5 h-fit sticky top-20">
-      <div class="mb-6 px-4 py-5 md:px-6 md:py-6 bg-white rounded-3xl space-y-5">
+      <div class="mb-6 p-3 md:p-6 bg-white rounded-3xl space-y-5">
         <div>
           <h3 class="mb-2 text-lg md:text-xl font-medium">
             Метод оплаты
           </h3>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <UiButton v-for="payment in availablePayments" :key="payment.type" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="selectedPayment = payment.type">
-              <Icon :name="payment.type === selectedPayment ? icons.bookmarkCheck : icons.bookmark" class="w-6 h-6 text-neutral-300" :class="{ 'w-7 h-7 !text-emerald-500': payment.type === selectedPayment }" />
-              <p class="font-medium text-lg leading-tight break-all">
-                {{ payment.type }}
+          <div class="grid grid-cols-2 md:grid-cols-2 gap-2">
+            <UiButton v-for="method in paymentMethods" :key="method.type" variant="secondary" class="w-full min-h-14 flex flex-col flex-wrap gap-1 justify-center items-center" @click="selectedPaymentMethodId = method.id">
+              <Icon :name="method.type === 'CASH' ? icons.moneyCash : icons.moneyCard" class="w-8 h-8 text-neutral-300" :class="{ '!text-emerald-500': method.id === selectedPaymentMethodId }" />
+              <p class="font-medium leading-tight break-all">
+                {{ method.name }}
               </p>
             </UiButton>
           </div>
@@ -96,14 +96,6 @@ const { icons } = useAppConfig()
 const { channel } = await useChannel()
 const { checkout } = useCheckout()
 
-const selectedPayment = ref('')
-
-const availablePayments = [
-  {
-    type: 'CASH',
-  },
-  {
-    type: 'CARD',
-  },
-]
+const selectedPaymentMethodId = ref('')
+const paymentMethods = computed(() => channel.value?.paymentMethods)
 </script>
