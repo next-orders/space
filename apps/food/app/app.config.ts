@@ -46,6 +46,10 @@ export default defineAppConfig({
     monitorCheck: 'lucide:monitor-check',
     house: 'lucide:house',
     mapPinWarehouse: 'lucide:map-pin-house',
+    mapPinCheck: 'lucide:map-pin-check',
+    moneyCash: 'lucide:banknote',
+    moneyCard: 'lucide:credit-card',
+    moneyCustom: 'lucide:wallet-minimal',
     loader: 'lucide:chef-hat',
   },
 })

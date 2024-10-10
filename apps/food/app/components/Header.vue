@@ -1,6 +1,6 @@
 <template>
   <header class="z-20 h-16 bg-white dark:bg-neutral-600 fixed top-0 left-0 right-0">
-    <div class="z-10 w-full h-full px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-neutral-100 dark:border-neutral-500">
+    <div class="z-10 w-full h-full px-2 md:px-4 flex flex-row flex-nowrap justify-between content-center items-center border-b border-neutral-100 dark:border-neutral-500">
       <div class="mr-2 md:mr-0 flex justify-center items-center justify-items-center lg:hidden h-full lg:hover:scale-110 transition duration-200">
         <button
           aria-label="Close Navigation"

@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-6 px-4 py-5 md:px-6 md:py-6 bg-white rounded-3xl space-y-5">
+  <div class="p-3 md:p-6 bg-white rounded-3xl space-y-5">
     <CartDeliveryMethodSwitch />
 
     <div class="w-full">
@@ -7,7 +7,7 @@
         Контакты
       </h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 md:gap-2">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
         <UiInput
           v-model="phoneNumber"
           type="tel"
@@ -97,8 +97,8 @@
 
       <div class="grid grid-cols-1 md:grid-cols-1 gap-2">
         <UiButton v-for="warehouse in channel?.warehouses" :key="warehouse.id" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="selectedWarehouseId = warehouse.id">
-          <Icon :name="warehouse.id === selectedWarehouseId ? icons.bookmarkCheck : icons.bookmark" class="w-6 h-6 text-neutral-300" :class="{ 'w-7 h-7 !text-emerald-500': warehouse.id === selectedWarehouseId }" />
-          <p class="font-medium text-lg leading-tight break-all">
+          <Icon :name="warehouse.id === selectedWarehouseId ? icons.mapPinCheck : icons.mapPinWarehouse" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': warehouse.id === selectedWarehouseId }" />
+          <p class="font-medium leading-tight break-all">
             {{ warehouse.address }}
           </p>
         </UiButton>
@@ -112,8 +112,10 @@
 
       <div class="flex flex-row gap-2 items-center">
         <Icon :name="icons.clock" />
-        Ближайшее: 45-60 мин
+        Как можно скорее: 45-60 мин
       </div>
+
+      <div>Сегодня мы принимаем заказы с 10:00 до 22:00</div>
     </div>
   </div>
 </template>
