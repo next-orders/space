@@ -72,7 +72,7 @@
         </div>
 
         <div class="flex flex-row flex-nowrap gap-4 items-center">
-          <NuxtLink to="#" class="grow">
+          <NuxtLink to="/finish" class="grow">
             <UiButton class="w-full px-4 py-4 text-lg text-center">
               Создать заказ
             </UiButton>

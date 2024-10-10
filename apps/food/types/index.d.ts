@@ -98,6 +98,8 @@ declare global {
     id: string
     createdAt: Date
     updatedAt: Date
+    name: string
+    phone: string
     deliveryMethod: CheckoutDeliveryMethod
     paymentMethodId: string
     shippingPrice: number
