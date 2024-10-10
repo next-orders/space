@@ -1,7 +1,7 @@
 {
   "name": "@next-orders/space",
   "version": "0.4.0",
-  "packageManager": "pnpm@9.11.0",
+  "packageManager": "pnpm@9.12.1",
   "pnpm": {
     "supportedArchitectures": {
       "os": [
@@ -16,8 +16,8 @@
     }
   },
   "engines": {
-    "node": ">=20.17.0",
-    "pnpm": ">=9.11.0"
+    "node": ">=20.18.0",
+    "pnpm": ">=9.12.1"
   },
   "description": "Modern e-commerce self-hosted platform: clients will be happy to order delicious food!",
   "keywords": [
