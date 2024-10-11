@@ -106,9 +106,10 @@
       "contacts": "Contacts",
       "your-phone": "Your phone",
       "your-name": "Your name",
-      "address-title": "Enter your address",
+      "enter-address": "Enter your address",
       "select-address": "Select address",
       "address": {
+        "title": "Адрес",
         "street": "Street and house",
         "flat": "Apt./office",
         "doorphone": "Doorphone",
@@ -128,6 +129,12 @@
         "delivery": "Delivery cost",
         "products": "Cost of goods"
       }
+    },
+    "finish": {
+      "title": "Order placed",
+      "success-message": "Your request has been successfully submitted for processing.",
+      "expect-call": "Expect a call from the operator.",
+      "ordered-title": "You ordered"
     },
     "search": {
       "placeholder": "Find a dish...",

@@ -27,7 +27,7 @@
 
     <div v-if="checkout?.deliveryMethod === 'DELIVERY'" class="w-full">
       <h3 class="mb-2 text-lg md:text-xl font-medium">
-        {{ $t('app.checkout.address-title') }}
+        {{ $t('app.checkout.enter-address') }}
       </h3>
       <UiLabel for="street">
         {{ $t('app.checkout.address.street') }}

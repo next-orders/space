@@ -1,11 +1,11 @@
 <template>
   <h1 class="pt-8 mb-4 md:mb-8 text-3xl md:text-4xl font-medium text-center">
-    Заказ оформлен
+    {{ $t('app.finish.title') }}
   </h1>
 
   <div class="p-3 md:p-6 bg-white dark:bg-neutral-600 rounded-3xl space-y-6">
     <h2 class="text-center font-medium text-xl">
-      Ваша заявка была успешно передана на обработку. Ожидайте звонка от оператора.
+      {{ $t('app.finish.success-message') }} {{ $t('app.finish.expect-call') }}
     </h2>
 
     <ClientOnly>
@@ -14,23 +14,22 @@
           {{ checkout?.deliveryMethod === 'WAREHOUSE' ? $t('app.cart.pickup') : $t('app.cart.delivery') }}
         </h3>
 
-        <p>Ваше имя: {{ checkout?.name }}</p>
-        <p>Ваш телефон: {{ checkout?.phone }}</p>
+        <p>{{ $t('app.checkout.your-name') }}: {{ checkout?.name }}</p>
+        <p>{{ $t('app.checkout.your-phone') }}: {{ checkout?.phone }}</p>
 
-        <p v-if="warehouse?.address">
-          Адрес: {{ warehouse?.address }}
-        </p>
-        <p v-if="address">
-          Адрес: {{ address }}
+        <p>
+          {{ $t('app.checkout.address.title') }}:
+          <span v-if="warehouse?.address">{{ warehouse?.address }}</span>
+          <span v-if="address">{{ address }}</span>
         </p>
 
-        <p>Метод оплаты: {{ channel?.paymentMethods.find((p) => p.id === checkout?.paymentMethodId)?.name }}</p>
-        <p>Комментарий: {{ checkout?.note }}</p>
+        <p>{{ $t('app.checkout.payment-title') }}: {{ channel?.paymentMethods.find((p) => p.id === checkout?.paymentMethodId)?.name }}</p>
+        <p>{{ $t('app.checkout.order-note') }}: {{ checkout?.note }}</p>
       </div>
 
       <div>
         <h3 class="mb-2 text-lg font-medium text-neutral-500 dark:text-neutral-400">
-          Вы заказали
+          {{ $t('app.finish.ordered-title') }}
         </h3>
 
         <CheckoutLine v-for="line in checkout?.lines" :key="line.id" :line-id="line.id" :can-be-changed="false" />
@@ -38,16 +37,16 @@
 
       <div>
         <h3 class="mb-2 text-lg font-medium text-neutral-500 dark:text-neutral-400">
-          Итого
+          {{ $t('app.checkout.total-title') }}
         </h3>
         <div class="flex flex-row justify-between">
-          <div>Стоимость товаров</div>
+          <div>{{ $t('app.checkout.cost.products') }}</div>
           <div class="tracking-tight text-lg">
             {{ checkout?.totalPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>
         <div class="flex flex-row justify-between">
-          <div>Стоимость доставки</div>
+          <div>{{ $t('app.checkout.cost.delivery') }}</div>
           <div class="tracking-tight text-lg">
             {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
@@ -57,7 +56,7 @@
 
     <NuxtLink to="/" class="block grow">
       <UiButton class="w-full px-4 py-4 text-lg text-center">
-        Вернуться на главную
+        {{ $t('common.to-home') }}
       </UiButton>
     </NuxtLink>
   </div>
@@ -71,6 +70,5 @@ definePageMeta({
 const { channel } = await useChannel()
 const { checkout, address } = useCheckout()
 
-// const address = computed(() => checkout.value?.deliveryMethod === 'DELIVERY' && getAddress(checkout.value?.addressId))
 const warehouse = computed(() => channel.value?.warehouses.find((w) => w.id === checkout.value?.warehouseId))
 </script>
