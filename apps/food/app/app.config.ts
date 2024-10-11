@@ -24,6 +24,7 @@ export default defineAppConfig({
     bookmark: 'lucide:bookmark',
     bookmarkCheck: 'lucide:bookmark-check',
     clock: 'lucide:clock',
+    clockCheck: 'lucide:clock-arrow-up',
     discount: 'lucide:percent',
     delivery: 'lucide:truck',
     info: 'lucide:info',
@@ -50,6 +51,8 @@ export default defineAppConfig({
     moneyCash: 'lucide:banknote',
     moneyCard: 'lucide:credit-card',
     moneyCustom: 'lucide:wallet-minimal',
+    alarmClock: 'lucide:alarm-clock',
+    alarmClockCheck: 'lucide:alarm-clock-check',
     loader: 'lucide:chef-hat',
   },
 })
