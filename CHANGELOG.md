@@ -1,6 +1,55 @@
 # Changelog
 
 
+## v0.5.0
+
+[compare changes](https://github.com/next-orders/space/compare/v0.2.1...v0.5.0)
+
+### 🚀 Enhancements
+
+- Added nuxt/image for optimizations ([#219](https://github.com/next-orders/space/pull/219))
+- ⚠️  Media files with several sizes ([#220](https://github.com/next-orders/space/pull/220))
+- Removing old images on new upload ([#224](https://github.com/next-orders/space/pull/224))
+- Warehouses ([#226](https://github.com/next-orders/space/pull/226))
+- Swr for index and catalog pages ([#232](https://github.com/next-orders/space/pull/232))
+- Now we can choose product variant on client side ([#235](https://github.com/next-orders/space/pull/235))
+- ⚠️  Address and paymentMethod ([#236](https://github.com/next-orders/space/pull/236))
+- Finish page ([#240](https://github.com/next-orders/space/pull/240))
+- ⚠️  Time and type on checkout ([#241](https://github.com/next-orders/space/pull/241))
+
+### 🩹 Fixes
+
+- Release version ([#216](https://github.com/next-orders/space/pull/216))
+- Storage path ([#221](https://github.com/next-orders/space/pull/221))
+- Storage path ([#222](https://github.com/next-orders/space/pull/222))
+- Storage path ([#223](https://github.com/next-orders/space/pull/223))
+- Sharp versions for other os ([#227](https://github.com/next-orders/space/pull/227))
+- Runtime config ([#231](https://github.com/next-orders/space/pull/231))
+- Swr on product page ([#233](https://github.com/next-orders/space/pull/233))
+
+### 🏡 Chore
+
+- Lib updates ([#217](https://github.com/next-orders/space/pull/217))
+- Menu activity status change, user name ([#225](https://github.com/next-orders/space/pull/225))
+- Warehouse rework ([#228](https://github.com/next-orders/space/pull/228))
+- First category check for LCP ([#229](https://github.com/next-orders/space/pull/229))
+- Buttons gradient rework ([#230](https://github.com/next-orders/space/pull/230))
+- Image size optimization ([#234](https://github.com/next-orders/space/pull/234))
+- Create pull request template ([#237](https://github.com/next-orders/space/pull/237))
+- Lib updates ([#238](https://github.com/next-orders/space/pull/238))
+- Payment methods on client ([#239](https://github.com/next-orders/space/pull/239))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Media files with several sizes ([#220](https://github.com/next-orders/space/pull/220))
+- ⚠️  Address and paymentMethod ([#236](https://github.com/next-orders/space/pull/236))
+- ⚠️  Time and type on checkout ([#241](https://github.com/next-orders/space/pull/241))
+
+### ❤️ Contributors
+
+- Nick Kosarev ([@hmbanan666](http://github.com/hmbanan666))
+- Alexander <a.hywax@gmail.com>
+
 ## v0.4.0
 
 [compare changes](https://github.com/next-orders/space/compare/v0.2.1...v0.4.0)
