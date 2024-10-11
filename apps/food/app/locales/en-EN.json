@@ -59,7 +59,9 @@
       "kcal": "kcal",
       "ml": "ml",
       "l": "l",
-      "pcs": "pcs"
+      "pcs": "pcs",
+      "oz": "oz",
+      "lb": "lb"
     },
     "weight-unit": {
       "g": "Gram",

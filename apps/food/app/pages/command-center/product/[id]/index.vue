@@ -89,7 +89,7 @@
           >
 
           <div class="text-lg leading-tight">
-            Добавить
+            {{ $t('center.create.title') }}
           </div>
         </div>
       </UiActiveCard>
