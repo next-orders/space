@@ -3,14 +3,14 @@
     Заказ оформлен
   </h1>
 
-  <div class="p-3 md:p-6 bg-white rounded-3xl space-y-6">
+  <div class="p-3 md:p-6 bg-white dark:bg-neutral-600 rounded-3xl space-y-6">
     <h2 class="text-center font-medium text-xl">
       Ваша заявка была успешно передана на обработку. Ожидайте звонка от оператора.
     </h2>
 
     <ClientOnly>
       <div>
-        <h3 class="text-lg font-medium">
+        <h3 class="mb-2 text-lg font-medium text-neutral-500 dark:text-neutral-400">
           {{ checkout?.deliveryMethod === 'WAREHOUSE' ? $t('app.cart.pickup') : $t('app.cart.delivery') }}
         </h3>
 
@@ -29,7 +29,7 @@
       </div>
 
       <div>
-        <h3 class="mb-2 text-lg font-medium">
+        <h3 class="mb-2 text-lg font-medium text-neutral-500 dark:text-neutral-400">
           Вы заказали
         </h3>
 
@@ -37,7 +37,7 @@
       </div>
 
       <div>
-        <h3 class="mb-2 text-lg font-medium">
+        <h3 class="mb-2 text-lg font-medium text-neutral-500 dark:text-neutral-400">
           Итого
         </h3>
         <div class="flex flex-row justify-between">

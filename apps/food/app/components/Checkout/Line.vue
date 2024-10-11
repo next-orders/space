@@ -11,10 +11,10 @@
             {{ line?.variant?.product?.name }}
           </div>
           <div class="mt-1 flex flex-row gap-2 flex-nowrap items-center">
-            <p class="text-sm text-neutral-500 leading-tight">
+            <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-tight">
               {{ variant?.name }}
             </p>
-            <p class="text-sm text-neutral-500">
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">
               {{ variant?.weightValue }}{{ getWeightLocalizedUnit(variant?.weightUnit) }}
             </p>
           </div>

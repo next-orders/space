@@ -7,7 +7,7 @@
     <div class="col-span-full md:col-span-7 space-y-6">
       <CheckoutDeliveryForm />
 
-      <div class="p-3 md:p-6 bg-white rounded-3xl">
+      <div class="p-3 md:p-6 bg-white dark:bg-neutral-600 rounded-3xl">
         <h2 class="mb-4 text-xl md:text-2xl font-medium">
           Вы заказываете
         </h2>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="col-span-full md:col-span-5 h-fit sticky top-20">
-      <div class="mb-6 p-3 md:p-6 bg-white rounded-3xl space-y-5">
+      <div class="mb-6 p-3 md:p-6 bg-white dark:bg-neutral-600 rounded-3xl space-y-5">
         <div>
           <h3 class="mb-2 text-lg md:text-xl font-medium">
             Метод оплаты

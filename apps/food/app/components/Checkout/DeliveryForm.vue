@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 md:p-6 bg-white rounded-3xl space-y-5">
+  <div class="p-3 md:p-6 bg-white dark:bg-neutral-600 rounded-3xl space-y-5">
     <CartDeliveryMethodSwitch />
 
     <div class="w-full">
