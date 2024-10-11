@@ -130,7 +130,8 @@
       "cost": {
         "delivery": "Delivery cost",
         "products": "Cost of goods"
-      }
+      },
+      "change-label": "From what amount should prepare change?"
     },
     "finish": {
       "title": "Order placed",

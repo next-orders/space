@@ -42,6 +42,17 @@
               </p>
             </UiButton>
           </div>
+
+          <div v-if="selectedPaymentMethod?.type === 'CASH'" class="mt-4">
+            <UiLabel for="change">
+              {{ $t('app.checkout.change-label') }}
+            </UiLabel>
+            <UiInput
+              id="change"
+              name="change"
+              :placeholder="getCurrencySign(channel?.currencyCode)"
+            />
+          </div>
         </div>
 
         <div>
@@ -96,6 +107,7 @@ const { icons } = useAppConfig()
 const { channel } = await useChannel()
 const { checkout } = useCheckout()
 
-const selectedPaymentMethodId = ref('')
 const paymentMethods = computed(() => channel.value?.paymentMethods)
+const selectedPaymentMethodId = ref('')
+const selectedPaymentMethod = computed(() => paymentMethods.value?.find((m) => m.id === selectedPaymentMethodId.value))
 </script>
