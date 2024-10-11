@@ -101,6 +101,7 @@ model ProductVariant {
   weightValue   Float          @map("weight_value")
   gross         Float
   net           Float?
+  sku           String?
   calories      Float?
   carbohydrate  Float?
   fat           Float?

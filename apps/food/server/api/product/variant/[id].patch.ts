@@ -18,6 +18,7 @@ export default defineEventHandler(async (event) => {
         fat: data.fat,
         protein: data.protein,
         carbohydrate: data.carbohydrate,
+        sku: data.sku,
       },
     })
 

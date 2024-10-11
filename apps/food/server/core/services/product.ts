@@ -20,10 +20,11 @@ export const productVariantCreateSchema = z.object({
   weightUnit: z.enum(['G', 'KG', 'ML', 'L', 'LB', 'OZ']),
   gross: z.number(),
   net: z.number().optional(),
-  calories: z.number().optional(),
-  protein: z.number().optional(),
-  fat: z.number().optional(),
-  carbohydrate: z.number().optional(),
+  calories: z.coerce.number().optional().nullable(),
+  protein: z.coerce.number().optional().nullable(),
+  fat: z.coerce.number().optional().nullable(),
+  carbohydrate: z.coerce.number().optional().nullable(),
+  sku: z.string().max(50).optional().nullable(),
 })
 
 export const productVariantUpdateSchema = z.object({
@@ -32,10 +33,11 @@ export const productVariantUpdateSchema = z.object({
   weightUnit: z.enum(['G', 'KG', 'ML', 'L', 'LB', 'OZ']).optional(),
   gross: z.number().optional(),
   net: z.number().optional(),
-  calories: z.number().optional(),
-  protein: z.number().optional(),
-  fat: z.number().optional(),
-  carbohydrate: z.number().optional(),
+  calories: z.coerce.number().optional().nullable(),
+  protein: z.coerce.number().optional().nullable(),
+  fat: z.coerce.number().optional().nullable(),
+  carbohydrate: z.coerce.number().optional().nullable(),
+  sku: z.string().max(50).optional().nullable(),
 })
 
 const MAX_FILE_SIZE = 20000000

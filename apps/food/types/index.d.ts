@@ -90,6 +90,7 @@ declare global {
     protein: number | null
     fat: number | null
     carbohydrate: number | null
+    sku: string | null
   }
 
   type WeightUnit = 'G' | 'KG' | 'ML' | 'L' | 'OZ' | 'LB'

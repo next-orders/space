@@ -32,6 +32,19 @@ export function getWeightLocalizedUnit<WeightUnitLiteral = string & object>(unit
   }
 }
 
+export function getWeightUnitValues(): { value: WeightUnit, label: string }[] {
+  const { t } = useI18n()
+
+  return [
+    { value: 'KG', label: t('common.weight-unit.kg') },
+    { value: 'G', label: t('common.weight-unit.g') },
+    { value: 'L', label: t('common.weight-unit.l') },
+    { value: 'ML', label: t('common.weight-unit.ml') },
+    { value: 'OZ', label: t('common.weight-unit.oz') },
+    { value: 'LB', label: t('common.weight-unit.lb') },
+  ]
+}
+
 export function getLocalizedPrice(value?: number): string {
   if (!value) {
     return ''
