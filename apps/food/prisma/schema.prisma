@@ -123,6 +123,8 @@ model Checkout {
   totalPrice      Float          @default(0) @map("total_price")
   name            String         @default("")
   phone           String         @default("")
+  time            DateTime       @default(now())
+  timeType        String         @default("FAST") @map("time_type")
   discount        Float?
   warehouseId     String?        @map("warehouse_id")
   addressId       String?        @map("address_id")

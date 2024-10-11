@@ -110,14 +110,41 @@
         {{ $t('app.checkout.time-title') }}
       </h3>
 
-      <div class="flex flex-row gap-2 items-center">
-        <Icon :name="icons.clock" />
-        Как можно скорее: 45-60 мин
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
+        <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { selectedTimeType = 'ASAP'; selectedTimeLabel = '' }">
+          <Icon :name="selectedTimeType === 'ASAP' ? icons.clockCheck : icons.clock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': selectedTimeType === 'ASAP' }" />
+          <p class="font-medium leading-tight break-all">
+            Побыстрее
+          </p>
+        </UiButton>
 
-      <div>Сегодня мы принимаем заказы с 10:00 до 22:00</div>
+        <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="isSelectTimeModalOpened = true">
+          <Icon :name="selectedTimeType === 'SCHEDULED' ? icons.alarmClockCheck : icons.alarmClock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': selectedTimeType === 'SCHEDULED' }" />
+          <p class="font-medium leading-tight break-all">
+            {{ selectedTimeLabel || $t('app.checkout.on-time') }}
+          </p>
+        </UiButton>
+      </div>
     </div>
   </div>
+
+  <CommandCenterModal :title="$t('app.checkout.select-time-title')" :is-opened="isSelectTimeModalOpened" @close="() => isSelectTimeModalOpened = false">
+    <div class="flex flex-col gap-2">
+      <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { selectedTimeType = 'ASAP'; selectedTimeLabel = ''; isSelectTimeModalOpened = false }">
+        <Icon :name="selectedTimeType === 'ASAP' ? icons.clockCheck : icons.clock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': selectedTimeType === 'ASAP' }" />
+        <p class="font-medium leading-tight break-all">
+          Побыстрее
+        </p>
+      </UiButton>
+
+      <UiButton v-for="slot in slots" :key="slot.id" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { selectedTimeType = 'SCHEDULED'; selectedTime = slot.value; selectedTimeLabel = slot.label; isSelectTimeModalOpened = false }">
+        <Icon :name="selectedTimeType === 'SCHEDULED' ? icons.alarmClockCheck : icons.alarmClock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': selectedTimeType === 'SCHEDULED' && selectedTime === slot.value }" />
+        <p class="font-medium leading-tight break-all">
+          {{ slot.label }}
+        </p>
+      </UiButton>
+    </div>
+  </CommandCenterModal>
 </template>
 
 <script setup lang="ts">
@@ -125,6 +152,10 @@ const { icons } = useAppConfig()
 const { channel } = await useChannel()
 const { checkout } = useCheckout()
 
+const selectedTimeType = ref<Checkout['timeType']>('ASAP')
+const selectedTime = ref<Date>()
+const selectedTimeLabel = ref('')
+const isSelectTimeModalOpened = ref(false)
 const selectedWarehouseId = ref('')
 const phoneNumber = ref('')
 const countryCode = computed(() => channel.value?.countryCode as CountryCode)
@@ -146,4 +177,38 @@ function formatPhone() {
   getPhoneNumberFormatter(countryCode.value).input(phoneNumber.value)
   phoneNumber.value = formatPhoneNumber(phoneNumber.value, countryCode.value)
 }
+
+const timeOpen = new Date(new Date().setHours(10))
+const timeClose = new Date(new Date().setHours(22))
+
+const slots = computed(() => {
+  const slots = []
+
+  // Prepare time slots every 30 min from now to closing time in format: 10:00 - 10:30
+  for (let i = 0; i < 48; i++) {
+    const time = new Date()
+    time.setMinutes(30 * i)
+
+    const timeNext = new Date()
+    timeNext.setMinutes(30 * (i + 1))
+
+    const isItOpened = time >= timeOpen && time <= timeClose
+
+    if (isItOpened) {
+      slots.push({
+        id: time.getTime().toString(),
+        label: `${time.getHours()}:${time.getMinutes().toString().padStart(2, '0')} - ${timeNext.getHours()}:${timeNext.getMinutes().toString().padStart(2, '0')}`,
+        value: time,
+      })
+    }
+  }
+
+  // Remove first 2 slots and last 2 slots
+  slots.shift()
+  slots.shift()
+  slots.pop()
+  slots.pop()
+
+  return slots
+})
 </script>

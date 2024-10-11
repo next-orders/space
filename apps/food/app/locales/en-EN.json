@@ -109,7 +109,7 @@
       "enter-address": "Enter your address",
       "select-address": "Select address",
       "address": {
-        "title": "Адрес",
+        "title": "Address",
         "street": "Street and house",
         "flat": "Apt./office",
         "doorphone": "Doorphone",
@@ -119,6 +119,8 @@
         "note-placeholder": "For faster delivery, specify additional information"
       },
       "time-title": "Time",
+      "select-time-title": "Choose a time",
+      "on-time": "On time",
       "order-title": "You order",
       "order-note": "Note for kitchen",
       "order-note-placeholder": "Wishes for order",
@@ -128,7 +130,8 @@
       "cost": {
         "delivery": "Delivery cost",
         "products": "Cost of goods"
-      }
+      },
+      "change-label": "From what amount should prepare change?"
     },
     "finish": {
       "title": "Order placed",

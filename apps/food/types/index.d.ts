@@ -107,6 +107,8 @@ declare global {
     totalPrice: number
     discount: number | null
     note: string | null
+    time: Date
+    timeType: 'ASAP' | 'SCHEDULED'
     warehouseId: string | null
     addressId: string | null
     channelId: string
