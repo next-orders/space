@@ -4,7 +4,7 @@
 
     <div class="w-full">
       <h3 class="mb-2 text-lg md:text-xl font-medium">
-        Контакты
+        {{ $t('app.checkout.contacts') }}
       </h3>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -12,7 +12,7 @@
           v-model="phoneNumber"
           type="tel"
           name="phone"
-          placeholder="Ваш телефон"
+          :placeholder="$t('app.checkout.your-phone')"
           maxlength="17"
           :class="{ '!outline-emerald-500': isValidPhone }"
           @change="formatPhone"
@@ -20,17 +20,17 @@
 
         <UiInput
           name="name"
-          placeholder="Ваше имя"
+          :placeholder="$t('app.checkout.your-name')"
         />
       </div>
     </div>
 
     <div v-if="checkout?.deliveryMethod === 'DELIVERY'" class="w-full">
       <h3 class="mb-2 text-lg md:text-xl font-medium">
-        Укажите свой адрес
+        {{ $t('app.checkout.address-title') }}
       </h3>
       <UiLabel for="street">
-        Улица и дом
+        {{ $t('app.checkout.address.street') }}
       </UiLabel>
       <UiInput
         id="street"
@@ -39,18 +39,18 @@
 
       <div class="mt-2 mb-2 grid grid-cols-2 md:grid-cols-4 gap-2">
         <div>
-          <UiLabel for="apartment">
-            Кв./офис
+          <UiLabel for="flat">
+            {{ $t('app.checkout.address.flat') }}
           </UiLabel>
           <UiInput
-            id="apartment"
-            name="apartment"
+            id="flat"
+            name="flat"
           />
         </div>
 
         <div>
           <UiLabel for="doorphone">
-            Домофон
+            {{ $t('app.checkout.address.doorphone') }}
           </UiLabel>
           <UiInput
             id="doorphone"
@@ -60,7 +60,7 @@
 
         <div>
           <UiLabel for="entrance">
-            Подъезд
+            {{ $t('app.checkout.address.entrance') }}
           </UiLabel>
           <UiInput
             id="entrance"
@@ -70,7 +70,7 @@
 
         <div>
           <UiLabel for="floor">
-            Этаж
+            {{ $t('app.checkout.address.floor') }}
           </UiLabel>
           <UiInput
             id="floor"
@@ -81,18 +81,18 @@
 
       <div>
         <UiLabel for="address-note">
-          Комментарий
+          {{ $t('app.checkout.address.note') }}
         </UiLabel>
         <UiTextarea
           id="address-note"
           name="address-note"
-          placeholder="Чтобы курьер быстрее вас нашел, укажите дополнительную информацию"
+          :placeholder="$t('app.checkout.address.note-placeholder')"
         />
       </div>
     </div>
     <div v-if="checkout?.deliveryMethod === 'WAREHOUSE'">
       <h3 class="mb-2 text-lg md:text-xl font-medium">
-        Выберите адрес
+        {{ $t('app.checkout.select-address') }}
       </h3>
 
       <div class="grid grid-cols-1 md:grid-cols-1 gap-2">
@@ -106,9 +106,9 @@
     </div>
 
     <div class="w-full">
-      <h2 class="mb-2 text-xl md:text-2xl font-medium">
-        Время
-      </h2>
+      <h3 class="mb-2 text-lg md:text-xl font-medium">
+        {{ $t('app.checkout.time-title') }}
+      </h3>
 
       <div class="flex flex-row gap-2 items-center">
         <Icon :name="icons.clock" />

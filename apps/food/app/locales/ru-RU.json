@@ -101,6 +101,34 @@
       "add": "Добавить",
       "add-to-cart": "Добавить в корзину"
     },
+    "checkout": {
+      "title": "Оформление заказа",
+      "contacts": "Контакты",
+      "your-phone": "Ваш телефон",
+      "your-name": "Ваше имя",
+      "address-title": "Укажите свой адрес",
+      "select-address": "Выберите адрес",
+      "address": {
+        "street": "Улица и дом",
+        "flat": "Кв./офис",
+        "doorphone": "Домофон",
+        "entrance": "Подъезд",
+        "floor": "Этаж",
+        "note": "Комментарий",
+        "note-placeholder": "Чтобы курьер быстрее вас нашел, укажите дополнительную информацию"
+      },
+      "time-title": "Время",
+      "order-title": "Вы заказываете",
+      "order-note": "Комментарий для кухни",
+      "order-note-placeholder": "Пожелания к заказу",
+      "payment-title": "Метод оплаты",
+      "total-title": "Итого",
+      "create-order": "Создать заказ",
+      "cost": {
+        "delivery": "Стоимость доставки",
+        "products": "Стоимость товаров"
+      }
+    },
     "search": {
       "placeholder": "Найти блюдо...",
       "nothing-found": "Ничего не найдено",

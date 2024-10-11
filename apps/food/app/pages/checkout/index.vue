@@ -1,6 +1,6 @@
 <template>
   <h1 class="pt-8 mb-4 md:mb-8 text-3xl md:text-4xl font-medium">
-    Оформление заказа
+    {{ $t('app.checkout.title') }}
   </h1>
 
   <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
@@ -9,19 +9,19 @@
 
       <div class="p-3 md:p-6 bg-white dark:bg-neutral-600 rounded-3xl">
         <h2 class="mb-4 text-xl md:text-2xl font-medium">
-          Вы заказываете
+          {{ $t('app.checkout.order-title') }}
         </h2>
 
         <CheckoutLine v-for="line in checkout?.lines" :key="line.id" :line-id="line.id" />
 
         <div class="mt-4">
           <UiLabel for="note">
-            Комментарий для кухни
+            {{ $t('app.checkout.order-note') }}
           </UiLabel>
           <UiTextarea
             id="note"
             name="note"
-            placeholder="Пожелания к заказу"
+            :placeholder="$t('app.checkout.order-note-placeholder')"
           />
         </div>
       </div>
@@ -31,7 +31,7 @@
       <div class="mb-6 p-3 md:p-6 bg-white dark:bg-neutral-600 rounded-3xl space-y-5">
         <div>
           <h3 class="mb-2 text-lg md:text-xl font-medium">
-            Метод оплаты
+            {{ $t('app.checkout.payment-title') }}
           </h3>
 
           <div class="grid grid-cols-2 md:grid-cols-2 gap-2">
@@ -46,35 +46,35 @@
 
         <div>
           <h3 class="mb-2 text-lg md:text-xl font-medium">
-            Итого
+            {{ $t('app.checkout.total-title') }}
           </h3>
 
           <div>
             <div class="mb-2 flex flex-row justify-between text-lg">
-              <div>Стоимость товаров</div>
+              <div>{{ $t('app.checkout.cost.products') }}</div>
               <div class="tracking-tight">
                 {{ checkout?.totalPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
               </div>
             </div>
             <div class="mb-2 flex flex-row justify-between text-lg">
-              <div>Стоимость доставки</div>
+              <div>{{ $t('app.checkout.cost.delivery') }}</div>
               <div class="tracking-tight">
                 {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
               </div>
             </div>
 
-            <div class="mt-4">
+            <!-- <div class="mt-4">
               <div class="text-base text-neutral-500">
                 Есть промо код?
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
 
         <div class="flex flex-row flex-nowrap gap-4 items-center">
           <NuxtLink to="/finish" class="grow">
             <UiButton class="w-full px-4 py-4 text-lg text-center">
-              Создать заказ
+              {{ $t('app.checkout.create-order') }}
             </UiButton>
           </NuxtLink>
 

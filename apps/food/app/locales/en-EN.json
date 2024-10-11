@@ -101,6 +101,34 @@
       "add": "Add",
       "add-to-cart": "Add to cart"
     },
+    "checkout": {
+      "title": "Placing an order",
+      "contacts": "Contacts",
+      "your-phone": "Your phone",
+      "your-name": "Your name",
+      "address-title": "Enter your address",
+      "select-address": "Select address",
+      "address": {
+        "street": "Street and house",
+        "flat": "Apt./office",
+        "doorphone": "Doorphone",
+        "entrance": "Entrance",
+        "floor": "Floor",
+        "note": "Note",
+        "note-placeholder": "For faster delivery, specify additional information"
+      },
+      "time-title": "Time",
+      "order-title": "You order",
+      "order-note": "Note for kitchen",
+      "order-note-placeholder": "Wishes for order",
+      "payment-title": "Payment method",
+      "total-title": "Total",
+      "create-order": "Create order",
+      "cost": {
+        "delivery": "Delivery cost",
+        "products": "Cost of goods"
+      }
+    },
     "search": {
       "placeholder": "Find a dish...",
       "nothing-found": "Nothing found",

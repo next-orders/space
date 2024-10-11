@@ -4,7 +4,7 @@
       to="/"
       class="mr-2 md:mr-0 flex flex-row gap-2 items-center active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
     >
-      <Icon :name="icons.undo" size="20" /> Вернуться
+      <Icon :name="icons.undo" size="20" /> {{ $t('common.return') }}
     </NuxtLink>
   </div>
 </template>

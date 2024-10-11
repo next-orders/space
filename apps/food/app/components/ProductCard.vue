@@ -40,8 +40,7 @@ const { productId } = defineProps<{
 }>()
 
 const { icons } = useAppConfig()
-const { channel, categories } = await useChannel()
-const { products } = await useProduct()
+const { channel, categories, products } = await useChannel()
 const product = computed(() => products.value?.find(({ id }) => id === productId))
 
 const withSingleVariant = computed(() => product.value?.variants.length === 1)
