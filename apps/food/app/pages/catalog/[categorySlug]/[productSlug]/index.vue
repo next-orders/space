@@ -51,7 +51,7 @@
         <div class="mb-1 font-medium text-neutral-400">
           {{ $t('common.nutrition.value-title') }}
         </div>
-        <div class="mt-2 px-4 py-4 w-fit flex flex-row gap-4 bg-neutral-100 rounded-2xl">
+        <div class="mt-2 px-4 py-4 w-fit flex flex-row gap-4 bg-neutral-100 dark:bg-neutral-500 rounded-2xl">
           <div>
             <div class="font-medium">
               {{ selectedVariant?.calories }}

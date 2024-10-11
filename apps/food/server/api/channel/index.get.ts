@@ -17,6 +17,7 @@ export default defineEventHandler(async () => {
               products: {
                 include: {
                   variants: true,
+                  category: true,
                 },
               },
             },

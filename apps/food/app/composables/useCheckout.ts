@@ -4,6 +4,11 @@ function _useCheckout() {
     watch: false,
   })
 
+  const { data: address } = useFetch(`/api/address/${data.value?.addressId}`, {
+    server: false,
+    watch: false,
+  })
+
   const isEmpty = computed(() => !data.value || data.value?.lines?.length === 0)
 
   const addProduct = async (productVariantId: string) => {
@@ -54,7 +59,7 @@ function _useCheckout() {
     }
   }
 
-  return { checkout: data, isEmpty, addProduct, update, changeLineQuantity }
+  return { checkout: data, isEmpty, addProduct, update, changeLineQuantity, address }
 }
 
 export const useCheckout = createSharedComposable(_useCheckout)

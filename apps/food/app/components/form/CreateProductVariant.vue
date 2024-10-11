@@ -62,6 +62,18 @@
       </UiFormField>
     </div>
 
+    <UiFormField v-slot="{ componentField }" name="sku">
+      <UiFormItem>
+        <div>
+          <UiFormLabel>Артикул</UiFormLabel>
+          <UiFormMessage />
+        </div>
+        <UiFormControl>
+          <UiInput v-bind="componentField" placeholder="Опционально" />
+        </UiFormControl>
+      </UiFormItem>
+    </UiFormField>
+
     <div class="pt-4">
       <h3 class="font-semibold">
         Опционально: Пищевая ценность на 100г
@@ -137,7 +149,6 @@ const { isOpened, productId } = defineProps<{
 
 const emit = defineEmits(['success'])
 
-const { t } = useI18n()
 const { toast } = useToast()
 const { channel, refresh: refreshChannelData } = await useChannel()
 const { refresh: refreshProducts } = await useProduct()
@@ -179,12 +190,5 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
   }
 })
 
-const weightUnitValues: { value: WeightUnit, label: string }[] = [
-  { value: 'KG', label: t('common.weight-unit.kg') },
-  { value: 'G', label: t('common.weight-unit.g') },
-  { value: 'L', label: t('common.weight-unit.l') },
-  { value: 'ML', label: t('common.weight-unit.ml') },
-  { value: 'OZ', label: t('common.weight-unit.oz') },
-  { value: 'LB', label: t('common.weight-unit.lb') },
-]
+const weightUnitValues = getWeightUnitValues()
 </script>

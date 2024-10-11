@@ -90,6 +90,7 @@ declare global {
     protein: number | null
     fat: number | null
     carbohydrate: number | null
+    sku: string | null
   }
 
   type WeightUnit = 'G' | 'KG' | 'ML' | 'L' | 'OZ' | 'LB'
@@ -98,6 +99,8 @@ declare global {
     id: string
     createdAt: Date
     updatedAt: Date
+    name: string
+    phone: string
     deliveryMethod: CheckoutDeliveryMethod
     paymentMethodId: string
     shippingPrice: number

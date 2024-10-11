@@ -12,22 +12,37 @@ export function getCurrencySign<CurrencyLiteral = string & object>(code?: Curren
 }
 
 export function getWeightLocalizedUnit<WeightUnitLiteral = string & object>(unit?: WeightUnit | WeightUnitLiteral): string {
+  const { t } = useI18n()
+
   switch (unit as WeightUnit) {
     case 'G':
-      return 'г'
+      return t('common.abbreviation.g')
     case 'KG':
-      return 'кг'
+      return t('common.abbreviation.kg')
     case 'ML':
-      return 'мл'
+      return t('common.abbreviation.ml')
     case 'L':
-      return 'л'
+      return t('common.abbreviation.l')
     case 'LB':
-      return 'фунт'
+      return t('common.abbreviation.lb')
     case 'OZ':
-      return 'унц'
+      return t('common.abbreviation.oz')
     default:
       return ''
   }
+}
+
+export function getWeightUnitValues(): { value: WeightUnit, label: string }[] {
+  const { t } = useI18n()
+
+  return [
+    { value: 'KG', label: t('common.weight-unit.kg') },
+    { value: 'G', label: t('common.weight-unit.g') },
+    { value: 'L', label: t('common.weight-unit.l') },
+    { value: 'ML', label: t('common.weight-unit.ml') },
+    { value: 'OZ', label: t('common.weight-unit.oz') },
+    { value: 'LB', label: t('common.weight-unit.lb') },
+  ]
 }
 
 export function getLocalizedPrice(value?: number): string {

@@ -18,7 +18,7 @@
     </nav>
 
     <div class="w-full md:w-auto mx-auto md:mx-0">
-      <UiButton variant="secondary" :class="{ 'bg-neutral-200': isDarkBackground }" @click="back()">
+      <UiButton variant="secondary" :class="{ 'bg-neutral-200 dark:bg-neutral-600': isDarkBackground }" @click="back()">
         <div class="flex flex-row gap-2 justify-center items-center">
           <Icon :name="icons.undo" size="20" /> {{ $t('common.return') }}
         </div>

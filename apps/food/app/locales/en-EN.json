@@ -59,7 +59,9 @@
       "kcal": "kcal",
       "ml": "ml",
       "l": "l",
-      "pcs": "pcs"
+      "pcs": "pcs",
+      "oz": "oz",
+      "lb": "lb"
     },
     "weight-unit": {
       "g": "Gram",
@@ -98,6 +100,41 @@
       "now": "Now",
       "add": "Add",
       "add-to-cart": "Add to cart"
+    },
+    "checkout": {
+      "title": "Placing an order",
+      "contacts": "Contacts",
+      "your-phone": "Your phone",
+      "your-name": "Your name",
+      "enter-address": "Enter your address",
+      "select-address": "Select address",
+      "address": {
+        "title": "Адрес",
+        "street": "Street and house",
+        "flat": "Apt./office",
+        "doorphone": "Doorphone",
+        "entrance": "Entrance",
+        "floor": "Floor",
+        "note": "Note",
+        "note-placeholder": "For faster delivery, specify additional information"
+      },
+      "time-title": "Time",
+      "order-title": "You order",
+      "order-note": "Note for kitchen",
+      "order-note-placeholder": "Wishes for order",
+      "payment-title": "Payment method",
+      "total-title": "Total",
+      "create-order": "Create order",
+      "cost": {
+        "delivery": "Delivery cost",
+        "products": "Cost of goods"
+      }
+    },
+    "finish": {
+      "title": "Order placed",
+      "success-message": "Your request has been successfully submitted for processing.",
+      "expect-call": "Expect a call from the operator.",
+      "ordered-title": "You ordered"
     },
     "search": {
       "placeholder": "Find a dish...",
