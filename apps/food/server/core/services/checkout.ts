@@ -1,3 +1,5 @@
+import { z } from 'zod'
+
 export async function updateCheckout(id: string) {
   const checkout = await prisma.checkout.findFirst({
     where: { id },
@@ -28,3 +30,23 @@ export async function updateCheckout(id: string) {
     },
   })
 }
+
+export const checkoutUpdateSchema = z.object({
+  deliveryMethod: z.enum(['WAREHOUSE', 'DELIVERY']).optional(),
+  phone: z.string().max(20).optional(),
+  name: z.string().max(50).optional(),
+  warehouseId: z.string().max(50).optional(),
+  addressId: z.string().max(50).optional(),
+  paymentMethodId: z.string().max(50).optional(),
+  change: z.string().max(10).optional(),
+  note: z.string().max(250).optional(),
+})
+
+export const addressCreateSchema = z.object({
+  street: z.string().min(2).max(80),
+  flat: z.string().max(10).optional(),
+  doorphone: z.string().max(10).optional(),
+  entrance: z.string().max(10).optional(),
+  floor: z.string().max(10).optional(),
+  note: z.string().max(250).optional(),
+})

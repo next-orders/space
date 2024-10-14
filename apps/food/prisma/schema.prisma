@@ -124,11 +124,12 @@ model Checkout {
   name            String         @default("")
   phone           String         @default("")
   time            DateTime       @default(now())
-  timeType        String         @default("FAST") @map("time_type")
+  timeType        String         @default("ASAP") @map("time_type")
   discount        Float?
   warehouseId     String?        @map("warehouse_id")
   addressId       String?        @map("address_id")
   note            String?
+  change          String?
   channelId       String         @map("channel_id")
   channel         Channel        @relation(fields: [channelId], references: [id])
   lines           CheckoutLine[]

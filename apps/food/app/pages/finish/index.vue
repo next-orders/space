@@ -14,17 +14,20 @@
           {{ checkout?.deliveryMethod === 'WAREHOUSE' ? $t('app.cart.pickup') : $t('app.cart.delivery') }}
         </h3>
 
-        <p>{{ $t('app.checkout.your-name') }}: {{ checkout?.name }}</p>
-        <p>{{ $t('app.checkout.your-phone') }}: {{ checkout?.phone }}</p>
+        <p>{{ $t('app.checkout.your-name') }}: <span class="font-medium">{{ checkout?.name }}</span></p>
+        <p>{{ $t('app.checkout.your-phone') }}: <span class="font-medium">{{ checkout?.phone }}</span></p>
 
         <p>
           {{ $t('app.checkout.address.title') }}:
-          <span v-if="warehouse?.address">{{ warehouse?.address }}</span>
-          <span v-if="address">{{ address }}</span>
+          <span v-if="warehouse?.address" class="font-medium">{{ warehouse?.address }}</span>
+          <span v-if="address" class="font-medium">{{ address }}</span>
         </p>
 
-        <p>{{ $t('app.checkout.payment-title') }}: {{ channel?.paymentMethods.find((p) => p.id === checkout?.paymentMethodId)?.name }}</p>
-        <p>{{ $t('app.checkout.order-note') }}: {{ checkout?.note }}</p>
+        <p>{{ $t('app.checkout.payment-title') }}: <span class="font-medium">{{ channel?.paymentMethods.find((p) => p.id === checkout?.paymentMethodId)?.name }}</span></p>
+        <p v-if="checkout?.change">
+          {{ $t('app.checkout.change-label') }}: <span class="font-medium">{{ checkout?.change }} {{ getCurrencySign(channel?.currencyCode) }}</span>
+        </p>
+        <p>{{ $t('app.checkout.order-note') }}: <span class="font-medium">{{ checkout?.note }}</span></p>
       </div>
 
       <div>
@@ -68,7 +71,24 @@ definePageMeta({
 })
 
 const { channel } = await useChannel()
-const { checkout, address } = useCheckout()
+const { checkout, getAddress } = useCheckout()
 
 const warehouse = computed(() => channel.value?.warehouses.find((w) => w.id === checkout.value?.warehouseId))
+const address = ref()
+
+watch(
+  () => checkout.value?.addressId,
+  async () => {
+    if (!checkout.value?.addressId) {
+      return
+    }
+
+    const res = await getAddress(checkout.value?.addressId)
+    if (!res) {
+      return
+    }
+
+    address.value = `${res.street} ${res.flat}, ${res.doorphone}, ${res.entrance}, ${res.floor}. ${res.note}`
+  },
+)
 </script>
