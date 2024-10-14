@@ -153,7 +153,7 @@ const { channel } = await useChannel()
 const { checkout } = useCheckout()
 
 const selectedTimeType = ref<Checkout['timeType']>('ASAP')
-const selectedTime = ref<Date>()
+const selectedTime = ref<string>()
 const selectedTimeLabel = ref('')
 const isSelectTimeModalOpened = ref(false)
 const selectedWarehouseId = ref('')
@@ -178,37 +178,5 @@ function formatPhone() {
   phoneNumber.value = formatPhoneNumber(phoneNumber.value, countryCode.value)
 }
 
-const timeOpen = new Date(new Date().setHours(10))
-const timeClose = new Date(new Date().setHours(22))
-
-const slots = computed(() => {
-  const slots = []
-
-  // Prepare time slots every 30 min from now to closing time in format: 10:00 - 10:30
-  for (let i = 0; i < 48; i++) {
-    const time = new Date()
-    time.setMinutes(30 * i)
-
-    const timeNext = new Date()
-    timeNext.setMinutes(30 * (i + 1))
-
-    const isItOpened = time >= timeOpen && time <= timeClose
-
-    if (isItOpened) {
-      slots.push({
-        id: time.getTime().toString(),
-        label: `${time.getHours()}:${time.getMinutes().toString().padStart(2, '0')} - ${timeNext.getHours()}:${timeNext.getMinutes().toString().padStart(2, '0')}`,
-        value: time,
-      })
-    }
-  }
-
-  // Remove first 2 slots and last 2 slots
-  slots.shift()
-  slots.shift()
-  slots.pop()
-  slots.pop()
-
-  return slots
-})
+const { slots } = useTime()
 </script>

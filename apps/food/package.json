@@ -16,6 +16,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@date-fns/tz": "^1.1.2",
     "@dicebear/collection": "^9.2.2",
     "@dicebear/core": "^9.2.2",
     "@paralleldrive/cuid2": "^2.2.2",
