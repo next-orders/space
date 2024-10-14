@@ -109,6 +109,7 @@ declare global {
     note: string | null
     time: Date
     timeType: 'ASAP' | 'SCHEDULED'
+    change: string | null
     warehouseId: string | null
     addressId: string | null
     channelId: string
