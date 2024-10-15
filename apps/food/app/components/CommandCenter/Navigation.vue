@@ -64,11 +64,6 @@ const menu = computed(() => [
     icon: icons.checkouts,
   },
   {
-    label: t('center.menu.clients'),
-    link: '/command-center/client',
-    icon: icons.users,
-  },
-  {
     label: t('center.menu.settings'),
     link: '/command-center/system',
     icon: icons.options,
