@@ -224,7 +224,7 @@
           </UiButton>
 
           <div class="font-medium text-right text-2xl min-w-[5rem] tracking-tight">
-            {{ checkout?.totalPrice }} <span class="text-base">{{ getCurrencySign(channel?.currencyCode) }}</span>
+            {{ totalPrice }} <span class="text-base">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>
       </div>
@@ -289,6 +289,7 @@ const isValidPhone = ref(false)
 const selectedTimeLabel = ref('')
 const isSelectTimeModalOpened = ref(false)
 const selectedPaymentMethod = computed(() => paymentMethods.value?.find((m) => m.id === remainingCheckout.paymentMethodId))
+const totalPrice = computed(() => (checkout.value?.totalPrice || 0) + (checkout.value?.shippingPrice || 0))
 
 watch(
   () => remainingCheckout.phone,

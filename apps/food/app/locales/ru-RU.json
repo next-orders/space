@@ -157,6 +157,11 @@
     "welcome-message": "Мы вас заждались!",
     "to-website": "К веб-сайту",
     "search-label": "Найти что-нибудь",
+    "checkout": {
+      "name": "Имя",
+      "phone": "Телефон",
+      "client-ordered": "Клиент заказал"
+    },
     "product": {
       "available-for-purchase": "Доступен для покупки",
       "not-available-for-purchase": "Недоступен для покупки"

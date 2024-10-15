@@ -157,6 +157,11 @@
     "welcome-message": "We've been waiting for you!",
     "to-website": "To Website",
     "search-label": "Find anything",
+    "checkout": {
+      "name": "Name",
+      "phone": "Phone",
+      "client-ordered": "Client ordered"
+    },
     "product": {
       "available-for-purchase": "Available for purchase",
       "not-available-for-purchase": "Not available for purchase"

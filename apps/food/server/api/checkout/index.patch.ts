@@ -14,6 +14,8 @@ export default defineEventHandler(async (event) => {
     const data = checkoutUpdateSchema.parse(body)
     const time = data.time ? new Date(data.time) : new Date()
 
+    const isFinished = data.phone && data.name
+
     await prisma.checkout.update({
       where: { id: checkout.id },
       data: {
@@ -31,6 +33,15 @@ export default defineEventHandler(async (event) => {
     })
 
     await updateCheckout(checkout.id)
+
+    if (isFinished) {
+      await prisma.checkout.update({
+        where: { id: checkout.id },
+        data: {
+          status: 'FINISHED',
+        },
+      })
+    }
 
     return {
       ok: true,

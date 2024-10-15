@@ -115,6 +115,7 @@ declare global {
     id: string
     createdAt: Date
     updatedAt: Date
+    status: 'CREATED' | 'FINISHED' | 'CANCELED'
     name: string
     phone: string
     deliveryMethod: CheckoutDeliveryMethod
