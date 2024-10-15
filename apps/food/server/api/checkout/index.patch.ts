@@ -12,6 +12,7 @@ export default defineEventHandler(async (event) => {
 
     const body = await readBody(event)
     const data = checkoutUpdateSchema.parse(body)
+    const time = data.time ? new Date(data.time) : new Date()
 
     await prisma.checkout.update({
       where: { id: checkout.id },
@@ -22,6 +23,8 @@ export default defineEventHandler(async (event) => {
         warehouseId: data.warehouseId,
         addressId: data.addressId,
         paymentMethodId: data.paymentMethodId,
+        time,
+        timeType: data.timeType,
         change: data.change,
         note: data.note,
       },

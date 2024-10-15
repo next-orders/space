@@ -39,7 +39,7 @@ export default defineEventHandler(async () => {
         slots.push({
           id: time.getTime().toString(),
           label: `${time.getHours()}:${time.getMinutes().toString().padStart(2, '0')} - ${timeNext.getHours()}:${timeNext.getMinutes().toString().padStart(2, '0')}`,
-          value: time,
+          value: time.getTime(),
         })
       }
     }

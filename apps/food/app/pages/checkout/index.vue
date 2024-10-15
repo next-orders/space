@@ -127,7 +127,7 @@
             <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { selectedTimeType = 'ASAP'; selectedTimeLabel = '' }">
               <Icon :name="selectedTimeType === 'ASAP' ? icons.clockCheck : icons.clock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': selectedTimeType === 'ASAP' }" />
               <p class="font-medium leading-tight break-all">
-                Побыстрее
+                {{ $t('app.checkout.as-soon-as-possible') }}
               </p>
             </UiButton>
 
@@ -236,7 +236,7 @@
       <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { selectedTimeType = 'ASAP'; selectedTimeLabel = ''; isSelectTimeModalOpened = false }">
         <Icon :name="selectedTimeType === 'ASAP' ? icons.clockCheck : icons.clock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': selectedTimeType === 'ASAP' }" />
         <p class="font-medium leading-tight break-all">
-          Побыстрее
+          {{ $t('app.checkout.as-soon-as-possible') }}
         </p>
       </UiButton>
 
@@ -262,7 +262,7 @@ const { checkout, update, createAddress } = useCheckout()
 const { slots } = useTime()
 
 const selectedTimeType = ref<Checkout['timeType']>('ASAP')
-const selectedTime = ref<string>()
+const selectedTime = ref<number | undefined>()
 const selectedTimeLabel = ref('')
 const isSelectTimeModalOpened = ref(false)
 
@@ -318,12 +318,16 @@ async function updateCheckout() {
     addressId = await createAddress(address)
   }
 
+  const time = selectedTime.value ? new Date(selectedTime.value) : undefined
+
   await update({
     phone: phoneNumber.value,
     name: name.value,
     warehouseId: selectedWarehouseId.value,
     addressId,
     paymentMethodId: selectedPaymentMethodId.value,
+    time,
+    timeType: selectedTimeType.value,
     change: change.value,
     note: note.value,
   })

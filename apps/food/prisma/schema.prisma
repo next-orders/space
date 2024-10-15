@@ -117,7 +117,7 @@ model Checkout {
   id              String         @id
   createdAt       DateTime       @default(now()) @map("created_at")
   updatedAt       DateTime       @default(now()) @map("updated_at")
-  deliveryMethod  String         @map("delivery_method")
+  deliveryMethod  String         @default("") @map("delivery_method")
   paymentMethodId String         @default("") @map("payment_method_id")
   shippingPrice   Float          @default(0) @map("shipping_price")
   totalPrice      Float          @default(0) @map("total_price")
