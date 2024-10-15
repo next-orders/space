@@ -15,7 +15,7 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
             <UiInput
-              v-model="phoneNumber"
+              v-model="remainingCheckout.phone"
               type="tel"
               name="phone"
               :placeholder="$t('app.checkout.your-phone')"
@@ -25,7 +25,7 @@
             />
 
             <UiInput
-              v-model="name"
+              v-model="remainingCheckout.name"
               name="name"
               :placeholder="$t('app.checkout.your-name')"
             />
@@ -109,8 +109,8 @@
           </h3>
 
           <div class="grid grid-cols-1 md:grid-cols-1 gap-2">
-            <UiButton v-for="warehouse in channel?.warehouses" :key="warehouse.id" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="selectedWarehouseId = warehouse.id">
-              <Icon :name="warehouse.id === selectedWarehouseId ? icons.mapPinCheck : icons.mapPinWarehouse" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': warehouse.id === selectedWarehouseId }" />
+            <UiButton v-for="warehouse in channel?.warehouses" :key="warehouse.id" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="remainingCheckout.warehouseId = warehouse.id">
+              <Icon :name="warehouse.id === remainingCheckout.warehouseId ? icons.mapPinCheck : icons.mapPinWarehouse" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': warehouse.id === remainingCheckout.warehouseId }" />
               <p class="font-medium leading-tight break-all">
                 {{ warehouse.address }}
               </p>
@@ -124,15 +124,15 @@
           </h3>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
-            <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { selectedTimeType = 'ASAP'; selectedTimeLabel = '' }">
-              <Icon :name="selectedTimeType === 'ASAP' ? icons.clockCheck : icons.clock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': selectedTimeType === 'ASAP' }" />
+            <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { remainingCheckout.timeType = 'ASAP'; selectedTimeLabel = '' }">
+              <Icon :name="remainingCheckout.timeType === 'ASAP' ? icons.clockCheck : icons.clock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': remainingCheckout.timeType === 'ASAP' }" />
               <p class="font-medium leading-tight break-all">
                 {{ $t('app.checkout.as-soon-as-possible') }}
               </p>
             </UiButton>
 
             <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="isSelectTimeModalOpened = true">
-              <Icon :name="selectedTimeType === 'SCHEDULED' ? icons.alarmClockCheck : icons.alarmClock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': selectedTimeType === 'SCHEDULED' }" />
+              <Icon :name="remainingCheckout.timeType === 'SCHEDULED' ? icons.alarmClockCheck : icons.alarmClock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': remainingCheckout.timeType === 'SCHEDULED' }" />
               <p class="font-medium leading-tight break-all">
                 {{ selectedTimeLabel || $t('app.checkout.on-time') }}
               </p>
@@ -154,7 +154,7 @@
           </UiLabel>
           <UiTextarea
             id="note"
-            v-model="note"
+            v-model="remainingCheckout.note"
             name="note"
             :placeholder="$t('app.checkout.order-note-placeholder')"
           />
@@ -170,8 +170,8 @@
           </h3>
 
           <div class="grid grid-cols-2 md:grid-cols-2 gap-2">
-            <UiButton v-for="method in paymentMethods" :key="method.type" variant="secondary" class="w-full min-h-14 flex flex-col flex-wrap gap-1 justify-center items-center" @click="selectedPaymentMethodId = method.id">
-              <Icon :name="method.type === 'CASH' ? icons.moneyCash : icons.moneyCard" class="w-8 h-8 text-neutral-300" :class="{ '!text-emerald-500': method.id === selectedPaymentMethodId }" />
+            <UiButton v-for="method in paymentMethods" :key="method.type" variant="secondary" class="w-full min-h-14 flex flex-col flex-wrap gap-1 justify-center items-center" @click="remainingCheckout.paymentMethodId = method.id">
+              <Icon :name="method.type === 'CASH' ? icons.moneyCash : icons.moneyCard" class="w-8 h-8 text-neutral-300" :class="{ '!text-emerald-500': method.id === remainingCheckout.paymentMethodId }" />
               <p class="font-medium leading-tight break-all">
                 {{ method.name }}
               </p>
@@ -184,7 +184,7 @@
             </UiLabel>
             <UiInput
               id="change"
-              v-model="change"
+              v-model="remainingCheckout.change"
               name="change"
               :placeholder="getCurrencySign(channel?.currencyCode)"
             />
@@ -233,15 +233,15 @@
 
   <CommandCenterModal :title="$t('app.checkout.select-time-title')" :is-opened="isSelectTimeModalOpened" @close="() => isSelectTimeModalOpened = false">
     <div class="flex flex-col gap-2">
-      <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { selectedTimeType = 'ASAP'; selectedTimeLabel = ''; isSelectTimeModalOpened = false }">
-        <Icon :name="selectedTimeType === 'ASAP' ? icons.clockCheck : icons.clock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': selectedTimeType === 'ASAP' }" />
+      <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { remainingCheckout.timeType = 'ASAP'; selectedTimeLabel = ''; isSelectTimeModalOpened = false }">
+        <Icon :name="remainingCheckout.timeType === 'ASAP' ? icons.clockCheck : icons.clock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': remainingCheckout.timeType === 'ASAP' }" />
         <p class="font-medium leading-tight break-all">
           {{ $t('app.checkout.as-soon-as-possible') }}
         </p>
       </UiButton>
 
-      <UiButton v-for="slot in slots" :key="slot.id" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { selectedTimeType = 'SCHEDULED'; selectedTime = slot.value; selectedTimeLabel = slot.label; isSelectTimeModalOpened = false }">
-        <Icon :name="selectedTimeType === 'SCHEDULED' ? icons.alarmClockCheck : icons.alarmClock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': selectedTimeType === 'SCHEDULED' && selectedTime === slot.value }" />
+      <UiButton v-for="slot in slots" :key="slot.id" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { remainingCheckout.timeType = 'SCHEDULED'; remainingCheckout.time = new Date(slot.value); selectedTimeLabel = slot.label; isSelectTimeModalOpened = false }">
+        <Icon :name="remainingCheckout.timeType === 'SCHEDULED' ? icons.alarmClockCheck : icons.alarmClock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': remainingCheckout.timeType === 'SCHEDULED' && remainingCheckout.time?.getTime() === slot.value }" />
         <p class="font-medium leading-tight break-all">
           {{ slot.label }}
         </p>
@@ -261,12 +261,21 @@ const { channel } = await useChannel()
 const { checkout, update, createAddress } = useCheckout()
 const { slots } = useTime()
 
-const selectedTimeType = ref<Checkout['timeType']>('ASAP')
-const selectedTime = ref<number | undefined>()
-const selectedTimeLabel = ref('')
-const isSelectTimeModalOpened = ref(false)
+const countryCode = computed(() => channel.value?.countryCode as CountryCode)
+const paymentMethods = computed(() => channel.value?.paymentMethods)
 
-const selectedWarehouseId = ref<string | undefined>(undefined)
+const remainingCheckout = reactive<CheckoutDraft>({
+  name: '',
+  phone: '',
+  time: undefined,
+  timeType: 'ASAP',
+  change: undefined,
+  note: undefined,
+  warehouseId: undefined,
+  addressId: undefined,
+  paymentMethodId: '',
+})
+
 const address = reactive({
   street: '',
   flat: '',
@@ -276,40 +285,34 @@ const address = reactive({
   note: '',
 })
 
-const phoneNumber = ref<string | undefined>(undefined)
-const countryCode = computed(() => channel.value?.countryCode as CountryCode)
 const isValidPhone = ref(false)
-const name = ref<string | undefined>(undefined)
+const selectedTimeLabel = ref('')
+const isSelectTimeModalOpened = ref(false)
+const selectedPaymentMethod = computed(() => paymentMethods.value?.find((m) => m.id === remainingCheckout.paymentMethodId))
 
 watch(
-  () => phoneNumber.value,
+  () => remainingCheckout.phone,
   () => {
-    if (!phoneNumber.value) {
+    if (!remainingCheckout.phone) {
       return
     }
-    if (phoneNumber.value.length > 17) {
+    if (remainingCheckout.phone.length > 17) {
       return
     }
 
-    getPhoneNumberFormatter(countryCode.value).input(phoneNumber.value)
-    isValidPhone.value = checkPhoneNumberValidity(phoneNumber.value, countryCode.value)
+    getPhoneNumberFormatter(countryCode.value).input(remainingCheckout.phone)
+    isValidPhone.value = checkPhoneNumberValidity(remainingCheckout.phone, countryCode.value)
   },
 )
 
 function formatPhone() {
-  if (!phoneNumber.value) {
+  if (!remainingCheckout.phone) {
     return
   }
 
-  getPhoneNumberFormatter(countryCode.value).input(phoneNumber.value)
-  phoneNumber.value = formatPhoneNumber(phoneNumber.value, countryCode.value)
+  getPhoneNumberFormatter(countryCode.value).input(remainingCheckout.phone)
+  remainingCheckout.phone = formatPhoneNumber(remainingCheckout.phone, countryCode.value)
 }
-
-const paymentMethods = computed(() => channel.value?.paymentMethods)
-const selectedPaymentMethodId = ref('')
-const selectedPaymentMethod = computed(() => paymentMethods.value?.find((m) => m.id === selectedPaymentMethodId.value))
-const change = ref<string | undefined>(undefined)
-const note = ref<string | undefined>(undefined)
 
 async function updateCheckout() {
   let addressId
@@ -318,18 +321,18 @@ async function updateCheckout() {
     addressId = await createAddress(address)
   }
 
-  const time = selectedTime.value ? new Date(selectedTime.value) : undefined
+  const time = remainingCheckout.time ? new Date(remainingCheckout.time) : undefined
 
   await update({
-    phone: phoneNumber.value,
-    name: name.value,
-    warehouseId: selectedWarehouseId.value,
+    phone: remainingCheckout.phone,
+    name: remainingCheckout.name,
+    warehouseId: remainingCheckout.warehouseId,
     addressId,
-    paymentMethodId: selectedPaymentMethodId.value,
+    paymentMethodId: remainingCheckout.paymentMethodId,
     time,
-    timeType: selectedTimeType.value,
-    change: change.value,
-    note: note.value,
+    timeType: remainingCheckout.timeType,
+    change: remainingCheckout.change,
+    note: remainingCheckout.note,
   })
 
   router.push('/finish')

@@ -133,6 +133,14 @@ declare global {
 
   type CheckoutDeliveryMethod = 'DELIVERY' | 'WAREHOUSE'
 
+  interface CheckoutDraft extends Pick<Checkout, 'name' | 'phone' | 'paymentMethodId' | 'note' | 'time' | 'timeType' | 'change' | 'warehouseId' | 'addressId'> {
+    time: Date | undefined
+    note: string | undefined
+    change: string | undefined
+    warehouseId: string | undefined
+    addressId: string | undefined
+  }
+
   interface CheckoutLine {
     id: string
     createdAt: Date
