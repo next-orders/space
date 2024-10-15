@@ -42,7 +42,7 @@ You can use Docker Image:
 
 ```shell
 # use the specific version
-docker pull ghcr.io/next-orders/food:v0.4.0
+docker pull ghcr.io/next-orders/food:v0.6.0
 ```
 
 Check **.env.example** for more info about required config variables.
