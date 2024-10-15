@@ -1,4 +1,5 @@
 import { TZDate } from '@date-fns/tz'
+import { getDayOfWeekByIndex } from '~~/server/utils/date'
 
 export default defineEventHandler(async () => {
   try {
@@ -10,18 +11,36 @@ export default defineEventHandler(async () => {
       })
     }
 
-    const timeZone = '+03:00'
-    const openHours = 10
-    const openMinutes = 30
-    const closeHours = 22
-    const closeMinutes = 30
+    const channel = await prisma.channel.findFirst({
+      where: { id: channelId },
+    })
+    if (!channel) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Channel not found',
+      })
+    }
+
+    const timeZone = channel.timeZone
+    const dayOfWeekIndex = new TZDate(new Date(), timeZone).getDay()
+    const dayOfWeek = getDayOfWeekByIndex(dayOfWeekIndex)
+
+    const workingDay = await prisma.workingDay.findFirst({
+      where: { channelId, day: dayOfWeek },
+    })
+    if (!workingDay || !workingDay.isActive) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Not working today',
+      })
+    }
 
     const timeOpen = new TZDate(new Date(), timeZone)
-    timeOpen.setHours(openHours)
-    timeOpen.setMinutes(openMinutes)
+    timeOpen.setHours(workingDay.openHours)
+    timeOpen.setMinutes(workingDay.openMinutes)
     const timeClose = new TZDate(new Date(), timeZone)
-    timeClose.setHours(closeHours)
-    timeClose.setMinutes(closeMinutes)
+    timeClose.setHours(workingDay.closeHours)
+    timeClose.setMinutes(workingDay.closeMinutes)
 
     const slots = []
 
