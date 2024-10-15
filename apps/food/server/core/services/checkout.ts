@@ -38,6 +38,8 @@ export const checkoutUpdateSchema = z.object({
   warehouseId: z.string().max(50).optional(),
   addressId: z.string().max(50).optional(),
   paymentMethodId: z.string().max(50).optional(),
+  time: z.string().optional(),
+  timeType: z.enum(['ASAP', 'SCHEDULED']).optional(),
   change: z.string().max(10).optional(),
   note: z.string().max(250).optional(),
 })

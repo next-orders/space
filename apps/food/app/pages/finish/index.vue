@@ -15,8 +15,20 @@
         </h3>
 
         <p>{{ $t('app.checkout.your-name') }}: <span class="font-medium">{{ checkout?.name }}</span></p>
-        <p>{{ $t('app.checkout.your-phone') }}: <span class="font-medium">{{ checkout?.phone }}</span></p>
+        <p class="mb-2">
+          {{ $t('app.checkout.your-phone') }}: <span class="font-medium">{{ checkout?.phone }}</span>
+        </p>
 
+        <p v-if="checkout?.time">
+          {{ $t('app.checkout.time-title') }}: <span class="font-medium">{{ checkout?.timeType === 'ASAP' ? $t('app.checkout.as-soon-as-possible') : new Date(checkout?.time).toLocaleString(undefined, {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+          }) }}</span>
+        </p>
         <p>
           {{ $t('app.checkout.address.title') }}:
           <span v-if="warehouse?.address" class="font-medium">{{ warehouse?.address }}</span>

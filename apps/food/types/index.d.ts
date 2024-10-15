@@ -8,12 +8,15 @@ declare global {
     description: string | null
     currencyCode: CurrencyCode
     countryCode: CountryCode
+    timeZone: TimeZone
     isActive: boolean
   }
 
   type CurrencyCode = 'USD' | 'EUR' | 'RUB'
 
   type CountryCode = 'RU' | 'US' | 'GB' | 'GR' | 'GE' | 'UA' | 'BY' | 'KZ'
+
+  type TimeZone = '-12:00' | '-11:00' | '-10:00' | '-09:00' | '-08:00' | '-07:00' | '-06:00' | '-05:00' | '-04:00' | '-03:00' | '-02:00' | '-01:00' | '00:00' | '+01:00' | '+02:00' | '+03:00' | '+04:00' | '+05:00' | '+06:00' | '+07:00' | '+08:00' | '+09:00' | '+10:00' | '+11:00' | '+12:00'
 
   interface PaymentMethod {
     id: string
@@ -24,6 +27,19 @@ declare global {
   }
 
   type PaymentMethodType = 'CASH' | 'CARD' | 'CUSTOM'
+
+  interface WorkingDay {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    day: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY'
+    openHours: number
+    openMinutes: number
+    closeHours: number
+    closeMinutes: number
+    isActive: boolean
+    channelId: string
+  }
 
   interface Media {
     id: string
@@ -116,6 +132,14 @@ declare global {
   }
 
   type CheckoutDeliveryMethod = 'DELIVERY' | 'WAREHOUSE'
+
+  interface CheckoutDraft extends Pick<Checkout, 'name' | 'phone' | 'paymentMethodId' | 'note' | 'time' | 'timeType' | 'change' | 'warehouseId' | 'addressId'> {
+    time: Date | undefined
+    note: string | undefined
+    change: string | undefined
+    warehouseId: string | undefined
+    addressId: string | undefined
+  }
 
   interface CheckoutLine {
     id: string

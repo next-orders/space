@@ -26,6 +26,7 @@ export default defineEventHandler(async () => {
       },
       warehouses: true,
       paymentMethods: true,
+      workingDays: true,
     },
   })
 })

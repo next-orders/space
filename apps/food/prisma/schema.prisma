@@ -16,6 +16,7 @@ model Channel {
   description    String?
   countryCode    String          @map("country_code")
   currencyCode   String          @map("currency_code")
+  timeZone       String          @map("time_zone")
   isActive       Boolean         @default(true) @map("is_active")
   paymentMethods PaymentMethod[]
   warehouses     Warehouse[]
@@ -23,6 +24,7 @@ model Channel {
   products       Product[]
   checkouts      Checkout[]
   users          User[]
+  workingDays    WorkingDay[]
 
   @@map("channel")
 }
@@ -37,6 +39,22 @@ model PaymentMethod {
   channel   Channel  @relation(fields: [channelId], references: [id])
 
   @@map("payment_method")
+}
+
+model WorkingDay {
+  id           String   @id
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @default(now()) @map("updated_at")
+  day          String
+  openHours    Int      @map("open_hours")
+  openMinutes  Int      @map("open_minutes")
+  closeHours   Int      @map("close_hours")
+  closeMinutes Int      @map("close_minutes")
+  isActive     Boolean  @default(true) @map("is_active")
+  channelId    String   @map("channel_id")
+  channel      Channel  @relation(fields: [channelId], references: [id])
+
+  @@map("working_day")
 }
 
 model Media {
@@ -117,7 +135,7 @@ model Checkout {
   id              String         @id
   createdAt       DateTime       @default(now()) @map("created_at")
   updatedAt       DateTime       @default(now()) @map("updated_at")
-  deliveryMethod  String         @map("delivery_method")
+  deliveryMethod  String         @default("") @map("delivery_method")
   paymentMethodId String         @default("") @map("payment_method_id")
   shippingPrice   Float          @default(0) @map("shipping_price")
   totalPrice      Float          @default(0) @map("total_price")
