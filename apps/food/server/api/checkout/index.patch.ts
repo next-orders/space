@@ -46,6 +46,12 @@ export default defineEventHandler(async (event) => {
           status: 'FINISHED',
         },
       })
+
+      const session = await getUserSession(event)
+      await replaceUserSession(event, {
+        ...session,
+        checkout: null,
+      })
     }
 
     return {

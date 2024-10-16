@@ -47,7 +47,7 @@
           {{ $t('app.finish.ordered-title') }}
         </h3>
 
-        <CheckoutLine v-for="line in checkout?.lines" :key="line.id" :line-id="line.id" :can-be-changed="false" />
+        <CheckoutLine v-for="line in checkout?.lines" :key="line.id" :line-id="line.id" :line="line" :can-be-changed="false" />
       </div>
 
       <div>
