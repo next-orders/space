@@ -12,7 +12,7 @@ declare module '#auth-utils' {
 
   interface UserSession {
     user: User
-    checkout?: Checkout
+    checkout?: Checkout | null
   }
 }
 

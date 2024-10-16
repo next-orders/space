@@ -5,7 +5,19 @@ export default defineEventHandler(async (event) => {
     const checkout = await prisma.checkout.findFirst({
       where: { id },
       include: {
-        lines: true,
+        lines: {
+          include: {
+            variant: {
+              include: {
+                product: {
+                  include: {
+                    category: true,
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     })
     if (!checkout?.id) {

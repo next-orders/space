@@ -144,6 +144,7 @@ declare global {
     note: string | undefined
     change: string | undefined
     warehouseId: string | undefined
+    street: string | undefined
     flat: string | undefined
     doorphone: string | undefined
     entrance: string | undefined

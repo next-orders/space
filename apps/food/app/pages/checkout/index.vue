@@ -146,7 +146,7 @@
           {{ $t('app.checkout.order-title') }}
         </h2>
 
-        <CheckoutLine v-for="line in checkout?.lines" :key="line.id" :line-id="line.id" />
+        <CheckoutLine v-for="line in checkout?.lines" :key="line.id" :line="line" />
 
         <div class="mt-4">
           <UiLabel for="note">
@@ -271,7 +271,7 @@ const remainingCheckout = reactive<CheckoutDraft>({
   change: undefined,
   note: undefined,
   warehouseId: undefined,
-  street: '',
+  street: undefined,
   flat: undefined,
   doorphone: undefined,
   entrance: undefined,
