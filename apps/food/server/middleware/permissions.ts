@@ -63,6 +63,11 @@ export default defineEventHandler(async (event) => {
       method: 'PATCH',
       permissions: ['MANAGE_WAREHOUSES', 'MASTER'],
     },
+    {
+      route: '/api/checkout/list',
+      method: 'GET',
+      permissions: ['MANAGE_CHECKOUTS', 'MASTER'],
+    },
   ]
 
   for (const route of routesWithRequiredPermissions) {
