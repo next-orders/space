@@ -43,6 +43,7 @@ export default defineNuxtConfig({
     storageProductsDirectory: 'products',
     public: {
       projectUrl: 'https://github.com/next-orders/space',
+      locale: 'en',
     },
   },
   i18n: {
@@ -50,13 +51,9 @@ export default defineNuxtConfig({
       { code: 'ru', name: 'Русский', file: 'ru-RU.json' },
       { code: 'en', name: 'English', file: 'en-EN.json' },
     ],
-    defaultLocale: 'ru',
     strategy: 'no_prefix',
     langDir: 'locales',
-    detectBrowserLanguage: {
-      useCookie: true,
-      alwaysRedirect: true,
-    },
+    detectBrowserLanguage: false,
   },
   routeRules: {
     '/': { swr: true },
