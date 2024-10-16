@@ -14,14 +14,21 @@ export default defineEventHandler(async (event) => {
     const data = checkoutUpdateSchema.parse(body)
     const time = data.time ? new Date(data.time) : new Date()
 
-    await prisma.checkout.update({
+    const isFinished = data.phone && data.name
+
+    const updatedCheckout = await prisma.checkout.update({
       where: { id: checkout.id },
       data: {
         deliveryMethod: data.deliveryMethod,
         phone: data.phone,
         name: data.name,
         warehouseId: data.warehouseId,
-        addressId: data.addressId,
+        street: data.street,
+        flat: data.flat,
+        doorphone: data.doorphone,
+        entrance: data.entrance,
+        floor: data.floor,
+        addressNote: data.addressNote,
         paymentMethodId: data.paymentMethodId,
         time,
         timeType: data.timeType,
@@ -32,9 +39,18 @@ export default defineEventHandler(async (event) => {
 
     await updateCheckout(checkout.id)
 
+    if (isFinished) {
+      await prisma.checkout.update({
+        where: { id: checkout.id },
+        data: {
+          status: 'FINISHED',
+        },
+      })
+    }
+
     return {
       ok: true,
-      result: checkout,
+      result: updatedCheckout,
     }
   } catch (error) {
     throw errorResolver(error)

@@ -24,7 +24,7 @@ function _useCheckout() {
 
   const update = async (checkout: Partial<Checkout>) => {
     try {
-      await $fetch(
+      const data = await $fetch(
         '/api/checkout',
         {
           method: 'PATCH',
@@ -33,6 +33,8 @@ function _useCheckout() {
       )
 
       await refresh()
+
+      return data
     } catch (error) {
       console.error(error)
     }
@@ -54,32 +56,7 @@ function _useCheckout() {
     }
   }
 
-  const createAddress = async (address: Omit<Address, 'id' | 'createdAt' | 'updatedAt'>) => {
-    try {
-      const { result } = await $fetch(
-        '/api/address',
-        {
-          method: 'POST',
-          body: address,
-        },
-      )
-
-      return result.id
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  const getAddress = async (id: string) => {
-    try {
-      const result = await $fetch(`/api/address/${id}`)
-      return result
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  return { checkout: data, isEmpty, addProduct, update, changeLineQuantity, getAddress, createAddress }
+  return { checkout: data, isEmpty, addProduct, update, changeLineQuantity }
 }
 
 export const useCheckout = createSharedComposable(_useCheckout)

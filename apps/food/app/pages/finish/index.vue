@@ -83,24 +83,18 @@ definePageMeta({
 })
 
 const { channel } = await useChannel()
-const { checkout, getAddress } = useCheckout()
+
+const route = useRoute()
+const id = ref(route.query.id ? route.query.id.toString() : '')
+if (!id.value) {
+  navigateTo('/')
+}
+
+const { data: checkout, error } = await useFetch(`/api/checkout/id/${id.value}`)
+if (error.value) {
+  navigateTo('/')
+}
 
 const warehouse = computed(() => channel.value?.warehouses.find((w) => w.id === checkout.value?.warehouseId))
-const address = ref()
-
-watch(
-  () => checkout.value?.addressId,
-  async () => {
-    if (!checkout.value?.addressId) {
-      return
-    }
-
-    const res = await getAddress(checkout.value?.addressId)
-    if (!res) {
-      return
-    }
-
-    address.value = `${res.street} ${res.flat}, ${res.doorphone}, ${res.entrance}, ${res.floor}. ${res.note}`
-  },
-)
+const address = computed(() => checkout.value?.street && `${checkout.value.street} ${checkout.value.flat}, ${checkout.value.doorphone}, ${checkout.value.entrance}, ${checkout.value.floor}. ${checkout.value.addressNote}`)
 </script>

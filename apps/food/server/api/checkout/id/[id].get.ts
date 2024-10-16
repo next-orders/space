@@ -2,17 +2,20 @@ export default defineEventHandler(async (event) => {
   try {
     const id = getRouterParam(event, 'id')
 
-    const address = await prisma.address.findFirst({
+    const checkout = await prisma.checkout.findFirst({
       where: { id },
+      include: {
+        lines: true,
+      },
     })
-    if (!address?.id) {
+    if (!checkout?.id) {
       throw createError({
         statusCode: 404,
-        statusMessage: 'Address not found',
+        statusMessage: 'No checkout',
       })
     }
 
-    return address
+    return checkout
   } catch (error) {
     throw errorResolver(error)
   }

@@ -135,6 +135,7 @@ model Checkout {
   id              String         @id
   createdAt       DateTime       @default(now()) @map("created_at")
   updatedAt       DateTime       @default(now()) @map("updated_at")
+  status          String         @default("CREATED")
   deliveryMethod  String         @default("") @map("delivery_method")
   paymentMethodId String         @default("") @map("payment_method_id")
   shippingPrice   Float          @default(0) @map("shipping_price")
@@ -145,7 +146,12 @@ model Checkout {
   timeType        String         @default("ASAP") @map("time_type")
   discount        Float?
   warehouseId     String?        @map("warehouse_id")
-  addressId       String?        @map("address_id")
+  street          String         @default("")
+  flat            String?
+  doorphone       String?
+  entrance        String?
+  floor           String?
+  addressNote     String?        @map("address_note")
   note            String?
   change          String?
   channelId       String         @map("channel_id")
@@ -223,18 +229,4 @@ model Warehouse {
   channel   Channel  @relation(fields: [channelId], references: [id])
 
   @@map("warehouse")
-}
-
-model Address {
-  id        String   @id
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @map("updated_at")
-  street    String
-  flat      String?
-  doorphone String?
-  entrance  String?
-  floor     String?
-  note      String?
-
-  @@map("address")
 }
