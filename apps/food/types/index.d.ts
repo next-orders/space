@@ -10,6 +10,8 @@ declare global {
     countryCode: CountryCode
     timeZone: TimeZone
     isActive: boolean
+    isDeliveryAvailable: boolean
+    isPickupAvailable: boolean
   }
 
   type CurrencyCode = 'USD' | 'EUR' | 'RUB'

@@ -28,6 +28,7 @@ export default defineEventHandler(async () => {
           },
         },
       },
+      orderBy: { createdAt: 'desc' },
     })
   } catch (error) {
     throw errorResolver(error)
