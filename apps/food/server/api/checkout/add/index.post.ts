@@ -13,6 +13,9 @@ export default defineEventHandler(async (event) => {
     }
 
     const { channelId } = useRuntimeConfig()
+    const channel = await prisma.channel.findFirst({
+      where: { id: channelId },
+    })
 
     // Check if checkout exists
     let checkoutId = ''
@@ -20,10 +23,13 @@ export default defineEventHandler(async (event) => {
     const { checkout } = await getUserSession(event)
     if (!checkout) {
       // Create new checkout
+      const deliveryMethod = channel?.isDeliveryAvailable ? 'DELIVERY' : 'WAREHOUSE'
+
       const createdCheckout = await prisma.checkout.create({
         data: {
           id: createId(),
           channelId,
+          deliveryMethod,
         },
       })
 

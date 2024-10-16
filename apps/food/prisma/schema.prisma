@@ -8,23 +8,25 @@ datasource db {
 }
 
 model Channel {
-  id             String          @id
-  createdAt      DateTime        @default(now()) @map("created_at")
-  updatedAt      DateTime        @default(now()) @map("updated_at")
-  slug           String
-  name           String
-  description    String?
-  countryCode    String          @map("country_code")
-  currencyCode   String          @map("currency_code")
-  timeZone       String          @map("time_zone")
-  isActive       Boolean         @default(true) @map("is_active")
-  paymentMethods PaymentMethod[]
-  warehouses     Warehouse[]
-  menus          Menu[]
-  products       Product[]
-  checkouts      Checkout[]
-  users          User[]
-  workingDays    WorkingDay[]
+  id                  String          @id
+  createdAt           DateTime        @default(now()) @map("created_at")
+  updatedAt           DateTime        @default(now()) @map("updated_at")
+  slug                String
+  name                String
+  description         String?
+  countryCode         String          @map("country_code")
+  currencyCode        String          @map("currency_code")
+  timeZone            String          @map("time_zone")
+  isActive            Boolean         @default(true) @map("is_active")
+  isDeliveryAvailable Boolean         @default(true) @map("is_delivery_available")
+  isPickupAvailable   Boolean         @default(true) @map("is_pickup_available")
+  paymentMethods      PaymentMethod[]
+  warehouses          Warehouse[]
+  menus               Menu[]
+  products            Product[]
+  checkouts           Checkout[]
+  users               User[]
+  workingDays         WorkingDay[]
 
   @@map("channel")
 }
