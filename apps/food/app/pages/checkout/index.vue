@@ -41,7 +41,7 @@
           </UiLabel>
           <UiInput
             id="street"
-            v-model="address.street"
+            v-model="remainingCheckout.street"
             name="street"
           />
 
@@ -52,7 +52,7 @@
               </UiLabel>
               <UiInput
                 id="flat"
-                v-model="address.flat"
+                v-model="remainingCheckout.flat"
                 name="flat"
               />
             </div>
@@ -63,7 +63,7 @@
               </UiLabel>
               <UiInput
                 id="doorphone"
-                v-model="address.doorphone"
+                v-model="remainingCheckout.doorphone"
                 name="doorphone"
               />
             </div>
@@ -74,7 +74,7 @@
               </UiLabel>
               <UiInput
                 id="entrance"
-                v-model="address.entrance"
+                v-model="remainingCheckout.entrance"
                 name="entrance"
               />
             </div>
@@ -85,7 +85,7 @@
               </UiLabel>
               <UiInput
                 id="floor"
-                v-model="address.floor"
+                v-model="remainingCheckout.floor"
                 name="floor"
               />
             </div>
@@ -97,7 +97,7 @@
             </UiLabel>
             <UiTextarea
               id="address-note"
-              v-model="address.note"
+              v-model="remainingCheckout.addressNote"
               name="address-note"
               :placeholder="$t('app.checkout.address.note-placeholder')"
             />
@@ -255,10 +255,9 @@ definePageMeta({
   layout: 'checkout',
 })
 
-const router = useRouter()
 const { icons } = useAppConfig()
 const { channel } = await useChannel()
-const { checkout, update, createAddress } = useCheckout()
+const { checkout, update } = useCheckout()
 const { slots } = useTime()
 
 const countryCode = computed(() => channel.value?.countryCode as CountryCode)
@@ -272,17 +271,13 @@ const remainingCheckout = reactive<CheckoutDraft>({
   change: undefined,
   note: undefined,
   warehouseId: undefined,
-  addressId: undefined,
-  paymentMethodId: '',
-})
-
-const address = reactive({
   street: '',
-  flat: '',
-  doorphone: '',
-  entrance: '',
-  floor: '',
-  note: '',
+  flat: undefined,
+  doorphone: undefined,
+  entrance: undefined,
+  floor: undefined,
+  addressNote: undefined,
+  paymentMethodId: '',
 })
 
 const isValidPhone = ref(false)
@@ -316,19 +311,18 @@ function formatPhone() {
 }
 
 async function updateCheckout() {
-  let addressId
-
-  if (checkout.value?.deliveryMethod === 'DELIVERY' && address.street) {
-    addressId = await createAddress(address)
-  }
-
   const time = remainingCheckout.time ? new Date(remainingCheckout.time) : undefined
 
-  await update({
+  const finishedCheckout = await update({
     phone: remainingCheckout.phone,
     name: remainingCheckout.name,
     warehouseId: remainingCheckout.warehouseId,
-    addressId,
+    street: remainingCheckout.street,
+    flat: remainingCheckout.flat,
+    doorphone: remainingCheckout.doorphone,
+    entrance: remainingCheckout.entrance,
+    floor: remainingCheckout.floor,
+    addressNote: remainingCheckout.addressNote,
     paymentMethodId: remainingCheckout.paymentMethodId,
     time,
     timeType: remainingCheckout.timeType,
@@ -336,6 +330,6 @@ async function updateCheckout() {
     note: remainingCheckout.note,
   })
 
-  router.push('/finish')
+  navigateTo(`/finish?id=${finishedCheckout?.result.id}`)
 }
 </script>

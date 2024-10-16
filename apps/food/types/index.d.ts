@@ -128,18 +128,27 @@ declare global {
     timeType: 'ASAP' | 'SCHEDULED'
     change: string | null
     warehouseId: string | null
-    addressId: string | null
+    street: string
+    flat: string | null
+    doorphone: string | null
+    entrance: string | null
+    floor: string | null
+    addressNote: string | null
     channelId: string
   }
 
   type CheckoutDeliveryMethod = 'DELIVERY' | 'WAREHOUSE'
 
-  interface CheckoutDraft extends Pick<Checkout, 'name' | 'phone' | 'paymentMethodId' | 'note' | 'time' | 'timeType' | 'change' | 'warehouseId' | 'addressId'> {
+  interface CheckoutDraft extends Pick<Checkout, 'name' | 'phone' | 'paymentMethodId' | 'note' | 'time' | 'timeType' | 'change' | 'warehouseId' | 'street' | 'flat' | 'doorphone' | 'entrance' | 'floor'> {
     time: Date | undefined
     note: string | undefined
     change: string | undefined
     warehouseId: string | undefined
-    addressId: string | undefined
+    flat: string | undefined
+    doorphone: string | undefined
+    entrance: string | undefined
+    floor: string | undefined
+    addressNote: string | undefined
   }
 
   interface CheckoutLine {
@@ -194,18 +203,6 @@ declare global {
     name: string
     address: string
     channelId: string
-  }
-
-  interface Address {
-    id: string
-    createdAt: Date
-    updatedAt: Date
-    street: string
-    flat: string | null
-    doorphone: string | null
-    entrance: string | null
-    floor: string | null
-    note: string | null
   }
 }
 

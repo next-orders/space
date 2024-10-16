@@ -83,7 +83,6 @@ definePageMeta({
 })
 
 const { channel } = await useChannel()
-const { getAddress } = useCheckout()
 
 const route = useRoute()
 const id = ref(route.query.id ? route.query.id.toString() : '')
@@ -97,6 +96,5 @@ if (error.value) {
 }
 
 const warehouse = computed(() => channel.value?.warehouses.find((w) => w.id === checkout.value?.warehouseId))
-const addressResponse = checkout.value?.addressId && await getAddress(checkout.value?.addressId)
-const address = computed(() => addressResponse && `${addressResponse.street} ${addressResponse.flat}, ${addressResponse.doorphone}, ${addressResponse.entrance}, ${addressResponse.floor}. ${addressResponse.note}`)
+const address = computed(() => checkout.value?.street && `${checkout.value.street} ${checkout.value.flat}, ${checkout.value.doorphone}, ${checkout.value.entrance}, ${checkout.value.floor}. ${checkout.value.addressNote}`)
 </script>

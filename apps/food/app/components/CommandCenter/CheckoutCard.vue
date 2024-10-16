@@ -23,11 +23,19 @@
         }) }}
       </p>
 
-      <p class="font-medium">
+      <div class="font-medium">
         <span class="text-neutral-500 font-normal pr-1">{{ $t('app.checkout.address.title') }}:</span>
-        <span v-if="warehouse?.address">{{ warehouse?.address }}</span>
-        <span v-if="address">{{ address }}</span>
-      </p>
+        <p v-if="warehouse?.address" class="inline">
+          {{ warehouse?.address }}
+        </p>
+        <p v-if="checkout?.street" class="inline">
+          <span>{{ checkout?.street }} {{ checkout?.flat }}</span>
+          <span v-if="checkout?.doorphone" class="lowercase">, {{ $t('app.checkout.address.doorphone') }} {{ checkout?.doorphone }}</span>
+          <span v-if="checkout?.entrance" class="lowercase">, {{ $t('app.checkout.address.entrance') }} {{ checkout?.entrance }}</span>
+          <span v-if="checkout?.floor" class="lowercase">, {{ $t('app.checkout.address.floor') }} {{ checkout?.floor }}</span>
+          <span v-if="checkout?.addressNote">. {{ checkout?.addressNote }}</span>
+        </p>
+      </div>
 
       <p class="font-medium">
         <span class="text-neutral-500 font-normal">{{ $t('app.checkout.payment-title') }}:</span> {{ channel?.paymentMethods.find((p) => p.id === checkout?.paymentMethodId)?.name }}
@@ -70,13 +78,8 @@ const { id } = defineProps<{
   id: string
 }>()
 
-const { t } = useI18n()
 const { channel } = await useChannel()
-const { getAddress } = useCheckout()
 const { checkouts } = await useCheckoutList()
 const checkout = computed(() => checkouts.value?.find((c) => c.id === id))
-
 const warehouse = computed(() => channel.value?.warehouses.find((w) => w.id === checkout.value?.warehouseId))
-const addressResponse = checkout.value?.addressId && await getAddress(checkout.value?.addressId)
-const address = computed(() => addressResponse && `${addressResponse.street} ${addressResponse.flat}, ${t('app.checkout.address.doorphone')} ${addressResponse.doorphone}, ${t('app.checkout.address.entrance')} ${addressResponse.entrance}, ${t('app.checkout.address.floor')} ${addressResponse.floor}. ${addressResponse.note}`)
 </script>
