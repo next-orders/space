@@ -29,6 +29,7 @@ export default defineEventHandler(async () => {
         },
       },
       orderBy: { createdAt: 'desc' },
+      take: 30,
     })
   } catch (error) {
     throw errorResolver(error)
