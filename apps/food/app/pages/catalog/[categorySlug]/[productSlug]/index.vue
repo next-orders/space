@@ -17,6 +17,7 @@
 
         <div v-if="!withSingleVariant" class="mt-4 mb-6 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-2">
           <UiButton v-for="variant in product?.variants" :key="variant.id" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="variantId = variant.id">
+            <UiCheckBadge v-if="variant.id === selectedVariant?.id" />
             <Icon :name="variant.id === selectedVariant?.id ? icons.bookmarkCheck : icons.bookmark" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': variant.id === selectedVariant?.id }" />
             <p class="font-medium leading-tight break-all">
               {{ variant.name }}

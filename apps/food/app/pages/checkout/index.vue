@@ -111,6 +111,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-1 gap-2">
               <UiButton v-for="warehouse in channel?.warehouses" :key="warehouse.id" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="remainingCheckout.warehouseId = warehouse.id">
+                <UiCheckBadge v-if="warehouse.id === remainingCheckout.warehouseId" />
                 <Icon :name="warehouse.id === remainingCheckout.warehouseId ? icons.mapPinCheck : icons.mapPinWarehouse" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': warehouse.id === remainingCheckout.warehouseId }" />
                 <p class="font-medium leading-tight break-all">
                   {{ warehouse.address }}
@@ -126,6 +127,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
               <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { remainingCheckout.timeType = 'ASAP'; selectedTimeLabel = '' }">
+                <UiCheckBadge v-if="remainingCheckout.timeType === 'ASAP'" />
                 <Icon :name="remainingCheckout.timeType === 'ASAP' ? icons.clockCheck : icons.clock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': remainingCheckout.timeType === 'ASAP' }" />
                 <p class="font-medium leading-tight break-all">
                   {{ $t('app.checkout.as-soon-as-possible') }}
@@ -133,6 +135,7 @@
               </UiButton>
 
               <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="isSelectTimeModalOpened = true">
+                <UiCheckBadge v-if="remainingCheckout.timeType === 'SCHEDULED'" />
                 <Icon :name="remainingCheckout.timeType === 'SCHEDULED' ? icons.alarmClockCheck : icons.alarmClock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': remainingCheckout.timeType === 'SCHEDULED' }" />
                 <p class="font-medium leading-tight break-all">
                   {{ selectedTimeLabel || $t('app.checkout.on-time') }}
@@ -172,6 +175,7 @@
 
             <div class="grid grid-cols-2 md:grid-cols-2 gap-2">
               <UiButton v-for="method in paymentMethods" :key="method.type" variant="secondary" class="w-full min-h-14 flex flex-col flex-wrap gap-1 justify-center items-center" @click="remainingCheckout.paymentMethodId = method.id">
+                <UiCheckBadge v-if="remainingCheckout.paymentMethodId === method.id" />
                 <Icon :name="method.type === 'CASH' ? icons.moneyCash : icons.moneyCard" class="w-8 h-8 text-neutral-300" :class="{ '!text-emerald-500': method.id === remainingCheckout.paymentMethodId }" />
                 <p class="font-medium leading-tight break-all">
                   {{ method.name }}
@@ -257,6 +261,7 @@
   <CommandCenterModal :title="$t('app.checkout.select-time-title')" :is-opened="isSelectTimeModalOpened" @close="() => isSelectTimeModalOpened = false">
     <div class="flex flex-col gap-2">
       <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { remainingCheckout.timeType = 'ASAP'; selectedTimeLabel = ''; isSelectTimeModalOpened = false }">
+        <UiCheckBadge v-if="remainingCheckout.timeType === 'ASAP'" />
         <Icon :name="remainingCheckout.timeType === 'ASAP' ? icons.clockCheck : icons.clock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': remainingCheckout.timeType === 'ASAP' }" />
         <p class="font-medium leading-tight break-all">
           {{ $t('app.checkout.as-soon-as-possible') }}
@@ -264,6 +269,7 @@
       </UiButton>
 
       <UiButton v-for="slot in slots" :key="slot.id" variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { remainingCheckout.timeType = 'SCHEDULED'; remainingCheckout.time = new Date(slot.value); selectedTimeLabel = slot.label; isSelectTimeModalOpened = false }">
+        <UiCheckBadge v-if="remainingCheckout.timeType === 'SCHEDULED' && remainingCheckout.time?.getTime() === slot.value" />
         <Icon :name="remainingCheckout.timeType === 'SCHEDULED' ? icons.alarmClockCheck : icons.alarmClock" class="w-6 h-6 text-neutral-300" :class="{ '!text-emerald-500': remainingCheckout.timeType === 'SCHEDULED' && remainingCheckout.time?.getTime() === slot.value }" />
         <p class="font-medium leading-tight break-all">
           {{ slot.label }}

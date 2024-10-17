@@ -1,7 +1,9 @@
 <template>
   <NuxtLink :to="`/command-center/menu/${menuId}`">
     <UiActiveCard class="py-6 relative min-h-60 text-center flex flex-col items-center justify-center">
-      <Icon v-if="menu?.isActive" :name="icons.monitorCheck" class="w-8 h-8 text-emerald-500 opacity-100 absolute top-3 left-3" />
+      <div v-if="menu?.isActive" class="absolute -top-2 -right-2 w-12 h-12 p-2 bg-emerald-50 dark:bg-neutral-600 rounded-full">
+        <Icon :name="icons.monitorCheck" class="w-8 h-8 text-emerald-500 opacity-100" />
+      </div>
 
       <Icon :name="icons.book" class="w-12 h-12 mb-2 text-neutral-300 dark:text-neutral-500" />
 
