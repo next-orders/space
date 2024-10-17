@@ -13,7 +13,6 @@
     <div class="mb-6 flex flex-col gap-2">
       <div class="flex flex-row gap-2">
         <ColorModeToggle />
-        <LanguageSwitch />
       </div>
 
       <div class="px-2 py-3 bg-neutral-100 dark:bg-neutral-600 rounded-2xl flex flex-row gap-2 items-center">
@@ -22,8 +21,7 @@
           width="40"
           height="40"
           alt=""
-          class="w-12 h-12 rounded-full cursor-pointer hover:scale-95 duration-200"
-          @click="() => {}"
+          class="w-12 h-12 rounded-full"
         >
         <div>
           <p class="font-semibold text-lg">

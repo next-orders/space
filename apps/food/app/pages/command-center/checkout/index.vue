@@ -1,5 +1,5 @@
 <template>
-  <UiBreadcrumb :links="breadcrumbs" />
+  <UiBreadcrumb :links="breadcrumbs" :is-dark-background="true" />
 
   <div class="mb-4 flex flex-col md:flex-row justify-between md:items-center gap-2">
     <h1 class="text-2xl md:text-3xl font-semibold">
@@ -8,7 +8,7 @@
   </div>
 
   <ClientOnly>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4">
+    <div class="max-w-md grid grid-cols-1 gap-4">
       <CommandCenterCheckoutCard v-for="checkout in checkouts" :id="checkout.id" :key="checkout.id" />
     </div>
   </ClientOnly>

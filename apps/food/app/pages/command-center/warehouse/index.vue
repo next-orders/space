@@ -1,5 +1,5 @@
 <template>
-  <UiBreadcrumb :links="breadcrumbs" />
+  <UiBreadcrumb :links="breadcrumbs" :is-dark-background="true" />
 
   <div class="mb-4 flex flex-col md:flex-row justify-between md:items-center gap-2">
     <h1 class="text-2xl md:text-3xl font-semibold">

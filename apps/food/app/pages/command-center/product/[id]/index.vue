@@ -1,5 +1,5 @@
 <template>
-  <UiBreadcrumb :links="breadcrumbs" />
+  <UiBreadcrumb :links="breadcrumbs" :is-dark-background="true" />
 
   <div class="mb-6 flex flex-col md:flex-row justify-between md:items-center gap-4">
     <div>
@@ -24,7 +24,7 @@
     <div class="relative w-full aspect-square">
       <ProductImage :id="product?.mediaId" :lazy="false" size="md" />
 
-      <UiButton variant="secondary" class="absolute flex justify-center items-center w-18 top-2 left-2" @click="isUploadProductImageOpened = true">
+      <UiButton variant="secondary" class="absolute flex justify-center items-center w-18 top-2 left-2 bg-neutral-200 dark:bg-neutral-600" @click="isUploadProductImageOpened = true">
         <Icon :name="icons.editImage" class="w-6 h-6" />
       </UiButton>
     </div>

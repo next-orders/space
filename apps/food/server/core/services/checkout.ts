@@ -16,8 +16,7 @@ export async function updateCheckout(id: string) {
     return
   }
 
-  const shippingPrice = checkout.deliveryMethod === 'DELIVERY' ? 100 : 0
-  const totalPrice = shippingPrice + checkout.lines.reduce((acc, line) => {
+  const totalPrice = checkout.lines.reduce((acc, line) => {
     return acc + line.quantity * line.variant.gross
   }, 0)
 
@@ -26,7 +25,6 @@ export async function updateCheckout(id: string) {
     data: {
       updatedAt: new Date(),
       totalPrice,
-      shippingPrice,
     },
   })
 }

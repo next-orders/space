@@ -1,6 +1,6 @@
 <template>
   <UiActiveCard class="relative min-h-36 text-center flex flex-col items-center justify-center">
-    <Icon :name="icons.house" class="w-12 h-12 opacity-15 mb-2" />
+    <Icon :name="icons.house" class="w-12 h-12 mb-2 text-neutral-300 dark:text-neutral-500" />
 
     <h3 class="text-xl font-semibold">
       {{ warehouse?.name }}

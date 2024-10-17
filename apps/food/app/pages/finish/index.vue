@@ -29,17 +29,27 @@
             hour12: false,
           }) }}</span>
         </p>
-        <p>
+        <div>
           {{ $t('app.checkout.address.title') }}:
-          <span v-if="warehouse?.address" class="font-medium">{{ warehouse?.address }}</span>
-          <span v-if="address" class="font-medium">{{ address }}</span>
-        </p>
+          <p v-if="warehouse?.address" class="inline font-medium">
+            {{ warehouse?.address }}
+          </p>
+          <p v-if="checkout?.street" class="inline font-medium">
+            <span>{{ checkout?.street }} {{ checkout?.flat }}</span>
+            <span v-if="checkout?.doorphone" class="lowercase">, {{ $t('app.checkout.address.doorphone') }} {{ checkout?.doorphone }}</span>
+            <span v-if="checkout?.entrance" class="lowercase">, {{ $t('app.checkout.address.entrance') }} {{ checkout?.entrance }}</span>
+            <span v-if="checkout?.floor" class="lowercase">, {{ $t('app.checkout.address.floor') }} {{ checkout?.floor }}</span>
+            <span v-if="checkout?.addressNote">. {{ checkout?.addressNote }}</span>
+          </p>
+        </div>
 
         <p>{{ $t('app.checkout.payment-title') }}: <span class="font-medium">{{ channel?.paymentMethods.find((p) => p.id === checkout?.paymentMethodId)?.name }}</span></p>
         <p v-if="checkout?.change">
           {{ $t('app.checkout.change-label') }}: <span class="font-medium">{{ checkout?.change }} {{ getCurrencySign(channel?.currencyCode) }}</span>
         </p>
-        <p>{{ $t('app.checkout.order-note') }}: <span class="font-medium">{{ checkout?.note }}</span></p>
+        <p v-if="checkout?.note">
+          {{ $t('app.checkout.order-note') }}: <span class="font-medium">{{ checkout?.note }}</span>
+        </p>
       </div>
 
       <div>
@@ -58,12 +68,6 @@
           <div>{{ $t('app.checkout.cost.products') }}</div>
           <div class="tracking-tight text-lg">
             {{ checkout?.totalPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
-          </div>
-        </div>
-        <div class="flex flex-row justify-between">
-          <div>{{ $t('app.checkout.cost.delivery') }}</div>
-          <div class="tracking-tight text-lg">
-            {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
           </div>
         </div>
       </div>
@@ -96,5 +100,4 @@ if (error.value) {
 }
 
 const warehouse = computed(() => channel.value?.warehouses.find((w) => w.id === checkout.value?.warehouseId))
-const address = computed(() => checkout.value?.street && `${checkout.value.street} ${checkout.value.flat}, ${checkout.value.doorphone}, ${checkout.value.entrance}, ${checkout.value.floor}. ${checkout.value.addressNote}`)
 </script>

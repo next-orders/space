@@ -19,7 +19,7 @@
       </button>
     </div>
 
-    <div class="mr-auto">
+    <div class="mr-auto hidden">
       <div class="flex flex-row gap-2 items-center">
         <Icon :name="icons.search" class="w-8 h-8" />
         <input type="text" :placeholder="$t('center.search-label')" class="bg-transparent">
