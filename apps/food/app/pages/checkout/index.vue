@@ -218,6 +218,10 @@
           </div>
 
           <div v-if="!isValidCheckout" class="text-amber-600">
+            <div v-if="!isOkForData" class="leading-tight flex flex-row flex-nowrap gap-2 items-center">
+              <Icon :name="icons.alert" class="w-8 h-8" />
+              <p>{{ $t('app.checkout.warning-data') }}</p>
+            </div>
             <div v-if="!isOkForAmount" class="leading-tight flex flex-row flex-nowrap gap-2 items-center">
               <Icon :name="icons.alert" class="w-8 h-8" />
               <p>{{ $t('app.minimum-order-value') }}: {{ channel?.minAmountForDelivery }} {{ getCurrencySign(channel?.currencyCode) }}</p>
@@ -299,8 +303,9 @@ const remainingCheckout = reactive<CheckoutDraft>({
   paymentMethodId: '',
 })
 
+const isOkForData = computed(() => !!remainingCheckout.name && !!remainingCheckout.phone && !!remainingCheckout.paymentMethodId && (checkout.value?.deliveryMethod === 'DELIVERY' ? !!remainingCheckout.street : true) && (checkout.value?.deliveryMethod === 'WAREHOUSE' ? !!remainingCheckout.warehouseId : true))
 const isOkForAmount = computed<boolean>(() => checkout.value?.deliveryMethod === 'DELIVERY' && channel.value?.minAmountForDelivery ? channel.value?.minAmountForDelivery <= (checkout.value?.totalPrice || 0) : true)
-const isValidCheckout = computed(() => isOkForAmount.value)
+const isValidCheckout = computed(() => isOkForAmount.value && isOkForData.value)
 const isValidPhone = ref(false)
 const selectedTimeLabel = ref('')
 const isSelectTimeModalOpened = ref(false)

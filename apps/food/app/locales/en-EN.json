@@ -133,7 +133,8 @@
         "products": "Cost of goods"
       },
       "change-label": "From what amount should prepare change",
-      "info-shipping-price": "The website does not take shipping costs into account. Totals may vary."
+      "info-shipping-price": "The website does not take shipping costs into account. Totals may vary.",
+      "warning-data": "Please fill in all required fields"
     },
     "finish": {
       "title": "Order placed",
