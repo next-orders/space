@@ -205,7 +205,7 @@
                 </div>
               </div>
               <div v-if="checkout?.deliveryMethod === 'DELIVERY'" class="mt-4 leading-tight flex flex-row flex-nowrap gap-2 items-center text-neutral-500 dark:text-neutral-300">
-                <Icon :name="icons.info" class="w-8 h-8 min-w-8" />
+                <Icon :name="icons.info" class="w-8 h-8 flex-shrink-0" />
                 <p>{{ $t('app.checkout.info-shipping-price') }}</p>
               </div>
 
@@ -219,11 +219,11 @@
 
           <div v-if="!isValidCheckout" class="text-amber-600">
             <div v-if="!isOkForData" class="leading-tight flex flex-row flex-nowrap gap-2 items-center">
-              <Icon :name="icons.alert" class="w-8 h-8" />
+              <Icon :name="icons.alert" class="w-8 h-8 flex-shrink-0" />
               <p>{{ $t('app.checkout.warning-data') }}</p>
             </div>
             <div v-if="!isOkForAmount" class="leading-tight flex flex-row flex-nowrap gap-2 items-center">
-              <Icon :name="icons.alert" class="w-8 h-8" />
+              <Icon :name="icons.alert" class="w-8 h-8 flex-shrink-0" />
               <p>{{ $t('app.minimum-order-value') }}: {{ channel?.minAmountForDelivery }} {{ getCurrencySign(channel?.currencyCode) }}</p>
             </div>
           </div>
