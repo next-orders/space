@@ -1,15 +1,19 @@
 <template>
   <Navigation>
     <div>
-      <div class="mb-8">
+      <div class="mb-6">
         <NuxtLink
           href="/"
-          class="font-medium text-xl text-primary"
+          class="font-medium text-xl"
         >
           {{ channel?.name }}
         </NuxtLink>
         <div class="mt-1 text-sm leading-tight">
           {{ channel?.description }}
+        </div>
+
+        <div v-if="channel?.phone" class="mt-4 text-lg leading-tight font-medium">
+          {{ channel?.phone }}
         </div>
       </div>
 
@@ -25,7 +29,7 @@
       </div>
 
       <div class="mb-32">
-        <p class="font-medium text-lg">
+        <p class="font-medium text-lg text-neutral-500 dark:text-neutral-400">
           {{ $t('app.catalog') }}
         </p>
 

@@ -132,7 +132,8 @@
         "delivery": "Delivery cost",
         "products": "Cost of goods"
       },
-      "change-label": "From what amount should prepare change"
+      "change-label": "From what amount should prepare change",
+      "info-shipping-price": "The website does not take shipping costs into account. Totals may vary."
     },
     "finish": {
       "title": "Order placed",

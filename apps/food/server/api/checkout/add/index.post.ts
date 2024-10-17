@@ -63,7 +63,7 @@ export default defineEventHandler(async (event) => {
     // Add +1 or create new line
     const line = checkoutInDB?.lines.find((line) => line.productVariantId === body.productVariantId)
     if (!line) {
-    // Limit
+      // Limit
       if (checkoutInDB?.lines?.length >= 20) {
         throw createError({
           statusCode: 400,
@@ -81,7 +81,7 @@ export default defineEventHandler(async (event) => {
         },
       })
     } else {
-    // Add +1
+      // Add +1
       await prisma.checkoutLine.update({
         where: { id: line.id },
         data: { quantity: line.quantity + 1 },

@@ -13,74 +13,18 @@
         {{ checkout?.deliveryMethod === 'DELIVERY' ? $t('app.cart.delivery-details') : $t('app.cart.pickup-details') }}
       </div>
 
-      <div v-if="checkout?.deliveryMethod === 'WAREHOUSE'">
-        <div class="flex flex-row justify-between">
-          <div class="flex flex-row gap-2 items-center">
-            <Icon :name="icons.discount" />
-            {{ $t('app.cart.discount') }}
-          </div>
-          <div>{{ discount }} %</div>
-        </div>
-
-        <div class="mt-8 mb-2 text-xl font-medium">
-          {{ $t('app.cart.prepare-for') }}
-        </div>
-
-        <div class="flex flex-row justify-between">
-          <div class="flex flex-row gap-2 items-center">
-            <Icon :name="icons.clock" />
-            {{ $t('app.cart.now') }}: 15-20 {{ $t('common.abbreviation.min') }}
-          </div>
-        </div>
-
-        <div class="mt-8 mb-2 text-xl font-medium">
-          {{ $t('common.more-information') }}
-        </div>
-
-        <div class="mb-2 flex flex-row justify-between">
-          <div>{{ $t('app.minimum-order-value') }}</div>
-          <div>
-            1000 <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
-          </div>
-        </div>
+      <div class="font-sans whitespace-pre-wrap">
+        {{ channel?.conditions }}
       </div>
 
-      <div v-if="checkout?.deliveryMethod === 'DELIVERY'">
-        <div class="flex flex-row justify-between">
-          <div class="flex flex-row gap-2 items-center">
-            <Icon :name="icons.bike" />
-            Курьерская оплата
-          </div>
-          <div>
-            {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
-          </div>
-        </div>
+      <div class="mt-8 mb-2 text-xl font-medium">
+        {{ $t('common.more-information') }}
+      </div>
 
-        <div class="mt-8 mb-2 text-xl font-medium">
-          {{ $t('app.cart.deliver-by') }}
-        </div>
-
-        <div class="flex flex-row justify-between">
-          <div class="flex flex-row gap-2 items-center">
-            <Icon :name="icons.clock" />
-            {{ $t('app.cart.now') }}: 45-60 {{ $t('common.abbreviation.min') }}
-          </div>
-        </div>
-
-        <div class="mt-8 mb-2 text-xl font-medium">
-          {{ $t('common.more-information') }}
-        </div>
-
-        <div class="mb-2 flex flex-row justify-between">
-          <div>{{ $t('app.minimum-order-value') }}</div>
-          <div>
-            1000 <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
-          </div>
-        </div>
-
-        <div class="mb-2 flex flex-row justify-between">
-          <div>{{ $t('app.maximum-order-weight') }}</div>
-          <div>20 {{ $t('common.abbreviation.kg') }}</div>
+      <div v-if="channel?.minAmountForDelivery" class="mb-2 flex flex-row justify-between">
+        <div>{{ $t('app.minimum-order-value') }}</div>
+        <div>
+          {{ channel?.minAmountForDelivery }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
         </div>
       </div>
 
@@ -92,10 +36,7 @@
 </template>
 
 <script setup lang="ts">
-const { icons } = useAppConfig()
 const { isDeliveryInfoModalOpened } = useApp()
 const { channel } = await useChannel()
 const { checkout } = useCheckout()
-
-const discount = 10
 </script>

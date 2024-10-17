@@ -33,11 +33,9 @@
           class="relative my-4 mx-4 flex flex-row gap-3 flex-wrap items-center active:scale-95 lg:hover:scale-95 lg:active:scale-90 duration-200"
           @click="isDeliveryInfoModalOpened = !isDeliveryInfoModalOpened"
         >
-          <Icon :name="icons.info" class="w-8 h-8 text-neutral-300" />
+          <Icon :name="icons.info" class="w-6 h-6 text-neutral-300" />
 
           <div class="text-left">
-            <CartDeliveryInfo />
-
             <div class="text-sm text-neutral-500">
               {{ $t('app.cart.conditions') }}
             </div>

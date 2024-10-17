@@ -6,12 +6,15 @@ declare global {
     slug: string
     name: string
     description: string | null
+    conditions: string | null
+    phone: string | null
     currencyCode: CurrencyCode
     countryCode: CountryCode
     timeZone: TimeZone
     isActive: boolean
     isDeliveryAvailable: boolean
     isPickupAvailable: boolean
+    minAmountForDelivery: number | null
   }
 
   type CurrencyCode = 'USD' | 'EUR' | 'RUB'
