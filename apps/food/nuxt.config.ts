@@ -37,6 +37,14 @@ export default defineNuxtConfig({
       },
     ],
   },
+  icon: {
+    clientBundle: {
+      scan: {
+        globInclude: ['app/**/*.{vue,ts}'],
+        globExclude: ['node_modules', 'dist', 'build', 'coverage', 'test', 'tests', '.*'],
+      },
+    },
+  },
   css: ['~/assets/css/styles.css'],
   runtimeConfig: {
     channelId: 'burger', // NUXT_CHANNEL_ID
