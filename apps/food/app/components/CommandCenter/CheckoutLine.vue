@@ -2,7 +2,7 @@
   <div class="mb-4 flex flex-row gap-2 items-center justify-between">
     <div class="max-w-[16rem] flex flex-row gap-2 flex-nowrap items-center">
       <div>
-        <div class="text-lg font-medium leading-tight line-clamp-2">
+        <div class="font-medium leading-tight line-clamp-2">
           {{ line?.variant?.product?.name }}
         </div>
         <div class="mt-1 flex flex-row gap-2 flex-nowrap items-center">
