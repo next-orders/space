@@ -4,14 +4,16 @@
       {{ channel?.conditions }}
     </div>
 
-    <div class="mt-8 mb-2 text-xl font-medium">
-      {{ $t('common.more-information') }}
-    </div>
+    <div v-if="channel?.minAmountForDelivery && checkout?.deliveryMethod === 'DELIVERY'">
+      <div class="mt-8 mb-2 text-xl font-medium">
+        {{ $t('common.more-information') }}
+      </div>
 
-    <div v-if="channel?.minAmountForDelivery" class="mb-2 flex flex-row justify-between">
-      <div>{{ $t('app.minimum-order-value') }}</div>
-      <div>
-        {{ channel?.minAmountForDelivery }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
+      <div class="mb-2 flex flex-row justify-between">
+        <div>{{ $t('app.minimum-order-value') }}</div>
+        <div>
+          {{ channel?.minAmountForDelivery }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
+        </div>
       </div>
     </div>
 
