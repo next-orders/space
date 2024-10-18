@@ -8,7 +8,7 @@
           {{ t('center.data.general-title') }}
         </h2>
 
-        <UiButton class="w-full md:w-fit">
+        <UiButton class="w-full md:w-fit" @click="isUpdateChannelOpened = true">
           {{ t('center.edit.title') }}
         </UiButton>
       </div>
@@ -52,21 +52,11 @@
 
       <div class="space-y-2 max-w-sm">
         <div class="w-full flex flex-row gap-3 justify-between items-center bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
-          <div class="flex flex-row gap-3">
-            <UiSwitch :checked="channel?.isDeliveryAvailable" />
-            <p class="font-medium min-w-28">
-              {{ t('app.cart.delivery') }}
-            </p>
-          </div>
+          <FormUpdateChannelReceivingMethod :is-active="channel?.isDeliveryAvailable ?? false" method="DELIVERY" />
         </div>
 
         <div class="w-full flex flex-row gap-3 justify-between items-center bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
-          <div class="flex flex-row gap-3">
-            <UiSwitch :checked="channel?.isPickupAvailable" />
-            <p class="font-medium min-w-28">
-              {{ t('app.cart.pickup') }}
-            </p>
-          </div>
+          <FormUpdateChannelReceivingMethod :is-active="channel?.isPickupAvailable ?? false" method="PICKUP" />
         </div>
       </div>
     </div>
@@ -109,6 +99,10 @@
       </div>
     </div>
   </div>
+
+  <UiModal :title="$t('center.update.general-data')" :is-opened="isUpdateChannelOpened" @close="isUpdateChannelOpened = false">
+    <FormUpdateChannel :is-opened="isUpdateChannelOpened" @success="isUpdateChannelOpened = false" />
+  </UiModal>
 </template>
 
 <script setup lang="ts">
@@ -127,4 +121,6 @@ const breadcrumbs = computed(() => [
     href: '#',
   },
 ])
+
+const isUpdateChannelOpened = ref(false)
 </script>
