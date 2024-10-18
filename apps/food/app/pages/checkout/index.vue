@@ -258,7 +258,7 @@
     </NuxtLink>
   </div>
 
-  <CommandCenterModal :title="$t('app.checkout.select-time-title')" :is-opened="isSelectTimeModalOpened" @close="() => isSelectTimeModalOpened = false">
+  <UiModal :title="$t('app.checkout.select-time-title')" :is-opened="isSelectTimeModalOpened" @close="isSelectTimeModalOpened = false">
     <div class="flex flex-col gap-2">
       <UiButton variant="secondary" class="w-full min-h-14 flex flex-row flex-wrap gap-2 justify-start items-center" @click="() => { remainingCheckout.timeType = 'ASAP'; selectedTimeLabel = ''; isSelectTimeModalOpened = false }">
         <UiCheckBadge v-if="remainingCheckout.timeType === 'ASAP'" />
@@ -276,7 +276,7 @@
         </p>
       </UiButton>
     </div>
-  </CommandCenterModal>
+  </UiModal>
 </template>
 
 <script setup lang="ts">

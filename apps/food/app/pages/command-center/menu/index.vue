@@ -28,9 +28,9 @@
     </p>
   </div>
 
-  <CommandCenterModal :title="$t('center.create.menu')" :is-opened="isModalOpened" @close="() => isModalOpened = false">
-    <FormCreateMenu :is-opened="isModalOpened" @success="() => isModalOpened = false" />
-  </CommandCenterModal>
+  <UiModal :title="$t('center.create.menu')" :is-opened="isModalOpened" @close="isModalOpened = false">
+    <FormCreateMenu :is-opened="isModalOpened" @success="isModalOpened = false" />
+  </UiModal>
 </template>
 
 <script setup lang="ts">
