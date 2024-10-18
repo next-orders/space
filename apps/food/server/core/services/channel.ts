@@ -10,3 +10,7 @@ export const channelUpdateSchema = z.object({
   minAmountForDelivery: z.number().nullable().optional(),
   conditions: z.string().max(750).nullable().optional(),
 })
+
+export const channelReceivingMethodUpdateSchema = z.object({
+  method: z.enum(['PICKUP', 'DELIVERY']),
+})
