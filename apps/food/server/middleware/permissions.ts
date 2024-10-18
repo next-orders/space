@@ -68,6 +68,11 @@ export default defineEventHandler(async (event) => {
       method: 'GET',
       permissions: ['MANAGE_CHECKOUTS', 'MASTER'],
     },
+    {
+      route: '/api/channel',
+      method: 'PATCH',
+      permissions: ['MANAGE_OPTIONS', 'MASTER'],
+    },
   ]
 
   for (const route of routesWithRequiredPermissions) {

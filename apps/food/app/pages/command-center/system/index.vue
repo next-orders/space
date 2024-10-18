@@ -8,7 +8,7 @@
           {{ t('center.data.general-title') }}
         </h2>
 
-        <UiButton class="w-full md:w-fit">
+        <UiButton class="w-full md:w-fit" @click="isUpdateChannelOpened = true">
           {{ t('center.edit.title') }}
         </UiButton>
       </div>
@@ -109,6 +109,10 @@
       </div>
     </div>
   </div>
+
+  <UiModal :title="$t('center.update.general-data')" :is-opened="isUpdateChannelOpened" @close="isUpdateChannelOpened = false">
+    <FormUpdateChannel :is-opened="isUpdateChannelOpened" @success="isUpdateChannelOpened = false" />
+  </UiModal>
 </template>
 
 <script setup lang="ts">
@@ -127,4 +131,6 @@ const breadcrumbs = computed(() => [
     href: '#',
   },
 ])
+
+const isUpdateChannelOpened = ref(false)
 </script>
