@@ -96,23 +96,23 @@
     </div>
   </div>
 
-  <CommandCenterModal :title="$t('center.update.product-photo')" :is-opened="isUploadProductImageOpened" @close="() => isUploadProductImageOpened = false">
-    <FormUploadProductImage :product-id="product?.id ?? ''" :is-opened="isUploadProductImageOpened" @success="() => isUploadProductImageOpened = false" />
-  </CommandCenterModal>
+  <UiModal :title="$t('center.update.product-photo')" :is-opened="isUploadProductImageOpened" @close="isUploadProductImageOpened = false">
+    <FormUploadProductImage :product-id="product?.id ?? ''" :is-opened="isUploadProductImageOpened" @success="isUploadProductImageOpened = false" />
+  </UiModal>
 
-  <CommandCenterModal :title="$t('center.update.product')" :is-opened="isUpdateProductOpened" @close="() => isUpdateProductOpened = false">
-    <FormUpdateProduct :product-id="product?.id ?? ''" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
-    <FormDeleteProduct :product-id="product?.id ?? ''" :redirect-to="menuPageUrl" :is-opened="isUpdateProductOpened" @success="() => isUpdateProductOpened = false" />
-  </CommandCenterModal>
+  <UiModal :title="$t('center.update.product')" :is-opened="isUpdateProductOpened" @close="isUpdateProductOpened = false">
+    <FormUpdateProduct :product-id="product?.id ?? ''" :is-opened="isUpdateProductOpened" @success="isUpdateProductOpened = false" />
+    <FormDeleteProduct :product-id="product?.id ?? ''" :redirect-to="menuPageUrl" :is-opened="isUpdateProductOpened" @success="isUpdateProductOpened = false" />
+  </UiModal>
 
-  <CommandCenterModal :title="$t('center.create.product-variant')" :is-opened="isCreateProductVariantOpened" @close="() => isCreateProductVariantOpened = false">
-    <FormCreateProductVariant :product-id="product?.id ?? ''" :is-opened="isCreateProductVariantOpened" @success="() => isCreateProductVariantOpened = false" />
-  </CommandCenterModal>
+  <UiModal :title="$t('center.create.product-variant')" :is-opened="isCreateProductVariantOpened" @close="isCreateProductVariantOpened = false">
+    <FormCreateProductVariant :product-id="product?.id ?? ''" :is-opened="isCreateProductVariantOpened" @success="isCreateProductVariantOpened = false" />
+  </UiModal>
 
-  <CommandCenterModal :title="$t('center.update.product-variant')" :is-opened="isUpdateProductVariantOpened" @close="() => isUpdateProductVariantOpened = false">
-    <FormUpdateProductVariant :product-variant-id="productVariantId ?? ''" :product-variant="productVariant" :is-opened="isUpdateProductVariantOpened" @success="() => isUpdateProductVariantOpened = false" />
-    <FormDeleteProductVariant :product-variant-id="productVariantId ?? ''" :is-opened="isUpdateProductVariantOpened" @success="() => isUpdateProductVariantOpened = false" />
-  </CommandCenterModal>
+  <UiModal :title="$t('center.update.product-variant')" :is-opened="isUpdateProductVariantOpened" @close="isUpdateProductVariantOpened = false">
+    <FormUpdateProductVariant :product-variant-id="productVariantId ?? ''" :product-variant="productVariant" :is-opened="isUpdateProductVariantOpened" @success="isUpdateProductVariantOpened = false" />
+    <FormDeleteProductVariant :product-variant-id="productVariantId ?? ''" :is-opened="isUpdateProductVariantOpened" @success="isUpdateProductVariantOpened = false" />
+  </UiModal>
 </template>
 
 <script setup lang="ts">

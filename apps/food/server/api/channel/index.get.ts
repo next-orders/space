@@ -1,4 +1,5 @@
 import { TZDate } from '@date-fns/tz'
+import { getDayIndexByDay } from '~~/server/utils/date'
 
 export default defineEventHandler(async () => {
   try {
@@ -45,9 +46,15 @@ export default defineEventHandler(async () => {
     const dayOfWeek = getDayOfWeekByIndex(dayOfWeekIndex)
     const workingDay = channel.workingDays.find((day) => day.day === dayOfWeek)
 
+    // Working days
+    const workingDays = channel.workingDays.sort((a, b) => getDayIndexByDay(a.day as WorkingDay['day']) - getDayIndexByDay(b.day as WorkingDay['day']))
+    // Sunday on end
+    workingDays.push(workingDays.shift()!)
+
     return {
       ...channel,
       workingDay,
+      workingDays,
     }
   } catch (error) {
     throw errorResolver(error)

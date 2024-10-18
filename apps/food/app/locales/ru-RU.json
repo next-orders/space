@@ -79,6 +79,15 @@
       "protein": "Белки",
       "fat": "Жиры",
       "carbohydrate": "Углеводы"
+    },
+    "day": {
+      "monday": "Понедельник",
+      "tuesday": "Вторник",
+      "wednesday": "Среда",
+      "thursday": "Четверг",
+      "friday": "Пятница",
+      "saturday": "Суббота",
+      "sunday": "Воскресенье"
     }
   },
   "app": {
@@ -188,7 +197,8 @@
       "product-variant": "Создать новую вариацию продукта",
       "menu": "Создать новое меню",
       "menu-category": "Создать новую категорию",
-      "warehouse": "Создать новый склад"
+      "warehouse": "Создать новый склад",
+      "payment-method": "Создать новый метод оплаты"
     },
     "add": {
       "menu-category": "Добавить категорию"
@@ -210,6 +220,19 @@
     },
     "upload": {
       "title": "Загрузить"
+    },
+    "data": {
+      "general-title": "Основные данные",
+      "methods-orders-title": "Способы получения заказа",
+      "online-ordering-time-title": "Время оформления заказов",
+      "payment-methods-title": "Методы оплаты",
+      "name": "Название",
+      "description": "Описание",
+      "phone": "Телефон",
+      "currency": "Валюта",
+      "country": "Страна",
+      "timezone": "Часовой пояс",
+      "delivery-conditions": "Условия доставки"
     }
   },
   "error": {

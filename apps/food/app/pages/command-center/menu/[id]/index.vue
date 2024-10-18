@@ -45,17 +45,17 @@
     </p>
   </div>
 
-  <CommandCenterModal :title="$t('center.create.product')" :is-opened="isCreateProductOpened" @close="() => isCreateProductOpened = false">
-    <FormCreateProduct :category-id="categoryId" :is-opened="isCreateProductOpened" @success="() => isCreateProductOpened = false" />
-  </CommandCenterModal>
+  <UiModal :title="$t('center.create.product')" :is-opened="isCreateProductOpened" @close="isCreateProductOpened = false">
+    <FormCreateProduct :category-id="categoryId" :is-opened="isCreateProductOpened" @success="isCreateProductOpened = false" />
+  </UiModal>
 
-  <CommandCenterModal :title="$t('center.create.menu-category')" :is-opened="isCreateMenuCategoryOpened" @close="() => isCreateMenuCategoryOpened = false">
-    <FormCreateMenuCategory :menu-id="menu?.id ?? ''" :is-opened="isCreateMenuCategoryOpened" @success="() => isCreateMenuCategoryOpened = false" />
-  </CommandCenterModal>
+  <UiModal :title="$t('center.create.menu-category')" :is-opened="isCreateMenuCategoryOpened" @close="isCreateMenuCategoryOpened = false">
+    <FormCreateMenuCategory :menu-id="menu?.id ?? ''" :is-opened="isCreateMenuCategoryOpened" @success="isCreateMenuCategoryOpened = false" />
+  </UiModal>
 
-  <CommandCenterModal :title="$t('center.update.menu-category')" :is-opened="isUpdateMenuCategoryOpened" @close="() => isUpdateMenuCategoryOpened = false">
-    <FormUpdateMenuCategory :menu-id="menu?.id ?? ''" :category-id="categoryId" :is-opened="isUpdateMenuCategoryOpened" @success="() => isUpdateMenuCategoryOpened = false" />
-  </CommandCenterModal>
+  <UiModal :title="$t('center.update.menu-category')" :is-opened="isUpdateMenuCategoryOpened" @close="isUpdateMenuCategoryOpened = false">
+    <FormUpdateMenuCategory :menu-id="menu?.id ?? ''" :category-id="categoryId" :is-opened="isUpdateMenuCategoryOpened" @success="isUpdateMenuCategoryOpened = false" />
+  </UiModal>
 </template>
 
 <script setup lang="ts">

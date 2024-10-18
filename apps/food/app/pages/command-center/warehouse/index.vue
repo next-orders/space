@@ -12,13 +12,13 @@
     <CommandCenterWarehouseCreateCard @click="isCreateWarehouseOpened = true" />
   </div>
 
-  <CommandCenterModal :title="$t('center.create.warehouse')" :is-opened="isCreateWarehouseOpened" @close="() => isCreateWarehouseOpened = false">
-    <FormCreateWarehouse :is-opened="isCreateWarehouseOpened" @success="() => isCreateWarehouseOpened = false" />
-  </CommandCenterModal>
+  <UiModal :title="$t('center.create.warehouse')" :is-opened="isCreateWarehouseOpened" @close="isCreateWarehouseOpened = false">
+    <FormCreateWarehouse :is-opened="isCreateWarehouseOpened" @success="isCreateWarehouseOpened = false" />
+  </UiModal>
 
-  <CommandCenterModal :title="$t('center.update.warehouse')" :is-opened="isUpdateWarehouseOpened" @close="() => isUpdateWarehouseOpened = false">
-    <FormUpdateWarehouse :warehouse-id="warehouseId" :is-opened="isUpdateWarehouseOpened" @success="() => isUpdateWarehouseOpened = false" />
-  </CommandCenterModal>
+  <UiModal :title="$t('center.update.warehouse')" :is-opened="isUpdateWarehouseOpened" @close="isUpdateWarehouseOpened = false">
+    <FormUpdateWarehouse :warehouse-id="warehouseId" :is-opened="isUpdateWarehouseOpened" @success="isUpdateWarehouseOpened = false" />
+  </UiModal>
 </template>
 
 <script setup lang="ts">

@@ -59,3 +59,26 @@ export function getLocalizedPrice(value?: number): string {
   // As it is: for RUB, currency with an integer
   return value.toString()
 }
+
+export function getLocalizedDayOfWeek(day: WorkingDay['day']): string {
+  const { t } = useI18n()
+
+  switch (day) {
+    case 'SUNDAY':
+      return t('common.day.sunday')
+    case 'MONDAY':
+      return t('common.day.monday')
+    case 'TUESDAY':
+      return t('common.day.tuesday')
+    case 'WEDNESDAY':
+      return t('common.day.wednesday')
+    case 'THURSDAY':
+      return t('common.day.thursday')
+    case 'FRIDAY':
+      return t('common.day.friday')
+    case 'SATURDAY':
+      return t('common.day.saturday')
+    default:
+      return ''
+  }
+}
