@@ -79,6 +79,15 @@
       "protein": "Protein",
       "fat": "Fat",
       "carbohydrate": "Carbs"
+    },
+    "day": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
     }
   },
   "app": {
@@ -188,7 +197,8 @@
       "product-variant": "Create new Product Variant",
       "menu": "Create new Menu",
       "menu-category": "Create new Menu Category",
-      "warehouse": "Create new Warehouse"
+      "warehouse": "Create new Warehouse",
+      "payment-method": "Create new Payment Method"
     },
     "add": {
       "menu-category": "Add Category"
@@ -210,6 +220,19 @@
     },
     "upload": {
       "title": "Upload"
+    },
+    "data": {
+      "general-title": "General data",
+      "methods-orders-title": "Methods of receiving an order",
+      "online-ordering-time-title": "Online ordering time",
+      "payment-methods-title": "Payment methods",
+      "name": "Name",
+      "description": "Description",
+      "phone": "Phone",
+      "currency": "Currency",
+      "country": "Country",
+      "timezone": "Timezone",
+      "delivery-conditions": "Delivery conditions"
     }
   },
   "error": {
