@@ -14,30 +14,30 @@
       </div>
 
       <div class="max-w-sm flex flex-col gap-2">
-        <div class="text-lg bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.name') }}: <span class="font-semibold">{{ channel?.name }}</span>
         </div>
-        <div class="text-lg bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.description') }}: <span class="font-semibold">{{ channel?.description }}</span>
         </div>
-        <div class="text-lg bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.phone') }}: <span class="font-semibold">{{ channel?.phone }}</span>
         </div>
-        <div class="text-lg bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.currency') }}: <span class="font-semibold">{{ channel?.currencyCode }}</span>
         </div>
-        <div class="text-lg bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.country') }}: <span class="font-semibold">{{ channel?.countryCode }}</span>
         </div>
-        <div class="text-lg bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.timezone') }}: <span class="font-semibold">{{ channel?.timeZone }}</span>
         </div>
-        <div class="text-lg bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('app.minimum-order-value') }}: <span class="font-semibold">{{ channel?.minAmountForDelivery }} {{ getCurrencySign(channel?.currencyCode) }}</span>
         </div>
 
-        <div class="whitespace-pre-wrap max-w-sm bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
-          <p class="text-lg mb-2">
+        <div class="text-sm whitespace-pre-wrap max-w-sm bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+          <p class="mb-2 text-base">
             {{ t('center.data.delivery-conditions') }}:
           </p>
           {{ channel?.conditions }}
