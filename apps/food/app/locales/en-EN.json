@@ -88,7 +88,9 @@
       "friday": "Friday",
       "saturday": "Saturday",
       "sunday": "Sunday"
-    }
+    },
+    "time-from": "Time from",
+    "time-to": "Time to"
   },
   "app": {
     "cart": {
@@ -210,7 +212,8 @@
       "product-variant": "Update Product Variant",
       "menu-category": "Update Menu Category",
       "warehouse": "Update Warehouse",
-      "general-data": "Update General Data"
+      "general-data": "Update General Data",
+      "online-ordering-time": "Update Online ordering time"
     },
     "delete": {
       "title": "Delete",
