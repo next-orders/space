@@ -78,6 +78,11 @@ export default defineEventHandler(async (event) => {
       method: 'POST',
       permissions: ['MANAGE_OPTIONS', 'MASTER'],
     },
+    {
+      route: '/api/channel',
+      method: 'DELETE',
+      permissions: ['MANAGE_OPTIONS', 'MASTER'],
+    },
   ]
 
   for (const route of routesWithRequiredPermissions) {

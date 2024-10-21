@@ -213,7 +213,8 @@
       "menu-category": "Update Menu Category",
       "warehouse": "Update Warehouse",
       "general-data": "Update General Data",
-      "online-ordering-time": "Update Online ordering time"
+      "online-ordering-time": "Update Online ordering time",
+      "payment-method": "Update Payment Method"
     },
     "delete": {
       "title": "Delete",

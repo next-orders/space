@@ -89,8 +89,8 @@
       </h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-        <CommandCenterPaymentMethodCard v-for="paymentMethod in channel?.paymentMethods" :key="paymentMethod.id" :payment-method-id="paymentMethod.id" />
-        <CommandCenterPaymentMethodCreateCard />
+        <CommandCenterPaymentMethodCard v-for="paymentMethod in channel?.paymentMethods" :key="paymentMethod.id" :payment-method-id="paymentMethod.id" @click="() => { paymentMethodId = paymentMethod.id; isUpdatePaymentMethodOpened = true }" />
+        <CommandCenterPaymentMethodCreateCard @click="isCreatePaymentMethodOpened = true" />
       </div>
     </div>
   </div>
@@ -101,6 +101,15 @@
 
   <UiModal :title="$t('center.update.online-ordering-time')" :is-opened="isUpdateWorkingDaysOpened" @close="isUpdateWorkingDaysOpened = false">
     <FormUpdateWorkingDays :is-opened="isUpdateWorkingDaysOpened" @success="isUpdateWorkingDaysOpened = false" />
+  </UiModal>
+
+  <UiModal :title="$t('center.create.payment-method')" :is-opened="isCreatePaymentMethodOpened" @close="isCreatePaymentMethodOpened = false">
+    <FormCreateChannelPaymentMethod :is-opened="isCreatePaymentMethodOpened" @success="isCreatePaymentMethodOpened = false" />
+  </UiModal>
+
+  <UiModal :title="$t('center.update.payment-method')" :is-opened="isUpdatePaymentMethodOpened" @close="isUpdatePaymentMethodOpened = false">
+    <FormUpdateChannelPaymentMethod :is-opened="isUpdatePaymentMethodOpened" :payment-method-id="paymentMethodId" @success="isUpdatePaymentMethodOpened = false" />
+    <FormDeleteChannelPaymentMethod :is-opened="isUpdatePaymentMethodOpened" :payment-method-id="paymentMethodId" @success="isUpdatePaymentMethodOpened = false" />
   </UiModal>
 </template>
 
@@ -123,4 +132,7 @@ const breadcrumbs = computed(() => [
 
 const isUpdateChannelOpened = ref(false)
 const isUpdateWorkingDaysOpened = ref(false)
+const isCreatePaymentMethodOpened = ref(false)
+const isUpdatePaymentMethodOpened = ref(false)
+const paymentMethodId = ref('')
 </script>

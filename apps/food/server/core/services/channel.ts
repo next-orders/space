@@ -14,3 +14,12 @@ export const channelUpdateSchema = z.object({
 export const channelReceivingMethodUpdateSchema = z.object({
   method: z.enum(['PICKUP', 'DELIVERY']),
 })
+
+export const channelPaymentMethodCreateSchema = z.object({
+  name: z.string().min(2).max(50),
+  type: z.enum(['CASH', 'CARD', 'CUSTOM']),
+})
+
+export const channelPaymentMethodUpdateSchema = z.object({
+  name: z.string().min(2).max(50).optional(),
+})

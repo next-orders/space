@@ -213,7 +213,8 @@
       "menu-category": "Обновить категорию",
       "warehouse": "Обновить склад",
       "general-data": "Обновить основные данные",
-      "online-ordering-time": "Обновить время оформления заказов"
+      "online-ordering-time": "Обновить время оформления заказов",
+      "payment-method": "Обновить метод оплаты"
     },
     "delete": {
       "title": "Удалить",
