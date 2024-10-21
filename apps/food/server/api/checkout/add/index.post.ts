@@ -17,6 +17,14 @@ export default defineEventHandler(async (event) => {
       where: { id: channelId },
     })
 
+    // Guard: If channel is not active or pickup/delivery is not available
+    if (!channel?.isActive || (!channel?.isPickupAvailable && !channel?.isDeliveryAvailable)) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Channel is not active',
+      })
+    }
+
     // Check if checkout exists
     let checkoutId = ''
 
