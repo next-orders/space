@@ -40,7 +40,7 @@
           <p class="mb-2 text-base">
             {{ t('center.data.delivery-conditions') }}:
           </p>
-          {{ channel?.conditions }}
+          <div>{{ channel?.conditions }}</div>
         </div>
       </div>
     </div>
