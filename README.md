@@ -1,6 +1,10 @@
 # 🍔 Food Orders
 Modern e-commerce self-hosted platform: clients will be happy to order delicious food!
 
+👉 [Check out demo website](https://demo.nextorders.space/)
+
+🎯 [Admin panel](https://demo.nextorders.space/command-center). Use **demo** as login and password. Read mode only.
+
 ![main-screen-desktop](https://github.com/next-orders/space/blob/main/.github/media/main-screen-desktop.jpg?raw=true)
 
 ## 🍕 Main idea and architecture of Next-Orders
@@ -63,4 +67,4 @@ pnpm dev:food
 
 ## 🍰 License
 
-This project is licensed under the **MIT License** - see the [**MIT License**](https://github.com/next-orders/food/blob/main/LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [**MIT License**](https://github.com/next-orders/space/blob/main/LICENSE) file for details.

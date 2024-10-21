@@ -22,5 +22,5 @@ const { t } = useI18n()
 const { channel } = await useChannel()
 const { checkout } = useCheckout()
 const title = computed(() => checkout.value?.deliveryMethod === 'DELIVERY' ? t('app.cart.delivery') : t('app.cart.pickup'))
-const todayUntil = computed(() => channel.value?.workingDay?.isActive ? `${channel.value.workingDay.closeHours}:${channel.value.workingDay.closeMinutes.toString().padStart(2, '0')}` : undefined)
+const todayUntil = computed(() => channel.value?.workingDay?.isActive ? `${channel.value.workingDay.closeHours.toString().padStart(2, '0')}:${channel.value.workingDay.closeMinutes.toString().padStart(2, '0')}` : undefined)
 </script>

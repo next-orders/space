@@ -8,12 +8,12 @@
           {{ t('center.data.general-title') }}
         </h2>
 
-        <UiButton class="w-full md:w-fit">
+        <UiButton class="w-full md:w-fit" @click="isUpdateChannelOpened = true">
           {{ t('center.edit.title') }}
         </UiButton>
       </div>
 
-      <div class="max-w-sm flex flex-col gap-2">
+      <div class="w-full md:max-w-sm flex flex-col gap-2">
         <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.name') }}: <span class="font-semibold">{{ channel?.name }}</span>
         </div>
@@ -36,11 +36,11 @@
           {{ t('app.minimum-order-value') }}: <span class="font-semibold">{{ channel?.minAmountForDelivery }} {{ getCurrencySign(channel?.currencyCode) }}</span>
         </div>
 
-        <div class="text-sm whitespace-pre-wrap max-w-sm bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div class="text-sm whitespace-pre-wrap w-full md:max-w-sm bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           <p class="mb-2 text-base">
             {{ t('center.data.delivery-conditions') }}:
           </p>
-          {{ channel?.conditions }}
+          <div>{{ channel?.conditions }}</div>
         </div>
       </div>
     </div>
@@ -50,23 +50,13 @@
         {{ t('center.data.methods-orders-title') }}
       </h2>
 
-      <div class="space-y-2 max-w-sm">
+      <div class="space-y-2 w-full md:max-w-sm">
         <div class="w-full flex flex-row gap-3 justify-between items-center bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
-          <div class="flex flex-row gap-3">
-            <UiSwitch :checked="channel?.isDeliveryAvailable" />
-            <p class="font-medium min-w-28">
-              {{ t('app.cart.delivery') }}
-            </p>
-          </div>
+          <FormUpdateChannelReceivingMethod :is-active="channel?.isDeliveryAvailable ?? false" method="DELIVERY" />
         </div>
 
         <div class="w-full flex flex-row gap-3 justify-between items-center bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
-          <div class="flex flex-row gap-3">
-            <UiSwitch :checked="channel?.isPickupAvailable" />
-            <p class="font-medium min-w-28">
-              {{ t('app.cart.pickup') }}
-            </p>
-          </div>
+          <FormUpdateChannelReceivingMethod :is-active="channel?.isPickupAvailable ?? false" method="PICKUP" />
         </div>
       </div>
     </div>
@@ -77,22 +67,17 @@
           {{ t('center.data.online-ordering-time-title') }}
         </h2>
 
-        <UiButton class="w-full md:w-fit">
+        <UiButton class="w-full md:w-fit" @click="isUpdateWorkingDaysOpened = true">
           {{ t('center.edit.title') }}
         </UiButton>
       </div>
 
-      <div class="space-y-2 max-w-sm">
+      <div class="space-y-2 w-full md:max-w-sm">
         <div v-for="workingDay in channel?.workingDays" :key="workingDay.id" class="w-full flex flex-row gap-3 justify-between items-center bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
-          <div class="flex flex-row gap-3">
-            <UiSwitch :checked="workingDay.isActive" />
-            <p class="font-medium min-w-28">
-              {{ getLocalizedDayOfWeek(workingDay.day as WorkingDay['day']) }}
-            </p>
-          </div>
+          <FormUpdateWorkingDayActivity :is-active="workingDay.isActive" :day="workingDay.day as WorkingDay['day']" />
 
           <div>
-            {{ workingDay.openHours }}:{{ workingDay.openMinutes.toString().padStart(2, '0') }} - {{ workingDay.closeHours }}:{{ workingDay.closeMinutes.toString().padStart(2, '0') }}
+            {{ workingDay.openHours.toString().padStart(2, '0') }}:{{ workingDay.openMinutes.toString().padStart(2, '0') }} - {{ workingDay.closeHours.toString().padStart(2, '0') }}:{{ workingDay.closeMinutes.toString().padStart(2, '0') }}
           </div>
         </div>
       </div>
@@ -104,11 +89,28 @@
       </h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-        <CommandCenterPaymentMethodCard v-for="paymentMethod in channel?.paymentMethods" :key="paymentMethod.id" :payment-method-id="paymentMethod.id" />
-        <CommandCenterPaymentMethodCreateCard />
+        <CommandCenterPaymentMethodCard v-for="paymentMethod in channel?.paymentMethods" :key="paymentMethod.id" :payment-method-id="paymentMethod.id" @click="() => { paymentMethodId = paymentMethod.id; isUpdatePaymentMethodOpened = true }" />
+        <CommandCenterPaymentMethodCreateCard @click="isCreatePaymentMethodOpened = true" />
       </div>
     </div>
   </div>
+
+  <UiModal :title="$t('center.update.general-data')" :is-opened="isUpdateChannelOpened" @close="isUpdateChannelOpened = false">
+    <FormUpdateChannel :is-opened="isUpdateChannelOpened" @success="isUpdateChannelOpened = false" />
+  </UiModal>
+
+  <UiModal :title="$t('center.update.online-ordering-time')" :is-opened="isUpdateWorkingDaysOpened" @close="isUpdateWorkingDaysOpened = false">
+    <FormUpdateWorkingDays :is-opened="isUpdateWorkingDaysOpened" @success="isUpdateWorkingDaysOpened = false" />
+  </UiModal>
+
+  <UiModal :title="$t('center.create.payment-method')" :is-opened="isCreatePaymentMethodOpened" @close="isCreatePaymentMethodOpened = false">
+    <FormCreateChannelPaymentMethod :is-opened="isCreatePaymentMethodOpened" @success="isCreatePaymentMethodOpened = false" />
+  </UiModal>
+
+  <UiModal :title="$t('center.update.payment-method')" :is-opened="isUpdatePaymentMethodOpened" @close="isUpdatePaymentMethodOpened = false">
+    <FormUpdateChannelPaymentMethod :is-opened="isUpdatePaymentMethodOpened" :payment-method-id="paymentMethodId" @success="isUpdatePaymentMethodOpened = false" />
+    <FormDeleteChannelPaymentMethod :is-opened="isUpdatePaymentMethodOpened" :payment-method-id="paymentMethodId" @success="isUpdatePaymentMethodOpened = false" />
+  </UiModal>
 </template>
 
 <script setup lang="ts">
@@ -127,4 +129,10 @@ const breadcrumbs = computed(() => [
     href: '#',
   },
 ])
+
+const isUpdateChannelOpened = ref(false)
+const isUpdateWorkingDaysOpened = ref(false)
+const isCreatePaymentMethodOpened = ref(false)
+const isUpdatePaymentMethodOpened = ref(false)
+const paymentMethodId = ref('')
 </script>

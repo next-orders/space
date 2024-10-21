@@ -7,7 +7,7 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-gradient-to-br hover:bg-gradient-to-r from-lime-100 to-emerald-200 font-medium text-neutral-950 dark:text-neutral-950',
+        default: 'bg-gradient-to-br hover:bg-gradient-to-r from-lime-200 to-emerald-300 font-medium text-neutral-950 dark:text-neutral-950',
         destructive: 'bg-amber-200 hover:bg-amber-200/90',
         secondary: 'bg-neutral-100 dark:bg-neutral-500 border border-neutral-200 dark:border-neutral-500 hover:bg-neutral-200/60 dark:hover:bg-neutral-500/60',
         ghost: 'hover:bg-neutral-100 dark:hover:bg-neutral-600',

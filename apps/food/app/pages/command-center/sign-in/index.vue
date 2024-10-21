@@ -16,42 +16,35 @@
           {{ $t('center.welcome-message') }}
         </h1>
 
-        <div>
-          <div v-if="error" class="mb-4 text-red-500 text-center">
+        <form onsubmit="sighIn()" class="space-y-4">
+          <div v-if="error" class="text-red-500 text-center">
             {{ $t('error.invalid-credentials') }}
           </div>
 
-          <div class="w-full mb-6">
-            <div class="mb-4">
-              <input
-                v-model="state.login"
-                :placeholder="$t('common.login')"
-                required
-                class="peer block w-full rounded-2xl border border-neutral-200 py-3 px-4 text-base outline-2 outline-offset-1 outline-neutral-500 placeholder:text-neutral-400"
-              >
-            </div>
+          <div class="w-full space-y-2">
+            <UiInput
+              v-model="state.login"
+              :placeholder="$t('common.login')"
+              required
+            />
 
-            <div class="mb-4">
-              <input
-                v-model="state.password"
-                type="password"
-                :placeholder="$t('common.password')"
-                required
-                class="peer block w-full rounded-2xl border border-neutral-200 py-3 px-4 text-base outline-2 outline-offset-1 outline-neutral-500 placeholder:text-neutral-400"
-              >
-            </div>
+            <UiInput
+              v-model="state.password"
+              type="password"
+              :placeholder="$t('common.password')"
+              required
+            />
           </div>
 
-          <div v-if="state.login && state.password" class="flex flex-row gap-4 justify-center">
-            <button
-              :disabled="status === 'pending'"
-              class="px-5 py-3 flex flex-row gap-2 justify-center items-center text-base font-medium cursor-pointer bg-neutral-200 hover:bg-neutral-300 hover:scale-95 duration-200 rounded-2xl disabled:animate-pulse"
-              @click="sighIn()"
-            >
-              {{ $t('common.sign-in') }} <Icon :name="icons.arrowRight" size="22" />
-            </button>
-          </div>
-        </div>
+          <UiButton
+            v-if="state.login && state.password"
+            :disabled="status === 'pending'"
+            class="flex flex-row justify-center items-center gap-2 disabled:animate-pulse"
+            @click="sighIn()"
+          >
+            {{ $t('common.sign-in') }} <Icon :name="icons.arrowRight" size="22" />
+          </UiButton>
+        </form>
       </div>
     </div>
   </div>

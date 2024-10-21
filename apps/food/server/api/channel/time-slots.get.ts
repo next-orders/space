@@ -42,6 +42,11 @@ export default defineEventHandler(async () => {
     timeClose.setHours(workingDay.closeHours)
     timeClose.setMinutes(workingDay.closeMinutes)
 
+    // Guard: if timeClose is 00:XX -> set it no next day
+    if (workingDay.closeHours === 0) {
+      timeClose.setDate(timeClose.getDate() + 1)
+    }
+
     const slots = []
 
     // Prepare time slots every 15 min from now to closing time in format: 10:00 - 10:30
