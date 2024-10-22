@@ -1,6 +1,6 @@
 services:
   food:
-    container_name: food-container
+    container_name: food
     image: ghcr.io/next-orders/food:nightly
     ports:
       - 3000:3000
@@ -30,7 +30,7 @@ services:
       - food
 
   food-db:
-    container_name: food-db-container
+    container_name: food-db
     image: postgres:17
     restart: unless-stopped
     ports:
@@ -45,9 +45,9 @@ services:
       - food
 
   reverse-proxy:
+    container_name: traefik
     image: traefik:v3.1
     restart: on-failure
-    container_name: traefik-container
     command:
       - --providers.docker=true
       - --providers.docker.exposedbydefault=false
