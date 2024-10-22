@@ -41,7 +41,7 @@ const { isOpened, warehouseId } = defineProps<{
   warehouseId: string
 }>()
 
-const emit = defineEmits(['success'])
+const emit = defineEmits(['success', 'submitted'])
 
 const { channel } = await useChannel()
 const warehouse = computed(() => channel.value?.warehouses?.find((w) => w.id === warehouseId))
@@ -67,6 +67,8 @@ watch(
 )
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
+  emit('submitted')
+
   const { data, error } = await useAsyncData(
     'update-warehouse',
     () => $fetch(`/api/warehouse/${warehouse.value?.id}`, {

@@ -98,7 +98,7 @@
   </UiModal>
 
   <UiModal :title="$t('center.update.product')" :is-opened="isUpdateProductOpened" @close="isUpdateProductOpened = false">
-    <FormUpdateProduct :product-id="product?.id ?? ''" :is-opened="isUpdateProductOpened" @success="isUpdateProductOpened = false" />
+    <FormUpdateProduct :product-id="product?.id ?? ''" :is-opened="isUpdateProductOpened" @submitted="isUpdateProductOpened = false" @success="isUpdateProductOpened = false" />
     <FormDeleteProduct :product-id="product?.id ?? ''" :redirect-to="menuPageUrl" :is-opened="isUpdateProductOpened" @success="isUpdateProductOpened = false" />
   </UiModal>
 
@@ -107,7 +107,7 @@
   </UiModal>
 
   <UiModal :title="$t('center.update.product-variant')" :is-opened="isUpdateProductVariantOpened" @close="isUpdateProductVariantOpened = false">
-    <FormUpdateProductVariant :product-variant-id="productVariantId ?? ''" :product-variant="productVariant" :is-opened="isUpdateProductVariantOpened" @success="isUpdateProductVariantOpened = false" />
+    <FormUpdateProductVariant :product-variant-id="productVariantId ?? ''" :product-variant="productVariant" :is-opened="isUpdateProductVariantOpened" @submitted="isUpdateProductVariantOpened = false" @success="isUpdateProductVariantOpened = false" />
     <FormDeleteProductVariant :product-variant-id="productVariantId ?? ''" :is-opened="isUpdateProductVariantOpened" @success="isUpdateProductVariantOpened = false" />
   </UiModal>
 </template>

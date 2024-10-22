@@ -112,7 +112,7 @@ const { isOpened } = defineProps<{
   isOpened: boolean
 }>()
 
-const emit = defineEmits(['success'])
+const emit = defineEmits(['success', 'submitted'])
 
 const { toast } = useToast()
 const { channel, refresh: refreshChannelData } = await useChannel()
@@ -141,6 +141,8 @@ watch(
 )
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
+  emit('submitted')
+
   const { data, error } = await useAsyncData(
     'update-channel',
     () => $fetch('/api/channel', {

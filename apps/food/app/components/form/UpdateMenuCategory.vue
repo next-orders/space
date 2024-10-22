@@ -42,7 +42,7 @@ const { isOpened, menuId, categoryId } = defineProps<{
   categoryId: string
 }>()
 
-const emit = defineEmits(['success'])
+const emit = defineEmits(['success', 'submitted'])
 
 const { toast } = useToast()
 const { menus, refresh: refreshChannelData } = await useChannel()
@@ -68,6 +68,8 @@ watch(
 )
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
+  emit('submitted')
+
   const { data, error } = await useAsyncData(
     'update-menu-category',
     () => $fetch(`/api/category/${category.value?.id}`, {
