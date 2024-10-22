@@ -60,10 +60,10 @@ fi
 sudo systemctl enable docker
 sudo systemctl start docker
 
-# For Docker internal communication ("db" is the name of Postgres container)
+# For Docker internal communication
 DATABASE_URL="postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@food-db:5432/$POSTGRES_DB"
 
-# Create the .env file inside the app directory (~/app/.env)
+# Create the .env file inside the app directory
 echo "POSTGRES_USER=$POSTGRES_USER" > "$APP_DIR/.env"
 echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> "$APP_DIR/.env"
 echo "POSTGRES_DB=$POSTGRES_DB" >> "$APP_DIR/.env"
@@ -78,7 +78,7 @@ echo "NUXT_SESSION_PASSWORD=$NUXT_SESSION_PASSWORD" >> "$APP_DIR/.env"
 echo "DOMAIN_NAME=$DOMAIN_NAME" >> "$APP_DIR/.env"
 echo "EMAIL=$EMAIL" >> "$APP_DIR/.env"
 
-# Build and run the Docker containers from the app directory (~/app)
+# Build and run the Docker containers from the app directory
 cd $APP_DIR
 sudo docker-compose up --build -d
 
@@ -89,4 +89,4 @@ if ! sudo docker-compose ps | grep "Up"; then
 fi
 
 # Output final message
-echo "Deployment complete. Your app and PostgreSQL database are now running."
+echo "Deployment complete. Your app and database are now running."
