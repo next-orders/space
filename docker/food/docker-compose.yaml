@@ -19,6 +19,16 @@ services:
       - traefik.http.routers.app.entrypoints=websecure
       - traefik.http.routers.app.tls.certresolver=myresolver
 
+  food-db-migration:
+    container_name: food-db-migration
+    image: ghcr.io/next-orders/food-db-migration:nightly
+    env_file:
+      - .env
+    depends_on:
+      - food-db
+    networks:
+      - food
+
   food-db:
     container_name: food-db-container
     image: postgres:17
