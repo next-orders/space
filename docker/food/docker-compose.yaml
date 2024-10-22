@@ -1,0 +1,70 @@
+services:
+  food:
+    container_name: food-container
+    image: ghcr.io/next-orders/food:nightly
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - food-storage:/app/.storage
+    depends_on:
+      - food-db
+    networks:
+      - food
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.app.rule=Host(`${DOMAIN_NAME}`)
+      - traefik.http.routers.app.entrypoints=websecure
+      - traefik.http.routers.app.tls.certresolver=myresolver
+
+  food-db:
+    container_name: food-db-container
+    image: postgres:17
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - food-db:/var/lib/postgresql/data
+    networks:
+      - food
+
+  reverse-proxy:
+    image: traefik:v3.1
+    restart: on-failure
+    container_name: traefik-container
+    command:
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - '--entryPoints.web.address=:80'
+      - --entrypoints.web.http.redirections.entryPoint.to=websecure
+      - --entrypoints.web.http.redirections.entryPoint.scheme=https
+      - --entrypoints.web.http.redirections.entrypoint.permanent=true
+      - '--entryPoints.websecure.address=:443'
+      - --certificatesresolvers.myresolver.acme.httpchallenge=true
+      - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
+      - --certificatesresolvers.myresolver.acme.email=${EMAIL}
+      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - food-certs:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - food
+
+volumes:
+  food-storage:
+  food-db:
+  food-certs:
+
+networks:
+  food:
+    name: food
+    driver: bridge
