@@ -1,14 +1,16 @@
 #!/bin/bash
 
+# Args
+NUXT_PUBLIC_LOCALE=$1 # "en" by default
+DOMAIN_NAME=$2
+EMAIL=$3
+
 # Env Vars
 POSTGRES_USER="sushi"
 POSTGRES_PASSWORD=$(openssl rand -base64 12)  # Generate a random 12-character password
 POSTGRES_DB="food"
-NUXT_PUBLIC_LOCALE="en"
 NUXT_CHANNEL_ID="burger"
 NUXT_SESSION_PASSWORD=$(openssl rand -base64 32) # Generate a random 32-character password
-DOMAIN_NAME="test.nextorders.space"
-EMAIL="resolve@nextorders.space"
 
 # Script Vars
 APP_DIR=~/food
