@@ -82,10 +82,10 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
   }
 
   if (data.value) {
-    resetForm()
     await refreshChannelData()
     emit('success')
     toast({ title: 'Категория обновлена!', description: 'Сейчас обновим данные.' })
+    resetForm()
   }
 })
 </script>

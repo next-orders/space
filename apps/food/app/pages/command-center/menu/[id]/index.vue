@@ -16,7 +16,7 @@
   </div>
 
   <div v-for="category in menu?.categories" :key="category.id" class="mb-8">
-    <div class="mb-4 pb-2 border-b border-neutral-100 flex flex-row gap-3 items-center">
+    <div class="mb-4 pb-2 border-b border-neutral-200 dark:border-neutral-600 flex flex-row gap-3 items-center">
       <h2 class="text-2xl lg:text-xl">
         {{ category.name }}
       </h2>

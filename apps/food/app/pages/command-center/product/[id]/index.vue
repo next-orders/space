@@ -34,18 +34,15 @@
         {{ product?.description }}
       </p>
       <p v-else class="text-neutral-500">
-        [Описания пока нет]
+        [{{ $t('center.product.no-description-label') }}]
       </p>
     </div>
   </div>
 
   <div class="mt-8">
-    <div class="mb-4 pb-2 flex flex-row gap-3 items-center border-b border-neutral-100">
-      <Icon :name="icons.gallery" class="w-6 h-6 opacity-25" />
-      <h2 class="text-2xl lg:text-xl">
-        Вариации продукта
-      </h2>
-    </div>
+    <h2 class="mb-4 text-xl md:text-2xl font-semibold">
+      {{ $t('center.product.variants-title') }}
+    </h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
       <UiActiveCard v-for="variant in product?.variants" :key="variant.id" class="space-y-2 flex flex-col justify-between" @click="() => { productVariant = variant; productVariantId = variant.id; isUpdateProductVariantOpened = true }">
@@ -55,7 +52,7 @@
 
         <div class="flex flex-row flex-nowrap gap-6 items-center justify-center">
           <div class="text-neutral-500">
-            {{ variant.gross }} {{ getCurrencySign(channel?.currencyCode) }}
+            {{ getLocalizedPrice(variant.gross) }} {{ getCurrencySign(channel?.currencyCode) }}
           </div>
           <div class="text-neutral-500">
             {{ variant.weightValue }}{{ getWeightLocalizedUnit(variant.weightUnit) }}
