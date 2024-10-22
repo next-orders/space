@@ -27,7 +27,7 @@
             v-model="searchQuery"
             type="text"
             :placeholder="$t('app.search.placeholder')"
-            class="px-2 py-2 w-32 md:w-56 bg-transparent group-focus:bg-neutral-400 outline-none rounded-xl"
+            class="px-2 py-2 w-32 md:w-56 bg-transparent group-focus:bg-neutral-400 placeholder:text-neutral-500 dark:placeholder:text-neutral-400 outline-none rounded-xl"
           >
         </div>
 

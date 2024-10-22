@@ -1,0 +1,23 @@
+services:
+  food-db:
+    container_name: food-db-container
+    image: postgres:17
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - food-db:/var/lib/postgresql/data
+    networks:
+      - food
+
+volumes:
+  food-db:
+
+networks:
+  food:
+    name: food
+    driver: bridge

@@ -18,6 +18,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 FROM $NODE
 WORKDIR /app
 COPY --from=builder /app/apps/food/.output .
+COPY --from=builder /app/apps/food/prisma ./prisma/
 
 ARG VERSION=nightly
 ENV VERSION=${VERSION}
@@ -25,4 +26,5 @@ ENV NODE_ENV=production
 
 EXPOSE 3000
 
+ENTRYPOINT [ "/app/prisma/migrate.sh" ]
 CMD ["/app/server/index.mjs"]

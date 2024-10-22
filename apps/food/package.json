@@ -6,6 +6,7 @@
     "build": "prisma generate && nuxt build",
     "dev": "prisma generate && nuxt dev",
     "preview": "nuxt preview",
+    "db:dev": "docker compose up -d -f ./../../docker/food/docker-compose.dev.yaml",
     "db:edit": "prisma generate && pnpm exec prisma studio",
     "db:init": "pnpm exec prisma migrate dev --name init",
     "clean": "rm -rf dist",

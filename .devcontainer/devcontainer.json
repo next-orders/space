@@ -1,8 +1,10 @@
 {
   "name": "NextOrders Space",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "app",
   "workspaceFolder": "/workspaces/next-orders/${localWorkspaceFolderBasename}",
   "postCreateCommand": "npm i -g pnpm@latest turbo@latest && pnpm i",
+  "forwardPorts": [5432],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -15,5 +17,8 @@
         "Prisma.prisma"
       ]
     }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   }
 }
