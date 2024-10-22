@@ -206,19 +206,13 @@
                 <div class="flex flex-row justify-between text-lg">
                   <div>{{ $t('app.checkout.cost.products') }}</div>
                   <div class="tracking-tight">
-                    {{ checkout?.totalPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
+                    {{ getLocalizedPrice(checkout?.totalPrice) }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
                   </div>
                 </div>
                 <div v-if="checkout?.deliveryMethod === 'DELIVERY'" class="mt-4 leading-tight flex flex-row flex-nowrap gap-2 items-center text-neutral-500 dark:text-neutral-300">
                   <Icon :name="icons.info" class="w-8 h-8 flex-shrink-0" />
                   <p>{{ $t('app.checkout.info-shipping-price') }}</p>
                 </div>
-
-              <!-- <div class="mt-4">
-                <div class="text-base text-neutral-500">
-                  Есть промо код?
-                </div>
-              </div> -->
               </div>
             </div>
 
@@ -325,7 +319,7 @@ const isValidPhone = ref(false)
 const selectedTimeLabel = ref('')
 const isSelectTimeModalOpened = ref(false)
 const selectedPaymentMethod = computed(() => paymentMethods.value?.find((m) => m.id === remainingCheckout.paymentMethodId))
-const totalPrice = computed(() => checkout.value?.totalPrice || 0)
+const totalPrice = computed(() => getLocalizedPrice(checkout.value?.totalPrice) ?? 0)
 
 watch(
   () => remainingCheckout.phone,

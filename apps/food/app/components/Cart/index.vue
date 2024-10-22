@@ -36,7 +36,7 @@
           <Icon :name="icons.info" class="w-6 h-6 text-neutral-300" />
 
           <div class="text-left">
-            <div class="text-sm text-neutral-500">
+            <div class="text-sm text-neutral-500 dark:text-neutral-400">
               {{ $t('app.cart.conditions') }}
             </div>
           </div>

@@ -61,22 +61,12 @@
       <CommandCenterCheckoutLine v-for="line in checkout?.lines" :key="line.id" :line-id="line.id" />
     </div>
 
-    <div>
-      <div class="flex flex-row justify-between">
-        <div class="text-neutral-500 dark:text-neutral-400">
-          {{ $t('app.checkout.cost.products') }}
-        </div>
-        <div class="tracking-tight text-lg">
-          {{ checkout?.totalPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
-        </div>
+    <div class="flex flex-row justify-between">
+      <div class="text-neutral-500 dark:text-neutral-400">
+        {{ $t('app.checkout.cost.products') }}
       </div>
-      <div class="flex flex-row justify-between">
-        <div class="text-neutral-500 dark:text-neutral-400">
-          {{ $t('app.checkout.cost.delivery') }}
-        </div>
-        <div class="tracking-tight text-lg">
-          {{ checkout?.shippingPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
-        </div>
+      <div class="tracking-tight text-lg">
+        {{ checkout?.totalPrice }} <span class="text-sm">{{ getCurrencySign(channel?.currencyCode) }}</span>
       </div>
     </div>
   </UiActiveCard>
