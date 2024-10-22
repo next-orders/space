@@ -96,11 +96,11 @@
   </div>
 
   <UiModal :title="$t('center.update.general-data')" :is-opened="isUpdateChannelOpened" @close="isUpdateChannelOpened = false">
-    <FormUpdateChannel :is-opened="isUpdateChannelOpened" @success="isUpdateChannelOpened = false" />
+    <FormUpdateChannel :is-opened="isUpdateChannelOpened" @submitted="isUpdateChannelOpened = false" @success="isUpdateChannelOpened = false" />
   </UiModal>
 
   <UiModal :title="$t('center.update.online-ordering-time')" :is-opened="isUpdateWorkingDaysOpened" @close="isUpdateWorkingDaysOpened = false">
-    <FormUpdateWorkingDays :is-opened="isUpdateWorkingDaysOpened" @success="isUpdateWorkingDaysOpened = false" />
+    <FormUpdateWorkingDays :is-opened="isUpdateWorkingDaysOpened" @submitted="isUpdateWorkingDaysOpened = false" @success="isUpdateWorkingDaysOpened = false" />
   </UiModal>
 
   <UiModal :title="$t('center.create.payment-method')" :is-opened="isCreatePaymentMethodOpened" @close="isCreatePaymentMethodOpened = false">
@@ -108,7 +108,7 @@
   </UiModal>
 
   <UiModal :title="$t('center.update.payment-method')" :is-opened="isUpdatePaymentMethodOpened" @close="isUpdatePaymentMethodOpened = false">
-    <FormUpdateChannelPaymentMethod :is-opened="isUpdatePaymentMethodOpened" :payment-method-id="paymentMethodId" @success="isUpdatePaymentMethodOpened = false" />
+    <FormUpdateChannelPaymentMethod :is-opened="isUpdatePaymentMethodOpened" :payment-method-id="paymentMethodId" @submitted="isUpdatePaymentMethodOpened = false" @success="isUpdatePaymentMethodOpened = false" />
     <FormDeleteChannelPaymentMethod :is-opened="isUpdatePaymentMethodOpened" :payment-method-id="paymentMethodId" @success="isUpdatePaymentMethodOpened = false" />
   </UiModal>
 </template>

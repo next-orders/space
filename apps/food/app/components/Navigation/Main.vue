@@ -12,7 +12,7 @@
           {{ channel?.description }}
         </div>
 
-        <div v-if="channel?.phone" class="mt-4 text-lg leading-tight font-medium">
+        <div v-if="channel?.phone" class="mt-4 text-lg leading-tight">
           {{ channel?.phone }}
         </div>
       </div>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="mb-32">
-        <p class="font-medium text-lg text-neutral-500 dark:text-neutral-400">
+        <p class="font-medium text-lg">
           {{ $t('app.catalog') }}
         </p>
 

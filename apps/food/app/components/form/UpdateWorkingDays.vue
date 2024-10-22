@@ -44,7 +44,7 @@ const { isOpened } = defineProps<{
   isOpened: boolean
 }>()
 
-const emit = defineEmits(['success'])
+const emit = defineEmits(['success', 'submitted'])
 
 const { toast } = useToast()
 const { channel, refresh: refreshChannelData } = await useChannel()
@@ -88,6 +88,8 @@ watch(
 )
 
 const onSubmit = handleSubmit(async (_, { resetForm }) => {
+  emit('submitted')
+
   // add to all open and close ':00' at the end of workingDays object for future zod time() validation
   Object.values(workingDays).forEach((day) => {
     day.open += ':00'

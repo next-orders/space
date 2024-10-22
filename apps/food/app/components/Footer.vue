@@ -5,7 +5,7 @@
       <NuxtLink
         :to="projectUrl"
         target="_blank"
-        class="hover:opacity-80 duration-200"
+        class="font-semibold hover:opacity-80 duration-200"
       >
         {{ $t('common.footer.copyright-part-two') }}
       </NuxtLink>

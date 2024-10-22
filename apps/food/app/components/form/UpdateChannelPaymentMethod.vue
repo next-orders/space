@@ -29,7 +29,7 @@ const { isOpened, paymentMethodId } = defineProps<{
   paymentMethodId: string
 }>()
 
-const emit = defineEmits(['success'])
+const emit = defineEmits(['success', 'submitted'])
 
 const { toast } = useToast()
 const { channel, refresh: refreshChannelData } = await useChannel()
@@ -52,6 +52,8 @@ watch(
 )
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
+  emit('submitted')
+
   const { data, error } = await useAsyncData(
     'update-payment-method',
     () => $fetch(`/api/channel/payment-method/${paymentMethodId}`, {

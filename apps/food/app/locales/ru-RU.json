@@ -49,8 +49,8 @@
     "website": "Веб-сайт",
     "description": "Описание",
     "footer": {
-      "copyright-part-one": "Создано с ❤️",
-      "copyright-part-two": "на платформе NextOrders"
+      "copyright-part-one": "Создано с ❤️ на",
+      "copyright-part-two": "{'@'}next-orders"
     },
     "abbreviation": {
       "min": "мин",
@@ -161,6 +161,7 @@
     "show-details-label": "показать детали",
     "catalog": "Каталог",
     "open-category": "Открыть категорию",
+    "category-page-description": "Здесь представлены все товары из этой категории",
     "minimum-order-value": "Минимальная стоимость заказа",
     "maximum-order-weight": "Максимальный вес заказа",
     "maintenance-message": "Веб-сайт находится на техническом обслуживании. Заказы приостановлены."
@@ -177,7 +178,9 @@
     },
     "product": {
       "available-for-purchase": "Доступен для покупки",
-      "not-available-for-purchase": "Недоступен для покупки"
+      "not-available-for-purchase": "Недоступен для покупки",
+      "no-description-label": "Описания пока нет",
+      "variants-title": "Вариации продукта"
     },
     "menu": {
       "dashboard": "Панель управления",

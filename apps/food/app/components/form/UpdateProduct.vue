@@ -19,7 +19,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiTextarea v-bind="componentField" />
+          <UiTextarea v-bind="componentField" rows="8" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -53,7 +53,7 @@ const { isOpened, productId } = defineProps<{
   productId: string
 }>()
 
-const emit = defineEmits(['success'])
+const emit = defineEmits(['success', 'submitted'])
 const { products } = await useProduct()
 const product = computed(() => products.value?.find((p) => p.id === productId))
 
@@ -80,6 +80,8 @@ watch(
 )
 
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
+  emit('submitted')
+
   const { data, error } = await useAsyncData(
     'update-product',
     () => $fetch(`/api/product/${product.value?.id}`, {

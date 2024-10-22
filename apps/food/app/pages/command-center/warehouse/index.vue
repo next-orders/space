@@ -17,7 +17,7 @@
   </UiModal>
 
   <UiModal :title="$t('center.update.warehouse')" :is-opened="isUpdateWarehouseOpened" @close="isUpdateWarehouseOpened = false">
-    <FormUpdateWarehouse :warehouse-id="warehouseId" :is-opened="isUpdateWarehouseOpened" @success="isUpdateWarehouseOpened = false" />
+    <FormUpdateWarehouse :warehouse-id="warehouseId" :is-opened="isUpdateWarehouseOpened" @submitted="isUpdateWarehouseOpened = false" @success="isUpdateWarehouseOpened = false" />
   </UiModal>
 </template>
 

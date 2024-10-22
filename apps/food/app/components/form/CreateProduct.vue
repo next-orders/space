@@ -75,10 +75,10 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
   }
 
   if (data.value) {
-    resetForm()
     await refreshChannelData()
     emit('success')
     toast({ title: 'Продукт создан!', description: 'Сейчас обновим данные.' })
+    resetForm()
   }
 })
 </script>
