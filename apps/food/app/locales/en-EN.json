@@ -49,8 +49,8 @@
     "website": "Website",
     "description": "Description",
     "footer": {
-      "copyright-part-one": "Created with ❤️",
-      "copyright-part-two": "on the NextOrders platform"
+      "copyright-part-one": "Created with ❤️ on",
+      "copyright-part-two": "{'@'}next-orders"
     },
     "abbreviation": {
       "min": "min",

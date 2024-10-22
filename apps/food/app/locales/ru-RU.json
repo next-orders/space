@@ -49,8 +49,8 @@
     "website": "Веб-сайт",
     "description": "Описание",
     "footer": {
-      "copyright-part-one": "Создано с ❤️",
-      "copyright-part-two": "на платформе NextOrders"
+      "copyright-part-one": "Создано с ❤️ на",
+      "copyright-part-two": "{'@'}next-orders"
     },
     "abbreviation": {
       "min": "мин",
