@@ -1,6 +1,6 @@
 {
   "name": "NextOrders Space",
-  "dockerComposeFile": "docker-compose.yml",
+  "dockerComposeFile": "docker-compose.yaml",
   "service": "app",
   "workspaceFolder": "/workspaces/next-orders/${localWorkspaceFolderBasename}",
   "postCreateCommand": "npm i -g pnpm@latest turbo@latest && pnpm i",
