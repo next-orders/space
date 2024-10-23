@@ -69,6 +69,7 @@ sudo systemctl start docker
 DATABASE_URL="postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@food-db:5432/$POSTGRES_DB"
 
 # Create the .env file inside the app directory
+mkdir -p $APP_DIR
 echo "POSTGRES_USER=$POSTGRES_USER" > "$APP_DIR/.env"
 echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> "$APP_DIR/.env"
 echo "POSTGRES_DB=$POSTGRES_DB" >> "$APP_DIR/.env"
