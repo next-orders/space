@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# curl -fsSL https://nextorders.space/food/install.sh | bash -s -- "nightly" "ru" "test.nextorders.space" "resolve@nextorders.space"
-
 # Args
 VERSION=$1
-NUXT_PUBLIC_LOCALE=$2 # "en" by default
+NUXT_PUBLIC_LOCALE=$2
 DOMAIN_NAME=$3
 EMAIL=$4
 
@@ -85,10 +83,10 @@ echo "NUXT_SESSION_PASSWORD=$NUXT_SESSION_PASSWORD" >> "$APP_DIR/.env"
 echo "DOMAIN_NAME=$DOMAIN_NAME" >> "$APP_DIR/.env"
 echo "EMAIL=$EMAIL" >> "$APP_DIR/.env"
 
-# Build and run the Docker containers from the app directory
+# Run the Docker containers from the app directory
 cd $APP_DIR
 curl -fsSL https://nextorders.space/food/docker-compose.yaml -o docker-compose.yaml
-sudo docker-compose up --build -d
+sudo docker-compose up -d
 
 # Check if Docker Compose started correctly
 if ! sudo docker-compose ps | grep "Up"; then
