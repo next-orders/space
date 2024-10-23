@@ -2,6 +2,8 @@ import { checkoutUpdateSchema, updateCheckout } from '~~/server/core/services/ch
 
 export default defineEventHandler(async (event) => {
   try {
+    const { channelId } = useRuntimeConfig()
+
     const { checkout } = await getUserSession(event)
     if (!checkout) {
       throw createError({
@@ -14,7 +16,29 @@ export default defineEventHandler(async (event) => {
     const data = checkoutUpdateSchema.parse(body)
     const time = data.time ? new Date(data.time) : new Date()
 
+    const channel = await prisma.channel.findFirst({
+      where: { id: channelId },
+    })
+
+    await updateCheckout(checkout.id)
+
     const isFinished = data.phone && data.name
+
+    // Guard: If checkout.totalPrice < minAmountForDelivery
+    if (isFinished) {
+      const actualCheckout = await prisma.checkout.findFirst({
+        where: { id: checkout.id },
+      })
+
+      if (actualCheckout?.deliveryMethod === 'DELIVERY' && channel?.minAmountForDelivery) {
+        if (actualCheckout.totalPrice < channel.minAmountForDelivery) {
+          throw createError({
+            statusCode: 400,
+            statusMessage: 'Minimum order value not reached',
+          })
+        }
+      }
+    }
 
     const updatedCheckout = await prisma.checkout.update({
       where: { id: checkout.id },
@@ -36,8 +60,6 @@ export default defineEventHandler(async (event) => {
         note: data.note,
       },
     })
-
-    await updateCheckout(checkout.id)
 
     if (isFinished) {
       await prisma.checkout.update({

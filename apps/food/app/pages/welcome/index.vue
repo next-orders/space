@@ -19,9 +19,13 @@ definePageMeta({
   layout: 'welcome',
 })
 
-const { channel } = await useChannel()
+const { channel, refresh } = await useChannel()
 
 async function checkIfChannelInited() {
+  await refresh()
+
+  const { channel } = await useChannel()
+
   if (channel.value?.id && channel.value?.masterAccountExists) {
     await navigateTo('/command-center')
   }
