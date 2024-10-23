@@ -49,6 +49,8 @@ The application has [several localizations](https://github.com/next-orders/space
 
 ## ☕ How to deploy
 
+⚠️ Warn: work in progress. Be careful with updates! Your images and DB data are at risk.
+
 You can deploy @next-orders/food on your server (1GB+ RAM) by this:
 
 ```shell
