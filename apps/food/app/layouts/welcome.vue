@@ -6,4 +6,6 @@
 
     <Footer />
   </main>
+
+  <UiToaster />
 </template>

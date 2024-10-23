@@ -1,5 +1,12 @@
 import { z } from 'zod'
 
+export const channelCreateSchema = z.object({
+  name: z.string().min(2).max(75),
+  currencyCode: z.string().max(3),
+  countryCode: z.string().max(3),
+  timeZone: z.string().max(6),
+})
+
 export const channelUpdateSchema = z.object({
   name: z.string().min(2).max(75).optional(),
   description: z.string().min(0).max(150).nullable().optional(),

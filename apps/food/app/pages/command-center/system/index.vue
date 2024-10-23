@@ -17,10 +17,10 @@
         <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.name') }}: <span class="font-semibold">{{ channel?.name }}</span>
         </div>
-        <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div v-if="channel?.description" class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.description') }}: <span class="font-semibold">{{ channel?.description }}</span>
         </div>
-        <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div v-if="channel?.phone" class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.phone') }}: <span class="font-semibold">{{ channel?.phone }}</span>
         </div>
         <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
@@ -32,11 +32,11 @@
         <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.timezone') }}: <span class="font-semibold">{{ channel?.timeZone }}</span>
         </div>
-        <div class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div v-if="channel?.minAmountForDelivery" class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('app.minimum-order-value') }}: <span class="font-semibold">{{ channel?.minAmountForDelivery }} {{ getCurrencySign(channel?.currencyCode) }}</span>
         </div>
 
-        <div class="text-sm whitespace-pre-wrap w-full md:max-w-sm bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
+        <div v-if="channel?.conditions" class="text-sm whitespace-pre-wrap w-full md:max-w-sm bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           <p class="mb-2 text-base">
             {{ t('center.data.delivery-conditions') }}:
           </p>
@@ -74,7 +74,7 @@
 
       <div class="space-y-2 w-full md:max-w-sm">
         <div v-for="workingDay in channel?.workingDays" :key="workingDay.id" class="w-full flex flex-row gap-3 justify-between items-center bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
-          <FormUpdateWorkingDayActivity :is-active="workingDay.isActive" :day="workingDay.day as WorkingDay['day']" />
+          <FormUpdateWorkingDayActivity :is-active="workingDay?.isActive" :day="workingDay?.day as WorkingDay['day']" />
 
           <div>
             {{ workingDay.openHours.toString().padStart(2, '0') }}:{{ workingDay.openMinutes.toString().padStart(2, '0') }} - {{ workingDay.closeHours.toString().padStart(2, '0') }}:{{ workingDay.closeMinutes.toString().padStart(2, '0') }}
@@ -116,7 +116,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'command-center',
-  middleware: ['staff'],
+  middleware: ['02-staff'],
 })
 
 const { t } = useI18n()

@@ -16,6 +16,11 @@
 const { user } = useUserSession()
 const { channel, categoriesWithProducts, activeMenu } = await useChannel()
 
+// Need to init channel
+if (!channel.value?.id || !channel.value?.masterAccountExists) {
+  navigateTo('/welcome')
+}
+
 useHead({
   title: channel.value?.name,
   meta: [

@@ -40,6 +40,16 @@ export default defineEventHandler(async () => {
       })
     }
 
+    // Master
+    const master = await prisma.user.findFirst({
+      where: { channelId, isStaff: true },
+      orderBy: { createdAt: 'desc' },
+      include: {
+        permissions: true,
+      },
+    })
+    const masterAccountExists = !!master?.permissions.find((permission) => permission.code === 'MASTER')
+
     // Working day
     const timeZone = channel.timeZone
     const dayOfWeekIndex = new TZDate(new Date(), timeZone).getDay()
@@ -55,6 +65,7 @@ export default defineEventHandler(async () => {
       ...channel,
       workingDay,
       workingDays,
+      masterAccountExists,
     }
   } catch (error) {
     throw errorResolver(error)

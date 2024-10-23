@@ -12,7 +12,9 @@ export default defineEventHandler(async (event) => {
       })
     }
 
-    return user
+    return {
+      id: user.id,
+    }
   } catch (error) {
     throw errorResolver(error)
   }

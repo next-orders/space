@@ -5,7 +5,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'command-center',
-  middleware: ['staff'],
+  middleware: ['02-staff'],
 })
 
 const { t } = useI18n()
