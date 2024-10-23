@@ -15,7 +15,7 @@ So the project does not become one big monolith.
 
 ![next-orders-arch](https://github.com/next-orders/space/blob/main/.github/media/next-orders-arch.png?raw=true)
 
-I'm currently working on first version of the website. Next year there will be a new version that will easily replace the old one as the Main API with business logic will remain the same.
+I'm currently working on the first version of the website. Next year there will be a new version that will easily replace the old one as the Main API with business logic will remain the same.
 
 Let's see what happens. Give the project a star ⭐. Offer your ideas and make commits.
 
@@ -35,6 +35,13 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - Website has its own backend, where API data does not break out
 - Most of the code is rendered on the server: less load on the client
 
+## 🌎 Locales
+
+The application has [several localizations](https://github.com/next-orders/space/tree/main/apps/food/app/locales):
+
+- English
+- Russian
+
 ## 🥒 Structure
 
 - [Food e-commerce](https://github.com/next-orders/space/tree/main/apps/food): Storefront and Command Center. Client can order delicious food.
@@ -42,14 +49,29 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 
 ## ☕ How to deploy
 
-You can use Docker Image:
+⚠️ Warn: work in progress. Be careful with updates! Your images and DB data are at risk.
+
+You can deploy @next-orders/food on your server (1GB+ RAM) by this:
 
 ```shell
-# use the specific version
-docker pull ghcr.io/next-orders/food:v0.6.0
+# Connect over SSH and use with args: version, locale, your domain, your email
+curl -fsSL https://nextorders.space/food/install.sh | bash -s -- "v0.6.0" "en" "test.nextorders.space" "resolve@nextorders.space"
+
+# It will install Docker, Docker Compose and download latest docker-compose.yaml
+# After, it will bring up Traefik to serve web requests, create and autoupdate SSL certificate
+# Food app, DB, migrations... You are ready to check your domain!
 ```
 
-Check **.env.example** for more info about required config variables.
+Also, you can use single Docker Image to create container (you need external PostgreSQL as DB):
+
+```shell
+# Use the specific version
+docker pull ghcr.io/next-orders/food:v0.6.0
+
+# Warn: you need an external PostgreSQL as DB
+```
+
+Check [**.env.example**](https://github.com/next-orders/space/tree/main/apps/food/.env.example) for more info about required config variables.
 
 ## 🍿 How to develop
 
