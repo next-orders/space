@@ -8,8 +8,19 @@
     </p>
 
     <div class="mt-8 px-6 py-4 max-w-sm mx-auto bg-white dark:bg-neutral-500 rounded-2xl">
-      <FormInitChannel v-if="!channel?.id" @success="checkIfChannelInited()" />
-      <FormInitMaster v-else-if="!channel.masterAccountExists" @success="checkIfChannelInited()" />
+      <FormInitChannel v-if="!channel?.id" />
+      <FormInitMaster v-else-if="!channel.masterAccountExists" />
+      <div v-else>
+        <h2 class="mb-4 text-xl md:text-2xl font-semibold text-center">
+          {{ $t('init.finish-message') }}
+        </h2>
+
+        <NuxtLink to="/command-center">
+          <UiButton>
+            {{ $t('app.cart.next-label') }}
+          </UiButton>
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -19,17 +30,9 @@ definePageMeta({
   layout: 'welcome',
 })
 
-const { channel, refresh } = await useChannel()
+const { channel } = await useChannel()
 
-async function checkIfChannelInited() {
-  await refresh()
-
-  const { channel } = await useChannel()
-
-  if (channel.value?.id && channel.value?.masterAccountExists) {
-    await navigateTo('/command-center')
-  }
+if (channel.value?.id && channel.value?.masterAccountExists) {
+  await navigateTo('/command-center')
 }
-
-checkIfChannelInited()
 </script>
