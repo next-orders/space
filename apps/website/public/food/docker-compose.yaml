@@ -1,7 +1,7 @@
 services:
   food:
     container_name: food
-    image: ghcr.io/next-orders/food:nightly
+    image: ghcr.io/next-orders/food:${VERSION}
     ports:
       - 3000:3000
     restart: unless-stopped
@@ -21,7 +21,7 @@ services:
 
   food-db-migration:
     container_name: food-db-migration
-    image: ghcr.io/next-orders/food-db-migration:nightly
+    image: ghcr.io/next-orders/food-db-migration:${VERSION}
     env_file:
       - .env
     depends_on:
