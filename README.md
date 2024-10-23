@@ -62,7 +62,7 @@ curl -fsSL https://nextorders.space/food/install.sh | bash -s -- "v0.6.0" "en" "
 # Food app, DB, migrations... You are ready to check your domain!
 ```
 
-Also, you can use single Docker Image to create container (you need external PostgreSQL as DB):
+Also, you can use single Docker Image to create container:
 
 ```shell
 # Use the specific version

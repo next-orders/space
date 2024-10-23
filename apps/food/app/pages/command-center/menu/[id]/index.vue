@@ -61,7 +61,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'command-center',
-  middleware: ['staff'],
+  middleware: ['02-staff'],
 })
 
 const isCreateProductOpened = ref(false)

@@ -37,6 +37,8 @@
     "colleague": "Colleague",
     "continue-working": "Continue working",
     "hello": "Hello",
+    "select": "Select",
+    "optional": "Optional",
     "sign-in": "Sign in",
     "sign-out": "Sign out",
     "login": "Login",
@@ -242,6 +244,12 @@
       "timezone": "Timezone",
       "delivery-conditions": "Delivery conditions"
     }
+  },
+  "init": {
+    "title": "Welcome!",
+    "description": "You have successfully installed the app and all related services. Just a couple more minutes.",
+    "general-data": "Fill in the key data",
+    "admin-data": "Let's create an admin account"
   },
   "error": {
     "title": "Error",

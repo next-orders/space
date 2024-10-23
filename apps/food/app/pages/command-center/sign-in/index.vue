@@ -57,7 +57,7 @@ definePageMeta({
 
 const { icons } = useAppConfig()
 const { user, fetch: refreshSession } = useUserSession()
-if (user.value?.isStaff) {
+if (user.value?.id && user.value?.isStaff) {
   await navigateTo('/command-center')
 }
 

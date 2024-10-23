@@ -69,14 +69,14 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput v-bind="componentField" placeholder="Опционально" />
+          <UiInput v-bind="componentField" :placeholder="$t('common.optional')" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
 
     <div class="pt-4">
       <h3 class="font-semibold">
-        Опционально: Пищевая ценность на 100г
+        {{ $t('common.optional') }}: Пищевая ценность на 100г
       </h3>
 
       <div class="grid grid-cols-2 gap-2">
