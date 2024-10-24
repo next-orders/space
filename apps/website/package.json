@@ -14,11 +14,11 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.8",
+    "@iconify-json/lucide": "^1.2.10",
     "@iconify-json/pixelarticons": "^1.2.1",
     "@next-orders/eslint": "workspace:*",
-    "@nuxt/devtools": "^1.5.2",
-    "@nuxt/fonts": "^0.10.0",
+    "@nuxt/devtools": "^1.6.0",
+    "@nuxt/fonts": "^0.10.2",
     "@nuxt/kit": "^3.13.2",
     "@nuxt/ui": "^2.18.7",
     "@nuxtjs/device": "^3.2.4",
@@ -27,8 +27,8 @@
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
     "nuxt": "^3.13.2",
-    "nuxt-auth-utils": "^0.4.4",
-    "tailwindcss": "^3.4.13",
+    "nuxt-auth-utils": "^0.5.0",
+    "tailwindcss": "^3.4.14",
     "vue-tsc": "^2.1.6"
   }
 }
