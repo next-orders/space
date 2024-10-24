@@ -52,7 +52,7 @@
 
             <UiSelectContent>
               <UiSelectGroup>
-                <UiSelectItem v-for="unit in weightUnitValues" :key="unit.value" :value="unit.value">
+                <UiSelectItem v-for="unit in getLocalizedWeightUnitsForSelect()" :key="unit.value" :value="unit.value">
                   {{ unit.label }}
                 </UiSelectItem>
               </UiSelectGroup>
@@ -202,6 +202,4 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
     resetForm()
   }
 })
-
-const weightUnitValues = getWeightUnitValues()
 </script>

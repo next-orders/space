@@ -5,7 +5,7 @@
         <UiFormField :name="`${day.day}.open`">
           <UiFormItem>
             <div>
-              <UiFormLabel>{{ getLocalizedDayOfWeek(day.day as WorkingDay['day']) }}, {{ $t('common.time-from') }}</UiFormLabel>
+              <UiFormLabel>{{ getLocalizedDayOfWeek(day.day) }}, {{ $t('common.time-from') }}</UiFormLabel>
               <UiFormMessage />
             </div>
             <UiFormControl>

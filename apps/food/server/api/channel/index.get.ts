@@ -43,7 +43,7 @@ export default defineEventHandler(async () => {
     // Master
     const master = await prisma.user.findFirst({
       where: { channelId, isStaff: true },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: 'asc' },
       include: {
         permissions: true,
       },

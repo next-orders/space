@@ -1,3 +1,18 @@
+export function getLocalizedPrice(value?: number): string {
+  if (!value) {
+    return ''
+  }
+
+  const remainder = value - Number.parseInt(value.toString())
+  if (remainder > 0) {
+    // Have some digits after dot: return as Decimal
+    return value.toFixed(2)
+  }
+
+  // As it is: for RUB, currency with an integer
+  return value.toString()
+}
+
 export function getCurrencySign<CurrencyLiteral = string & object>(code?: CurrencyCode | CurrencyLiteral): string {
   switch (code as CurrencyCode) {
     case 'RUB':
@@ -32,35 +47,7 @@ export function getWeightLocalizedUnit<WeightUnitLiteral = string & object>(unit
   }
 }
 
-export function getWeightUnitValues(): { value: WeightUnit, label: string }[] {
-  const { t } = useI18n()
-
-  return [
-    { value: 'KG', label: t('common.weight-unit.kg') },
-    { value: 'G', label: t('common.weight-unit.g') },
-    { value: 'L', label: t('common.weight-unit.l') },
-    { value: 'ML', label: t('common.weight-unit.ml') },
-    { value: 'OZ', label: t('common.weight-unit.oz') },
-    { value: 'LB', label: t('common.weight-unit.lb') },
-  ]
-}
-
-export function getLocalizedPrice(value?: number): string {
-  if (!value) {
-    return ''
-  }
-
-  const remainder = value - Number.parseInt(value.toString())
-  if (remainder > 0) {
-    // Have some digits after dot: return as Decimal
-    return value.toFixed(2)
-  }
-
-  // As it is: for RUB, currency with an integer
-  return value.toString()
-}
-
-export function getLocalizedDayOfWeek(day: WorkingDay['day']): string {
+export function getLocalizedDayOfWeek<DayLiteral = string & object>(day: WorkingDay['day'] | DayLiteral): string {
   const { t } = useI18n()
 
   switch (day) {
@@ -81,4 +68,82 @@ export function getLocalizedDayOfWeek(day: WorkingDay['day']): string {
     default:
       return ''
   }
+}
+
+export function getLocalizedPaymentMethodTypesForSelect(): { value: PaymentMethodType, label: string }[] {
+  const { t } = useI18n()
+
+  return [
+    { value: 'CASH', label: t('common.payment-type.cash') },
+    { value: 'CARD', label: t('common.payment-type.card') },
+    { value: 'CUSTOM', label: t('common.payment-type.custom') },
+  ]
+}
+
+export function getLocalizedCountryCodesForSelect(): { value: CountryCode, label: string }[] {
+  const { t } = useI18n()
+
+  return [
+    { value: 'BY', label: t('common.country.by') },
+    { value: 'GB', label: t('common.country.gb') },
+    { value: 'GE', label: t('common.country.ge') },
+    { value: 'GR', label: t('common.country.gr') },
+    { value: 'KZ', label: t('common.country.kz') },
+    { value: 'RU', label: t('common.country.ru') },
+    { value: 'UA', label: t('common.country.ua') },
+    { value: 'US', label: t('common.country.us') },
+  ]
+}
+
+export function getLocalizedCurrencyCodesForSelect(): { value: CurrencyCode, label: string }[] {
+  const { t } = useI18n()
+
+  return [
+    { value: 'EUR', label: `EUR - ${t('common.currency.eur')}` },
+    { value: 'RUB', label: `RUB - ${t('common.currency.rub')}` },
+    { value: 'USD', label: `USD - ${t('common.currency.usd')}` },
+  ]
+}
+
+export function getLocalizedWeightUnitsForSelect(): { value: WeightUnit, label: string }[] {
+  const { t } = useI18n()
+
+  return [
+    { value: 'KG', label: t('common.weight-unit.kg') },
+    { value: 'G', label: t('common.weight-unit.g') },
+    { value: 'L', label: t('common.weight-unit.l') },
+    { value: 'ML', label: t('common.weight-unit.ml') },
+    { value: 'OZ', label: t('common.weight-unit.oz') },
+    { value: 'LB', label: t('common.weight-unit.lb') },
+  ]
+}
+
+export function getLocalizedTimezonesForSelect(): { value: TimeZone, label: string }[] {
+  return [
+    { value: '-12:00', label: '-12:00' },
+    { value: '-11:00', label: '-11:00' },
+    { value: '-10:00', label: '-10:00' },
+    { value: '-09:00', label: '-09:00' },
+    { value: '-08:00', label: '-08:00' },
+    { value: '-07:00', label: '-07:00' },
+    { value: '-06:00', label: '-06:00' },
+    { value: '-05:00', label: '-05:00' },
+    { value: '-04:00', label: '-04:00' },
+    { value: '-03:00', label: '-03:00' },
+    { value: '-02:00', label: '-02:00' },
+    { value: '-01:00', label: '-01:00' },
+    { value: '00:00', label: '00:00' },
+    { value: '+01:00', label: '+01:00' },
+    { value: '+02:00', label: '+02:00' },
+    { value: '+03:00', label: '+03:00' },
+    { value: '+04:00', label: '+04:00' },
+    { value: '+05:00', label: '+05:00' },
+    { value: '+06:00', label: '+06:00' },
+    { value: '+07:00', label: '+07:00' },
+    { value: '+08:00', label: '+08:00' },
+    { value: '+09:00', label: '+09:00' },
+    { value: '+10:00', label: '+10:00' },
+    { value: '+11:00', label: '+11:00' },
+    { value: '+12:00', label: '+12:00' },
+  ]
 }

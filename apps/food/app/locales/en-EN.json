@@ -92,7 +92,33 @@
       "sunday": "Sunday"
     },
     "time-from": "Time from",
-    "time-to": "Time to"
+    "time-to": "Time to",
+    "payment-type": {
+      "cash": "Сash",
+      "card": "Card",
+      "custom": "Custom"
+    },
+    "country": {
+      "us": "United States",
+      "ru": "Russia",
+      "fr": "France",
+      "de": "Germany",
+      "it": "Italy",
+      "es": "Spain",
+      "tr": "Turkey",
+      "pl": "Poland",
+      "ua": "Ukraine",
+      "kz": "Kazakhstan",
+      "by": "Belarus",
+      "ge": "Georgia",
+      "gr": "Greece",
+      "gb": "Great Britain"
+    },
+    "currency": {
+      "usd": "US Dollar",
+      "rub": "Russian Ruble",
+      "eur": "Euro"
+    }
   },
   "app": {
     "cart": {
@@ -242,7 +268,8 @@
       "currency": "Currency",
       "country": "Country",
       "timezone": "Timezone",
-      "delivery-conditions": "Delivery conditions"
+      "delivery-conditions": "Delivery conditions",
+      "type": "Type"
     }
   },
   "init": {
