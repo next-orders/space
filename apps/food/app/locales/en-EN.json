@@ -249,7 +249,8 @@
     "title": "Welcome!",
     "description": "You have successfully installed the app and all related services. Just a couple more minutes.",
     "general-data": "Fill in the key data",
-    "admin-data": "Let's create an admin account"
+    "admin-data": "Let's create an admin account",
+    "finish-message": "It's done!"
   },
   "error": {
     "title": "Error",
