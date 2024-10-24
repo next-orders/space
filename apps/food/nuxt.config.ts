@@ -63,6 +63,12 @@ export default defineNuxtConfig({
     langDir: 'locales',
     detectBrowserLanguage: false,
   },
+  zodI18n: {
+    localeCodesMapping: {
+      'en-GB': 'en',
+      'ru-RU': 'ru',
+    },
+  },
   routeRules: {
     '/': { swr: true },
     '/catalog/**': { swr: true },
@@ -79,6 +85,7 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@nuxtjs/device',
+    'nuxt-zod-i18n',
     '@nuxtjs/i18n',
     '@nuxt/fonts',
     'nuxt-auth-utils',

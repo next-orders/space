@@ -50,6 +50,7 @@
     "@vueuse/nuxt": "^11.1.0",
     "nuxt": "^3.13.2",
     "nuxt-auth-utils": "^0.4.4",
+    "nuxt-zod-i18n": "^1.10.0",
     "prisma": "^5.20.0",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.5.3",

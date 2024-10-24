@@ -129,6 +129,9 @@ importers:
       nuxt-auth-utils:
         specifier: ^0.4.4
         version: 0.4.4(bcrypt@5.1.1)(magicast@0.3.5)(rollup@4.21.3)
+      nuxt-zod-i18n:
+        specifier: ^1.10.0
+        version: 1.10.0(magicast@0.3.5)(rollup@4.21.3)
       prisma:
         specifier: ^5.20.0
         version: 5.20.0
@@ -3024,6 +3027,10 @@ packages:
   decode-named-character-reference@1.0.2:
     resolution: {integrity: sha512-O8x12RzrUF8xyVcY0KJowWsmaJxQbmy0/EtnNtHRpsOcT7dFk5W598coHqBVpmWo1oQQfsCqfCmkZN5DJrZVdg==}
 
+  dedupe@4.0.3:
+    resolution: {integrity: sha512-WMo1AIq5MSstJ5DhVVccdue22MEpaxzf0tdznjXgWrfei9F3aNYP7xhbKgi1U8JlvTU4RyhUSLI63jt7PUipBQ==}
+    engines: {node: '>=4.0'}
+
   deep-eql@5.0.2:
     resolution: {integrity: sha512-h5k/5U50IJJFpzfL6nO9jaaumfjO/f2NjK/oYB2Djzm4p9L+3T9qWpZqZ2hAbLPuuYq9wrU08WQyBTL5GbPk5Q==}
     engines: {node: '>=6'}
@@ -4568,6 +4575,9 @@ packages:
         optional: true
       '@simplewebauthn/server':
         optional: true
+
+  nuxt-zod-i18n@1.10.0:
+    resolution: {integrity: sha512-MhmP57IIQaAJ6qyc/thAe/hNFIIcbLx+obmlk9AlnIZlg/5xPFtlCQYJEKk4vfuS/39lQnzxulQ0U57VEyFqSA==}
 
   nuxt@3.13.2:
     resolution: {integrity: sha512-Bjc2qRsipfBhjXsBEJCN+EUAukhdgFv/KoIR5HFB2hZOYRSqXBod3oWQs78k3ja1nlIhAEdBG533898KJxUtJw==}
@@ -9205,6 +9215,8 @@ snapshots:
     dependencies:
       character-entities: 2.0.2
 
+  dedupe@4.0.3: {}
+
   deep-eql@5.0.2:
     optional: true
 
@@ -11147,6 +11159,19 @@ snapshots:
     transitivePeerDependencies:
       - argon2
       - bcrypt
+      - magicast
+      - rollup
+      - supports-color
+      - webpack-sources
+
+  nuxt-zod-i18n@1.10.0(magicast@0.3.5)(rollup@4.21.3):
+    dependencies:
+      '@intlify/shared': 9.14.0
+      '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.21.3)
+      dedupe: 4.0.3
+      defu: 6.1.4
+      zod: 3.23.8
+    transitivePeerDependencies:
       - magicast
       - rollup
       - supports-color
