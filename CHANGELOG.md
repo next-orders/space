@@ -1,6 +1,46 @@
 # Changelog
 
 
+## v0.6.0
+
+[compare changes](https://github.com/next-orders/space/compare/v0.5.0...v0.6.0)
+
+### 🚀 Enhancements
+
+- Timezone on channel working hours ([#242](https://github.com/next-orders/space/pull/242))
+- ⚠️  Working days and timezone ([#243](https://github.com/next-orders/space/pull/243))
+- Create new checkouts ([#245](https://github.com/next-orders/space/pull/245))
+- Delivery and pickup as options ([#246](https://github.com/next-orders/space/pull/246))
+- ⚠️  Phone, conditions and minAmountForDelivery ([#247](https://github.com/next-orders/space/pull/247))
+- Check on radio button ([#248](https://github.com/next-orders/space/pull/248))
+- Settings page with data ([#249](https://github.com/next-orders/space/pull/249))
+- Update channel general data ([#250](https://github.com/next-orders/space/pull/250))
+- Cart guard on client side ([#251](https://github.com/next-orders/space/pull/251))
+- Prisma migration ([#252](https://github.com/next-orders/space/pull/252))
+- Install food by url ([#254](https://github.com/next-orders/space/pull/254))
+- Added nuxt-zod-i18n ([#257](https://github.com/next-orders/space/pull/257))
+- Added confetti ([#259](https://github.com/next-orders/space/pull/259))
+- Georgian locale ([#261](https://github.com/next-orders/space/pull/261))
+
+### 🏡 Chore
+
+- ⚠️  Address now is a part of checkout ([#244](https://github.com/next-orders/space/pull/244))
+- Args on script ([#253](https://github.com/next-orders/space/pull/253))
+- Some visual fixes ([#255](https://github.com/next-orders/space/pull/255))
+- Check minAmount ([#256](https://github.com/next-orders/space/pull/256))
+- Locale rework ([#258](https://github.com/next-orders/space/pull/258))
+- New codes ([#260](https://github.com/next-orders/space/pull/260))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Working days and timezone ([#243](https://github.com/next-orders/space/pull/243))
+- ⚠️  Phone, conditions and minAmountForDelivery ([#247](https://github.com/next-orders/space/pull/247))
+- ⚠️  Address now is a part of checkout ([#244](https://github.com/next-orders/space/pull/244))
+
+### ❤️ Contributors
+
+- Nick Kosarev ([@hmbanan666](http://github.com/hmbanan666))
+
 ## v0.5.0
 
 [compare changes](https://github.com/next-orders/space/compare/v0.4.0...v0.5.0)
