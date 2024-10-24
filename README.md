@@ -39,13 +39,14 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 
 The application has [several localizations](https://github.com/next-orders/space/tree/main/apps/food/app/locales):
 
-- English
-- Russian
+- en | English
+- ru | Russian | Русский
+- ka | Georgian | ქართული
 
 ## 🥒 Structure
 
 - [Food e-commerce](https://github.com/next-orders/space/tree/main/apps/food): Storefront and Command Center. Client can order delicious food.
-- [NextOrders Website](https://github.com/next-orders/space/tree/main/apps/website): Documentation and SaaS
+- [NextOrders Website](https://github.com/next-orders/space/tree/main/apps/website): Documentation
 
 ## ☕ How to deploy
 
