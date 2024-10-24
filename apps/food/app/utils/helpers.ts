@@ -21,6 +21,18 @@ export function getCurrencySign<CurrencyLiteral = string & object>(code?: Curren
       return '$'
     case 'EUR':
       return '€'
+    case 'GEL':
+      return '₾'
+    case 'BYN':
+      return 'Br'
+    case 'UAH':
+      return '₴'
+    case 'KZT':
+      return '₸'
+    case 'PLN':
+      return 'zł'
+    case 'TRY':
+      return '₺'
     default:
       return ''
   }
@@ -85,11 +97,17 @@ export function getLocalizedCountryCodesForSelect(): { value: CountryCode, label
 
   return [
     { value: 'BY', label: t('common.country.by') },
+    { value: 'DE', label: t('common.country.de') },
+    { value: 'ES', label: t('common.country.es') },
+    { value: 'FR', label: t('common.country.fr') },
     { value: 'GB', label: t('common.country.gb') },
     { value: 'GE', label: t('common.country.ge') },
     { value: 'GR', label: t('common.country.gr') },
+    { value: 'IT', label: t('common.country.it') },
     { value: 'KZ', label: t('common.country.kz') },
+    { value: 'PL', label: t('common.country.pl') },
     { value: 'RU', label: t('common.country.ru') },
+    { value: 'TR', label: t('common.country.tr') },
     { value: 'UA', label: t('common.country.ua') },
     { value: 'US', label: t('common.country.us') },
   ]
@@ -100,7 +118,12 @@ export function getLocalizedCurrencyCodesForSelect(): { value: CurrencyCode, lab
 
   return [
     { value: 'EUR', label: `EUR - ${t('common.currency.eur')}` },
+    { value: 'BYN', label: `BYN - ${t('common.currency.byn')}` },
+    { value: 'GEL', label: `GEL - ${t('common.currency.gel')}` },
+    { value: 'KZT', label: `KZT - ${t('common.currency.kzt')}` },
+    { value: 'PLN', label: `PLN - ${t('common.currency.pln')}` },
     { value: 'RUB', label: `RUB - ${t('common.currency.rub')}` },
+    { value: 'UAH', label: `UAH - ${t('common.currency.uah')}` },
     { value: 'USD', label: `USD - ${t('common.currency.usd')}` },
   ]
 }

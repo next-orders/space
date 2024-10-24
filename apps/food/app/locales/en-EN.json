@@ -117,7 +117,13 @@
     "currency": {
       "usd": "US Dollar",
       "rub": "Russian Ruble",
-      "eur": "Euro"
+      "eur": "Euro",
+      "gel": "Georgian Lari",
+      "byn": "Belarusian Ruble",
+      "uah": "Ukrainian Hryvnia",
+      "kzt": "Kazakhstani Tenge",
+      "pln": "Polish Zloty",
+      "try": "Turkish Lira"
     }
   },
   "app": {

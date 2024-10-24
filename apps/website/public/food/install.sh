@@ -95,4 +95,4 @@ if ! sudo docker-compose ps | grep "Up"; then
 fi
 
 # Output final message
-echo "Deployment complete. Your app and database are now running."
+echo "Deployment complete. Your app and database are ready. Check your domain: https://$DOMAIN_NAME"
