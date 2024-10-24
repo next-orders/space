@@ -58,6 +58,7 @@ export default defineNuxtConfig({
     locales: [
       { code: 'ru', name: 'Русский', file: 'ru-RU.json' },
       { code: 'en', name: 'English', file: 'en-EN.json' },
+      { code: 'ka', name: 'ქართული', file: 'ka-GE.json' },
     ],
     strategy: 'no_prefix',
     langDir: 'locales',
@@ -67,6 +68,7 @@ export default defineNuxtConfig({
     localeCodesMapping: {
       'en-GB': 'en',
       'ru-RU': 'ru',
+      'ka-GE': 'ka',
     },
   },
   routeRules: {
