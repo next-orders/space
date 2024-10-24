@@ -1,4 +1,8 @@
 <template>
+  <div class="w-full flex justify-center">
+    <div v-confetti="{ stageHeight: height, stageWidth: width, particleCount: 200, duration: 5000 }" />
+  </div>
+
   <div class="pt-24">
     <h1 class="mb-2 text-3xl font-semibold text-center">
       {{ $t('init.title') }}
@@ -26,10 +30,13 @@
 </template>
 
 <script setup lang="ts">
+import { vConfetti } from '@neoconfetti/vue'
+
 definePageMeta({
   layout: 'welcome',
 })
 
+const { width, height } = useWindowSize()
 const { channel } = await useChannel()
 
 if (channel.value?.id && channel.value?.masterAccountExists) {
