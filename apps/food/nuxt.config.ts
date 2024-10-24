@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/styles.css'],
   runtimeConfig: {
-    channelId: 'burger', // NUXT_CHANNEL_ID
+    channelId: 'burger',
     storageProductsDirectory: 'products',
     public: {
       projectUrl: 'https://github.com/next-orders/space',

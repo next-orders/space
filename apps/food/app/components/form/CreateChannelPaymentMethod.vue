@@ -3,7 +3,7 @@
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>
         <div>
-          <UiFormLabel>Название</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.name') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -15,12 +15,24 @@
     <UiFormField v-slot="{ componentField }" name="type">
       <UiFormItem>
         <div>
-          <UiFormLabel>Type</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.type') }}</UiFormLabel>
           <UiFormMessage />
         </div>
-        <UiFormControl>
-          <UiInput v-bind="componentField" />
-        </UiFormControl>
+        <UiSelect v-bind="componentField">
+          <UiFormControl>
+            <UiSelectTrigger>
+              <UiSelectValue :placeholder="$t('common.select')" />
+            </UiSelectTrigger>
+          </UiFormControl>
+
+          <UiSelectContent>
+            <UiSelectGroup>
+              <UiSelectItem v-for="type in getLocalizedPaymentMethodTypesForSelect()" :key="type.value" :value="type.value">
+                {{ type.label }}
+              </UiSelectItem>
+            </UiSelectGroup>
+          </UiSelectContent>
+        </UiSelect>
       </UiFormItem>
     </UiFormField>
 

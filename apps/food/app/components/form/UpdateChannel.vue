@@ -42,9 +42,21 @@
           <UiFormLabel>Валюта</UiFormLabel>
           <UiFormMessage />
         </div>
-        <UiFormControl>
-          <UiInput v-bind="componentField" />
-        </UiFormControl>
+        <UiSelect v-bind="componentField">
+          <UiFormControl>
+            <UiSelectTrigger>
+              <UiSelectValue :placeholder="$t('common.select')" />
+            </UiSelectTrigger>
+          </UiFormControl>
+
+          <UiSelectContent>
+            <UiSelectGroup>
+              <UiSelectItem v-for="code in getLocalizedCurrencyCodesForSelect()" :key="code.value" :value="code.value">
+                {{ code.label }}
+              </UiSelectItem>
+            </UiSelectGroup>
+          </UiSelectContent>
+        </UiSelect>
       </UiFormItem>
     </UiFormField>
 
@@ -54,9 +66,21 @@
           <UiFormLabel>Страна</UiFormLabel>
           <UiFormMessage />
         </div>
-        <UiFormControl>
-          <UiInput v-bind="componentField" />
-        </UiFormControl>
+        <UiSelect v-bind="componentField">
+          <UiFormControl>
+            <UiSelectTrigger>
+              <UiSelectValue :placeholder="$t('common.select')" />
+            </UiSelectTrigger>
+          </UiFormControl>
+
+          <UiSelectContent>
+            <UiSelectGroup>
+              <UiSelectItem v-for="code in getLocalizedCountryCodesForSelect()" :key="code.value" :value="code.value">
+                {{ code.label }}
+              </UiSelectItem>
+            </UiSelectGroup>
+          </UiSelectContent>
+        </UiSelect>
       </UiFormItem>
     </UiFormField>
 
@@ -66,9 +90,21 @@
           <UiFormLabel>Часовой пояс</UiFormLabel>
           <UiFormMessage />
         </div>
-        <UiFormControl>
-          <UiInput v-bind="componentField" />
-        </UiFormControl>
+        <UiSelect v-bind="componentField">
+          <UiFormControl>
+            <UiSelectTrigger>
+              <UiSelectValue :placeholder="$t('common.select')" />
+            </UiSelectTrigger>
+          </UiFormControl>
+
+          <UiSelectContent>
+            <UiSelectGroup>
+              <UiSelectItem v-for="zone in getLocalizedTimezonesForSelect()" :key="zone.value" :value="zone.value">
+                {{ zone.label }}
+              </UiSelectItem>
+            </UiSelectGroup>
+          </UiSelectContent>
+        </UiSelect>
       </UiFormItem>
     </UiFormField>
 
@@ -79,7 +115,7 @@
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput v-bind="componentField" type="number" />
+          <UiInput v-bind="componentField" type="number" :placeholder="$t('common.optional')" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
