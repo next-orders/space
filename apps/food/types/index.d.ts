@@ -17,9 +17,9 @@ declare global {
     minAmountForDelivery: number | null
   }
 
-  type CurrencyCode = 'USD' | 'EUR' | 'RUB'
+  type CurrencyCode = 'USD' | 'EUR' | 'RUB' | 'GEL' | 'BYN' | 'UAH' | 'KZT' | 'PLN' | 'TRY'
 
-  type CountryCode = 'RU' | 'US' | 'GB' | 'GR' | 'GE' | 'UA' | 'BY' | 'KZ'
+  type CountryCode = 'RU' | 'US' | 'GB' | 'GR' | 'GE' | 'UA' | 'BY' | 'KZ' | 'FR' | 'DE' | 'IT' | 'ES' | 'TR' | 'PL'
 
   type Locale = 'ru' | 'en'
 
