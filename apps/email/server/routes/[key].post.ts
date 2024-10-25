@@ -4,7 +4,7 @@ export default eventHandler(async (event) => {
   try {
     const logger = useLogger('email')
     const { host, port, user, pass, from, token } = useRuntimeConfig(event)
-    const key = getRouterParam(event, 'token')
+    const key = getRouterParam(event, 'key')
 
     if (!token || token !== key) {
       throw createError({
