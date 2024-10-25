@@ -36,7 +36,7 @@ export default eventHandler(async (event) => {
       from,
       to: body.to,
       subject: body.subject,
-      text: body.html.replace(/<[^>]+>/g, ''),
+      text: body.html,
       html: body.html,
     })
     logger.log('Response from SMTP server:', info?.accepted?.length > 0 ? 'SUCCESS' : 'FAILED', info?.response, info?.messageId)
