@@ -1,0 +1,25 @@
+{
+  "name": "@next-orders/email",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nitro build",
+    "dev": "nitro dev",
+    "prepare": "nitro prepare",
+    "preview": "node .output/server/index.mjs",
+    "clean": "turbo clean",
+    "clean:modules": "turbo clean:modules && rm -rf .turbo node_modules",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "typecheck": "nitro prepare",
+    "postinstall": "nitro prepare"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.15"
+  },
+  "devDependencies": {
+    "@next-orders/eslint": "workspace:*",
+    "@types/nodemailer": "^6.4.16",
+    "nitropack": "latest"
+  }
+}

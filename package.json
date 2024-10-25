@@ -44,6 +44,7 @@
     "dev": "dotenv -- turbo dev --parallel",
     "dev:website": "dotenv -- pnpm --filter @next-orders/website dev",
     "dev:food": "dotenv -- pnpm --filter @next-orders/food dev",
+    "dev:email": "dotenv -- pnpm --filter @next-orders/email dev",
     "lint": "turbo lint --",
     "lint:fix": "turbo lint:fix",
     "clean": "turbo clean",
