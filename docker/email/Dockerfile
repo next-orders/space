@@ -17,7 +17,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 FROM $NODE
 WORKDIR /app
-COPY --from=builder /app/apps/food/.output .
+COPY --from=builder /app/apps/email/.output .
 
 ARG VERSION=nightly
 ENV VERSION=${VERSION}
