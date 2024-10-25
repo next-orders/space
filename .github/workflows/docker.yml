@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package: [website, food, food-db-migration]
+        package: [website, food, food-db-migration, email]
     runs-on: ubuntu-latest
     permissions:
       packages: write
