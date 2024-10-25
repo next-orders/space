@@ -39,6 +39,9 @@ importers:
         specifier: ^6.9.15
         version: 6.9.15
     devDependencies:
+      '@next-orders/eslint':
+        specifier: workspace:*
+        version: link:../../packages/eslint
       '@types/nodemailer':
         specifier: ^6.4.16
         version: 6.4.16
