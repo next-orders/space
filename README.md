@@ -35,6 +35,8 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - Website has its own backend, where API data does not break out
 - Most of the code is rendered on the server: less load on the client
 
+[Check out PageSpeed Insights](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fdemo.nextorders.space%2F). Maybe it's showing all 100s 😉
+
 ## 🌎 Locales
 
 The application has [several localizations](https://github.com/next-orders/space/tree/main/apps/food/app/locales):
@@ -56,7 +58,7 @@ You can deploy @next-orders/food on your server (1GB+ RAM) by this:
 
 ```shell
 # Connect over SSH and use with args: version, locale, your domain, your email
-curl -fsSL https://nextorders.space/food/install.sh | bash -s -- "v0.6.0" "en" "test.nextorders.space" "resolve@nextorders.space"
+curl -fsSL https://nextorders.space/food/install.sh | bash -s -- "v0.6.1" "en" "test.nextorders.space" "resolve@nextorders.space"
 
 # It will install Docker, Docker Compose and download latest docker-compose.yaml
 # After, it will bring up Traefik to serve web requests, create and autoupdate SSL certificate
@@ -67,7 +69,7 @@ Also, you can use single Docker Image to create container:
 
 ```shell
 # Use the specific version
-docker pull ghcr.io/next-orders/food:v0.6.0
+docker pull ghcr.io/next-orders/food:v0.6.1
 
 # Warn: you need an external PostgreSQL as DB
 ```

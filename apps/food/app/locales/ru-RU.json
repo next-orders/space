@@ -50,6 +50,12 @@
     "to-home": "На главную",
     "website": "Веб-сайт",
     "description": "Описание",
+    "price": "Цена",
+    "weight-or-volume": "Вес / Объем",
+    "measurement-unit": "Ед. измерения",
+    "sku": "Артикул",
+    "slug": "Человекопонятный URL",
+    "photo": "Фото",
     "footer": {
       "copyright-part-one": "Создано с ❤️ на",
       "copyright-part-two": "{'@'}next-orders"
@@ -214,7 +220,8 @@
       "available-for-purchase": "Доступен для покупки",
       "not-available-for-purchase": "Недоступен для покупки",
       "no-description-label": "Описания пока нет",
-      "variants-title": "Вариации продукта"
+      "variants-title": "Вариации продукта",
+      "variant-name-placeholder": "25 см, 6 шт, на традиционном тесте, и т.п."
     },
     "menu": {
       "dashboard": "Панель управления",
@@ -269,7 +276,6 @@
       "online-ordering-time-title": "Время оформления заказов",
       "payment-methods-title": "Методы оплаты",
       "name": "Название",
-      "description": "Описание",
       "phone": "Телефон",
       "currency": "Валюта",
       "country": "Страна",
@@ -284,6 +290,31 @@
     "general-data": "Заполните основные данные",
     "admin-data": "Создадим учетную запись админа",
     "finish-message": "Все готово!"
+  },
+  "toast": {
+    "updating-data": "Сейчас мы обновим данные",
+    "payment-method-created": "Метод оплаты создан!",
+    "payment-method-updated": "Метод оплаты обновлен!",
+    "payment-method-deleted": "Метод оплаты удален!",
+    "receiving-method-updated": "Метод обновлен!",
+    "menu-created": "Меню создано!",
+    "menu-updated": "Меню обновлено!",
+    "category-created": "Категория создана!",
+    "category-updated": "Категория обновлена!",
+    "product-created": "Продукт создан!",
+    "product-updated": "Продукт обновлен!",
+    "product-deleted": "Продукт удален!",
+    "variant-created": "Вариация создана!",
+    "variant-updated": "Вариация обновлена!",
+    "variant-deleted": "Вариация удалена!",
+    "warehouse-created": "Склад создан!",
+    "warehouse-updated": "Склад обновлен!",
+    "website-configured": "Веб-сайт настроен!",
+    "website-updated": "Веб-сайт обновлен!",
+    "account-configured": "Аккаунт настроен!",
+    "working-day-updated": "Рабочий день обновлен!",
+    "opening-hours-updated": "Время работы обновлено!",
+    "photo-loaded": "Фото загружено!"
   },
   "error": {
     "title": "Ошибка",

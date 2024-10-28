@@ -96,20 +96,20 @@ export function getLocalizedCountryCodesForSelect(): { value: CountryCode, label
   const { t } = useI18n()
 
   return [
-    { value: 'BY', label: t('common.country.by') },
-    { value: 'DE', label: t('common.country.de') },
-    { value: 'ES', label: t('common.country.es') },
-    { value: 'FR', label: t('common.country.fr') },
-    { value: 'GB', label: t('common.country.gb') },
-    { value: 'GE', label: t('common.country.ge') },
-    { value: 'GR', label: t('common.country.gr') },
-    { value: 'IT', label: t('common.country.it') },
-    { value: 'KZ', label: t('common.country.kz') },
-    { value: 'PL', label: t('common.country.pl') },
-    { value: 'RU', label: t('common.country.ru') },
-    { value: 'TR', label: t('common.country.tr') },
-    { value: 'UA', label: t('common.country.ua') },
-    { value: 'US', label: t('common.country.us') },
+    { value: 'BY', label: `BY - ${t('common.country.by')}` },
+    { value: 'DE', label: `DE - ${t('common.country.de')}` },
+    { value: 'ES', label: `ES - ${t('common.country.es')}` },
+    { value: 'FR', label: `FR - ${t('common.country.fr')}` },
+    { value: 'GB', label: `GB - ${t('common.country.gb')}` },
+    { value: 'GE', label: `GE - ${t('common.country.ge')}` },
+    { value: 'GR', label: `GR - ${t('common.country.gr')}` },
+    { value: 'IT', label: `IT - ${t('common.country.it')}` },
+    { value: 'KZ', label: `KZ - ${t('common.country.kz')}` },
+    { value: 'PL', label: `PL - ${t('common.country.pl')}` },
+    { value: 'RU', label: `RU - ${t('common.country.ru')}` },
+    { value: 'TR', label: `TR - ${t('common.country.tr')}` },
+    { value: 'UA', label: `UA - ${t('common.country.ua')}` },
+    { value: 'US', label: `US - ${t('common.country.us')}` },
   ]
 }
 

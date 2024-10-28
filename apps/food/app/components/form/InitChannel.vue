@@ -112,6 +112,7 @@ import { useToast } from '~/components/ui/toast'
 
 const emit = defineEmits(['success'])
 
+const { t } = useI18n()
 const { toast } = useToast()
 const { refresh: refreshChannelData } = await useChannel()
 
@@ -134,13 +135,13 @@ const onSubmit = handleSubmit(async (values) => {
 
   if (error.value) {
     console.error(error.value)
-    toast({ title: 'Ошибка', description: '...' })
+    toast({ title: t('error.title'), description: '...' })
   }
 
   if (data.value) {
     await refreshChannelData()
     emit('success')
-    toast({ title: 'Веб-сайт настроен!', description: 'Сейчас обновим данные.' })
+    toast({ title: t('toast.website-configured'), description: t('toast.updating-data') })
   }
 })
 </script>

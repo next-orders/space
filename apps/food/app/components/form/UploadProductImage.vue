@@ -3,7 +3,7 @@
     <UiFormField v-slot="{ componentField }" name="file">
       <UiFormItem>
         <div>
-          <UiFormLabel>Фото</UiFormLabel>
+          <UiFormLabel>{{ $t('common.photo') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -31,6 +31,7 @@ const { isOpened, productId } = defineProps<{
 
 const emit = defineEmits(['success'])
 
+const { t } = useI18n()
 const { toast } = useToast()
 const { refresh: refreshChannelData } = await useChannel()
 const { refresh: refreshProducts } = await useProduct()
@@ -62,14 +63,14 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
 
   if (error.value) {
     console.error(error.value)
-    toast({ title: 'Ошибка', description: '...' })
+    toast({ title: t('error.title'), description: '...' })
   }
 
   if (data.value) {
     await refreshChannelData()
     await refreshProducts()
     emit('success')
-    toast({ title: 'Фото загружено!', description: 'Сейчас обновим данные.' })
+    toast({ title: t('toast.photo-loaded'), description: t('toast.updating-data') })
     resetForm()
   }
 })

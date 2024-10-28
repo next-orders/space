@@ -3,7 +3,7 @@
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>
         <div>
-          <UiFormLabel>Название</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.name') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -15,7 +15,7 @@
     <UiFormField v-slot="{ componentField }" name="slug">
       <UiFormItem>
         <div>
-          <UiFormLabel>Часть URL</UiFormLabel>
+          <UiFormLabel>{{ $t('common.slug') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -44,6 +44,7 @@ const { isOpened, menuId, categoryId } = defineProps<{
 
 const emit = defineEmits(['success', 'submitted'])
 
+const { t } = useI18n()
 const { toast } = useToast()
 const { menus, refresh: refreshChannelData } = await useChannel()
 
@@ -80,13 +81,13 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
 
   if (error.value) {
     console.error(error.value)
-    toast({ title: 'Ошибка', description: '...' })
+    toast({ title: t('error.title'), description: '...' })
   }
 
   if (data.value) {
     await refreshChannelData()
     emit('success')
-    toast({ title: 'Категория обновлена!', description: 'Сейчас обновим данные.' })
+    toast({ title: t('toast.category-updated'), description: t('toast.updating-data') })
     resetForm()
   }
 })

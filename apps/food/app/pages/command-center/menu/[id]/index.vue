@@ -29,21 +29,7 @@
     </div>
   </div>
 
-  <div class="mt-32 text-center max-w-xl mx-auto">
-    <img
-      src="~/assets/img/recipe-book.png"
-      width="64"
-      height="64"
-      alt=""
-      class="mx-auto mb-4 w-16 h-16"
-    >
-    <h2 class="mb-4 text-lg font-semibold">
-      Здесь происходит работа с конкретным меню
-    </h2>
-    <p class="text-center">
-      Можно добавлять новые категории и продукты.
-    </p>
-  </div>
+  <GuideMenu />
 
   <UiModal :title="$t('center.create.product')" :is-opened="isCreateProductOpened" @close="isCreateProductOpened = false">
     <FormCreateProduct :category-id="categoryId" :is-opened="isCreateProductOpened" @success="isCreateProductOpened = false" />

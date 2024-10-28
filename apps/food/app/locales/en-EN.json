@@ -50,6 +50,12 @@
     "to-home": "To Home",
     "website": "Website",
     "description": "Description",
+    "price": "Price",
+    "weight-or-volume": "Weight / Volume",
+    "measurement-unit": "Measurement unit",
+    "sku": "SKU",
+    "slug": "Human-friendly URL",
+    "photo": "Photo",
     "footer": {
       "copyright-part-one": "Created with ❤️ on",
       "copyright-part-two": "{'@'}next-orders"
@@ -214,7 +220,8 @@
       "available-for-purchase": "Available for purchase",
       "not-available-for-purchase": "Not available for purchase",
       "no-description-label": "No description yet",
-      "variants-title": "Product Variants"
+      "variants-title": "Product Variants",
+      "variant-name-placeholder": "25 cm, 6 pcs, on traditional dough, etc."
     },
     "menu": {
       "dashboard": "Control Panel",
@@ -269,7 +276,6 @@
       "online-ordering-time-title": "Online ordering time",
       "payment-methods-title": "Payment methods",
       "name": "Name",
-      "description": "Description",
       "phone": "Phone",
       "currency": "Currency",
       "country": "Country",
@@ -284,6 +290,31 @@
     "general-data": "Fill in the key data",
     "admin-data": "Let's create an admin account",
     "finish-message": "It's done!"
+  },
+  "toast": {
+    "updating-data": "We will update the data now",
+    "payment-method-created": "Payment Method created!",
+    "payment-method-updated": "Payment Method updated!",
+    "payment-method-deleted": "Payment Method deleted!",
+    "receiving-method-updated": "Method updated!",
+    "menu-created": "Menu created!",
+    "menu-updated": "Menu updated!",
+    "category-created": "Category created!",
+    "category-updated": "Category updated!",
+    "product-created": "Product created!",
+    "product-updated": "Product updated!",
+    "product-deleted": "Product deleted!",
+    "variant-created": "Product variant created!",
+    "variant-updated": "Product variant updated!",
+    "variant-deleted": "Product variant deleted!",
+    "warehouse-created": "Warehouse created!",
+    "warehouse-updated": "Warehouse updated!",
+    "website-configured": "Website configured!",
+    "website-updated": "Website updated!",
+    "account-configured": "Account configured!",
+    "working-day-updated": "Working day updated!",
+    "opening-hours-updated": "Opening hours updated!",
+    "photo-loaded": "Photo loaded!"
   },
   "error": {
     "title": "Error",

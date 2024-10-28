@@ -18,6 +18,7 @@ const { isActive, day } = defineProps<{
 
 const emit = defineEmits(['success'])
 
+const { t } = useI18n()
 const { toast } = useToast()
 const { refresh: refreshChannelData } = await useChannel()
 
@@ -42,13 +43,13 @@ const onSubmit = handleSubmit(async (_, { resetForm }) => {
 
   if (error.value) {
     console.error(error.value)
-    toast({ title: 'Ошибка', description: '...' })
+    toast({ title: t('error.title'), description: '...' })
   }
 
   if (data.value) {
     await refreshChannelData()
     emit('success')
-    toast({ title: 'Рабочий день обновлен!', description: 'Сейчас обновим данные.' })
+    toast({ title: t('toast.working-day-updated'), description: t('toast.updating-data') })
     resetForm()
   }
 })
