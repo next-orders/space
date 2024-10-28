@@ -35,6 +35,8 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 - Website has its own backend, where API data does not break out
 - Most of the code is rendered on the server: less load on the client
 
+[Check out PageSpeed Insights](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fdemo.nextorders.space%2F). Maybe it's showing all 100s 😉
+
 ## 🌎 Locales
 
 The application has [several localizations](https://github.com/next-orders/space/tree/main/apps/food/app/locales):
