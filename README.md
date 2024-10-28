@@ -58,7 +58,7 @@ You can deploy @next-orders/food on your server (1GB+ RAM) by this:
 
 ```shell
 # Connect over SSH and use with args: version, locale, your domain, your email
-curl -fsSL https://nextorders.space/food/install.sh | bash -s -- "v0.6.0" "en" "test.nextorders.space" "resolve@nextorders.space"
+curl -fsSL https://nextorders.space/food/install.sh | bash -s -- "v0.6.1" "en" "test.nextorders.space" "resolve@nextorders.space"
 
 # It will install Docker, Docker Compose and download latest docker-compose.yaml
 # After, it will bring up Traefik to serve web requests, create and autoupdate SSL certificate
@@ -69,7 +69,7 @@ Also, you can use single Docker Image to create container:
 
 ```shell
 # Use the specific version
-docker pull ghcr.io/next-orders/food:v0.6.0
+docker pull ghcr.io/next-orders/food:v0.6.1
 
 # Warn: you need an external PostgreSQL as DB
 ```
