@@ -3,7 +3,7 @@
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>
         <div>
-          <UiFormLabel>Название</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.name') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -15,7 +15,7 @@
     <UiFormField v-slot="{ componentField }" name="description">
       <UiFormItem>
         <div>
-          <UiFormLabel>Описание</UiFormLabel>
+          <UiFormLabel>{{ $t('common.description') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -27,7 +27,7 @@
     <UiFormField v-slot="{ componentField }" name="slug">
       <UiFormItem>
         <div>
-          <UiFormLabel>Часть URL</UiFormLabel>
+          <UiFormLabel>{{ $t('common.slug') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -54,12 +54,12 @@ const { isOpened, productId } = defineProps<{
 }>()
 
 const emit = defineEmits(['success', 'submitted'])
-const { products } = await useProduct()
-const product = computed(() => products.value?.find((p) => p.id === productId))
 
+const { t } = useI18n()
 const { toast } = useToast()
 const { refresh: refreshChannelData } = await useChannel()
-const { refresh: refreshProducts } = await useProduct()
+const { refresh: refreshProducts, products } = await useProduct()
+const product = computed(() => products.value?.find((p) => p.id === productId))
 
 const formSchema = toTypedSchema(productUpdateSchema)
 
@@ -92,14 +92,14 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
 
   if (error.value) {
     console.error(error.value)
-    toast({ title: 'Ошибка', description: '...' })
+    toast({ title: t('error.title'), description: '...' })
   }
 
   if (data.value) {
     await refreshChannelData()
     await refreshProducts()
     emit('success')
-    toast({ title: 'Продукт обновлен!', description: 'Сейчас обновим данные.' })
+    toast({ title: t('toast.product-updated'), description: t('toast.updating-data') })
     resetForm()
   }
 })

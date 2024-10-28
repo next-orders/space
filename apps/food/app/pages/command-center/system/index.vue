@@ -18,7 +18,7 @@
           {{ t('center.data.name') }}: <span class="font-semibold">{{ channel?.name }}</span>
         </div>
         <div v-if="channel?.description" class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
-          {{ t('center.data.description') }}: <span class="font-semibold">{{ channel?.description }}</span>
+          {{ t('common.description') }}: <span class="font-semibold">{{ channel?.description }}</span>
         </div>
         <div v-if="channel?.phone" class="bg-white dark:bg-neutral-500 rounded-2xl px-4 py-3">
           {{ t('center.data.phone') }}: <span class="font-semibold">{{ channel?.phone }}</span>

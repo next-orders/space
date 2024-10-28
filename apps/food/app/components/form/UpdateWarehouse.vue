@@ -3,7 +3,7 @@
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>
         <div>
-          <UiFormLabel>Название</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.name') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -15,7 +15,7 @@
     <UiFormField v-slot="{ componentField }" name="address">
       <UiFormItem>
         <div>
-          <UiFormLabel>Адрес</UiFormLabel>
+          <UiFormLabel>{{ $t('app.checkout.address.title') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -43,11 +43,10 @@ const { isOpened, warehouseId } = defineProps<{
 
 const emit = defineEmits(['success', 'submitted'])
 
-const { channel } = await useChannel()
-const warehouse = computed(() => channel.value?.warehouses?.find((w) => w.id === warehouseId))
-
+const { t } = useI18n()
 const { toast } = useToast()
-const { refresh: refreshChannelData } = await useChannel()
+const { refresh: refreshChannelData, channel } = await useChannel()
+const warehouse = computed(() => channel.value?.warehouses?.find((w) => w.id === warehouseId))
 
 const formSchema = toTypedSchema(warehouseUpdateSchema)
 
@@ -79,13 +78,13 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
 
   if (error.value) {
     console.error(error.value)
-    toast({ title: 'Ошибка', description: '...' })
+    toast({ title: t('error.title'), description: '...' })
   }
 
   if (data.value) {
     await refreshChannelData()
     emit('success')
-    toast({ title: 'Склад обновлен!', description: 'Сейчас обновим данные.' })
+    toast({ title: t('toast.warehouse-updated'), description: t('toast.updating-data') })
     resetForm()
   }
 })

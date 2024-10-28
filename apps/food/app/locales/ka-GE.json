@@ -50,6 +50,12 @@
     "to-home": "სახლში",
     "website": "საიტი",
     "description": "აღწერა",
+    "price": "ფასი",
+    "weight-or-volume": "წონა / მოცულობა",
+    "measurement-unit": "საზომი ერთეული",
+    "sku": "სტატიის ნომერი",
+    "slug": "ადამიანის მიერ წაკითხვადი URL",
+    "photo": "ფოტო",
     "footer": {
       "copyright-part-one": "შექმნილია ❤️-ით",
       "copyright-part-two": "{'@'}next-orders"
@@ -214,7 +220,8 @@
       "available-for-purchase": "შესაძენად ხელმისაწვდომია",
       "not-available-for-purchase": "არ არის ხელმისაწვდომი შესაძენად",
       "no-description-label": "ჯერ არ არის აღწერა",
-      "variants-title": "პროდუქტის ვარიაციები"
+      "variants-title": "პროდუქტის ვარიაციები",
+      "variant-name-placeholder": "25 სმ, 6 ც., ტრადიციულ ცომზე და ა.შ."
     },
     "menu": {
       "dashboard": "მართვის პანელი",
@@ -269,7 +276,6 @@
       "online-ordering-time-title": "ონლაინ შეკვეთის დრო",
       "payment-methods-title": "გადახდის მეთოდები",
       "name": "სახელი",
-      "description": "აღწერა",
       "phone": "ტელეფონი",
       "currency": "ვალუტა",
       "country": "ქვეყანა",
@@ -284,6 +290,31 @@
     "general-data": "შეავსეთ ძირითადი მონაცემები",
     "admin-data": "მოდით შევქმნათ ადმინისტრატორის ანგარიში",
     "finish-message": "შესრულებულია!"
+  },
+  "toast": {
+    "updating-data": "ჩვენ ახლა ვაახლებთ მონაცემებს",
+    "payment-method-created": "გადახდის მეთოდი შეიქმნა!",
+    "payment-method-updated": "გადახდის მეთოდი განახლდა!",
+    "payment-method-deleted": "გადახდის მეთოდი წაიშალა!",
+    "receiving-method-updated": "მეთოდი განახლებულია!",
+    "menu-created": "მენიუ შეიქმნა!",
+    "menu-updated": "მენიუ განახლდა!",
+    "category-created": "კატეგორია შეიქმნა!",
+    "category-updated": "კატეგორია განახლდა!",
+    "product-created": "პროდუქტი შეიქმნა!",
+    "product-updated": "პროდუქტი განახლდა!",
+    "product-deleted": "პროდუქტი წაიშალა!",
+    "variant-created": "პროდუქტის ვარიანტი შეიქმნა!",
+    "variant-updated": "განახლებულია პროდუქტის ვარიანტი!",
+    "variant-deleted": "პროდუქტის ვარიანტი წაიშალა!",
+    "warehouse-created": "საწყობი შეიქმნა!",
+    "warehouse-updated": "საწყობი განახლდა!",
+    "website-configured": "საიტი სწორად არის კონფიგურირებული!",
+    "website-updated": "საიტი განახლებულია!",
+    "account-configured": "ანგარიში დაყენებულია!",
+    "working-day-updated": "სამუშაო დღე განახლებულია!",
+    "opening-hours-updated": "გახსნის საათები განახლებულია!",
+    "photo-loaded": "სურათი განახლდა!"
   },
   "error": {
     "title": "შეცდომა",

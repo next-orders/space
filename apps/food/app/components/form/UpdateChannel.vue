@@ -3,7 +3,7 @@
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>
         <div>
-          <UiFormLabel>Название</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.name') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -15,7 +15,7 @@
     <UiFormField v-slot="{ componentField }" name="description">
       <UiFormItem>
         <div>
-          <UiFormLabel>Описание</UiFormLabel>
+          <UiFormLabel>{{ $t('common.description') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -27,7 +27,7 @@
     <UiFormField v-slot="{ componentField }" name="phone">
       <UiFormItem>
         <div>
-          <UiFormLabel>Телефон</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.phone') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -39,7 +39,7 @@
     <UiFormField v-slot="{ componentField }" name="currencyCode">
       <UiFormItem>
         <div>
-          <UiFormLabel>Валюта</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.currency') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiSelect v-bind="componentField">
@@ -63,7 +63,7 @@
     <UiFormField v-slot="{ componentField }" name="countryCode">
       <UiFormItem>
         <div>
-          <UiFormLabel>Страна</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.country') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiSelect v-bind="componentField">
@@ -87,7 +87,7 @@
     <UiFormField v-slot="{ componentField }" name="timeZone">
       <UiFormItem>
         <div>
-          <UiFormLabel>Часовой пояс</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.timezone') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiSelect v-bind="componentField">
@@ -111,7 +111,7 @@
     <UiFormField v-slot="{ componentField }" name="minAmountForDelivery">
       <UiFormItem>
         <div>
-          <UiFormLabel>Минимальная сумма доставки</UiFormLabel>
+          <UiFormLabel>{{ $t('app.cart.delivery') }} / {{ $t('app.minimum-order-value') }}, {{ getCurrencySign(channel?.currencyCode) }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -123,7 +123,7 @@
     <UiFormField v-slot="{ componentField }" name="conditions">
       <UiFormItem>
         <div>
-          <UiFormLabel>Условия доставки</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.delivery-conditions') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -150,6 +150,7 @@ const { isOpened } = defineProps<{
 
 const emit = defineEmits(['success', 'submitted'])
 
+const { t } = useI18n()
 const { toast } = useToast()
 const { channel, refresh: refreshChannelData } = await useChannel()
 
@@ -189,13 +190,13 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
 
   if (error.value) {
     console.error(error.value)
-    toast({ title: 'Ошибка', description: '...' })
+    toast({ title: t('error.title'), description: '...' })
   }
 
   if (data.value) {
     await refreshChannelData()
     emit('success')
-    toast({ title: 'Веб-сайт обновлен!', description: 'Сейчас обновим данные.' })
+    toast({ title: t('toast.website-updated'), description: t('toast.updating-data') })
     resetForm()
   }
 })

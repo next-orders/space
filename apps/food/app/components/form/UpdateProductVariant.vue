@@ -3,11 +3,11 @@
     <UiFormField v-slot="{ componentField }" name="name">
       <UiFormItem>
         <div>
-          <UiFormLabel>Название</UiFormLabel>
+          <UiFormLabel>{{ $t('center.data.name') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
-          <UiInput v-bind="componentField" placeholder="25 см, 6 шт, на традиционном тесте, и т.п." />
+          <UiInput v-bind="componentField" :placeholder="$t('center.product.variant-name-placeholder')" />
         </UiFormControl>
       </UiFormItem>
     </UiFormField>
@@ -15,7 +15,7 @@
     <UiFormField v-slot="{ componentField }" name="gross">
       <UiFormItem>
         <div>
-          <UiFormLabel>Цена, {{ getCurrencySign(channel?.currencyCode) }}</UiFormLabel>
+          <UiFormLabel>{{ $t('common.price') }}, {{ getCurrencySign(channel?.currencyCode) }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -28,7 +28,7 @@
       <UiFormField v-slot="{ componentField }" name="weightValue">
         <UiFormItem>
           <div>
-            <UiFormLabel>Вес / Объем</UiFormLabel>
+            <UiFormLabel>{{ $t('common.weight-or-volume') }}</UiFormLabel>
             <UiFormMessage />
           </div>
           <UiFormControl>
@@ -40,13 +40,13 @@
       <UiFormField v-slot="{ componentField }" name="weightUnit">
         <UiFormItem>
           <div>
-            <UiFormLabel>Ед. измерения</UiFormLabel>
+            <UiFormLabel>{{ $t('common.measurement-unit') }}</UiFormLabel>
             <UiFormMessage />
           </div>
           <UiSelect v-bind="componentField">
             <UiFormControl>
               <UiSelectTrigger>
-                <UiSelectValue placeholder="Выберите" />
+                <UiSelectValue :placeholder="$t('common.select')" />
               </UiSelectTrigger>
             </UiFormControl>
 
@@ -65,7 +65,7 @@
     <UiFormField v-slot="{ componentField }" name="sku">
       <UiFormItem>
         <div>
-          <UiFormLabel>Артикул</UiFormLabel>
+          <UiFormLabel>{{ $t('common.sku') }}</UiFormLabel>
           <UiFormMessage />
         </div>
         <UiFormControl>
@@ -76,14 +76,14 @@
 
     <div class="pt-4">
       <h3 class="font-semibold">
-        {{ $t('common.optional') }}: Пищевая ценность на 100г
+        {{ $t('common.optional') }}: {{ $t('common.nutrition.value-title') }}
       </h3>
 
       <div class="grid grid-cols-2 gap-2">
         <UiFormField v-slot="{ componentField }" name="calories">
           <UiFormItem>
             <div>
-              <UiFormLabel>Калории, ккал</UiFormLabel>
+              <UiFormLabel>{{ $t('common.nutrition.calories') }}, {{ $t('common.nutrition.kcal') }}</UiFormLabel>
               <UiFormMessage />
             </div>
             <UiFormControl>
@@ -95,7 +95,7 @@
         <UiFormField v-slot="{ componentField }" name="protein">
           <UiFormItem>
             <div>
-              <UiFormLabel>Белки</UiFormLabel>
+              <UiFormLabel>{{ $t('common.nutrition.protein') }}</UiFormLabel>
               <UiFormMessage />
             </div>
             <UiFormControl>
@@ -107,7 +107,7 @@
         <UiFormField v-slot="{ componentField }" name="fat">
           <UiFormItem>
             <div>
-              <UiFormLabel>Жиры</UiFormLabel>
+              <UiFormLabel>{{ $t('common.nutrition.fat') }}</UiFormLabel>
               <UiFormMessage />
             </div>
             <UiFormControl>
@@ -119,7 +119,7 @@
         <UiFormField v-slot="{ componentField }" name="carbohydrate">
           <UiFormItem>
             <div>
-              <UiFormLabel>Углеводы</UiFormLabel>
+              <UiFormLabel>{{ $t('common.nutrition.carbohydrate') }}</UiFormLabel>
               <UiFormMessage />
             </div>
             <UiFormControl>
@@ -150,6 +150,7 @@ const { isOpened, productVariantId, productVariant } = defineProps<{
 
 const emit = defineEmits(['success', 'submitted'])
 
+const { t } = useI18n()
 const { toast } = useToast()
 const { channel, refresh: refreshChannelData } = await useChannel()
 const { refresh: refreshProducts } = await useProduct()
@@ -191,14 +192,14 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
 
   if (error.value) {
     console.error(error.value)
-    toast({ title: 'Ошибка', description: '...' })
+    toast({ title: t('error.title'), description: '...' })
   }
 
   if (data.value) {
     await refreshChannelData()
     await refreshProducts()
     emit('success')
-    toast({ title: 'Вариация обновлена!', description: 'Сейчас обновим данные.' })
+    toast({ title: t('toast.variant-updated'), description: t('toast.updating-data') })
     resetForm()
   }
 })

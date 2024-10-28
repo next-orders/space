@@ -46,6 +46,7 @@ const { isOpened } = defineProps<{
 
 const emit = defineEmits(['success', 'submitted'])
 
+const { t } = useI18n()
 const { toast } = useToast()
 const { channel, refresh: refreshChannelData } = await useChannel()
 
@@ -91,7 +92,9 @@ const onSubmit = handleSubmit(async (_, { resetForm }) => {
   emit('submitted')
 
   // add to all open and close ':00' at the end of workingDays object for future zod time() validation
-  Object.values(workingDays).forEach((day) => {
+  const workingDaysCopy = JSON.parse(JSON.stringify(workingDays)) as typeof workingDays
+
+  Object.values(workingDaysCopy).forEach((day) => {
     day.open += ':00'
     day.close += ':00'
   })
@@ -100,29 +103,19 @@ const onSubmit = handleSubmit(async (_, { resetForm }) => {
     'update-working-days',
     () => $fetch('/api/channel/working-day', {
       method: 'PATCH',
-      body: workingDays,
+      body: workingDaysCopy,
     }),
   )
 
   if (error.value) {
     console.error(error.value)
-    toast({ title: 'Ошибка', description: '...' })
-    // Return to original values
-    Object.values(workingDays).forEach((day) => {
-      day.open = day.open.slice(0, -3)
-      day.close = day.close.slice(0, -3)
-    })
+    toast({ title: t('error.title'), description: '...' })
   }
 
   if (data.value) {
     await refreshChannelData()
     emit('success')
-    toast({ title: 'Время работы обновлено!', description: 'Сейчас обновим данные.' })
-    // Return to original values
-    Object.values(workingDays).forEach((day) => {
-      day.open = day.open.slice(0, -3)
-      day.close = day.close.slice(0, -3)
-    })
+    toast({ title: t('toast.opening-hours-updated'), description: t('toast.updating-data') })
     resetForm()
   }
 })
