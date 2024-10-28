@@ -26,7 +26,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Клиенты будут рады заказать вкусную еду максимально быстрым и удобным способом!',
+      content: channel.value?.description,
     },
   ],
 })
