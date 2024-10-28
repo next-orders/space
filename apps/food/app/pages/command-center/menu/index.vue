@@ -12,21 +12,7 @@
     <CommandCenterMenuCreateCard @click="isModalOpened = true" />
   </div>
 
-  <div class="mt-32 text-center max-w-xl mx-auto">
-    <img
-      src="~/assets/img/recipe-book.png"
-      width="64"
-      height="64"
-      alt=""
-      class="mx-auto mb-4 w-16 h-16"
-    >
-    <h2 class="mb-4 text-lg font-semibold">
-      Здесь происходит работа со всеми меню
-    </h2>
-    <p class="text-left">
-      Выберите созданное меню или создайте новое. Внутри меню можно добавлять новые категории и продукты.
-    </p>
-  </div>
+  <GuideMenus />
 
   <UiModal :title="$t('center.create.menu')" :is-opened="isModalOpened" @close="isModalOpened = false">
     <FormCreateMenu :is-opened="isModalOpened" @success="isModalOpened = false" />
