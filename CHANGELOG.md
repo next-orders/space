@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v0.6.1
+
+[compare changes](https://github.com/next-orders/space/compare/v0.6.0...v0.6.1)
+
+### 🚀 Enhancements
+
+- Email service ([#262](https://github.com/next-orders/space/pull/262))
+- Localized guides on inner pages ([#266](https://github.com/next-orders/space/pull/266))
+
+### 🩹 Fixes
+
+- Dockerfile ([#263](https://github.com/next-orders/space/pull/263))
+- Email key ([#264](https://github.com/next-orders/space/pull/264))
+
+### ❤️ Contributors
+
+- Nick Kosarev ([@hmbanan666](http://github.com/hmbanan666))
+
 ## v0.6.0
 
 [compare changes](https://github.com/next-orders/space/compare/v0.5.0...v0.6.0)

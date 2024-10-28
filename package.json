@@ -1,6 +1,6 @@
 {
   "name": "@next-orders/space",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "packageManager": "pnpm@9.12.1",
   "pnpm": {
     "supportedArchitectures": {
