@@ -1,0 +1,25 @@
+{
+  "version": "0.6.1",
+  "title": "@next-orders/email",
+  "description": "Easy way to send an email through a prepared service.",
+  "routes": [
+    {
+      "path": "/send",
+      "method": "POST",
+      "body": {
+        "to": {
+          "type": "string",
+          "required": true
+        },
+        "subject": {
+          "type": "string",
+          "required": true
+        },
+        "html": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  ]
+}

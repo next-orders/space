@@ -15,7 +15,8 @@ export async function useChannel() {
   const categoriesWithProducts = computed(() => {
     return categories.value.filter((category) => category.products?.length > 0)
   })
-  const products = computed(() => categoriesWithProducts.value?.flatMap((category) => category.products) || [])
+  const allProducts = computed(() => categoriesWithProducts.value?.flatMap((category) => category.products) || [])
+  const products = computed(() => allProducts.value?.filter((product) => product.variants?.length > 0))
 
   return { channel: data, menus, activeMenu, categories, categoriesWithProducts, products, refresh }
 }
