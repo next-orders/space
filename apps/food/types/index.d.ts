@@ -173,6 +173,25 @@ declare global {
     isGift: boolean
   }
 
+  type CheckoutReceiver = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    channelId: string
+  } & CheckoutReceiverTypes
+
+  type CheckoutReceiverTypes = CheckoutReceiverTypeEmail
+
+  interface CheckoutReceiverTypeEmail {
+    type: 'EMAIL'
+    data: {
+      url: string
+      method: 'POST'
+      to: string
+      subject: string
+    }
+  }
+
   interface User {
     id: string
     createdAt: Date
