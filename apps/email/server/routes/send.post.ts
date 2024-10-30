@@ -30,6 +30,8 @@ export default eventHandler(async (event) => {
     const html = await render(NewCheckout, body.data, { pretty: true })
     const text = await render(NewCheckout, body.data, { plainText: true })
 
+    logger.log(html)
+
     const transporter = createTransport({
       host,
       port: Number(port),
