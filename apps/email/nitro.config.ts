@@ -1,6 +1,10 @@
-// https://nitro.unjs.io/config
+import vue from '@vitejs/plugin-vue'
+
 export default defineNitroConfig({
   srcDir: 'server',
+  rollupConfig: {
+    plugins: [vue()],
+  },
   runtimeConfig: {
     nitro: {
       envPrefix: 'EMAIL_',
