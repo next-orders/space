@@ -14,24 +14,26 @@
       <Text>Время: {{ timeLocal }}</Text>
     </Section>
 
-    <Text v-if="warehouseAddress">
-      Адрес склада-кухни: {{ warehouseAddress }}
-    </Text>
-    <Text v-if="address">
-      Адрес:
-      <span>{{ address?.street }} {{ address?.flat }}</span>
-      <span v-if="address?.doorphone">, домофон {{ address?.doorphone }}</span>
-      <span v-if="address?.entrance">, подъезд {{ address?.entrance }}</span>
-      <span v-if="address?.floor">, этаж {{ address?.floor }}</span>
-      <span v-if="address?.addressNote">. {{ address?.addressNote }}</span>
-    </Text>
+    <Section>
+      <Text v-if="warehouseAddress">
+        Адрес склада-кухни: {{ warehouseAddress }}
+      </Text>
+      <Text v-if="address">
+        Адрес:
+        <span>{{ address?.street }} {{ address?.flat }}</span>
+        <span v-if="address?.doorphone">, домофон {{ address?.doorphone }}</span>
+        <span v-if="address?.entrance">, подъезд {{ address?.entrance }}</span>
+        <span v-if="address?.floor">, этаж {{ address?.floor }}</span>
+        <span v-if="address?.addressNote">. {{ address?.addressNote }}</span>
+      </Text>
 
-    <Text>Метод оплаты: {{ paymentMethodName }}</Text>
-    <Text v-if="change">
-      Нужна сдача с: {{ change }}
-    </Text>
+      <Text>Метод оплаты: {{ paymentMethodName }}</Text>
+      <Text v-if="change">
+        Нужна сдача с: {{ change }}
+      </Text>
 
-    <Text>Комментарий: {{ note }}</Text>
+      <Text>Комментарий: {{ note }}</Text>
+    </Section>
 
     <Hr />
 
@@ -50,6 +52,7 @@
 
 <script setup lang="ts">
 import type { NewCheckoutTemplate } from './../../../../types/food'
+import { Heading, Hr, Html, Row, Section, Text } from '@vue-email/components'
 
 const { deliveryMethod, time, timeType } = defineProps<NewCheckoutTemplate>()
 
