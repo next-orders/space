@@ -26,6 +26,7 @@ export default eventHandler(async (event) => {
       })
     }
 
+    const subject = body.template === 'NEW_CHECKOUT' ? 'Новая заявка!' : 'Новое сообщение'
     const html = await render(NewCheckout, body.data, { pretty: true })
     const text = await render(NewCheckout, body.data, { plainText: true })
 
@@ -42,7 +43,7 @@ export default eventHandler(async (event) => {
     const info = await transporter.sendMail({
       from,
       to: body.to,
-      subject: body.subject,
+      subject,
       text,
       html,
     })
