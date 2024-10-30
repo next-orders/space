@@ -1,12 +1,16 @@
+import { render } from '@vue-email/render'
 import { createTransport } from 'nodemailer'
+import NewCheckout from '~/core/email/templates/NewCheckout.vue'
 
 export default eventHandler(async (event) => {
   try {
     const logger = useLogger('email')
     const { host, port, user, pass, from, token } = useRuntimeConfig(event)
-    const key = getRouterParam(event, 'key')
 
-    if (!token || token !== key) {
+    const bearer = getHeader(event, 'Authorization')
+    const key = bearer?.replace('Bearer ', '')
+
+    if (!token || !key || token !== key) {
       throw createError({
         statusCode: 401,
         statusMessage: 'Invalid token',
@@ -15,12 +19,15 @@ export default eventHandler(async (event) => {
 
     const body = await readBody(event)
 
-    if (!body?.to || !body?.subject || !body?.html) {
+    if (!body?.to || !body?.template || !body?.data) {
       throw createError({
         statusCode: 400,
         statusMessage: 'Missing data',
       })
     }
+
+    const html = await render(NewCheckout, body.data, { pretty: true })
+    const text = await render(NewCheckout, body.data, { plainText: true })
 
     const transporter = createTransport({
       host,
@@ -36,8 +43,8 @@ export default eventHandler(async (event) => {
       from,
       to: body.to,
       subject: body.subject,
-      text: body.html,
-      html: body.html,
+      text,
+      html,
     })
     logger.log('Response from SMTP server:', info?.accepted?.length > 0 ? 'SUCCESS' : 'FAILED', info?.response, info?.messageId)
 

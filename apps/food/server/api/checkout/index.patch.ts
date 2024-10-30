@@ -113,20 +113,42 @@ async function sendToReceivers(checkoutId: string) {
     return
   }
 
+  const paymentMethodName = channel?.paymentMethods.find((p) => p.id === checkout?.paymentMethodId)?.name as string
+  const warehouseAddress = channel?.warehouses.find((w) => w.id === checkout?.warehouseId)?.address
+
   const receivers = await prisma.checkoutReceiver.findMany({
     where: { channelId: checkout?.channelId },
   })
 
   for (const receiver of receivers as CheckoutReceiver[]) {
-    if (receiver.type === 'EMAIL') {
-      const html = prepareEmailHtml(checkout as Checkout & { lines: (CheckoutLine & { variant: ProductVariant })[] }, channel as Channel & { warehouses: Warehouse[], paymentMethods: PaymentMethod[] })
+    if (receiver.type === 'EMAIL' && receiver.data.template === 'NEW_CHECKOUT') {
+      const data: NewCheckoutTemplate = {
+        id: checkout.id,
+        deliveryMethod: checkout.deliveryMethod as Checkout['deliveryMethod'],
+        time: checkout.time,
+        timeType: checkout.timeType as Checkout['timeType'],
+        paymentMethodName,
+        change: checkout.change ?? undefined,
+        name: checkout.name,
+        phone: checkout.phone,
+        note: checkout.note ?? undefined,
+        totalPrice: checkout.totalPrice,
+        warehouseAddress,
+        lines: checkout.lines.map((line) => ({
+          id: line.id,
+          name: line.variant.name,
+          variant: line.variant.name,
+          quantity: line.quantity,
+          totalPrice: line.totalPrice,
+        })),
+      }
 
-      await sendEmail(receiver, html)
+      await sendEmail<NewCheckoutTemplate>(receiver, data)
     }
   }
 }
 
-async function sendEmail(receiver: CheckoutReceiverTypeEmail, html: string) {
+async function sendEmail<T>(receiver: CheckoutReceiverTypeEmail, data: T) {
   const logger = useLogger('sendEmail')
 
   try {
@@ -134,8 +156,11 @@ async function sendEmail(receiver: CheckoutReceiverTypeEmail, html: string) {
       method: receiver.data.method,
       body: {
         to: receiver.data.to,
-        subject: receiver.data.subject,
-        html,
+        template: receiver.data.template,
+        data,
+      },
+      headers: {
+        Authorization: `Bearer ${receiver.data.token}`,
       },
     })
 
@@ -145,42 +170,4 @@ async function sendEmail(receiver: CheckoutReceiverTypeEmail, html: string) {
 
     return false
   }
-}
-
-function prepareEmailHtml(checkout: Checkout & { lines: (CheckoutLine & { variant: ProductVariant })[] }, channel: Channel & { warehouses: Warehouse[], paymentMethods: PaymentMethod[] }) {
-  return `
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-    <meta charset="utf-8">
-    </head>
-
-    <body>
-      <h1>Новая заявка!</h1>
-      <h2>${checkout?.deliveryMethod === 'WAREHOUSE' ? 'Самовывоз' : 'Доставка'}}</h2>
-      <p>Клиент: ${checkout.name}, ${checkout.phone}</p>
-      <p>Время: ${checkout.time}</p>
-
-      ${checkout.warehouseId ? `<p>Адрес склада-кухни: ${channel.warehouses.find((w) => w.id === checkout.warehouseId)?.address}</p>` : ''}
-      ${checkout.street ? `<p>Адрес: ${checkout.street} ${checkout.flat}, домофон ${checkout.doorphone}, подъезд ${checkout.entrance}, этаж ${checkout.floor}. ${checkout.addressNote}</p>` : ''}
-      
-      <p>Метод оплаты: ${channel.paymentMethods.find((p) => p.id === checkout.paymentMethodId)?.name}</p>
-      ${checkout.change ? `<p>Нужна сдача с: ${checkout.change}</p>` : ''}
-
-      <p>Комментарий: ${checkout.note}</p>
-
-      <h3>Заказанные товары:</h3>
-      ${checkout.lines
-        .map((line) => {
-          return `
-            <p>${line.variant.name} - ${line.quantity} шт. - ${line.variant.gross}</p>
-          `
-        })
-        .join('')}
-
-      <p>Итого: ${checkout.totalPrice}</p>
-    </body>
-    </html>
-  `
 }

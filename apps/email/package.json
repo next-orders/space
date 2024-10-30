@@ -15,6 +15,9 @@
     "postinstall": "nitro prepare"
   },
   "dependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue-email/components": "^0.0.19",
+    "@vue-email/render": "^0.0.9",
     "nodemailer": "^6.9.15"
   },
   "devDependencies": {

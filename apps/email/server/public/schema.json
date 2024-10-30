@@ -1,5 +1,5 @@
 {
-  "version": "0.6.1",
+  "version": "0.7.0",
   "title": "@next-orders/email",
   "description": "Easy way to send an email through a prepared service.",
   "routes": [
@@ -9,15 +9,23 @@
       "body": {
         "to": {
           "type": "string",
-          "required": true
+          "required": true,
+          "example": "my@email.com"
         },
-        "subject": {
+        "template": {
           "type": "string",
           "required": true
         },
-        "html": {
-          "type": "string",
+        "data": {
+          "type": "object",
           "required": true
+        }
+      },
+      "headers": {
+        "Authorization": {
+          "type": "string",
+          "required": true,
+          "example": "Bearer <token>"
         }
       }
     }

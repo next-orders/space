@@ -187,8 +187,9 @@ declare global {
     data: {
       url: string
       method: 'POST'
+      token: string
       to: string
-      subject: string
+      template: 'NEW_CHECKOUT'
     }
   }
 
