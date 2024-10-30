@@ -1,3 +1,4 @@
+import { TZDate } from '@date-fns/tz'
 import { checkoutUpdateSchema, updateCheckout } from '~~/server/core/services/checkout'
 
 export default defineEventHandler(async (event) => {
@@ -93,7 +94,11 @@ async function sendToReceivers(checkoutId: string) {
     include: {
       lines: {
         include: {
-          variant: true,
+          variant: {
+            include: {
+              product: true,
+            },
+          },
         },
       },
     },
@@ -115,6 +120,17 @@ async function sendToReceivers(checkoutId: string) {
 
   const paymentMethodName = channel?.paymentMethods.find((p) => p.id === checkout?.paymentMethodId)?.name as string
   const warehouseAddress = channel?.warehouses.find((w) => w.id === checkout?.warehouseId)?.address
+  const address = checkout.street
+    ? {
+        street: checkout.street,
+        flat: checkout.flat ?? undefined,
+        doorphone: checkout.doorphone ?? undefined,
+        entrance: checkout.entrance ?? undefined,
+        floor: checkout.floor ?? undefined,
+        addressNote: checkout.addressNote ?? undefined,
+      }
+    : undefined
+  const time = new TZDate(checkout.time, channel.timeZone)
 
   const receivers = await prisma.checkoutReceiver.findMany({
     where: { channelId: checkout?.channelId },
@@ -125,7 +141,7 @@ async function sendToReceivers(checkoutId: string) {
       const data: NewCheckoutTemplate = {
         id: checkout.id,
         deliveryMethod: checkout.deliveryMethod as Checkout['deliveryMethod'],
-        time: checkout.time,
+        time,
         timeType: checkout.timeType as Checkout['timeType'],
         paymentMethodName,
         change: checkout.change ?? undefined,
@@ -134,9 +150,10 @@ async function sendToReceivers(checkoutId: string) {
         note: checkout.note ?? undefined,
         totalPrice: checkout.totalPrice,
         warehouseAddress,
+        address,
         lines: checkout.lines.map((line) => ({
           id: line.id,
-          name: line.variant.name,
+          name: line.variant.product.name,
           variant: line.variant.name,
           quantity: line.quantity,
           totalPrice: line.totalPrice,

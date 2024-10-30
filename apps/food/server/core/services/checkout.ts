@@ -11,9 +11,18 @@ export async function updateCheckout(id: string) {
       },
     },
   })
-
   if (!checkout) {
     return
+  }
+
+  for (const line of checkout.lines) {
+    await prisma.checkoutLine.update({
+      where: { id: line.id },
+      data: {
+        totalPrice: line.quantity * line.variant.gross,
+        unitPrice: line.variant.gross,
+      },
+    })
   }
 
   const totalPrice = checkout.lines.reduce((acc, line) => {
