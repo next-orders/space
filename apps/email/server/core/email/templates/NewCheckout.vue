@@ -57,5 +57,5 @@ import { Heading, Hr, Html, Row, Section, Text } from '@vue-email/components'
 const { deliveryMethod, time, timeType } = defineProps<NewCheckoutTemplate>()
 
 const method = deliveryMethod === 'WAREHOUSE' ? 'Самовывоз' : 'Доставка'
-const timeLocal = timeType === 'ASAP' ? 'Как можно быстрее' : new Date(time).toLocaleString(undefined, { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })
+const timeLocal = timeType === 'ASAP' ? 'Как можно быстрее' : time
 </script>
