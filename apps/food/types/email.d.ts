@@ -2,7 +2,7 @@ declare global {
   interface NewCheckoutTemplate {
     id: string
     deliveryMethod: 'WAREHOUSE' | 'DELIVERY'
-    time: Date
+    time: string
     timeType: 'ASAP' | 'SCHEDULED'
     paymentMethodName: string
     change?: string

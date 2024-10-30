@@ -89,6 +89,8 @@ export default defineEventHandler(async (event) => {
 })
 
 async function sendToReceivers(checkoutId: string) {
+  const { public: publicEnv } = useRuntimeConfig()
+
   const checkout = await prisma.checkout.findFirst({
     where: { id: checkoutId },
     include: {
@@ -130,7 +132,7 @@ async function sendToReceivers(checkoutId: string) {
         addressNote: checkout.addressNote ?? undefined,
       }
     : undefined
-  const time = new TZDate(checkout.time, channel.timeZone)
+  const time = new TZDate(checkout.time, channel.timeZone).toLocaleString(publicEnv.locale, { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })
 
   const receivers = await prisma.checkoutReceiver.findMany({
     where: { channelId: checkout?.channelId },
