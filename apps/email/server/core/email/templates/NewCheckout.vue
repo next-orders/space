@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import type { NewCheckoutTemplate } from './../../../../types/food'
+import type { NewCheckoutTemplate } from '~/../types/food'
 import { Heading, Hr, Html, Row, Section, Text } from '@vue-email/components'
 
 const { deliveryMethod, time, timeType } = defineProps<NewCheckoutTemplate>()

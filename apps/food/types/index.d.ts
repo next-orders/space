@@ -180,7 +180,7 @@ declare global {
     channelId: string
   } & CheckoutReceiverTypes
 
-  type CheckoutReceiverTypes = CheckoutReceiverTypeEmail
+  type CheckoutReceiverTypes = CheckoutReceiverTypeEmail | CheckoutReceiverTypeHttp
 
   interface CheckoutReceiverTypeEmail {
     type: 'EMAIL'
@@ -190,6 +190,15 @@ declare global {
       token: string
       to: string
       template: 'NEW_CHECKOUT'
+    }
+  }
+
+  interface CheckoutReceiverTypeHttp {
+    type: 'HTTP'
+    data: {
+      url: string
+      method: 'POST'
+      token: string
     }
   }
 
