@@ -1,5 +1,6 @@
 import { TZDate } from '@date-fns/tz'
 import { checkoutUpdateSchema, updateCheckout } from '~~/server/core/services/checkout'
+import { sendEmail, sendHttp } from '~~/server/utils/receiver'
 
 export default defineEventHandler(async (event) => {
   try {
@@ -139,54 +140,34 @@ async function sendToReceivers(checkoutId: string) {
   })
 
   for (const receiver of receivers as CheckoutReceiver[]) {
-    if (receiver.type === 'EMAIL' && receiver.data.template === 'NEW_CHECKOUT') {
-      const data: NewCheckoutTemplate = {
-        id: checkout.id,
-        deliveryMethod: checkout.deliveryMethod as Checkout['deliveryMethod'],
-        time,
-        timeType: checkout.timeType as Checkout['timeType'],
-        paymentMethodName,
-        change: checkout.change ?? undefined,
-        name: checkout.name,
-        phone: checkout.phone,
-        note: checkout.note ?? undefined,
-        totalPrice: checkout.totalPrice,
-        warehouseAddress,
-        address,
-        lines: checkout.lines.map((line) => ({
-          id: line.id,
-          name: line.variant.product.name,
-          variant: line.variant.name,
-          quantity: line.quantity,
-          totalPrice: line.totalPrice,
-        })),
-      }
+    const data: NewCheckoutTemplate = {
+      id: checkout.id,
+      deliveryMethod: checkout.deliveryMethod as Checkout['deliveryMethod'],
+      time,
+      timeType: checkout.timeType as Checkout['timeType'],
+      paymentMethodName,
+      change: checkout.change ?? undefined,
+      name: checkout.name,
+      phone: checkout.phone,
+      note: checkout.note ?? undefined,
+      totalPrice: checkout.totalPrice,
+      warehouseAddress,
+      address,
+      lines: checkout.lines.map((line) => ({
+        id: line.id,
+        name: line.variant.product.name,
+        variant: line.variant.name,
+        quantity: line.quantity,
+        totalPrice: line.totalPrice,
+      })),
+    }
 
+    if (receiver.type === 'EMAIL' && receiver.data.template === 'NEW_CHECKOUT') {
       await sendEmail<NewCheckoutTemplate>(receiver, data)
     }
-  }
-}
 
-async function sendEmail<T>(receiver: CheckoutReceiverTypeEmail, data: T) {
-  const logger = useLogger('sendEmail')
-
-  try {
-    await $fetch(receiver.data.url, {
-      method: receiver.data.method,
-      body: {
-        to: receiver.data.to,
-        template: receiver.data.template,
-        data,
-      },
-      headers: {
-        Authorization: `Bearer ${receiver.data.token}`,
-      },
-    })
-
-    return true
-  } catch (error) {
-    logger.error(error)
-
-    return false
+    if (receiver.type === 'HTTP') {
+      await sendHttp<NewCheckoutTemplate>(receiver, data)
+    }
   }
 }

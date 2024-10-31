@@ -50,7 +50,7 @@ export default defineNuxtConfig({
     channelId: 'burger',
     storageProductsDirectory: 'products',
     public: {
-      projectUrl: 'https://github.com/next-orders/space',
+      projectUrl: 'https://github.com/next-orders/food',
       locale: 'en',
     },
   },

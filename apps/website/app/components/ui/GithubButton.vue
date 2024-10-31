@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink to="https://github.com/next-orders/space" target="_blank">
+  <NuxtLink to="https://github.com/next-orders/food" target="_blank">
     <UButton
       :icon="icons.github"
       aria-label="GitHub"
