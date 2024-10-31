@@ -5,7 +5,7 @@ Modern e-commerce self-hosted platform: clients will be happy to order delicious
 
 🎯 [Admin panel](https://demo.nextorders.space/command-center). Use **demo** as login and password. Read mode only.
 
-![main-screen-desktop](https://github.com/next-orders/space/blob/main/.github/media/main-screen-desktop.jpg?raw=true)
+![main-screen-desktop](https://github.com/next-orders/food/blob/main/.github/media/main-screen-desktop.jpg?raw=true)
 
 ## 🍕 Main idea and architecture of Next-Orders
 
@@ -13,7 +13,7 @@ There is a great desire to create software that is ideal for ordering and delive
 It will be a set of solutions that can work together. It is important that each element can be easily replaced later.
 So the project does not become one big monolith.
 
-![next-orders-arch](https://github.com/next-orders/space/blob/main/.github/media/next-orders-arch.png?raw=true)
+![next-orders-arch](https://github.com/next-orders/food/blob/main/.github/media/next-orders-arch.png?raw=true)
 
 I'm currently working on the first version of the website. Next year there will be a new version that will easily replace the old one as the Main API with business logic will remain the same.
 
@@ -39,7 +39,7 @@ Let's see what happens. Give the project a star ⭐. Offer your ideas and make c
 
 ## 🌎 Locales
 
-The application has [several localizations](https://github.com/next-orders/space/tree/main/apps/food/app/locales):
+The application has [several localizations](https://github.com/next-orders/food/tree/main/apps/food/app/locales):
 
 - en | English
 - ru | Russian | Русский
@@ -47,9 +47,8 @@ The application has [several localizations](https://github.com/next-orders/space
 
 ## 🥒 Repository structure
 
-- [Food e-commerce](https://github.com/next-orders/space/tree/main/apps/food): Storefront and Command Center. Client can order delicious food.
-- [Email service](https://github.com/next-orders/space/tree/main/apps/email): Easy way to build and send html emails through a prepared service.
-- [NextOrders Website](https://github.com/next-orders/space/tree/main/apps/website): Documentation.
+- [Food e-commerce](https://github.com/next-orders/food/tree/main/apps/food): Storefront and Command Center. Client can order delicious food.
+- [Email service](https://github.com/next-orders/food/tree/main/apps/email): Easy way to build and send html emails through a prepared service.
 
 ## ☕ How to deploy
 
@@ -75,22 +74,22 @@ docker pull ghcr.io/next-orders/food:v0.7.0
 # Warn: you need an external PostgreSQL as DB
 ```
 
-Check [**.env.example**](https://github.com/next-orders/space/tree/main/apps/food/.env.example) for more info about required config variables.
+Check [**.env.example**](https://github.com/next-orders/food/tree/main/apps/food/.env.example) for more info about required config variables.
 
 ## 🍿 How to develop
 
 You can develop in isolated container with prepared options:
 
-[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/next-orders/space)
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/next-orders/food)
 
 Make a fork. Or clone this repo and use standard commands:
 
 ```shell
-git clone https://github.com/next-orders/space
+git clone https://github.com/next-orders/food
 pnpm i
 pnpm dev:food
 ```
 
 ## 🍰 License
 
-This project is licensed under the **MIT License** - see the [**MIT License**](https://github.com/next-orders/space/blob/main/LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [**MIT License**](https://github.com/next-orders/food/blob/main/LICENSE) file for details.

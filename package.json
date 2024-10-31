@@ -32,10 +32,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/next-orders/space.git"
+    "url": "git+https://github.com/next-orders/food.git"
   },
   "bugs": {
-    "url": "https://github.com/next-orders/space/issues"
+    "url": "https://github.com/next-orders/food/issues"
   },
   "homepage": "https://nextorders.space",
   "scripts": {
