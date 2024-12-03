@@ -16,7 +16,7 @@
     }
   },
   "engines": {
-    "node": ">=20.18.0",
+    "node": ">=22.12.0",
     "pnpm": ">=9.12.1"
   },
   "description": "Modern e-commerce self-hosted platform: clients will be happy to order delicious food!",
