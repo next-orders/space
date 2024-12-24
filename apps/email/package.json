@@ -15,14 +15,14 @@
     "postinstall": "nitro prepare"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^5.1.4",
-    "@vue-email/components": "^0.0.19",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue-email/components": "^0.0.21",
     "@vue-email/render": "^0.0.9",
-    "nodemailer": "^6.9.15"
+    "nodemailer": "^6.9.16"
   },
   "devDependencies": {
     "@next-orders/eslint": "workspace:*",
-    "@types/nodemailer": "^6.4.16",
+    "@types/nodemailer": "^6.4.17",
     "nitropack": "latest"
   }
 }
